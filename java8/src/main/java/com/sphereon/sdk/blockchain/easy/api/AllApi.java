@@ -71,13 +71,13 @@ public class AllApi {
         this.apiClient = apiClient;
     }
 
-    /* Build call for createChainUsingPOST */
-    private com.squareup.okhttp.Call createChainUsingPOSTCall(Chain chain, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /* Build call for createChain */
+    private com.squareup.okhttp.Call createChainCall(Chain chain, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = chain;
         
         // verify the required parameter 'chain' is set
         if (chain == null) {
-            throw new ApiException("Missing the required parameter 'chain' when calling createChainUsingPOST(Async)");
+            throw new ApiException("Missing the required parameter 'chain' when calling createChain(Async)");
         }
         
 
@@ -125,8 +125,8 @@ public class AllApi {
      * @return CommittedChainResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public CommittedChainResponse createChainUsingPOST(Chain chain) throws ApiException {
-        ApiResponse<CommittedChainResponse> resp = createChainUsingPOSTWithHttpInfo(chain);
+    public CommittedChainResponse createChain(Chain chain) throws ApiException {
+        ApiResponse<CommittedChainResponse> resp = createChainWithHttpInfo(chain);
         return resp.getData();
     }
 
@@ -137,8 +137,8 @@ public class AllApi {
      * @return ApiResponse&lt;CommittedChainResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<CommittedChainResponse> createChainUsingPOSTWithHttpInfo(Chain chain) throws ApiException {
-        com.squareup.okhttp.Call call = createChainUsingPOSTCall(chain, null, null);
+    public ApiResponse<CommittedChainResponse> createChainWithHttpInfo(Chain chain) throws ApiException {
+        com.squareup.okhttp.Call call = createChainCall(chain, null, null);
         Type localVarReturnType = new TypeToken<CommittedChainResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -151,7 +151,7 @@ public class AllApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call createChainUsingPOSTAsync(Chain chain, final ApiCallback<CommittedChainResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call createChainAsync(Chain chain, final ApiCallback<CommittedChainResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -172,23 +172,23 @@ public class AllApi {
             };
         }
 
-        com.squareup.okhttp.Call call = createChainUsingPOSTCall(chain, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = createChainCall(chain, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<CommittedChainResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
-    /* Build call for createEntryUsingPOST */
-    private com.squareup.okhttp.Call createEntryUsingPOSTCall(String chainId, Entry entry, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /* Build call for createEntry */
+    private com.squareup.okhttp.Call createEntryCall(String chainId, Entry entry, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = entry;
         
         // verify the required parameter 'chainId' is set
         if (chainId == null) {
-            throw new ApiException("Missing the required parameter 'chainId' when calling createEntryUsingPOST(Async)");
+            throw new ApiException("Missing the required parameter 'chainId' when calling createEntry(Async)");
         }
         
         // verify the required parameter 'entry' is set
         if (entry == null) {
-            throw new ApiException("Missing the required parameter 'entry' when calling createEntryUsingPOST(Async)");
+            throw new ApiException("Missing the required parameter 'entry' when calling createEntry(Async)");
         }
         
 
@@ -238,8 +238,8 @@ public class AllApi {
      * @return CommittedEntryResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public CommittedEntryResponse createEntryUsingPOST(String chainId, Entry entry) throws ApiException {
-        ApiResponse<CommittedEntryResponse> resp = createEntryUsingPOSTWithHttpInfo(chainId, entry);
+    public CommittedEntryResponse createEntry(String chainId, Entry entry) throws ApiException {
+        ApiResponse<CommittedEntryResponse> resp = createEntryWithHttpInfo(chainId, entry);
         return resp.getData();
     }
 
@@ -251,8 +251,8 @@ public class AllApi {
      * @return ApiResponse&lt;CommittedEntryResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<CommittedEntryResponse> createEntryUsingPOSTWithHttpInfo(String chainId, Entry entry) throws ApiException {
-        com.squareup.okhttp.Call call = createEntryUsingPOSTCall(chainId, entry, null, null);
+    public ApiResponse<CommittedEntryResponse> createEntryWithHttpInfo(String chainId, Entry entry) throws ApiException {
+        com.squareup.okhttp.Call call = createEntryCall(chainId, entry, null, null);
         Type localVarReturnType = new TypeToken<CommittedEntryResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -266,7 +266,7 @@ public class AllApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call createEntryUsingPOSTAsync(String chainId, Entry entry, final ApiCallback<CommittedEntryResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call createEntryAsync(String chainId, Entry entry, final ApiCallback<CommittedEntryResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -287,7 +287,7 @@ public class AllApi {
             };
         }
 
-        com.squareup.okhttp.Call call = createEntryUsingPOSTCall(chainId, entry, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = createEntryCall(chainId, entry, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<CommittedEntryResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

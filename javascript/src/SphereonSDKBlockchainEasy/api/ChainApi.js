@@ -57,8 +57,8 @@
 
 
     /**
-     * Callback function to receive the result of the createChainUsingPOST operation.
-     * @callback module:SphereonSDKBlockchainEasy/api/ChainApi~createChainUsingPOSTCallback
+     * Callback function to receive the result of the createChain operation.
+     * @callback module:SphereonSDKBlockchainEasy/api/ChainApi~createChainCallback
      * @param {String} error Error message, if any.
      * @param {module:SphereonSDKBlockchainEasy/model/CommittedChainResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -67,15 +67,15 @@
     /**
      * Create a new chain
      * @param {module:SphereonSDKBlockchainEasy/model/Chain} chain Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
-     * @param {module:SphereonSDKBlockchainEasy/api/ChainApi~createChainUsingPOSTCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:SphereonSDKBlockchainEasy/api/ChainApi~createChainCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:SphereonSDKBlockchainEasy/model/CommittedChainResponse}
      */
-    this.createChainUsingPOST = function(chain, callback) {
+    this.createChain = function(chain, callback) {
       var postBody = chain;
 
       // verify the required parameter 'chain' is set
       if (chain == undefined || chain == null) {
-        throw "Missing the required parameter 'chain' when calling createChainUsingPOST";
+        throw "Missing the required parameter 'chain' when calling createChain";
       }
 
 

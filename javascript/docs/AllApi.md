@@ -4,17 +4,17 @@ All URIs are relative to *https://gw.api.cloud.sphereon.com/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createChainUsingPOST**](AllApi.md#createChainUsingPOST) | **POST** /blockchain/easy/0.1.0/chains | Create a new chain
-[**createEntryUsingPOST**](AllApi.md#createEntryUsingPOST) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries | Create a new entry in the provided chain
+[**createChain**](AllApi.md#createChain) | **POST** /blockchain/easy/0.1.0/chains | Create a new chain
+[**createEntry**](AllApi.md#createEntry) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries | Create a new entry in the provided chain
 [**determineChainId**](AllApi.md#determineChainId) | **POST** /blockchain/easy/0.1.0/chains/id | Pre determine the Id of a chain request without anchoring it in the blockchain
 [**determineEntryId**](AllApi.md#determineEntryId) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries/id | Pre determine the Id of an entry request without anchoring the entry
 [**entryById**](AllApi.md#entryById) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
 [**entryByRequest**](AllApi.md#entryByRequest) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
 
 
-<a name="createChainUsingPOST"></a>
-# **createChainUsingPOST**
-> CommittedChainResponse createChainUsingPOST(chain)
+<a name="createChain"></a>
+# **createChain**
+> CommittedChainResponse createChain(chain)
 
 Create a new chain
 
@@ -34,7 +34,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.createChainUsingPOST(chain, callback);
+apiInstance.createChain(chain, callback);
 ```
 
 ### Parameters
@@ -56,9 +56,9 @@ No authorization required
  - **Content-Type**: application/json;charset=UTF-8
  - **Accept**: application/json;charset=UTF-8
 
-<a name="createEntryUsingPOST"></a>
-# **createEntryUsingPOST**
-> CommittedEntryResponse createEntryUsingPOST(chainId, entry)
+<a name="createEntry"></a>
+# **createEntry**
+> CommittedEntryResponse createEntry(chainId, entry)
 
 Create a new entry in the provided chain
 
@@ -80,7 +80,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.createEntryUsingPOST(chainId, entry, callback);
+apiInstance.createEntry(chainId, entry, callback);
 ```
 
 ### Parameters

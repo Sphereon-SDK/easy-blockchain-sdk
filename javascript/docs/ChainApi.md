@@ -4,13 +4,13 @@ All URIs are relative to *https://gw.api.cloud.sphereon.com/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createChainUsingPOST**](ChainApi.md#createChainUsingPOST) | **POST** /blockchain/easy/0.1.0/chains | Create a new chain
+[**createChain**](ChainApi.md#createChain) | **POST** /blockchain/easy/0.1.0/chains | Create a new chain
 [**determineChainId**](ChainApi.md#determineChainId) | **POST** /blockchain/easy/0.1.0/chains/id | Pre determine the Id of a chain request without anchoring it in the blockchain
 
 
-<a name="createChainUsingPOST"></a>
-# **createChainUsingPOST**
-> CommittedChainResponse createChainUsingPOST(chain)
+<a name="createChain"></a>
+# **createChain**
+> CommittedChainResponse createChain(chain)
 
 Create a new chain
 
@@ -30,7 +30,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.createChainUsingPOST(chain, callback);
+apiInstance.createChain(chain, callback);
 ```
 
 ### Parameters

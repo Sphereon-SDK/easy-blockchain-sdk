@@ -4,17 +4,17 @@ All URIs are relative to *https://gw.api.cloud.sphereon.com/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateChainUsingPOST**](AllApi.md#createchainusingpost) | **POST** /blockchain/easy/0.1.0/chains | Create a new chain
-[**CreateEntryUsingPOST**](AllApi.md#createentryusingpost) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries | Create a new entry in the provided chain
+[**CreateChain**](AllApi.md#createchain) | **POST** /blockchain/easy/0.1.0/chains | Create a new chain
+[**CreateEntry**](AllApi.md#createentry) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries | Create a new entry in the provided chain
 [**DetermineChainId**](AllApi.md#determinechainid) | **POST** /blockchain/easy/0.1.0/chains/id | Pre determine the Id of a chain request without anchoring it in the blockchain
 [**DetermineEntryId**](AllApi.md#determineentryid) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries/id | Pre determine the Id of an entry request without anchoring the entry
 [**EntryById**](AllApi.md#entrybyid) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
 [**EntryByRequest**](AllApi.md#entrybyrequest) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
 
 
-<a name="createchainusingpost"></a>
-# **CreateChainUsingPOST**
-> CommittedChainResponse CreateChainUsingPOST (Chain chain)
+<a name="createchain"></a>
+# **CreateChain**
+> CommittedChainResponse CreateChain (Chain chain)
 
 Create a new chain
 
@@ -28,7 +28,7 @@ using Sphereon.SDK.Blockchain.Easy.Model;
 
 namespace Example
 {
-    public class CreateChainUsingPOSTExample
+    public class CreateChainExample
     {
         public void main()
         {
@@ -39,12 +39,12 @@ namespace Example
             try
             {
                 // Create a new chain
-                CommittedChainResponse result = apiInstance.CreateChainUsingPOST(chain);
+                CommittedChainResponse result = apiInstance.CreateChain(chain);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling AllApi.CreateChainUsingPOST: " + e.Message );
+                Debug.Print("Exception when calling AllApi.CreateChain: " + e.Message );
             }
         }
     }
@@ -72,9 +72,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="createentryusingpost"></a>
-# **CreateEntryUsingPOST**
-> CommittedEntryResponse CreateEntryUsingPOST (string chainId, Entry entry)
+<a name="createentry"></a>
+# **CreateEntry**
+> CommittedEntryResponse CreateEntry (string chainId, Entry entry)
 
 Create a new entry in the provided chain
 
@@ -88,7 +88,7 @@ using Sphereon.SDK.Blockchain.Easy.Model;
 
 namespace Example
 {
-    public class CreateEntryUsingPOSTExample
+    public class CreateEntryExample
     {
         public void main()
         {
@@ -100,12 +100,12 @@ namespace Example
             try
             {
                 // Create a new entry in the provided chain
-                CommittedEntryResponse result = apiInstance.CreateEntryUsingPOST(chainId, entry);
+                CommittedEntryResponse result = apiInstance.CreateEntry(chainId, entry);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling AllApi.CreateEntryUsingPOST: " + e.Message );
+                Debug.Print("Exception when calling AllApi.CreateEntry: " + e.Message );
             }
         }
     }

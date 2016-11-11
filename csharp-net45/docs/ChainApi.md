@@ -4,13 +4,13 @@ All URIs are relative to *https://gw.api.cloud.sphereon.com/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateChainUsingPOST**](ChainApi.md#createchainusingpost) | **POST** /blockchain/easy/0.1.0/chains | Create a new chain
+[**CreateChain**](ChainApi.md#createchain) | **POST** /blockchain/easy/0.1.0/chains | Create a new chain
 [**DetermineChainId**](ChainApi.md#determinechainid) | **POST** /blockchain/easy/0.1.0/chains/id | Pre determine the Id of a chain request without anchoring it in the blockchain
 
 
-<a name="createchainusingpost"></a>
-# **CreateChainUsingPOST**
-> CommittedChainResponse CreateChainUsingPOST (Chain chain)
+<a name="createchain"></a>
+# **CreateChain**
+> CommittedChainResponse CreateChain (Chain chain)
 
 Create a new chain
 
@@ -24,7 +24,7 @@ using Sphereon.SDK.Blockchain.Easy.Model;
 
 namespace Example
 {
-    public class CreateChainUsingPOSTExample
+    public class CreateChainExample
     {
         public void main()
         {
@@ -35,12 +35,12 @@ namespace Example
             try
             {
                 // Create a new chain
-                CommittedChainResponse result = apiInstance.CreateChainUsingPOST(chain);
+                CommittedChainResponse result = apiInstance.CreateChain(chain);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling ChainApi.CreateChainUsingPOST: " + e.Message );
+                Debug.Print("Exception when calling ChainApi.CreateChain: " + e.Message );
             }
         }
     }

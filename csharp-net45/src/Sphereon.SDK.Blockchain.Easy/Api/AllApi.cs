@@ -45,7 +45,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain">Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
         /// <returns>CommittedChainResponse</returns>
-        CommittedChainResponse CreateChainUsingPOST (Chain chain);
+        CommittedChainResponse CreateChain (Chain chain);
 
         /// <summary>
         /// Create a new chain
@@ -56,7 +56,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain">Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
         /// <returns>ApiResponse of CommittedChainResponse</returns>
-        ApiResponse<CommittedChainResponse> CreateChainUsingPOSTWithHttpInfo (Chain chain);
+        ApiResponse<CommittedChainResponse> CreateChainWithHttpInfo (Chain chain);
         /// <summary>
         /// Create a new entry in the provided chain
         /// </summary>
@@ -67,7 +67,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Create a new entry for the specified chain</param>
         /// <returns>CommittedEntryResponse</returns>
-        CommittedEntryResponse CreateEntryUsingPOST (string chainId, Entry entry);
+        CommittedEntryResponse CreateEntry (string chainId, Entry entry);
 
         /// <summary>
         /// Create a new entry in the provided chain
@@ -79,7 +79,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Create a new entry for the specified chain</param>
         /// <returns>ApiResponse of CommittedEntryResponse</returns>
-        ApiResponse<CommittedEntryResponse> CreateEntryUsingPOSTWithHttpInfo (string chainId, Entry entry);
+        ApiResponse<CommittedEntryResponse> CreateEntryWithHttpInfo (string chainId, Entry entry);
         /// <summary>
         /// Pre determine the Id of a chain request without anchoring it in the blockchain
         /// </summary>
@@ -181,7 +181,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain">Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
         /// <returns>Task of CommittedChainResponse</returns>
-        System.Threading.Tasks.Task<CommittedChainResponse> CreateChainUsingPOSTAsync (Chain chain);
+        System.Threading.Tasks.Task<CommittedChainResponse> CreateChainAsync (Chain chain);
 
         /// <summary>
         /// Create a new chain
@@ -192,7 +192,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain">Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
         /// <returns>Task of ApiResponse (CommittedChainResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CommittedChainResponse>> CreateChainUsingPOSTAsyncWithHttpInfo (Chain chain);
+        System.Threading.Tasks.Task<ApiResponse<CommittedChainResponse>> CreateChainAsyncWithHttpInfo (Chain chain);
         /// <summary>
         /// Create a new entry in the provided chain
         /// </summary>
@@ -203,7 +203,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Create a new entry for the specified chain</param>
         /// <returns>Task of CommittedEntryResponse</returns>
-        System.Threading.Tasks.Task<CommittedEntryResponse> CreateEntryUsingPOSTAsync (string chainId, Entry entry);
+        System.Threading.Tasks.Task<CommittedEntryResponse> CreateEntryAsync (string chainId, Entry entry);
 
         /// <summary>
         /// Create a new entry in the provided chain
@@ -215,7 +215,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Create a new entry for the specified chain</param>
         /// <returns>Task of ApiResponse (CommittedEntryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CommittedEntryResponse>> CreateEntryUsingPOSTAsyncWithHttpInfo (string chainId, Entry entry);
+        System.Threading.Tasks.Task<ApiResponse<CommittedEntryResponse>> CreateEntryAsyncWithHttpInfo (string chainId, Entry entry);
         /// <summary>
         /// Pre determine the Id of a chain request without anchoring it in the blockchain
         /// </summary>
@@ -424,9 +424,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain">Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
         /// <returns>CommittedChainResponse</returns>
-        public CommittedChainResponse CreateChainUsingPOST (Chain chain)
+        public CommittedChainResponse CreateChain (Chain chain)
         {
-             ApiResponse<CommittedChainResponse> localVarResponse = CreateChainUsingPOSTWithHttpInfo(chain);
+             ApiResponse<CommittedChainResponse> localVarResponse = CreateChainWithHttpInfo(chain);
              return localVarResponse.Data;
         }
 
@@ -436,11 +436,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain">Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
         /// <returns>ApiResponse of CommittedChainResponse</returns>
-        public ApiResponse< CommittedChainResponse > CreateChainUsingPOSTWithHttpInfo (Chain chain)
+        public ApiResponse< CommittedChainResponse > CreateChainWithHttpInfo (Chain chain)
         {
             // verify the required parameter 'chain' is set
             if (chain == null)
-                throw new ApiException(400, "Missing required parameter 'chain' when calling AllApi->CreateChainUsingPOST");
+                throw new ApiException(400, "Missing required parameter 'chain' when calling AllApi->CreateChain");
 
             var localVarPath = "/blockchain/easy/0.1.0/chains";
             var localVarPathParams = new Dictionary<String, String>();
@@ -486,7 +486,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("CreateChainUsingPOST", localVarResponse);
+                Exception exception = ExceptionFactory("CreateChain", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -502,9 +502,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain">Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
         /// <returns>Task of CommittedChainResponse</returns>
-        public async System.Threading.Tasks.Task<CommittedChainResponse> CreateChainUsingPOSTAsync (Chain chain)
+        public async System.Threading.Tasks.Task<CommittedChainResponse> CreateChainAsync (Chain chain)
         {
-             ApiResponse<CommittedChainResponse> localVarResponse = await CreateChainUsingPOSTAsyncWithHttpInfo(chain);
+             ApiResponse<CommittedChainResponse> localVarResponse = await CreateChainAsyncWithHttpInfo(chain);
              return localVarResponse.Data;
 
         }
@@ -515,11 +515,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain">Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
         /// <returns>Task of ApiResponse (CommittedChainResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<CommittedChainResponse>> CreateChainUsingPOSTAsyncWithHttpInfo (Chain chain)
+        public async System.Threading.Tasks.Task<ApiResponse<CommittedChainResponse>> CreateChainAsyncWithHttpInfo (Chain chain)
         {
             // verify the required parameter 'chain' is set
             if (chain == null)
-                throw new ApiException(400, "Missing required parameter 'chain' when calling AllApi->CreateChainUsingPOST");
+                throw new ApiException(400, "Missing required parameter 'chain' when calling AllApi->CreateChain");
 
             var localVarPath = "/blockchain/easy/0.1.0/chains";
             var localVarPathParams = new Dictionary<String, String>();
@@ -565,7 +565,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("CreateChainUsingPOST", localVarResponse);
+                Exception exception = ExceptionFactory("CreateChain", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -582,9 +582,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Create a new entry for the specified chain</param>
         /// <returns>CommittedEntryResponse</returns>
-        public CommittedEntryResponse CreateEntryUsingPOST (string chainId, Entry entry)
+        public CommittedEntryResponse CreateEntry (string chainId, Entry entry)
         {
-             ApiResponse<CommittedEntryResponse> localVarResponse = CreateEntryUsingPOSTWithHttpInfo(chainId, entry);
+             ApiResponse<CommittedEntryResponse> localVarResponse = CreateEntryWithHttpInfo(chainId, entry);
              return localVarResponse.Data;
         }
 
@@ -595,14 +595,14 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Create a new entry for the specified chain</param>
         /// <returns>ApiResponse of CommittedEntryResponse</returns>
-        public ApiResponse< CommittedEntryResponse > CreateEntryUsingPOSTWithHttpInfo (string chainId, Entry entry)
+        public ApiResponse< CommittedEntryResponse > CreateEntryWithHttpInfo (string chainId, Entry entry)
         {
             // verify the required parameter 'chainId' is set
             if (chainId == null)
-                throw new ApiException(400, "Missing required parameter 'chainId' when calling AllApi->CreateEntryUsingPOST");
+                throw new ApiException(400, "Missing required parameter 'chainId' when calling AllApi->CreateEntry");
             // verify the required parameter 'entry' is set
             if (entry == null)
-                throw new ApiException(400, "Missing required parameter 'entry' when calling AllApi->CreateEntryUsingPOST");
+                throw new ApiException(400, "Missing required parameter 'entry' when calling AllApi->CreateEntry");
 
             var localVarPath = "/blockchain/easy/0.1.0/chains/{chainId}/entries";
             var localVarPathParams = new Dictionary<String, String>();
@@ -649,7 +649,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("CreateEntryUsingPOST", localVarResponse);
+                Exception exception = ExceptionFactory("CreateEntry", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -666,9 +666,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Create a new entry for the specified chain</param>
         /// <returns>Task of CommittedEntryResponse</returns>
-        public async System.Threading.Tasks.Task<CommittedEntryResponse> CreateEntryUsingPOSTAsync (string chainId, Entry entry)
+        public async System.Threading.Tasks.Task<CommittedEntryResponse> CreateEntryAsync (string chainId, Entry entry)
         {
-             ApiResponse<CommittedEntryResponse> localVarResponse = await CreateEntryUsingPOSTAsyncWithHttpInfo(chainId, entry);
+             ApiResponse<CommittedEntryResponse> localVarResponse = await CreateEntryAsyncWithHttpInfo(chainId, entry);
              return localVarResponse.Data;
 
         }
@@ -680,14 +680,14 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Create a new entry for the specified chain</param>
         /// <returns>Task of ApiResponse (CommittedEntryResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<CommittedEntryResponse>> CreateEntryUsingPOSTAsyncWithHttpInfo (string chainId, Entry entry)
+        public async System.Threading.Tasks.Task<ApiResponse<CommittedEntryResponse>> CreateEntryAsyncWithHttpInfo (string chainId, Entry entry)
         {
             // verify the required parameter 'chainId' is set
             if (chainId == null)
-                throw new ApiException(400, "Missing required parameter 'chainId' when calling AllApi->CreateEntryUsingPOST");
+                throw new ApiException(400, "Missing required parameter 'chainId' when calling AllApi->CreateEntry");
             // verify the required parameter 'entry' is set
             if (entry == null)
-                throw new ApiException(400, "Missing required parameter 'entry' when calling AllApi->CreateEntryUsingPOST");
+                throw new ApiException(400, "Missing required parameter 'entry' when calling AllApi->CreateEntry");
 
             var localVarPath = "/blockchain/easy/0.1.0/chains/{chainId}/entries";
             var localVarPathParams = new Dictionary<String, String>();
@@ -734,7 +734,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("CreateEntryUsingPOST", localVarResponse);
+                Exception exception = ExceptionFactory("CreateEntry", localVarResponse);
                 if (exception != null) throw exception;
             }
 

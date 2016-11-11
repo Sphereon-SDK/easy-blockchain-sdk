@@ -149,7 +149,7 @@
     "/blockchain/easy/0.1.0/chains": {"post": {
       "summary": "Create a new chain",
       "produces": ["application/json;charset=UTF-8"],
-      "operationId": "createChainUsingPOST",
+      "operationId": "createChain",
       "responses": {
         "200": {
           "schema": {"$ref": "#/definitions/CommittedChainResponse"},
@@ -180,7 +180,7 @@
     "/blockchain/easy/0.1.0/chains/{chainId}/entries": {"post": {
       "summary": "Create a new entry in the provided chain",
       "produces": ["application/json;charset=UTF-8"],
-      "operationId": "createEntryUsingPOST",
+      "operationId": "createEntry",
       "responses": {
         "200": {
           "schema": {"$ref": "#/definitions/CommittedEntryResponse"},

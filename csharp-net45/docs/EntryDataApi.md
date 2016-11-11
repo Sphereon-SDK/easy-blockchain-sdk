@@ -4,15 +4,15 @@ All URIs are relative to *https://gw.api.cloud.sphereon.com/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateEntryUsingPOST**](EntryDataApi.md#createentryusingpost) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries | Create a new entry in the provided chain
+[**CreateEntry**](EntryDataApi.md#createentry) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries | Create a new entry in the provided chain
 [**DetermineEntryId**](EntryDataApi.md#determineentryid) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries/id | Pre determine the Id of an entry request without anchoring the entry
 [**EntryById**](EntryDataApi.md#entrybyid) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
 [**EntryByRequest**](EntryDataApi.md#entrybyrequest) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
 
 
-<a name="createentryusingpost"></a>
-# **CreateEntryUsingPOST**
-> CommittedEntryResponse CreateEntryUsingPOST (string chainId, Entry entry)
+<a name="createentry"></a>
+# **CreateEntry**
+> CommittedEntryResponse CreateEntry (string chainId, Entry entry)
 
 Create a new entry in the provided chain
 
@@ -26,7 +26,7 @@ using Sphereon.SDK.Blockchain.Easy.Model;
 
 namespace Example
 {
-    public class CreateEntryUsingPOSTExample
+    public class CreateEntryExample
     {
         public void main()
         {
@@ -38,12 +38,12 @@ namespace Example
             try
             {
                 // Create a new entry in the provided chain
-                CommittedEntryResponse result = apiInstance.CreateEntryUsingPOST(chainId, entry);
+                CommittedEntryResponse result = apiInstance.CreateEntry(chainId, entry);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling EntryDataApi.CreateEntryUsingPOST: " + e.Message );
+                Debug.Print("Exception when calling EntryDataApi.CreateEntry: " + e.Message );
             }
         }
     }

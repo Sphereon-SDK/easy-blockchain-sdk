@@ -4,13 +4,13 @@ All URIs are relative to *https://gw.api.cloud.sphereon.com/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createChainUsingPOST**](ChainApi.md#createChainUsingPOST) | **POST** /blockchain/easy/0.1.0/chains | Create a new chain
+[**createChain**](ChainApi.md#createChain) | **POST** /blockchain/easy/0.1.0/chains | Create a new chain
 [**determineChainId**](ChainApi.md#determineChainId) | **POST** /blockchain/easy/0.1.0/chains/id | Pre determine the Id of a chain request without anchoring it in the blockchain
 
 
-<a name="createChainUsingPOST"></a>
-# **createChainUsingPOST**
-> CommittedChainResponse createChainUsingPOST(chain)
+<a name="createChain"></a>
+# **createChain**
+> CommittedChainResponse createChain(chain)
 
 Create a new chain
 
@@ -24,10 +24,10 @@ Create a new chain
 ChainApi apiInstance = new ChainApi();
 Chain chain = new Chain(); // Chain | Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
 try {
-    CommittedChainResponse result = apiInstance.createChainUsingPOST(chain);
+    CommittedChainResponse result = apiInstance.createChain(chain);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling ChainApi#createChainUsingPOST");
+    System.err.println("Exception when calling ChainApi#createChain");
     e.printStackTrace();
 }
 ```
