@@ -37,7 +37,7 @@ import java.util.List;
 /**
  * VndErrors
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-11-12T22:28:18.325+01:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-11-12T22:38:27.092+01:00")
 public class VndErrors   {
   @SerializedName("error")
   private List<VndError> error = new ArrayList<VndError>();

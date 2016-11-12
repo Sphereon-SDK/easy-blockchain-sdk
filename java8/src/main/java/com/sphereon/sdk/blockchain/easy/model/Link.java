@@ -34,7 +34,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * Link
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-11-12T22:28:18.325+01:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-11-12T22:38:27.092+01:00")
 public class Link   {
   @SerializedName("href")
   private String href = null;
