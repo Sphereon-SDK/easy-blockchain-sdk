@@ -1,6 +1,6 @@
 /**
  * Easy Blockchain API
- * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a chain has been created using the /chain POST endpoint. Normaly you only need one or a handfull of chains. This is an expensive operation.  2. Store entries on the chain from step 1. The entries will contain the content and metadata you want to store forever on the specified chain.  3. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
+ * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is an expensive operation.  2. Store entries on the chain from step 1. The entries will contain the content and metadata you want to store forever on the specified chain.  3. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
  *
  * OpenAPI spec version: 0.1.0
  * Contact: dev@sphereon.com
@@ -35,8 +35,36 @@ import io.swagger.annotations.ApiModelProperty;
  * Id response
  */
 @ApiModel(description = "Id response")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-11-11T11:48:52.868+01:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-11-12T22:28:18.325+01:00")
 public class IdResponse   {
+  /**
+   * Gets or Sets exists
+   */
+  public enum ExistsEnum {
+    @SerializedName("True")
+    TRUE("True"),
+    
+    @SerializedName("False")
+    FALSE("False"),
+    
+    @SerializedName("Unknown")
+    UNKNOWN("Unknown");
+
+    private String value;
+
+    ExistsEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+  }
+
+  @SerializedName("exists")
+  private ExistsEnum exists = null;
+
   @SerializedName("Id")
   private String id = null;
 
@@ -84,6 +112,24 @@ public class IdResponse   {
   @SerializedName("blockchainImplementation")
   private BlockchainImplementationEnum blockchainImplementation = null;
 
+  public IdResponse exists(ExistsEnum exists) {
+    this.exists = exists;
+    return this;
+  }
+
+   /**
+   * Get exists
+   * @return exists
+  **/
+  @ApiModelProperty(example = "null", required = true, value = "")
+  public ExistsEnum getExists() {
+    return exists;
+  }
+
+  public void setExists(ExistsEnum exists) {
+    this.exists = exists;
+  }
+
   public IdResponse id(String id) {
     this.id = id;
     return this;
@@ -130,14 +176,15 @@ public class IdResponse   {
       return false;
     }
     IdResponse idResponse = (IdResponse) o;
-    return Objects.equals(this.id, idResponse.id) &&
+    return Objects.equals(this.exists, idResponse.exists) &&
+        Objects.equals(this.id, idResponse.id) &&
         Objects.equals(this.dataStructure, idResponse.dataStructure) &&
         Objects.equals(this.blockchainImplementation, idResponse.blockchainImplementation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, dataStructure, blockchainImplementation);
+    return Objects.hash(exists, id, dataStructure, blockchainImplementation);
   }
 
   @Override
@@ -145,6 +192,7 @@ public class IdResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class IdResponse {\n");
     
+    sb.append("    exists: ").append(toIndentedString(exists)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    dataStructure: ").append(toIndentedString(dataStructure)).append("\n");
     sb.append("    blockchainImplementation: ").append(toIndentedString(blockchainImplementation)).append("\n");

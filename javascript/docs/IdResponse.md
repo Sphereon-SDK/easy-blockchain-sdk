@@ -3,9 +3,23 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**exists** | **String** |  | 
 **id** | **String** | The Id | [optional] 
 **dataStructure** | **String** |  | [optional] 
 **blockchainImplementation** | **String** |  | [optional] 
+
+
+<a name="ExistsEnum"></a>
+## Enum: ExistsEnum
+
+
+* `True` (value: `"True"`)
+
+* `False` (value: `"False"`)
+
+* `Unknown` (value: `"Unknown"`)
+
+
 
 
 <a name="DataStructureEnum"></a>

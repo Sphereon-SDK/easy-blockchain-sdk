@@ -33,80 +33,34 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IIdApi : IApiAccessor
+    public interface IEntryApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// Determine whether the Id of a chain exists in the blockchain
+        /// Create a new entry in the provided chain
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId">chainId</param>
-        /// <returns>IdResponse</returns>
-        IdResponse ChainIdExists (string chainId);
+        /// <param name="entry">Create a new entry for the specified chain</param>
+        /// <returns>CommittedEntryResponse</returns>
+        CommittedEntryResponse CreateEntry (string chainId, Entry entry);
 
         /// <summary>
-        /// Determine whether the Id of a chain exists in the blockchain
+        /// Create a new entry in the provided chain
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId">chainId</param>
-        /// <returns>ApiResponse of IdResponse</returns>
-        ApiResponse<IdResponse> ChainIdExistsWithHttpInfo (string chainId);
+        /// <param name="entry">Create a new entry for the specified chain</param>
+        /// <returns>ApiResponse of CommittedEntryResponse</returns>
+        ApiResponse<CommittedEntryResponse> CreateEntryWithHttpInfo (string chainId, Entry entry);
         /// <summary>
-        /// Pre determine the Id of a chain request without anchoring it in the blockchain
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
-        /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
-        /// <returns>IdResponse</returns>
-        IdResponse DetermineChainId (Chain chain, bool? checkExistence = null);
-
-        /// <summary>
-        /// Pre determine the Id of a chain request without anchoring it in the blockchain
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
-        /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
-        /// <returns>ApiResponse of IdResponse</returns>
-        ApiResponse<IdResponse> DetermineChainIdWithHttpInfo (Chain chain, bool? checkExistence = null);
-        /// <summary>
-        /// Pre determine the Id of an entry request without anchoring the entry
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chainId">chainId</param>
-        /// <param name="entry">The entry to determine the hash for on the specified chain</param>
-        /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
-        /// <returns>IdResponse</returns>
-        IdResponse DetermineEntryId (string chainId, Entry entry, bool? checkExistence = null);
-
-        /// <summary>
-        /// Pre determine the Id of an entry request without anchoring the entry
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chainId">chainId</param>
-        /// <param name="entry">The entry to determine the hash for on the specified chain</param>
-        /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
-        /// <returns>ApiResponse of IdResponse</returns>
-        ApiResponse<IdResponse> DetermineEntryIdWithHttpInfo (string chainId, Entry entry, bool? checkExistence = null);
-        /// <summary>
-        /// Determine whether the Id of an entry exists in the blockchain
+        /// Get an existing entry in the provided chain
         /// </summary>
         /// <remarks>
         /// 
@@ -114,11 +68,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
-        /// <returns>IdResponse</returns>
-        IdResponse EntryIdExists (string chainId, string entryId);
+        /// <returns>AnchoredEntryResponse</returns>
+        AnchoredEntryResponse EntryById (string chainId, string entryId);
 
         /// <summary>
-        /// Determine whether the Id of an entry exists in the blockchain
+        /// Get an existing entry in the provided chain
         /// </summary>
         /// <remarks>
         /// 
@@ -126,81 +80,79 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
-        /// <returns>ApiResponse of IdResponse</returns>
-        ApiResponse<IdResponse> EntryIdExistsWithHttpInfo (string chainId, string entryId);
+        /// <returns>ApiResponse of AnchoredEntryResponse</returns>
+        ApiResponse<AnchoredEntryResponse> EntryByIdWithHttpInfo (string chainId, string entryId);
+        /// <summary>
+        /// Get an existing entry in the provided chain
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <param name="entry">Retrieve the entry</param>
+        /// <returns>AnchoredEntryResponse</returns>
+        AnchoredEntryResponse EntryByRequest (string chainId, Entry entry);
+
+        /// <summary>
+        /// Get an existing entry in the provided chain
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <param name="entry">Retrieve the entry</param>
+        /// <returns>ApiResponse of AnchoredEntryResponse</returns>
+        ApiResponse<AnchoredEntryResponse> EntryByRequestWithHttpInfo (string chainId, Entry entry);
+        /// <summary>
+        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <returns>AnchoredEntryResponse</returns>
+        AnchoredEntryResponse LastEntry (string chainId);
+
+        /// <summary>
+        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <returns>ApiResponse of AnchoredEntryResponse</returns>
+        ApiResponse<AnchoredEntryResponse> LastEntryWithHttpInfo (string chainId);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Determine whether the Id of a chain exists in the blockchain
+        /// Create a new entry in the provided chain
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId">chainId</param>
-        /// <returns>Task of IdResponse</returns>
-        System.Threading.Tasks.Task<IdResponse> ChainIdExistsAsync (string chainId);
+        /// <param name="entry">Create a new entry for the specified chain</param>
+        /// <returns>Task of CommittedEntryResponse</returns>
+        System.Threading.Tasks.Task<CommittedEntryResponse> CreateEntryAsync (string chainId, Entry entry);
 
         /// <summary>
-        /// Determine whether the Id of a chain exists in the blockchain
+        /// Create a new entry in the provided chain
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId">chainId</param>
-        /// <returns>Task of ApiResponse (IdResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IdResponse>> ChainIdExistsAsyncWithHttpInfo (string chainId);
+        /// <param name="entry">Create a new entry for the specified chain</param>
+        /// <returns>Task of ApiResponse (CommittedEntryResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CommittedEntryResponse>> CreateEntryAsyncWithHttpInfo (string chainId, Entry entry);
         /// <summary>
-        /// Pre determine the Id of a chain request without anchoring it in the blockchain
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
-        /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
-        /// <returns>Task of IdResponse</returns>
-        System.Threading.Tasks.Task<IdResponse> DetermineChainIdAsync (Chain chain, bool? checkExistence = null);
-
-        /// <summary>
-        /// Pre determine the Id of a chain request without anchoring it in the blockchain
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
-        /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
-        /// <returns>Task of ApiResponse (IdResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IdResponse>> DetermineChainIdAsyncWithHttpInfo (Chain chain, bool? checkExistence = null);
-        /// <summary>
-        /// Pre determine the Id of an entry request without anchoring the entry
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chainId">chainId</param>
-        /// <param name="entry">The entry to determine the hash for on the specified chain</param>
-        /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
-        /// <returns>Task of IdResponse</returns>
-        System.Threading.Tasks.Task<IdResponse> DetermineEntryIdAsync (string chainId, Entry entry, bool? checkExistence = null);
-
-        /// <summary>
-        /// Pre determine the Id of an entry request without anchoring the entry
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chainId">chainId</param>
-        /// <param name="entry">The entry to determine the hash for on the specified chain</param>
-        /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
-        /// <returns>Task of ApiResponse (IdResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IdResponse>> DetermineEntryIdAsyncWithHttpInfo (string chainId, Entry entry, bool? checkExistence = null);
-        /// <summary>
-        /// Determine whether the Id of an entry exists in the blockchain
+        /// Get an existing entry in the provided chain
         /// </summary>
         /// <remarks>
         /// 
@@ -208,11 +160,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
-        /// <returns>Task of IdResponse</returns>
-        System.Threading.Tasks.Task<IdResponse> EntryIdExistsAsync (string chainId, string entryId);
+        /// <returns>Task of AnchoredEntryResponse</returns>
+        System.Threading.Tasks.Task<AnchoredEntryResponse> EntryByIdAsync (string chainId, string entryId);
 
         /// <summary>
-        /// Determine whether the Id of an entry exists in the blockchain
+        /// Get an existing entry in the provided chain
         /// </summary>
         /// <remarks>
         /// 
@@ -220,23 +172,67 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
-        /// <returns>Task of ApiResponse (IdResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IdResponse>> EntryIdExistsAsyncWithHttpInfo (string chainId, string entryId);
+        /// <returns>Task of ApiResponse (AnchoredEntryResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AnchoredEntryResponse>> EntryByIdAsyncWithHttpInfo (string chainId, string entryId);
+        /// <summary>
+        /// Get an existing entry in the provided chain
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <param name="entry">Retrieve the entry</param>
+        /// <returns>Task of AnchoredEntryResponse</returns>
+        System.Threading.Tasks.Task<AnchoredEntryResponse> EntryByRequestAsync (string chainId, Entry entry);
+
+        /// <summary>
+        /// Get an existing entry in the provided chain
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <param name="entry">Retrieve the entry</param>
+        /// <returns>Task of ApiResponse (AnchoredEntryResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AnchoredEntryResponse>> EntryByRequestAsyncWithHttpInfo (string chainId, Entry entry);
+        /// <summary>
+        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <returns>Task of AnchoredEntryResponse</returns>
+        System.Threading.Tasks.Task<AnchoredEntryResponse> LastEntryAsync (string chainId);
+
+        /// <summary>
+        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <returns>Task of ApiResponse (AnchoredEntryResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AnchoredEntryResponse>> LastEntryAsyncWithHttpInfo (string chainId);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class IdApi : IIdApi
+    public partial class EntryApi : IEntryApi
     {
         private Sphereon.SDK.Blockchain.Easy.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IdApi"/> class.
+        /// Initializes a new instance of the <see cref="EntryApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public IdApi(String basePath)
+        public EntryApi(String basePath)
         {
             this.Configuration = new Configuration(new ApiClient(basePath));
 
@@ -250,12 +246,12 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IdApi"/> class
+        /// Initializes a new instance of the <see cref="EntryApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public IdApi(Configuration configuration = null)
+        public EntryApi(Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default;
@@ -335,343 +331,35 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Determine whether the Id of a chain exists in the blockchain 
+        /// Create a new entry in the provided chain 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId">chainId</param>
-        /// <returns>IdResponse</returns>
-        public IdResponse ChainIdExists (string chainId)
+        /// <param name="entry">Create a new entry for the specified chain</param>
+        /// <returns>CommittedEntryResponse</returns>
+        public CommittedEntryResponse CreateEntry (string chainId, Entry entry)
         {
-             ApiResponse<IdResponse> localVarResponse = ChainIdExistsWithHttpInfo(chainId);
+             ApiResponse<CommittedEntryResponse> localVarResponse = CreateEntryWithHttpInfo(chainId, entry);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Determine whether the Id of a chain exists in the blockchain 
+        /// Create a new entry in the provided chain 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId">chainId</param>
-        /// <returns>ApiResponse of IdResponse</returns>
-        public ApiResponse< IdResponse > ChainIdExistsWithHttpInfo (string chainId)
+        /// <param name="entry">Create a new entry for the specified chain</param>
+        /// <returns>ApiResponse of CommittedEntryResponse</returns>
+        public ApiResponse< CommittedEntryResponse > CreateEntryWithHttpInfo (string chainId, Entry entry)
         {
             // verify the required parameter 'chainId' is set
             if (chainId == null)
-                throw new ApiException(400, "Missing required parameter 'chainId' when calling IdApi->ChainIdExists");
-
-            var localVarPath = "/blockchain/easy/0.1.0/chains/id/{chainId}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=UTF-8"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
-            if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ChainIdExists", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<IdResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (IdResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(IdResponse)));
-            
-        }
-
-        /// <summary>
-        /// Determine whether the Id of a chain exists in the blockchain 
-        /// </summary>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chainId">chainId</param>
-        /// <returns>Task of IdResponse</returns>
-        public async System.Threading.Tasks.Task<IdResponse> ChainIdExistsAsync (string chainId)
-        {
-             ApiResponse<IdResponse> localVarResponse = await ChainIdExistsAsyncWithHttpInfo(chainId);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Determine whether the Id of a chain exists in the blockchain 
-        /// </summary>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chainId">chainId</param>
-        /// <returns>Task of ApiResponse (IdResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<IdResponse>> ChainIdExistsAsyncWithHttpInfo (string chainId)
-        {
-            // verify the required parameter 'chainId' is set
-            if (chainId == null)
-                throw new ApiException(400, "Missing required parameter 'chainId' when calling IdApi->ChainIdExists");
-
-            var localVarPath = "/blockchain/easy/0.1.0/chains/id/{chainId}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=UTF-8"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
-            if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ChainIdExists", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<IdResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (IdResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(IdResponse)));
-            
-        }
-
-        /// <summary>
-        /// Pre determine the Id of a chain request without anchoring it in the blockchain 
-        /// </summary>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
-        /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
-        /// <returns>IdResponse</returns>
-        public IdResponse DetermineChainId (Chain chain, bool? checkExistence = null)
-        {
-             ApiResponse<IdResponse> localVarResponse = DetermineChainIdWithHttpInfo(chain, checkExistence);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Pre determine the Id of a chain request without anchoring it in the blockchain 
-        /// </summary>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
-        /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
-        /// <returns>ApiResponse of IdResponse</returns>
-        public ApiResponse< IdResponse > DetermineChainIdWithHttpInfo (Chain chain, bool? checkExistence = null)
-        {
-            // verify the required parameter 'chain' is set
-            if (chain == null)
-                throw new ApiException(400, "Missing required parameter 'chain' when calling IdApi->DetermineChainId");
-
-            var localVarPath = "/blockchain/easy/0.1.0/chains/id";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=UTF-8"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=UTF-8"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
-            if (checkExistence != null) localVarQueryParams.Add("checkExistence", Configuration.ApiClient.ParameterToString(checkExistence)); // query parameter
-            if (chain != null && chain.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(chain); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = chain; // byte array
-            }
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("DetermineChainId", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<IdResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (IdResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(IdResponse)));
-            
-        }
-
-        /// <summary>
-        /// Pre determine the Id of a chain request without anchoring it in the blockchain 
-        /// </summary>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
-        /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
-        /// <returns>Task of IdResponse</returns>
-        public async System.Threading.Tasks.Task<IdResponse> DetermineChainIdAsync (Chain chain, bool? checkExistence = null)
-        {
-             ApiResponse<IdResponse> localVarResponse = await DetermineChainIdAsyncWithHttpInfo(chain, checkExistence);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Pre determine the Id of a chain request without anchoring it in the blockchain 
-        /// </summary>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
-        /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
-        /// <returns>Task of ApiResponse (IdResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<IdResponse>> DetermineChainIdAsyncWithHttpInfo (Chain chain, bool? checkExistence = null)
-        {
-            // verify the required parameter 'chain' is set
-            if (chain == null)
-                throw new ApiException(400, "Missing required parameter 'chain' when calling IdApi->DetermineChainId");
-
-            var localVarPath = "/blockchain/easy/0.1.0/chains/id";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=UTF-8"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=UTF-8"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
-            if (checkExistence != null) localVarQueryParams.Add("checkExistence", Configuration.ApiClient.ParameterToString(checkExistence)); // query parameter
-            if (chain != null && chain.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(chain); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = chain; // byte array
-            }
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("DetermineChainId", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<IdResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (IdResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(IdResponse)));
-            
-        }
-
-        /// <summary>
-        /// Pre determine the Id of an entry request without anchoring the entry 
-        /// </summary>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chainId">chainId</param>
-        /// <param name="entry">The entry to determine the hash for on the specified chain</param>
-        /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
-        /// <returns>IdResponse</returns>
-        public IdResponse DetermineEntryId (string chainId, Entry entry, bool? checkExistence = null)
-        {
-             ApiResponse<IdResponse> localVarResponse = DetermineEntryIdWithHttpInfo(chainId, entry, checkExistence);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Pre determine the Id of an entry request without anchoring the entry 
-        /// </summary>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chainId">chainId</param>
-        /// <param name="entry">The entry to determine the hash for on the specified chain</param>
-        /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
-        /// <returns>ApiResponse of IdResponse</returns>
-        public ApiResponse< IdResponse > DetermineEntryIdWithHttpInfo (string chainId, Entry entry, bool? checkExistence = null)
-        {
-            // verify the required parameter 'chainId' is set
-            if (chainId == null)
-                throw new ApiException(400, "Missing required parameter 'chainId' when calling IdApi->DetermineEntryId");
+                throw new ApiException(400, "Missing required parameter 'chainId' when calling EntryApi->CreateEntry");
             // verify the required parameter 'entry' is set
             if (entry == null)
-                throw new ApiException(400, "Missing required parameter 'entry' when calling IdApi->DetermineEntryId");
+                throw new ApiException(400, "Missing required parameter 'entry' when calling EntryApi->CreateEntry");
 
-            var localVarPath = "/blockchain/easy/0.1.0/chains/id/{chainId}/entries";
+            var localVarPath = "/blockchain/easy/0.1.0/chains/{chainId}/entries";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -697,7 +385,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
             if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
-            if (checkExistence != null) localVarQueryParams.Add("checkExistence", Configuration.ApiClient.ParameterToString(checkExistence)); // query parameter
             if (entry != null && entry.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(entry); // http body (model) parameter
@@ -717,49 +404,47 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("DetermineEntryId", localVarResponse);
+                Exception exception = ExceptionFactory("CreateEntry", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<IdResponse>(localVarStatusCode,
+            return new ApiResponse<CommittedEntryResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (IdResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(IdResponse)));
+                (CommittedEntryResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(CommittedEntryResponse)));
             
         }
 
         /// <summary>
-        /// Pre determine the Id of an entry request without anchoring the entry 
+        /// Create a new entry in the provided chain 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId">chainId</param>
-        /// <param name="entry">The entry to determine the hash for on the specified chain</param>
-        /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
-        /// <returns>Task of IdResponse</returns>
-        public async System.Threading.Tasks.Task<IdResponse> DetermineEntryIdAsync (string chainId, Entry entry, bool? checkExistence = null)
+        /// <param name="entry">Create a new entry for the specified chain</param>
+        /// <returns>Task of CommittedEntryResponse</returns>
+        public async System.Threading.Tasks.Task<CommittedEntryResponse> CreateEntryAsync (string chainId, Entry entry)
         {
-             ApiResponse<IdResponse> localVarResponse = await DetermineEntryIdAsyncWithHttpInfo(chainId, entry, checkExistence);
+             ApiResponse<CommittedEntryResponse> localVarResponse = await CreateEntryAsyncWithHttpInfo(chainId, entry);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Pre determine the Id of an entry request without anchoring the entry 
+        /// Create a new entry in the provided chain 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId">chainId</param>
-        /// <param name="entry">The entry to determine the hash for on the specified chain</param>
-        /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
-        /// <returns>Task of ApiResponse (IdResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<IdResponse>> DetermineEntryIdAsyncWithHttpInfo (string chainId, Entry entry, bool? checkExistence = null)
+        /// <param name="entry">Create a new entry for the specified chain</param>
+        /// <returns>Task of ApiResponse (CommittedEntryResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<CommittedEntryResponse>> CreateEntryAsyncWithHttpInfo (string chainId, Entry entry)
         {
             // verify the required parameter 'chainId' is set
             if (chainId == null)
-                throw new ApiException(400, "Missing required parameter 'chainId' when calling IdApi->DetermineEntryId");
+                throw new ApiException(400, "Missing required parameter 'chainId' when calling EntryApi->CreateEntry");
             // verify the required parameter 'entry' is set
             if (entry == null)
-                throw new ApiException(400, "Missing required parameter 'entry' when calling IdApi->DetermineEntryId");
+                throw new ApiException(400, "Missing required parameter 'entry' when calling EntryApi->CreateEntry");
 
-            var localVarPath = "/blockchain/easy/0.1.0/chains/id/{chainId}/entries";
+            var localVarPath = "/blockchain/easy/0.1.0/chains/{chainId}/entries";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -785,7 +470,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
             if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
-            if (checkExistence != null) localVarQueryParams.Add("checkExistence", Configuration.ApiClient.ParameterToString(checkExistence)); // query parameter
             if (entry != null && entry.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(entry); // http body (model) parameter
@@ -805,46 +489,46 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("DetermineEntryId", localVarResponse);
+                Exception exception = ExceptionFactory("CreateEntry", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<IdResponse>(localVarStatusCode,
+            return new ApiResponse<CommittedEntryResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (IdResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(IdResponse)));
+                (CommittedEntryResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(CommittedEntryResponse)));
             
         }
 
         /// <summary>
-        /// Determine whether the Id of an entry exists in the blockchain 
+        /// Get an existing entry in the provided chain 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
-        /// <returns>IdResponse</returns>
-        public IdResponse EntryIdExists (string chainId, string entryId)
+        /// <returns>AnchoredEntryResponse</returns>
+        public AnchoredEntryResponse EntryById (string chainId, string entryId)
         {
-             ApiResponse<IdResponse> localVarResponse = EntryIdExistsWithHttpInfo(chainId, entryId);
+             ApiResponse<AnchoredEntryResponse> localVarResponse = EntryByIdWithHttpInfo(chainId, entryId);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Determine whether the Id of an entry exists in the blockchain 
+        /// Get an existing entry in the provided chain 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
-        /// <returns>ApiResponse of IdResponse</returns>
-        public ApiResponse< IdResponse > EntryIdExistsWithHttpInfo (string chainId, string entryId)
+        /// <returns>ApiResponse of AnchoredEntryResponse</returns>
+        public ApiResponse< AnchoredEntryResponse > EntryByIdWithHttpInfo (string chainId, string entryId)
         {
             // verify the required parameter 'chainId' is set
             if (chainId == null)
-                throw new ApiException(400, "Missing required parameter 'chainId' when calling IdApi->EntryIdExists");
+                throw new ApiException(400, "Missing required parameter 'chainId' when calling EntryApi->EntryById");
             // verify the required parameter 'entryId' is set
             if (entryId == null)
-                throw new ApiException(400, "Missing required parameter 'entryId' when calling IdApi->EntryIdExists");
+                throw new ApiException(400, "Missing required parameter 'entryId' when calling EntryApi->EntryById");
 
-            var localVarPath = "/blockchain/easy/0.1.0/chains/id/{chainId}/entries/{entryId}";
+            var localVarPath = "/blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -882,47 +566,47 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("EntryIdExists", localVarResponse);
+                Exception exception = ExceptionFactory("EntryById", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<IdResponse>(localVarStatusCode,
+            return new ApiResponse<AnchoredEntryResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (IdResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(IdResponse)));
+                (AnchoredEntryResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(AnchoredEntryResponse)));
             
         }
 
         /// <summary>
-        /// Determine whether the Id of an entry exists in the blockchain 
+        /// Get an existing entry in the provided chain 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
-        /// <returns>Task of IdResponse</returns>
-        public async System.Threading.Tasks.Task<IdResponse> EntryIdExistsAsync (string chainId, string entryId)
+        /// <returns>Task of AnchoredEntryResponse</returns>
+        public async System.Threading.Tasks.Task<AnchoredEntryResponse> EntryByIdAsync (string chainId, string entryId)
         {
-             ApiResponse<IdResponse> localVarResponse = await EntryIdExistsAsyncWithHttpInfo(chainId, entryId);
+             ApiResponse<AnchoredEntryResponse> localVarResponse = await EntryByIdAsyncWithHttpInfo(chainId, entryId);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Determine whether the Id of an entry exists in the blockchain 
+        /// Get an existing entry in the provided chain 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
-        /// <returns>Task of ApiResponse (IdResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<IdResponse>> EntryIdExistsAsyncWithHttpInfo (string chainId, string entryId)
+        /// <returns>Task of ApiResponse (AnchoredEntryResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AnchoredEntryResponse>> EntryByIdAsyncWithHttpInfo (string chainId, string entryId)
         {
             // verify the required parameter 'chainId' is set
             if (chainId == null)
-                throw new ApiException(400, "Missing required parameter 'chainId' when calling IdApi->EntryIdExists");
+                throw new ApiException(400, "Missing required parameter 'chainId' when calling EntryApi->EntryById");
             // verify the required parameter 'entryId' is set
             if (entryId == null)
-                throw new ApiException(400, "Missing required parameter 'entryId' when calling IdApi->EntryIdExists");
+                throw new ApiException(400, "Missing required parameter 'entryId' when calling EntryApi->EntryById");
 
-            var localVarPath = "/blockchain/easy/0.1.0/chains/id/{chainId}/entries/{entryId}";
+            var localVarPath = "/blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -960,13 +644,325 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("EntryIdExists", localVarResponse);
+                Exception exception = ExceptionFactory("EntryById", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<IdResponse>(localVarStatusCode,
+            return new ApiResponse<AnchoredEntryResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (IdResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(IdResponse)));
+                (AnchoredEntryResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(AnchoredEntryResponse)));
+            
+        }
+
+        /// <summary>
+        /// Get an existing entry in the provided chain 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <param name="entry">Retrieve the entry</param>
+        /// <returns>AnchoredEntryResponse</returns>
+        public AnchoredEntryResponse EntryByRequest (string chainId, Entry entry)
+        {
+             ApiResponse<AnchoredEntryResponse> localVarResponse = EntryByRequestWithHttpInfo(chainId, entry);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get an existing entry in the provided chain 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <param name="entry">Retrieve the entry</param>
+        /// <returns>ApiResponse of AnchoredEntryResponse</returns>
+        public ApiResponse< AnchoredEntryResponse > EntryByRequestWithHttpInfo (string chainId, Entry entry)
+        {
+            // verify the required parameter 'chainId' is set
+            if (chainId == null)
+                throw new ApiException(400, "Missing required parameter 'chainId' when calling EntryApi->EntryByRequest");
+            // verify the required parameter 'entry' is set
+            if (entry == null)
+                throw new ApiException(400, "Missing required parameter 'entry' when calling EntryApi->EntryByRequest");
+
+            var localVarPath = "/blockchain/easy/0.1.0/chains/{chainId}/entries/entry";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=UTF-8"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
+            if (entry != null && entry.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(entry); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = entry; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("EntryByRequest", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AnchoredEntryResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (AnchoredEntryResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(AnchoredEntryResponse)));
+            
+        }
+
+        /// <summary>
+        /// Get an existing entry in the provided chain 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <param name="entry">Retrieve the entry</param>
+        /// <returns>Task of AnchoredEntryResponse</returns>
+        public async System.Threading.Tasks.Task<AnchoredEntryResponse> EntryByRequestAsync (string chainId, Entry entry)
+        {
+             ApiResponse<AnchoredEntryResponse> localVarResponse = await EntryByRequestAsyncWithHttpInfo(chainId, entry);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get an existing entry in the provided chain 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <param name="entry">Retrieve the entry</param>
+        /// <returns>Task of ApiResponse (AnchoredEntryResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AnchoredEntryResponse>> EntryByRequestAsyncWithHttpInfo (string chainId, Entry entry)
+        {
+            // verify the required parameter 'chainId' is set
+            if (chainId == null)
+                throw new ApiException(400, "Missing required parameter 'chainId' when calling EntryApi->EntryByRequest");
+            // verify the required parameter 'entry' is set
+            if (entry == null)
+                throw new ApiException(400, "Missing required parameter 'entry' when calling EntryApi->EntryByRequest");
+
+            var localVarPath = "/blockchain/easy/0.1.0/chains/{chainId}/entries/entry";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=UTF-8"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
+            if (entry != null && entry.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(entry); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = entry; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("EntryByRequest", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AnchoredEntryResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (AnchoredEntryResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(AnchoredEntryResponse)));
+            
+        }
+
+        /// <summary>
+        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <returns>AnchoredEntryResponse</returns>
+        public AnchoredEntryResponse LastEntry (string chainId)
+        {
+             ApiResponse<AnchoredEntryResponse> localVarResponse = LastEntryWithHttpInfo(chainId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <returns>ApiResponse of AnchoredEntryResponse</returns>
+        public ApiResponse< AnchoredEntryResponse > LastEntryWithHttpInfo (string chainId)
+        {
+            // verify the required parameter 'chainId' is set
+            if (chainId == null)
+                throw new ApiException(400, "Missing required parameter 'chainId' when calling EntryApi->LastEntry");
+
+            var localVarPath = "/blockchain/easy/0.1.0/chains/{chainId}/entries/last";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=UTF-8"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("LastEntry", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AnchoredEntryResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (AnchoredEntryResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(AnchoredEntryResponse)));
+            
+        }
+
+        /// <summary>
+        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <returns>Task of AnchoredEntryResponse</returns>
+        public async System.Threading.Tasks.Task<AnchoredEntryResponse> LastEntryAsync (string chainId)
+        {
+             ApiResponse<AnchoredEntryResponse> localVarResponse = await LastEntryAsyncWithHttpInfo(chainId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <returns>Task of ApiResponse (AnchoredEntryResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AnchoredEntryResponse>> LastEntryAsyncWithHttpInfo (string chainId)
+        {
+            // verify the required parameter 'chainId' is set
+            if (chainId == null)
+                throw new ApiException(400, "Missing required parameter 'chainId' when calling EntryApi->LastEntry");
+
+            var localVarPath = "/blockchain/easy/0.1.0/chains/{chainId}/entries/last";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=UTF-8"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("LastEntry", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AnchoredEntryResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (AnchoredEntryResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(AnchoredEntryResponse)));
             
         }
 

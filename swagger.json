@@ -15,32 +15,45 @@
           "description": "Invalid blockchain request"
         }
       },
-      "parameters": [{
-        "schema": {"$ref": "#/definitions/Chain"},
-        "in": "body",
-        "name": "chain",
-        "description": "Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!",
-        "required": true
-      }],
+      "parameters": [
+        {
+          "schema": {"$ref": "#/definitions/Chain"},
+          "in": "body",
+          "name": "chain",
+          "description": "Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!",
+          "required": true
+        },
+        {
+          "default": false,
+          "in": "query",
+          "name": "checkExistence",
+          "description": "Check whether the id exists",
+          "type": "boolean",
+          "required": false
+        }
+      ],
       "tags": [
-        "Chain",
         "Id",
         "All"
       ],
       "consumes": ["application/json;charset=UTF-8"]
     }},
-    "/blockchain/easy/0.1.0/chains/{chainId}/entries/id": {"post": {
+    "/blockchain/easy/0.1.0/chains/id/{chainId}/entries": {"post": {
       "summary": "Pre determine the Id of an entry request without anchoring the entry",
       "produces": ["application/json;charset=UTF-8"],
       "operationId": "determineEntryId",
       "responses": {
         "200": {
           "schema": {"$ref": "#/definitions/IdResponse"},
-          "description": "EntryData request received and hash calculated"
+          "description": "Entry request received and hash calculated"
         },
         "400": {
           "schema": {"$ref": "#/definitions/VndErrors"},
           "description": "Invalid entry request"
+        },
+        "404": {
+          "schema": {"$ref": "#/definitions/VndErrors"},
+          "description": "Invalid chain id. Only possible when existence is checked"
         }
       },
       "parameters": [
@@ -57,14 +70,48 @@
           "name": "entry",
           "description": "The entry to determine the hash for on the specified chain",
           "required": true
+        },
+        {
+          "default": false,
+          "in": "query",
+          "name": "checkExistence",
+          "description": "Check whether the id exists",
+          "type": "boolean",
+          "required": false
         }
       ],
       "tags": [
-        "EntryData",
         "Id",
         "All"
       ],
       "consumes": ["application/json;charset=UTF-8"]
+    }},
+    "/blockchain/easy/0.1.0/chains/id/{chainId}": {"get": {
+      "summary": "Determine whether the Id of a chain exists in the blockchain",
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "chainIdExists",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/IdResponse"},
+          "description": "Chain existence"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/VndErrors"},
+          "description": "Invalid blockchain request"
+        }
+      },
+      "parameters": [{
+        "in": "path",
+        "name": "chainId",
+        "description": "chainId",
+        "type": "string",
+        "required": true
+      }],
+      "tags": [
+        "Id",
+        "All"
+      ],
+      "consumes": ["application/json"]
     }},
     "/blockchain/easy/0.1.0/chains/{chainId}/entries/entry": {"post": {
       "summary": "Get an existing entry in the provided chain",
@@ -101,7 +148,7 @@
         }
       ],
       "tags": [
-        "EntryData",
+        "Entry",
         "All"
       ],
       "consumes": ["application/json"]
@@ -113,7 +160,7 @@
       "responses": {
         "200": {
           "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
-          "description": "The existing request entry"
+          "description": "The existing entry"
         },
         "400": {
           "schema": {"$ref": "#/definitions/VndErrors"},
@@ -121,7 +168,7 @@
         },
         "404": {
           "schema": {"$ref": "#/definitions/VndErrors"},
-          "description": "Request entry does not exists"
+          "description": "Entry does not exists"
         }
       },
       "parameters": [
@@ -141,7 +188,7 @@
         }
       ],
       "tags": [
-        "EntryData",
+        "Entry",
         "All"
       ],
       "consumes": ["application/json"]
@@ -192,11 +239,11 @@
         },
         "202": {
           "schema": {"$ref": "#/definitions/CommittedEntryResponse"},
-          "description": "EntryData already exists"
+          "description": "Entry already exists"
         },
         "204": {
           "schema": {"$ref": "#/definitions/CommittedEntryResponse"},
-          "description": "EntryData creation request received"
+          "description": "Entry creation request received"
         },
         "404": {
           "schema": {"$ref": "#/definitions/VndErrors"},
@@ -220,10 +267,81 @@
         }
       ],
       "tags": [
-        "EntryData",
+        "Entry",
         "All"
       ],
       "consumes": ["application/json;charset=UTF-8"]
+    }},
+    "/blockchain/easy/0.1.0/chains/{chainId}/entries/last": {"get": {
+      "summary": "Get the last entry in the provided chain. This is the most recent entry also called the chain head",
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "lastEntry",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
+          "description": "The existing anchored entry"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/VndErrors"},
+          "description": "Invalid chain id"
+        },
+        "404": {
+          "schema": {"$ref": "#/definitions/VndErrors"},
+          "description": "Entry does not exists"
+        }
+      },
+      "parameters": [{
+        "in": "path",
+        "name": "chainId",
+        "description": "chainId",
+        "type": "string",
+        "required": true
+      }],
+      "tags": [
+        "Entry",
+        "All"
+      ],
+      "consumes": ["application/json"]
+    }},
+    "/blockchain/easy/0.1.0/chains/id/{chainId}/entries/{entryId}": {"get": {
+      "summary": "Determine whether the Id of an entry exists in the blockchain",
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "entryIdExists",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/IdResponse"},
+          "description": "Entry existence"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/VndErrors"},
+          "description": "Invalid blockchain request"
+        },
+        "404": {
+          "schema": {"$ref": "#/definitions/VndErrors"},
+          "description": "Invalid chain id"
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "chainId",
+          "description": "chainId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "in": "path",
+          "name": "entryId",
+          "description": "entryId",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "tags": [
+        "Id",
+        "All"
+      ],
+      "consumes": ["application/json"]
     }}
   },
   "host": "gw.api.cloud.sphereon.com",
@@ -270,7 +388,16 @@
     "IdResponse": {
       "description": "Id response",
       "type": "object",
+      "required": ["exists"],
       "properties": {
+        "exists": {
+          "type": "string",
+          "enum": [
+            "True",
+            "False",
+            "Unknown"
+          ]
+        },
         "Id": {
           "description": "The Id",
           "type": "string"
@@ -463,19 +590,19 @@
       "url": "https://sphereon.com",
       "email": "dev@sphereon.com"
     },
-    "description": "<b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom. In the future other solutions will be made available<\/b>\r\n\r\nThe flow is generally as follows:\r\n1. Make sure a chain has been created using the /chain POST endpoint. Normaly you only need one or a handfull of chains. This is an expensive operation.\r\n2. Store entries on the chain from step 1. The entries will contain the content and metadata you want to store forever on the specified chain.\r\n3. Retrieve an existing entry from the chain to verify or retrieve data\r\n\r\n\r\n<b>Interactive testing: <\/b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store<\/a>",
+    "description": "<b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom. In the future other solutions will be made available<\/b>\r\n\r\nThe flow is generally as follows:\r\n1. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is an expensive operation.\r\n2. Store entries on the chain from step 1. The entries will contain the content and metadata you want to store forever on the specified chain.\r\n3. Retrieve an existing entry from the chain to verify or retrieve data\r\n\r\n\r\n<b>Interactive testing: <\/b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store<\/a>",
     "termsOfService": "https://sphereon.com",
     "title": "Easy Blockchain API",
     "version": "0.1.0"
   },
   "tags": [
     {
-      "name": "EntryData",
-      "description": "EntryData related APIs"
+      "name": "Entry",
+      "description": "Entry related APIs"
     },
     {
       "name": "Id",
-      "description": "Id determination APIs"
+      "description": "Id determination and existence APIs"
     },
     {
       "name": "Chain",

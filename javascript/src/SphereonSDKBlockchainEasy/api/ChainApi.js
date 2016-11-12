@@ -1,6 +1,6 @@
 /**
  * Easy Blockchain API
- * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a chain has been created using the /chain POST endpoint. Normaly you only need one or a handfull of chains. This is an expensive operation.  2. Store entries on the chain from step 1. The entries will contain the content and metadata you want to store forever on the specified chain.  3. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
+ * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is an expensive operation.  2. Store entries on the chain from step 1. The entries will contain the content and metadata you want to store forever on the specified chain.  3. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
  *
  * OpenAPI spec version: 0.1.0
  * Contact: dev@sphereon.com
@@ -25,18 +25,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['SphereonSDKBlockchainEasy/ApiClient', 'SphereonSDKBlockchainEasy/model/CommittedChainResponse', 'SphereonSDKBlockchainEasy/model/Chain', 'SphereonSDKBlockchainEasy/model/VndErrors', 'SphereonSDKBlockchainEasy/model/IdResponse'], factory);
+    define(['SphereonSDKBlockchainEasy/ApiClient', 'SphereonSDKBlockchainEasy/model/CommittedChainResponse', 'SphereonSDKBlockchainEasy/model/Chain', 'SphereonSDKBlockchainEasy/model/VndErrors'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/CommittedChainResponse'), require('../model/Chain'), require('../model/VndErrors'), require('../model/IdResponse'));
+    module.exports = factory(require('../ApiClient'), require('../model/CommittedChainResponse'), require('../model/Chain'), require('../model/VndErrors'));
   } else {
     // Browser globals (root is window)
     if (!root.EasyBlockchainApi) {
       root.EasyBlockchainApi = {};
     }
-    root.EasyBlockchainApi.ChainApi = factory(root.EasyBlockchainApi.ApiClient, root.EasyBlockchainApi.CommittedChainResponse, root.EasyBlockchainApi.Chain, root.EasyBlockchainApi.VndErrors, root.EasyBlockchainApi.IdResponse);
+    root.EasyBlockchainApi.ChainApi = factory(root.EasyBlockchainApi.ApiClient, root.EasyBlockchainApi.CommittedChainResponse, root.EasyBlockchainApi.Chain, root.EasyBlockchainApi.VndErrors);
   }
-}(this, function(ApiClient, CommittedChainResponse, Chain, VndErrors, IdResponse) {
+}(this, function(ApiClient, CommittedChainResponse, Chain, VndErrors) {
   'use strict';
 
   /**
@@ -95,50 +95,6 @@
 
       return this.apiClient.callApi(
         '/blockchain/easy/0.1.0/chains', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the determineChainId operation.
-     * @callback module:SphereonSDKBlockchainEasy/api/ChainApi~determineChainIdCallback
-     * @param {String} error Error message, if any.
-     * @param {module:SphereonSDKBlockchainEasy/model/IdResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Pre determine the Id of a chain request without anchoring it in the blockchain
-     * @param {module:SphereonSDKBlockchainEasy/model/Chain} chain Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
-     * @param {module:SphereonSDKBlockchainEasy/api/ChainApi~determineChainIdCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:SphereonSDKBlockchainEasy/model/IdResponse}
-     */
-    this.determineChainId = function(chain, callback) {
-      var postBody = chain;
-
-      // verify the required parameter 'chain' is set
-      if (chain == undefined || chain == null) {
-        throw "Missing the required parameter 'chain' when calling determineChainId";
-      }
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json;charset=UTF-8'];
-      var accepts = ['application/json;charset=UTF-8'];
-      var returnType = IdResponse;
-
-      return this.apiClient.callApi(
-        '/blockchain/easy/0.1.0/chains/id', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

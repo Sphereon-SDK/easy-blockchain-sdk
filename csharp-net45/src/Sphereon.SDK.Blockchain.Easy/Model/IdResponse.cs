@@ -1,7 +1,7 @@
 /* 
  * Easy Blockchain API
  *
- * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a chain has been created using the /chain POST endpoint. Normaly you only need one or a handfull of chains. This is an expensive operation.  2. Store entries on the chain from step 1. The entries will contain the content and metadata you want to store forever on the specified chain.  3. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
+ * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is an expensive operation.  2. Store entries on the chain from step 1. The entries will contain the content and metadata you want to store forever on the specified chain.  3. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
  *
  * OpenAPI spec version: 0.1.0
  * Contact: dev@sphereon.com
@@ -40,6 +40,32 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
     public partial class IdResponse :  IEquatable<IdResponse>
     {
         /// <summary>
+        /// Gets or Sets Exists
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum ExistsEnum
+        {
+            
+            /// <summary>
+            /// Enum True for "True"
+            /// </summary>
+            [EnumMember(Value = "True")]
+            True,
+            
+            /// <summary>
+            /// Enum False for "False"
+            /// </summary>
+            [EnumMember(Value = "False")]
+            False,
+            
+            /// <summary>
+            /// Enum Unknown for "Unknown"
+            /// </summary>
+            [EnumMember(Value = "Unknown")]
+            Unknown
+        }
+
+        /// <summary>
         /// Gets or Sets DataStructure
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
@@ -68,6 +94,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         }
 
         /// <summary>
+        /// Gets or Sets Exists
+        /// </summary>
+        [DataMember(Name="exists", EmitDefaultValue=false)]
+        public ExistsEnum? Exists { get; set; }
+        /// <summary>
         /// Gets or Sets DataStructure
         /// </summary>
         [DataMember(Name="dataStructure", EmitDefaultValue=false)]
@@ -80,9 +111,24 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="IdResponse" /> class.
         /// </summary>
+        [JsonConstructorAttribute]
+        protected IdResponse() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IdResponse" /> class.
+        /// </summary>
+        /// <param name="Exists">Exists (required).</param>
         /// <param name="Id">The Id.</param>
-        public IdResponse(string Id = null)
+        public IdResponse(ExistsEnum? Exists = null, string Id = null)
         {
+            // to ensure "Exists" is required (not null)
+            if (Exists == null)
+            {
+                throw new InvalidDataException("Exists is a required property for IdResponse and cannot be null");
+            }
+            else
+            {
+                this.Exists = Exists;
+            }
             this.Id = Id;
         }
         
@@ -100,6 +146,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         {
             var sb = new StringBuilder();
             sb.Append("class IdResponse {\n");
+            sb.Append("  Exists: ").Append(Exists).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  DataStructure: ").Append(DataStructure).Append("\n");
             sb.Append("  BlockchainImplementation: ").Append(BlockchainImplementation).Append("\n");
@@ -140,6 +187,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
 
             return 
                 (
+                    this.Exists == other.Exists ||
+                    this.Exists != null &&
+                    this.Exists.Equals(other.Exists)
+                ) && 
+                (
                     this.Id == other.Id ||
                     this.Id != null &&
                     this.Id.Equals(other.Id)
@@ -167,6 +219,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
+                if (this.Exists != null)
+                    hash = hash * 59 + this.Exists.GetHashCode();
                 if (this.Id != null)
                     hash = hash * 59 + this.Id.GetHashCode();
                 if (this.DataStructure != null)

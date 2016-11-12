@@ -1,6 +1,6 @@
 /**
  * Easy Blockchain API
- * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a chain has been created using the /chain POST endpoint. Normaly you only need one or a handfull of chains. This is an expensive operation.  2. Store entries on the chain from step 1. The entries will contain the content and metadata you want to store forever on the specified chain.  3. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
+ * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is an expensive operation.  2. Store entries on the chain from step 1. The entries will contain the content and metadata you want to store forever on the specified chain.  3. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
  *
  * OpenAPI spec version: 0.1.0
  * Contact: dev@sphereon.com
@@ -53,10 +53,12 @@
    * Id response
    * @alias module:SphereonSDKBlockchainEasy/model/IdResponse
    * @class
+   * @param exists {module:SphereonSDKBlockchainEasy/model/IdResponse.ExistsEnum} 
    */
-  var exports = function() {
+  var exports = function(exists) {
     var _this = this;
 
+    _this['exists'] = exists;
 
 
 
@@ -73,6 +75,9 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('exists')) {
+        obj['exists'] = ApiClient.convertToType(data['exists'], 'String');
+      }
       if (data.hasOwnProperty('Id')) {
         obj['Id'] = ApiClient.convertToType(data['Id'], 'String');
       }
@@ -87,6 +92,10 @@
   }
 
   /**
+   * @member {module:SphereonSDKBlockchainEasy/model/IdResponse.ExistsEnum} exists
+   */
+  exports.prototype['exists'] = undefined;
+  /**
    * The Id
    * @member {String} Id
    */
@@ -100,6 +109,28 @@
    */
   exports.prototype['blockchainImplementation'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>exists</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.ExistsEnum = {
+    /**
+     * value: "True"
+     * @const
+     */
+    "True": "True",
+    /**
+     * value: "False"
+     * @const
+     */
+    "False": "False",
+    /**
+     * value: "Unknown"
+     * @const
+     */
+    "Unknown": "Unknown"  };
 
   /**
    * Allowed values for the <code>dataStructure</code> property.

@@ -3,6 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Exists** | **string** |  | 
 **Id** | **string** | The Id | [optional] 
 **DataStructure** | **string** |  | [optional] 
 **BlockchainImplementation** | **string** |  | [optional] 

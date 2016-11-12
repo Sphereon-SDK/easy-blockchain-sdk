@@ -1,6 +1,6 @@
 /**
  * Easy Blockchain API
- * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a chain has been created using the /chain POST endpoint. Normaly you only need one or a handfull of chains. This is an expensive operation.  2. Store entries on the chain from step 1. The entries will contain the content and metadata you want to store forever on the specified chain.  3. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
+ * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is an expensive operation.  2. Store entries on the chain from step 1. The entries will contain the content and metadata you want to store forever on the specified chain.  3. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
  *
  * OpenAPI spec version: 0.1.0
  * Contact: dev@sphereon.com
@@ -38,12 +38,12 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
+import com.sphereon.sdk.blockchain.easy.model.IdResponse;
+import com.sphereon.sdk.blockchain.easy.model.VndErrors;
 import com.sphereon.sdk.blockchain.easy.model.CommittedChainResponse;
 import com.sphereon.sdk.blockchain.easy.model.Chain;
-import com.sphereon.sdk.blockchain.easy.model.VndErrors;
 import com.sphereon.sdk.blockchain.easy.model.CommittedEntryResponse;
 import com.sphereon.sdk.blockchain.easy.model.Entry;
-import com.sphereon.sdk.blockchain.easy.model.IdResponse;
 import com.sphereon.sdk.blockchain.easy.model.AnchoredEntryResponse;
 
 import java.lang.reflect.Type;
@@ -71,6 +71,113 @@ public class AllApi {
         this.apiClient = apiClient;
     }
 
+    /* Build call for chainIdExists */
+    private com.squareup.okhttp.Call chainIdExistsCall(String chainId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // verify the required parameter 'chainId' is set
+        if (chainId == null) {
+            throw new ApiException("Missing the required parameter 'chainId' when calling chainIdExists(Async)");
+        }
+        
+
+        // create path and map variables
+        String localVarPath = "/blockchain/easy/0.1.0/chains/id/{chainId}".replaceAll("\\{format\\}","json")
+        .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json;charset=UTF-8"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    /**
+     * Determine whether the Id of a chain exists in the blockchain
+     * 
+     * @param chainId chainId (required)
+     * @return IdResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public IdResponse chainIdExists(String chainId) throws ApiException {
+        ApiResponse<IdResponse> resp = chainIdExistsWithHttpInfo(chainId);
+        return resp.getData();
+    }
+
+    /**
+     * Determine whether the Id of a chain exists in the blockchain
+     * 
+     * @param chainId chainId (required)
+     * @return ApiResponse&lt;IdResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<IdResponse> chainIdExistsWithHttpInfo(String chainId) throws ApiException {
+        com.squareup.okhttp.Call call = chainIdExistsCall(chainId, null, null);
+        Type localVarReturnType = new TypeToken<IdResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Determine whether the Id of a chain exists in the blockchain (asynchronously)
+     * 
+     * @param chainId chainId (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call chainIdExistsAsync(String chainId, final ApiCallback<IdResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = chainIdExistsCall(chainId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<IdResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
     /* Build call for createChain */
     private com.squareup.okhttp.Call createChainCall(Chain chain, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = chain;
@@ -293,7 +400,7 @@ public class AllApi {
         return call;
     }
     /* Build call for determineChainId */
-    private com.squareup.okhttp.Call determineChainIdCall(Chain chain, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call determineChainIdCall(Chain chain, Boolean checkExistence, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = chain;
         
         // verify the required parameter 'chain' is set
@@ -306,6 +413,8 @@ public class AllApi {
         String localVarPath = "/blockchain/easy/0.1.0/chains/id".replaceAll("\\{format\\}","json");
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (checkExistence != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "checkExistence", checkExistence));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -343,11 +452,12 @@ public class AllApi {
      * Pre determine the Id of a chain request without anchoring it in the blockchain
      * 
      * @param chain Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! (required)
+     * @param checkExistence Check whether the id exists (optional, default to false)
      * @return IdResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public IdResponse determineChainId(Chain chain) throws ApiException {
-        ApiResponse<IdResponse> resp = determineChainIdWithHttpInfo(chain);
+    public IdResponse determineChainId(Chain chain, Boolean checkExistence) throws ApiException {
+        ApiResponse<IdResponse> resp = determineChainIdWithHttpInfo(chain, checkExistence);
         return resp.getData();
     }
 
@@ -355,11 +465,12 @@ public class AllApi {
      * Pre determine the Id of a chain request without anchoring it in the blockchain
      * 
      * @param chain Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! (required)
+     * @param checkExistence Check whether the id exists (optional, default to false)
      * @return ApiResponse&lt;IdResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<IdResponse> determineChainIdWithHttpInfo(Chain chain) throws ApiException {
-        com.squareup.okhttp.Call call = determineChainIdCall(chain, null, null);
+    public ApiResponse<IdResponse> determineChainIdWithHttpInfo(Chain chain, Boolean checkExistence) throws ApiException {
+        com.squareup.okhttp.Call call = determineChainIdCall(chain, checkExistence, null, null);
         Type localVarReturnType = new TypeToken<IdResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -368,11 +479,12 @@ public class AllApi {
      * Pre determine the Id of a chain request without anchoring it in the blockchain (asynchronously)
      * 
      * @param chain Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! (required)
+     * @param checkExistence Check whether the id exists (optional, default to false)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call determineChainIdAsync(Chain chain, final ApiCallback<IdResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call determineChainIdAsync(Chain chain, Boolean checkExistence, final ApiCallback<IdResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -393,13 +505,13 @@ public class AllApi {
             };
         }
 
-        com.squareup.okhttp.Call call = determineChainIdCall(chain, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = determineChainIdCall(chain, checkExistence, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<IdResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for determineEntryId */
-    private com.squareup.okhttp.Call determineEntryIdCall(String chainId, Entry entry, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call determineEntryIdCall(String chainId, Entry entry, Boolean checkExistence, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = entry;
         
         // verify the required parameter 'chainId' is set
@@ -414,10 +526,12 @@ public class AllApi {
         
 
         // create path and map variables
-        String localVarPath = "/blockchain/easy/0.1.0/chains/{chainId}/entries/id".replaceAll("\\{format\\}","json")
+        String localVarPath = "/blockchain/easy/0.1.0/chains/id/{chainId}/entries".replaceAll("\\{format\\}","json")
         .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (checkExistence != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "checkExistence", checkExistence));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -456,11 +570,12 @@ public class AllApi {
      * 
      * @param chainId chainId (required)
      * @param entry The entry to determine the hash for on the specified chain (required)
+     * @param checkExistence Check whether the id exists (optional, default to false)
      * @return IdResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public IdResponse determineEntryId(String chainId, Entry entry) throws ApiException {
-        ApiResponse<IdResponse> resp = determineEntryIdWithHttpInfo(chainId, entry);
+    public IdResponse determineEntryId(String chainId, Entry entry, Boolean checkExistence) throws ApiException {
+        ApiResponse<IdResponse> resp = determineEntryIdWithHttpInfo(chainId, entry, checkExistence);
         return resp.getData();
     }
 
@@ -469,11 +584,12 @@ public class AllApi {
      * 
      * @param chainId chainId (required)
      * @param entry The entry to determine the hash for on the specified chain (required)
+     * @param checkExistence Check whether the id exists (optional, default to false)
      * @return ApiResponse&lt;IdResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<IdResponse> determineEntryIdWithHttpInfo(String chainId, Entry entry) throws ApiException {
-        com.squareup.okhttp.Call call = determineEntryIdCall(chainId, entry, null, null);
+    public ApiResponse<IdResponse> determineEntryIdWithHttpInfo(String chainId, Entry entry, Boolean checkExistence) throws ApiException {
+        com.squareup.okhttp.Call call = determineEntryIdCall(chainId, entry, checkExistence, null, null);
         Type localVarReturnType = new TypeToken<IdResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -483,11 +599,12 @@ public class AllApi {
      * 
      * @param chainId chainId (required)
      * @param entry The entry to determine the hash for on the specified chain (required)
+     * @param checkExistence Check whether the id exists (optional, default to false)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call determineEntryIdAsync(String chainId, Entry entry, final ApiCallback<IdResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call determineEntryIdAsync(String chainId, Entry entry, Boolean checkExistence, final ApiCallback<IdResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -508,7 +625,7 @@ public class AllApi {
             };
         }
 
-        com.squareup.okhttp.Call call = determineEntryIdCall(chainId, entry, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = determineEntryIdCall(chainId, entry, checkExistence, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<IdResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -740,6 +857,229 @@ public class AllApi {
         }
 
         com.squareup.okhttp.Call call = entryByRequestCall(chainId, entry, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AnchoredEntryResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /* Build call for entryIdExists */
+    private com.squareup.okhttp.Call entryIdExistsCall(String chainId, String entryId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // verify the required parameter 'chainId' is set
+        if (chainId == null) {
+            throw new ApiException("Missing the required parameter 'chainId' when calling entryIdExists(Async)");
+        }
+        
+        // verify the required parameter 'entryId' is set
+        if (entryId == null) {
+            throw new ApiException("Missing the required parameter 'entryId' when calling entryIdExists(Async)");
+        }
+        
+
+        // create path and map variables
+        String localVarPath = "/blockchain/easy/0.1.0/chains/id/{chainId}/entries/{entryId}".replaceAll("\\{format\\}","json")
+        .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()))
+        .replaceAll("\\{" + "entryId" + "\\}", apiClient.escapeString(entryId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json;charset=UTF-8"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    /**
+     * Determine whether the Id of an entry exists in the blockchain
+     * 
+     * @param chainId chainId (required)
+     * @param entryId entryId (required)
+     * @return IdResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public IdResponse entryIdExists(String chainId, String entryId) throws ApiException {
+        ApiResponse<IdResponse> resp = entryIdExistsWithHttpInfo(chainId, entryId);
+        return resp.getData();
+    }
+
+    /**
+     * Determine whether the Id of an entry exists in the blockchain
+     * 
+     * @param chainId chainId (required)
+     * @param entryId entryId (required)
+     * @return ApiResponse&lt;IdResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<IdResponse> entryIdExistsWithHttpInfo(String chainId, String entryId) throws ApiException {
+        com.squareup.okhttp.Call call = entryIdExistsCall(chainId, entryId, null, null);
+        Type localVarReturnType = new TypeToken<IdResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Determine whether the Id of an entry exists in the blockchain (asynchronously)
+     * 
+     * @param chainId chainId (required)
+     * @param entryId entryId (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call entryIdExistsAsync(String chainId, String entryId, final ApiCallback<IdResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = entryIdExistsCall(chainId, entryId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<IdResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /* Build call for lastEntry */
+    private com.squareup.okhttp.Call lastEntryCall(String chainId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // verify the required parameter 'chainId' is set
+        if (chainId == null) {
+            throw new ApiException("Missing the required parameter 'chainId' when calling lastEntry(Async)");
+        }
+        
+
+        // create path and map variables
+        String localVarPath = "/blockchain/easy/0.1.0/chains/{chainId}/entries/last".replaceAll("\\{format\\}","json")
+        .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json;charset=UTF-8"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    /**
+     * Get the last entry in the provided chain. This is the most recent entry also called the chain head
+     * 
+     * @param chainId chainId (required)
+     * @return AnchoredEntryResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AnchoredEntryResponse lastEntry(String chainId) throws ApiException {
+        ApiResponse<AnchoredEntryResponse> resp = lastEntryWithHttpInfo(chainId);
+        return resp.getData();
+    }
+
+    /**
+     * Get the last entry in the provided chain. This is the most recent entry also called the chain head
+     * 
+     * @param chainId chainId (required)
+     * @return ApiResponse&lt;AnchoredEntryResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<AnchoredEntryResponse> lastEntryWithHttpInfo(String chainId) throws ApiException {
+        com.squareup.okhttp.Call call = lastEntryCall(chainId, null, null);
+        Type localVarReturnType = new TypeToken<AnchoredEntryResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Get the last entry in the provided chain. This is the most recent entry also called the chain head (asynchronously)
+     * 
+     * @param chainId chainId (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call lastEntryAsync(String chainId, final ApiCallback<AnchoredEntryResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = lastEntryCall(chainId, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AnchoredEntryResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
