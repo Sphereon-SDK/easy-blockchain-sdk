@@ -37,7 +37,7 @@ import java.time.OffsetDateTime;
  * Committed EntryData response
  */
 @ApiModel(description = "Committed EntryData response")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-11-12T22:38:27.092+01:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-11-13T00:11:22.316+01:00")
 public class CommittedEntryResponse   {
   @SerializedName("entry")
   private CommittedEntry entry = null;

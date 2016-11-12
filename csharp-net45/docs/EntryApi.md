@@ -8,6 +8,10 @@ Method | HTTP request | Description
 [**EntryById**](EntryApi.md#entrybyid) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
 [**EntryByRequest**](EntryApi.md#entrybyrequest) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
 [**LastEntry**](EntryApi.md#lastentry) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head
+[**NextEntryById**](EntryApi.md#nextentrybyid) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
+[**NextEntryByRequest**](EntryApi.md#nextentrybyrequest) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
+[**PreviousEntryById**](EntryApi.md#previousentrybyid) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
+[**PreviousEntryByRequest**](EntryApi.md#previousentrybyrequest) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries/entry/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
 
 
 <a name="createentry"></a>
@@ -240,6 +244,254 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chainId** | **string**| chainId | 
+
+### Return type
+
+[**AnchoredEntryResponse**](AnchoredEntryResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json;charset=UTF-8
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="nextentrybyid"></a>
+# **NextEntryById**
+> AnchoredEntryResponse NextEntryById (string chainId, string entryId)
+
+Get the entry after the supplied entry Id (the next) in the provided chain
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Sphereon.SDK.Blockchain.Easy.Api;
+using Sphereon.SDK.Blockchain.Easy.Client;
+using Sphereon.SDK.Blockchain.Easy.Model;
+
+namespace Example
+{
+    public class NextEntryByIdExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new EntryApi();
+            var chainId = chainId_example;  // string | chainId
+            var entryId = entryId_example;  // string | entryId
+
+            try
+            {
+                // Get the entry after the supplied entry Id (the next) in the provided chain
+                AnchoredEntryResponse result = apiInstance.NextEntryById(chainId, entryId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling EntryApi.NextEntryById: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chainId** | **string**| chainId | 
+ **entryId** | **string**| entryId | 
+
+### Return type
+
+[**AnchoredEntryResponse**](AnchoredEntryResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json;charset=UTF-8
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="nextentrybyrequest"></a>
+# **NextEntryByRequest**
+> AnchoredEntryResponse NextEntryByRequest (string chainId, Entry entry)
+
+Get the entry after the supplied entry Id (the next) in the provided chain
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Sphereon.SDK.Blockchain.Easy.Api;
+using Sphereon.SDK.Blockchain.Easy.Client;
+using Sphereon.SDK.Blockchain.Easy.Model;
+
+namespace Example
+{
+    public class NextEntryByRequestExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new EntryApi();
+            var chainId = chainId_example;  // string | chainId
+            var entry = new Entry(); // Entry | Retrieve the entry
+
+            try
+            {
+                // Get the entry after the supplied entry Id (the next) in the provided chain
+                AnchoredEntryResponse result = apiInstance.NextEntryByRequest(chainId, entry);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling EntryApi.NextEntryByRequest: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chainId** | **string**| chainId | 
+ **entry** | [**Entry**](Entry.md)| Retrieve the entry | 
+
+### Return type
+
+[**AnchoredEntryResponse**](AnchoredEntryResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json;charset=UTF-8
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="previousentrybyid"></a>
+# **PreviousEntryById**
+> AnchoredEntryResponse PreviousEntryById (string chainId, string entryId)
+
+Get the entry before the supplied entry Id (the previous) in the provided chain
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Sphereon.SDK.Blockchain.Easy.Api;
+using Sphereon.SDK.Blockchain.Easy.Client;
+using Sphereon.SDK.Blockchain.Easy.Model;
+
+namespace Example
+{
+    public class PreviousEntryByIdExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new EntryApi();
+            var chainId = chainId_example;  // string | chainId
+            var entryId = entryId_example;  // string | entryId
+
+            try
+            {
+                // Get the entry before the supplied entry Id (the previous) in the provided chain
+                AnchoredEntryResponse result = apiInstance.PreviousEntryById(chainId, entryId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling EntryApi.PreviousEntryById: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chainId** | **string**| chainId | 
+ **entryId** | **string**| entryId | 
+
+### Return type
+
+[**AnchoredEntryResponse**](AnchoredEntryResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json;charset=UTF-8
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="previousentrybyrequest"></a>
+# **PreviousEntryByRequest**
+> AnchoredEntryResponse PreviousEntryByRequest (string chainId, Entry entry)
+
+Get the entry before the supplied entry Id (the previous) in the provided chain
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Sphereon.SDK.Blockchain.Easy.Api;
+using Sphereon.SDK.Blockchain.Easy.Client;
+using Sphereon.SDK.Blockchain.Easy.Model;
+
+namespace Example
+{
+    public class PreviousEntryByRequestExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new EntryApi();
+            var chainId = chainId_example;  // string | chainId
+            var entry = new Entry(); // Entry | Retrieve the entry
+
+            try
+            {
+                // Get the entry before the supplied entry Id (the previous) in the provided chain
+                AnchoredEntryResponse result = apiInstance.PreviousEntryByRequest(chainId, entry);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling EntryApi.PreviousEntryByRequest: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chainId** | **string**| chainId | 
+ **entry** | [**Entry**](Entry.md)| Retrieve the entry | 
 
 ### Return type
 

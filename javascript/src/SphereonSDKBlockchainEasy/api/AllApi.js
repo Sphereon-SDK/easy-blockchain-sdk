@@ -498,6 +498,212 @@
         authNames, contentTypes, accepts, returnType, callback
       );
     }
+
+    /**
+     * Callback function to receive the result of the nextEntryById operation.
+     * @callback module:SphereonSDKBlockchainEasy/api/AllApi~nextEntryByIdCallback
+     * @param {String} error Error message, if any.
+     * @param {module:SphereonSDKBlockchainEasy/model/AnchoredEntryResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get the entry after the supplied entry Id (the next) in the provided chain
+     * @param {String} chainId chainId
+     * @param {String} entryId entryId
+     * @param {module:SphereonSDKBlockchainEasy/api/AllApi~nextEntryByIdCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:SphereonSDKBlockchainEasy/model/AnchoredEntryResponse}
+     */
+    this.nextEntryById = function(chainId, entryId, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'chainId' is set
+      if (chainId == undefined || chainId == null) {
+        throw "Missing the required parameter 'chainId' when calling nextEntryById";
+      }
+
+      // verify the required parameter 'entryId' is set
+      if (entryId == undefined || entryId == null) {
+        throw "Missing the required parameter 'entryId' when calling nextEntryById";
+      }
+
+
+      var pathParams = {
+        'chainId': chainId,
+        'entryId': entryId
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json;charset=UTF-8'];
+      var returnType = AnchoredEntryResponse;
+
+      return this.apiClient.callApi(
+        '/blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId}/next', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the nextEntryByRequest operation.
+     * @callback module:SphereonSDKBlockchainEasy/api/AllApi~nextEntryByRequestCallback
+     * @param {String} error Error message, if any.
+     * @param {module:SphereonSDKBlockchainEasy/model/AnchoredEntryResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get the entry after the supplied entry Id (the next) in the provided chain
+     * @param {String} chainId chainId
+     * @param {module:SphereonSDKBlockchainEasy/model/Entry} entry Retrieve the entry
+     * @param {module:SphereonSDKBlockchainEasy/api/AllApi~nextEntryByRequestCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:SphereonSDKBlockchainEasy/model/AnchoredEntryResponse}
+     */
+    this.nextEntryByRequest = function(chainId, entry, callback) {
+      var postBody = entry;
+
+      // verify the required parameter 'chainId' is set
+      if (chainId == undefined || chainId == null) {
+        throw "Missing the required parameter 'chainId' when calling nextEntryByRequest";
+      }
+
+      // verify the required parameter 'entry' is set
+      if (entry == undefined || entry == null) {
+        throw "Missing the required parameter 'entry' when calling nextEntryByRequest";
+      }
+
+
+      var pathParams = {
+        'chainId': chainId
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json;charset=UTF-8'];
+      var returnType = AnchoredEntryResponse;
+
+      return this.apiClient.callApi(
+        '/blockchain/easy/0.1.0/chains/{chainId}/entries/entry/next', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the previousEntryById operation.
+     * @callback module:SphereonSDKBlockchainEasy/api/AllApi~previousEntryByIdCallback
+     * @param {String} error Error message, if any.
+     * @param {module:SphereonSDKBlockchainEasy/model/AnchoredEntryResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get the entry before the supplied entry Id (the previous) in the provided chain
+     * @param {String} chainId chainId
+     * @param {String} entryId entryId
+     * @param {module:SphereonSDKBlockchainEasy/api/AllApi~previousEntryByIdCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:SphereonSDKBlockchainEasy/model/AnchoredEntryResponse}
+     */
+    this.previousEntryById = function(chainId, entryId, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'chainId' is set
+      if (chainId == undefined || chainId == null) {
+        throw "Missing the required parameter 'chainId' when calling previousEntryById";
+      }
+
+      // verify the required parameter 'entryId' is set
+      if (entryId == undefined || entryId == null) {
+        throw "Missing the required parameter 'entryId' when calling previousEntryById";
+      }
+
+
+      var pathParams = {
+        'chainId': chainId,
+        'entryId': entryId
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json;charset=UTF-8'];
+      var returnType = AnchoredEntryResponse;
+
+      return this.apiClient.callApi(
+        '/blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId}/previous', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the previousEntryByRequest operation.
+     * @callback module:SphereonSDKBlockchainEasy/api/AllApi~previousEntryByRequestCallback
+     * @param {String} error Error message, if any.
+     * @param {module:SphereonSDKBlockchainEasy/model/AnchoredEntryResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get the entry before the supplied entry Id (the previous) in the provided chain
+     * @param {String} chainId chainId
+     * @param {module:SphereonSDKBlockchainEasy/model/Entry} entry Retrieve the entry
+     * @param {module:SphereonSDKBlockchainEasy/api/AllApi~previousEntryByRequestCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:SphereonSDKBlockchainEasy/model/AnchoredEntryResponse}
+     */
+    this.previousEntryByRequest = function(chainId, entry, callback) {
+      var postBody = entry;
+
+      // verify the required parameter 'chainId' is set
+      if (chainId == undefined || chainId == null) {
+        throw "Missing the required parameter 'chainId' when calling previousEntryByRequest";
+      }
+
+      // verify the required parameter 'entry' is set
+      if (entry == undefined || entry == null) {
+        throw "Missing the required parameter 'entry' when calling previousEntryByRequest";
+      }
+
+
+      var pathParams = {
+        'chainId': chainId
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json;charset=UTF-8'];
+      var returnType = AnchoredEntryResponse;
+
+      return this.apiClient.callApi(
+        '/blockchain/easy/0.1.0/chains/{chainId}/entries/entry/previous', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
   };
 
   return exports;

@@ -1,43 +1,6 @@
 {
   "basePath": "/",
   "paths": {
-    "/blockchain/easy/0.1.0/chains/id": {"post": {
-      "summary": "Pre determine the Id of a chain request without anchoring it in the blockchain",
-      "produces": ["application/json;charset=UTF-8"],
-      "operationId": "determineChainId",
-      "responses": {
-        "200": {
-          "schema": {"$ref": "#/definitions/IdResponse"},
-          "description": "Chain request received and hash calculated"
-        },
-        "400": {
-          "schema": {"$ref": "#/definitions/VndErrors"},
-          "description": "Invalid blockchain request"
-        }
-      },
-      "parameters": [
-        {
-          "schema": {"$ref": "#/definitions/Chain"},
-          "in": "body",
-          "name": "chain",
-          "description": "Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!",
-          "required": true
-        },
-        {
-          "default": false,
-          "in": "query",
-          "name": "checkExistence",
-          "description": "Check whether the id exists",
-          "type": "boolean",
-          "required": false
-        }
-      ],
-      "tags": [
-        "Id",
-        "All"
-      ],
-      "consumes": ["application/json;charset=UTF-8"]
-    }},
     "/blockchain/easy/0.1.0/chains/id/{chainId}/entries": {"post": {
       "summary": "Pre determine the Id of an entry request without anchoring the entry",
       "produces": ["application/json;charset=UTF-8"],
@@ -113,14 +76,14 @@
       ],
       "consumes": ["application/json"]
     }},
-    "/blockchain/easy/0.1.0/chains/{chainId}/entries/entry": {"post": {
-      "summary": "Get an existing entry in the provided chain",
+    "/blockchain/easy/0.1.0/chains/{chainId}/entries/entry/next": {"post": {
+      "summary": "Get the entry after the supplied entry Id (the next) in the provided chain",
       "produces": ["application/json;charset=UTF-8"],
-      "operationId": "entryByRequest",
+      "operationId": "nextEntryByRequest",
       "responses": {
         "200": {
           "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
-          "description": "The existing request entry"
+          "description": "The existing next entry"
         },
         "400": {
           "schema": {"$ref": "#/definitions/VndErrors"},
@@ -152,77 +115,6 @@
         "All"
       ],
       "consumes": ["application/json"]
-    }},
-    "/blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId}": {"get": {
-      "summary": "Get an existing entry in the provided chain",
-      "produces": ["application/json;charset=UTF-8"],
-      "operationId": "entryById",
-      "responses": {
-        "200": {
-          "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
-          "description": "The existing entry"
-        },
-        "400": {
-          "schema": {"$ref": "#/definitions/VndErrors"},
-          "description": "Invalid chain id"
-        },
-        "404": {
-          "schema": {"$ref": "#/definitions/VndErrors"},
-          "description": "Entry does not exists"
-        }
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "chainId",
-          "description": "chainId",
-          "type": "string",
-          "required": true
-        },
-        {
-          "in": "path",
-          "name": "entryId",
-          "description": "entryId",
-          "type": "string",
-          "required": true
-        }
-      ],
-      "tags": [
-        "Entry",
-        "All"
-      ],
-      "consumes": ["application/json"]
-    }},
-    "/blockchain/easy/0.1.0/chains": {"post": {
-      "summary": "Create a new chain",
-      "produces": ["application/json;charset=UTF-8"],
-      "operationId": "createChain",
-      "responses": {
-        "200": {
-          "schema": {"$ref": "#/definitions/CommittedChainResponse"},
-          "description": "Chain already exists"
-        },
-        "400": {
-          "schema": {"$ref": "#/definitions/VndErrors"},
-          "description": "Invalid blockchain request"
-        },
-        "202": {
-          "schema": {"$ref": "#/definitions/CommittedChainResponse"},
-          "description": "Chain creation request received"
-        }
-      },
-      "parameters": [{
-        "schema": {"$ref": "#/definitions/Chain"},
-        "in": "body",
-        "name": "chain",
-        "description": "Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!",
-        "required": true
-      }],
-      "tags": [
-        "Chain",
-        "All"
-      ],
-      "consumes": ["application/json;charset=UTF-8"]
     }},
     "/blockchain/easy/0.1.0/chains/{chainId}/entries": {"post": {
       "summary": "Create a new entry in the provided chain",
@@ -339,6 +231,274 @@
       ],
       "tags": [
         "Id",
+        "All"
+      ],
+      "consumes": ["application/json"]
+    }},
+    "/blockchain/easy/0.1.0/chains/id": {"post": {
+      "summary": "Pre determine the Id of a chain request without anchoring it in the blockchain",
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "determineChainId",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/IdResponse"},
+          "description": "Chain request received and hash calculated"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/VndErrors"},
+          "description": "Invalid blockchain request"
+        }
+      },
+      "parameters": [
+        {
+          "schema": {"$ref": "#/definitions/Chain"},
+          "in": "body",
+          "name": "chain",
+          "description": "Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!",
+          "required": true
+        },
+        {
+          "default": false,
+          "in": "query",
+          "name": "checkExistence",
+          "description": "Check whether the id exists",
+          "type": "boolean",
+          "required": false
+        }
+      ],
+      "tags": [
+        "Id",
+        "All"
+      ],
+      "consumes": ["application/json;charset=UTF-8"]
+    }},
+    "/blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId}/previous": {"get": {
+      "summary": "Get the entry before the supplied entry Id (the previous) in the provided chain",
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "previousEntryById",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
+          "description": "The existing  previous entry"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/VndErrors"},
+          "description": "Invalid chain id"
+        },
+        "404": {
+          "schema": {"$ref": "#/definitions/VndErrors"},
+          "description": "Entry does not exists"
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "chainId",
+          "description": "chainId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "in": "path",
+          "name": "entryId",
+          "description": "entryId",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "tags": [
+        "Entry",
+        "All"
+      ],
+      "consumes": ["application/json"]
+    }},
+    "/blockchain/easy/0.1.0/chains/{chainId}/entries/entry": {"post": {
+      "summary": "Get an existing entry in the provided chain",
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "entryByRequest",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
+          "description": "The existing request entry"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/VndErrors"},
+          "description": "Invalid chain id"
+        },
+        "404": {
+          "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
+          "description": "Request entry does not exists"
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "chainId",
+          "description": "chainId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "schema": {"$ref": "#/definitions/Entry"},
+          "in": "body",
+          "name": "entry",
+          "description": "Retrieve the entry",
+          "required": true
+        }
+      ],
+      "tags": [
+        "Entry",
+        "All"
+      ],
+      "consumes": ["application/json"]
+    }},
+    "/blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId}": {"get": {
+      "summary": "Get an existing entry in the provided chain",
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "entryById",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
+          "description": "The existing entry"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/VndErrors"},
+          "description": "Invalid chain id"
+        },
+        "404": {
+          "schema": {"$ref": "#/definitions/VndErrors"},
+          "description": "Entry does not exists"
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "chainId",
+          "description": "chainId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "in": "path",
+          "name": "entryId",
+          "description": "entryId",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "tags": [
+        "Entry",
+        "All"
+      ],
+      "consumes": ["application/json"]
+    }},
+    "/blockchain/easy/0.1.0/chains": {"post": {
+      "summary": "Create a new chain",
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "createChain",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/CommittedChainResponse"},
+          "description": "Chain already exists"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/VndErrors"},
+          "description": "Invalid blockchain request"
+        },
+        "202": {
+          "schema": {"$ref": "#/definitions/CommittedChainResponse"},
+          "description": "Chain creation request received"
+        }
+      },
+      "parameters": [{
+        "schema": {"$ref": "#/definitions/Chain"},
+        "in": "body",
+        "name": "chain",
+        "description": "Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!",
+        "required": true
+      }],
+      "tags": [
+        "Chain",
+        "All"
+      ],
+      "consumes": ["application/json;charset=UTF-8"]
+    }},
+    "/blockchain/easy/0.1.0/chains/{chainId}/entries/entry/previous": {"post": {
+      "summary": "Get the entry before the supplied entry Id (the previous) in the provided chain",
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "previousEntryByRequest",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
+          "description": "The existing previous entry"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/VndErrors"},
+          "description": "Invalid chain id"
+        },
+        "404": {
+          "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
+          "description": "Request entry does not exists"
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "chainId",
+          "description": "chainId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "schema": {"$ref": "#/definitions/Entry"},
+          "in": "body",
+          "name": "entry",
+          "description": "Retrieve the entry",
+          "required": true
+        }
+      ],
+      "tags": [
+        "Entry",
+        "All"
+      ],
+      "consumes": ["application/json"]
+    }},
+    "/blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId}/next": {"get": {
+      "summary": "Get the entry after the supplied entry Id (the next) in the provided chain",
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "nextEntryById",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
+          "description": "The existing next entry"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/VndErrors"},
+          "description": "Invalid chain id"
+        },
+        "404": {
+          "schema": {"$ref": "#/definitions/VndErrors"},
+          "description": "Entry does not exists"
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "chainId",
+          "description": "chainId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "in": "path",
+          "name": "entryId",
+          "description": "entryId",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "tags": [
+        "Entry",
         "All"
       ],
       "consumes": ["application/json"]

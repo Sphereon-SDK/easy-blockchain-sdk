@@ -30,7 +30,7 @@ import com.sphereon.sdk.blockchain.easy.handler.Pair;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-11-12T22:38:27.092+01:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-11-13T00:11:22.316+01:00")
 public class OAuth implements Authentication {
   private String accessToken;
 
