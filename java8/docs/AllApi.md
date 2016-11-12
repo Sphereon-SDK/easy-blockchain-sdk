@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**entryById**](AllApi.md#entryById) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
 [**entryByRequest**](AllApi.md#entryByRequest) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
 [**entryIdExists**](AllApi.md#entryIdExists) | **GET** /blockchain/easy/0.1.0/chains/id/{chainId}/entries/{entryId} | Determine whether the Id of an entry exists in the blockchain
+[**firstEntry**](AllApi.md#firstEntry) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail
 [**lastEntry**](AllApi.md#lastEntry) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head
 [**nextEntryById**](AllApi.md#nextEntryById) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
 [**nextEntryByRequest**](AllApi.md#nextEntryByRequest) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
@@ -367,6 +368,49 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**IdResponse**](IdResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json;charset=UTF-8
+
+<a name="firstEntry"></a>
+# **firstEntry**
+> AnchoredEntryResponse firstEntry(chainId)
+
+Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+
+### Example
+```java
+// Import classes:
+//import com.sphereon.sdk.blockchain.easy.handler.ApiException;
+//import com.sphereon.sdk.blockchain.easy.api.AllApi;
+
+
+AllApi apiInstance = new AllApi();
+String chainId = "chainId_example"; // String | chainId
+try {
+    AnchoredEntryResponse result = apiInstance.firstEntry(chainId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AllApi#firstEntry");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chainId** | **String**| chainId |
+
+### Return type
+
+[**AnchoredEntryResponse**](AnchoredEntryResponse.md)
 
 ### Authorization
 

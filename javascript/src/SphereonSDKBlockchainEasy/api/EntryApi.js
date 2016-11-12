@@ -211,6 +211,51 @@
     }
 
     /**
+     * Callback function to receive the result of the firstEntry operation.
+     * @callback module:SphereonSDKBlockchainEasy/api/EntryApi~firstEntryCallback
+     * @param {String} error Error message, if any.
+     * @param {module:SphereonSDKBlockchainEasy/model/AnchoredEntryResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+     * @param {String} chainId chainId
+     * @param {module:SphereonSDKBlockchainEasy/api/EntryApi~firstEntryCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:SphereonSDKBlockchainEasy/model/AnchoredEntryResponse}
+     */
+    this.firstEntry = function(chainId, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'chainId' is set
+      if (chainId == undefined || chainId == null) {
+        throw "Missing the required parameter 'chainId' when calling firstEntry";
+      }
+
+
+      var pathParams = {
+        'chainId': chainId
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json;charset=UTF-8'];
+      var returnType = AnchoredEntryResponse;
+
+      return this.apiClient.callApi(
+        '/blockchain/easy/0.1.0/chains/{chainId}/entries/first', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the lastEntry operation.
      * @callback module:SphereonSDKBlockchainEasy/api/EntryApi~lastEntryCallback
      * @param {String} error Error message, if any.

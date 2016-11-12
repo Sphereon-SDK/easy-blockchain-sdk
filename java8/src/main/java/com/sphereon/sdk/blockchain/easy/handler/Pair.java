@@ -25,7 +25,7 @@
 
 package com.sphereon.sdk.blockchain.easy.handler;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-11-13T00:11:22.316+01:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-11-13T00:27:43.141+01:00")
 public class Pair {
     private String name = "";
     private String value = "";

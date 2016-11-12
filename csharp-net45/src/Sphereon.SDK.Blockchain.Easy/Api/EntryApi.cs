@@ -106,6 +106,27 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
         ApiResponse<AnchoredEntryResponse> EntryByRequestWithHttpInfo (string chainId, Entry entry);
         /// <summary>
+        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <returns>AnchoredEntryResponse</returns>
+        AnchoredEntryResponse FirstEntry (string chainId);
+
+        /// <summary>
+        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <returns>ApiResponse of AnchoredEntryResponse</returns>
+        ApiResponse<AnchoredEntryResponse> FirstEntryWithHttpInfo (string chainId);
+        /// <summary>
         /// Get the last entry in the provided chain. This is the most recent entry also called the chain head
         /// </summary>
         /// <remarks>
@@ -289,6 +310,27 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="entry">Retrieve the entry</param>
         /// <returns>Task of ApiResponse (AnchoredEntryResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<AnchoredEntryResponse>> EntryByRequestAsyncWithHttpInfo (string chainId, Entry entry);
+        /// <summary>
+        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <returns>Task of AnchoredEntryResponse</returns>
+        System.Threading.Tasks.Task<AnchoredEntryResponse> FirstEntryAsync (string chainId);
+
+        /// <summary>
+        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <returns>Task of ApiResponse (AnchoredEntryResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AnchoredEntryResponse>> FirstEntryAsyncWithHttpInfo (string chainId);
         /// <summary>
         /// Get the last entry in the provided chain. This is the most recent entry also called the chain head
         /// </summary>
@@ -998,6 +1040,149 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("EntryByRequest", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AnchoredEntryResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (AnchoredEntryResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(AnchoredEntryResponse)));
+            
+        }
+
+        /// <summary>
+        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <returns>AnchoredEntryResponse</returns>
+        public AnchoredEntryResponse FirstEntry (string chainId)
+        {
+             ApiResponse<AnchoredEntryResponse> localVarResponse = FirstEntryWithHttpInfo(chainId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <returns>ApiResponse of AnchoredEntryResponse</returns>
+        public ApiResponse< AnchoredEntryResponse > FirstEntryWithHttpInfo (string chainId)
+        {
+            // verify the required parameter 'chainId' is set
+            if (chainId == null)
+                throw new ApiException(400, "Missing required parameter 'chainId' when calling EntryApi->FirstEntry");
+
+            var localVarPath = "/blockchain/easy/0.1.0/chains/{chainId}/entries/first";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=UTF-8"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("FirstEntry", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AnchoredEntryResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (AnchoredEntryResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(AnchoredEntryResponse)));
+            
+        }
+
+        /// <summary>
+        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <returns>Task of AnchoredEntryResponse</returns>
+        public async System.Threading.Tasks.Task<AnchoredEntryResponse> FirstEntryAsync (string chainId)
+        {
+             ApiResponse<AnchoredEntryResponse> localVarResponse = await FirstEntryAsyncWithHttpInfo(chainId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId">chainId</param>
+        /// <returns>Task of ApiResponse (AnchoredEntryResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AnchoredEntryResponse>> FirstEntryAsyncWithHttpInfo (string chainId)
+        {
+            // verify the required parameter 'chainId' is set
+            if (chainId == null)
+                throw new ApiException(400, "Missing required parameter 'chainId' when calling EntryApi->FirstEntry");
+
+            var localVarPath = "/blockchain/easy/0.1.0/chains/{chainId}/entries/first";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=UTF-8"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("FirstEntry", localVarResponse);
                 if (exception != null) throw exception;
             }
 

@@ -116,6 +116,37 @@
       ],
       "consumes": ["application/json"]
     }},
+    "/blockchain/easy/0.1.0/chains/{chainId}/entries/first": {"get": {
+      "summary": "Get the first entry in the provided chain. This is the oldest entry also called the chain tail",
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "firstEntry",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
+          "description": "The existing anchored first entry"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/VndErrors"},
+          "description": "Invalid chain id"
+        },
+        "404": {
+          "schema": {"$ref": "#/definitions/VndErrors"},
+          "description": "Entry does not exists"
+        }
+      },
+      "parameters": [{
+        "in": "path",
+        "name": "chainId",
+        "description": "chainId",
+        "type": "string",
+        "required": true
+      }],
+      "tags": [
+        "Entry",
+        "All"
+      ],
+      "consumes": ["application/json"]
+    }},
     "/blockchain/easy/0.1.0/chains/{chainId}/entries": {"post": {
       "summary": "Create a new entry in the provided chain",
       "produces": ["application/json;charset=UTF-8"],

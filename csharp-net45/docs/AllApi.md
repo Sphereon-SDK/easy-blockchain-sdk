@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**EntryById**](AllApi.md#entrybyid) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
 [**EntryByRequest**](AllApi.md#entrybyrequest) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
 [**EntryIdExists**](AllApi.md#entryidexists) | **GET** /blockchain/easy/0.1.0/chains/id/{chainId}/entries/{entryId} | Determine whether the Id of an entry exists in the blockchain
+[**FirstEntry**](AllApi.md#firstentry) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail
 [**LastEntry**](AllApi.md#lastentry) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head
 [**NextEntryById**](AllApi.md#nextentrybyid) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
 [**NextEntryByRequest**](AllApi.md#nextentrybyrequest) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
@@ -501,6 +502,66 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**IdResponse**](IdResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json;charset=UTF-8
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="firstentry"></a>
+# **FirstEntry**
+> AnchoredEntryResponse FirstEntry (string chainId)
+
+Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Sphereon.SDK.Blockchain.Easy.Api;
+using Sphereon.SDK.Blockchain.Easy.Client;
+using Sphereon.SDK.Blockchain.Easy.Model;
+
+namespace Example
+{
+    public class FirstEntryExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new AllApi();
+            var chainId = chainId_example;  // string | chainId
+
+            try
+            {
+                // Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+                AnchoredEntryResponse result = apiInstance.FirstEntry(chainId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling AllApi.FirstEntry: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chainId** | **string**| chainId | 
+
+### Return type
+
+[**AnchoredEntryResponse**](AnchoredEntryResponse.md)
 
 ### Authorization
 
