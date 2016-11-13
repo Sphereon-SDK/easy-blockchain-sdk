@@ -3,6 +3,7 @@
   "paths": {
     "/blockchain/easy/0.1.0/chains/id/{chainId}/entries": {"post": {
       "summary": "Pre determine the Id of an entry request without anchoring the entry",
+      "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
       "operationId": "determineEntryId",
       "responses": {
@@ -51,6 +52,7 @@
     }},
     "/blockchain/easy/0.1.0/chains/id/{chainId}": {"get": {
       "summary": "Determine whether the Id of a chain exists in the blockchain",
+      "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
       "operationId": "chainIdExists",
       "responses": {
@@ -78,6 +80,7 @@
     }},
     "/blockchain/easy/0.1.0/chains/{chainId}/entries/entry/next": {"post": {
       "summary": "Get the entry after the supplied entry Id (the next) in the provided chain",
+      "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
       "operationId": "nextEntryByRequest",
       "responses": {
@@ -118,6 +121,7 @@
     }},
     "/blockchain/easy/0.1.0/chains/{chainId}/entries/first": {"get": {
       "summary": "Get the first entry in the provided chain. This is the oldest entry also called the chain tail",
+      "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
       "operationId": "firstEntry",
       "responses": {
@@ -149,6 +153,7 @@
     }},
     "/blockchain/easy/0.1.0/chains/{chainId}/entries": {"post": {
       "summary": "Create a new entry in the provided chain",
+      "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
       "operationId": "createEntry",
       "responses": {
@@ -197,6 +202,7 @@
     }},
     "/blockchain/easy/0.1.0/chains/{chainId}/entries/last": {"get": {
       "summary": "Get the last entry in the provided chain. This is the most recent entry also called the chain head",
+      "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
       "operationId": "lastEntry",
       "responses": {
@@ -228,6 +234,7 @@
     }},
     "/blockchain/easy/0.1.0/chains/id/{chainId}/entries/{entryId}": {"get": {
       "summary": "Determine whether the Id of an entry exists in the blockchain",
+      "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
       "operationId": "entryIdExists",
       "responses": {
@@ -268,6 +275,7 @@
     }},
     "/blockchain/easy/0.1.0/chains/id": {"post": {
       "summary": "Pre determine the Id of a chain request without anchoring it in the blockchain",
+      "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
       "operationId": "determineChainId",
       "responses": {
@@ -305,6 +313,7 @@
     }},
     "/blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId}/previous": {"get": {
       "summary": "Get the entry before the supplied entry Id (the previous) in the provided chain",
+      "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
       "operationId": "previousEntryById",
       "responses": {
@@ -345,6 +354,7 @@
     }},
     "/blockchain/easy/0.1.0/chains/{chainId}/entries/entry": {"post": {
       "summary": "Get an existing entry in the provided chain",
+      "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
       "operationId": "entryByRequest",
       "responses": {
@@ -385,6 +395,7 @@
     }},
     "/blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId}": {"get": {
       "summary": "Get an existing entry in the provided chain",
+      "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
       "operationId": "entryById",
       "responses": {
@@ -425,6 +436,7 @@
     }},
     "/blockchain/easy/0.1.0/chains": {"post": {
       "summary": "Create a new chain",
+      "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
       "operationId": "createChain",
       "responses": {
@@ -456,6 +468,7 @@
     }},
     "/blockchain/easy/0.1.0/chains/{chainId}/entries/entry/previous": {"post": {
       "summary": "Get the entry before the supplied entry Id (the previous) in the provided chain",
+      "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
       "operationId": "previousEntryByRequest",
       "responses": {
@@ -496,6 +509,7 @@
     }},
     "/blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId}/next": {"get": {
       "summary": "Get the entry after the supplied entry Id (the next) in the provided chain",
+      "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
       "operationId": "nextEntryById",
       "responses": {

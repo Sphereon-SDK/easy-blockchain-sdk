@@ -19,6 +19,11 @@ Determine whether the Id of a chain exists in the blockchain
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
+var defaultClient = EasyBlockchainApi.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: oauth2schema
+var oauth2schema = defaultClient.authentications['oauth2schema'];
+oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.IdApi();
 
@@ -47,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -63,6 +68,11 @@ Pre determine the Id of a chain request without anchoring it in the blockchain
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
+var defaultClient = EasyBlockchainApi.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: oauth2schema
+var oauth2schema = defaultClient.authentications['oauth2schema'];
+oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.IdApi();
 
@@ -95,7 +105,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -111,6 +121,11 @@ Pre determine the Id of an entry request without anchoring the entry
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
+var defaultClient = EasyBlockchainApi.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: oauth2schema
+var oauth2schema = defaultClient.authentications['oauth2schema'];
+oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.IdApi();
 
@@ -146,7 +161,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -162,6 +177,11 @@ Determine whether the Id of an entry exists in the blockchain
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
+var defaultClient = EasyBlockchainApi.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: oauth2schema
+var oauth2schema = defaultClient.authentications['oauth2schema'];
+oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.IdApi();
 
@@ -193,7 +213,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 

@@ -41,6 +41,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AllApi();
             var chainId = chainId_example;  // string | chainId
 
@@ -71,7 +74,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -101,6 +104,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AllApi();
             var chain = new Chain(); // Chain | Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
 
@@ -131,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -161,6 +167,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AllApi();
             var chainId = chainId_example;  // string | chainId
             var entry = new Entry(); // Entry | Create a new entry for the specified chain
@@ -193,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -223,6 +232,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AllApi();
             var chain = new Chain(); // Chain | Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
             var checkExistence = true;  // bool? | Check whether the id exists (optional)  (default to false)
@@ -255,7 +267,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -285,6 +297,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AllApi();
             var chainId = chainId_example;  // string | chainId
             var entry = new Entry(); // Entry | The entry to determine the hash for on the specified chain
@@ -319,7 +334,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -349,6 +364,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AllApi();
             var chainId = chainId_example;  // string | chainId
             var entryId = entryId_example;  // string | entryId
@@ -381,7 +399,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -411,6 +429,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AllApi();
             var chainId = chainId_example;  // string | chainId
             var entry = new Entry(); // Entry | Retrieve the entry
@@ -443,7 +464,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -473,6 +494,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AllApi();
             var chainId = chainId_example;  // string | chainId
             var entryId = entryId_example;  // string | entryId
@@ -505,7 +529,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -535,6 +559,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AllApi();
             var chainId = chainId_example;  // string | chainId
 
@@ -565,7 +592,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -595,6 +622,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AllApi();
             var chainId = chainId_example;  // string | chainId
 
@@ -625,7 +655,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -655,6 +685,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AllApi();
             var chainId = chainId_example;  // string | chainId
             var entryId = entryId_example;  // string | entryId
@@ -687,7 +720,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -717,6 +750,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AllApi();
             var chainId = chainId_example;  // string | chainId
             var entry = new Entry(); // Entry | Retrieve the entry
@@ -749,7 +785,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -779,6 +815,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AllApi();
             var chainId = chainId_example;  // string | chainId
             var entryId = entryId_example;  // string | entryId
@@ -811,7 +850,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -841,6 +880,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AllApi();
             var chainId = chainId_example;  // string | chainId
             var entry = new Entry(); // Entry | Retrieve the entry
@@ -873,7 +915,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 

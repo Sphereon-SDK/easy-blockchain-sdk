@@ -29,6 +29,11 @@ Determine whether the Id of a chain exists in the blockchain
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
+var defaultClient = EasyBlockchainApi.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: oauth2schema
+var oauth2schema = defaultClient.authentications['oauth2schema'];
+oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.AllApi();
 
@@ -57,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -73,6 +78,11 @@ Create a new chain
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
+var defaultClient = EasyBlockchainApi.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: oauth2schema
+var oauth2schema = defaultClient.authentications['oauth2schema'];
+oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.AllApi();
 
@@ -101,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -117,6 +127,11 @@ Create a new entry in the provided chain
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
+var defaultClient = EasyBlockchainApi.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: oauth2schema
+var oauth2schema = defaultClient.authentications['oauth2schema'];
+oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.AllApi();
 
@@ -148,7 +163,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -164,6 +179,11 @@ Pre determine the Id of a chain request without anchoring it in the blockchain
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
+var defaultClient = EasyBlockchainApi.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: oauth2schema
+var oauth2schema = defaultClient.authentications['oauth2schema'];
+oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.AllApi();
 
@@ -196,7 +216,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -212,6 +232,11 @@ Pre determine the Id of an entry request without anchoring the entry
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
+var defaultClient = EasyBlockchainApi.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: oauth2schema
+var oauth2schema = defaultClient.authentications['oauth2schema'];
+oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.AllApi();
 
@@ -247,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -263,6 +288,11 @@ Get an existing entry in the provided chain
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
+var defaultClient = EasyBlockchainApi.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: oauth2schema
+var oauth2schema = defaultClient.authentications['oauth2schema'];
+oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.AllApi();
 
@@ -294,7 +324,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -310,6 +340,11 @@ Get an existing entry in the provided chain
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
+var defaultClient = EasyBlockchainApi.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: oauth2schema
+var oauth2schema = defaultClient.authentications['oauth2schema'];
+oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.AllApi();
 
@@ -341,7 +376,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -357,6 +392,11 @@ Determine whether the Id of an entry exists in the blockchain
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
+var defaultClient = EasyBlockchainApi.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: oauth2schema
+var oauth2schema = defaultClient.authentications['oauth2schema'];
+oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.AllApi();
 
@@ -388,7 +428,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -404,6 +444,11 @@ Get the first entry in the provided chain. This is the oldest entry also called 
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
+var defaultClient = EasyBlockchainApi.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: oauth2schema
+var oauth2schema = defaultClient.authentications['oauth2schema'];
+oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.AllApi();
 
@@ -432,7 +477,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -448,6 +493,11 @@ Get the last entry in the provided chain. This is the most recent entry also cal
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
+var defaultClient = EasyBlockchainApi.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: oauth2schema
+var oauth2schema = defaultClient.authentications['oauth2schema'];
+oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.AllApi();
 
@@ -476,7 +526,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -492,6 +542,11 @@ Get the entry after the supplied entry Id (the next) in the provided chain
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
+var defaultClient = EasyBlockchainApi.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: oauth2schema
+var oauth2schema = defaultClient.authentications['oauth2schema'];
+oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.AllApi();
 
@@ -523,7 +578,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -539,6 +594,11 @@ Get the entry after the supplied entry Id (the next) in the provided chain
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
+var defaultClient = EasyBlockchainApi.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: oauth2schema
+var oauth2schema = defaultClient.authentications['oauth2schema'];
+oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.AllApi();
 
@@ -570,7 +630,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -586,6 +646,11 @@ Get the entry before the supplied entry Id (the previous) in the provided chain
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
+var defaultClient = EasyBlockchainApi.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: oauth2schema
+var oauth2schema = defaultClient.authentications['oauth2schema'];
+oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.AllApi();
 
@@ -617,7 +682,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -633,6 +698,11 @@ Get the entry before the supplied entry Id (the previous) in the provided chain
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
+var defaultClient = EasyBlockchainApi.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: oauth2schema
+var oauth2schema = defaultClient.authentications['oauth2schema'];
+oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.AllApi();
 
@@ -664,7 +734,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 

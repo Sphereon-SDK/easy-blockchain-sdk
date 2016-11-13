@@ -16,6 +16,11 @@ Create a new chain
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
+var defaultClient = EasyBlockchainApi.ApiClient.default;
+
+// Configure OAuth2 access token for authorization: oauth2schema
+var oauth2schema = defaultClient.authentications['oauth2schema'];
+oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.ChainApi();
 
@@ -44,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 

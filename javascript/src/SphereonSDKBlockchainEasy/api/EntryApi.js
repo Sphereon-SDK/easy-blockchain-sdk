@@ -95,7 +95,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['oauth2schema'];
       var contentTypes = ['application/json;charset=UTF-8'];
       var accepts = ['application/json;charset=UTF-8'];
       var returnType = CommittedEntryResponse;
@@ -147,7 +147,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['oauth2schema'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json;charset=UTF-8'];
       var returnType = AnchoredEntryResponse;
@@ -198,7 +198,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['oauth2schema'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json;charset=UTF-8'];
       var returnType = AnchoredEntryResponse;
@@ -243,7 +243,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['oauth2schema'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json;charset=UTF-8'];
       var returnType = AnchoredEntryResponse;
@@ -288,7 +288,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['oauth2schema'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json;charset=UTF-8'];
       var returnType = AnchoredEntryResponse;
@@ -340,7 +340,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['oauth2schema'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json;charset=UTF-8'];
       var returnType = AnchoredEntryResponse;
@@ -391,7 +391,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['oauth2schema'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json;charset=UTF-8'];
       var returnType = AnchoredEntryResponse;
@@ -443,7 +443,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['oauth2schema'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json;charset=UTF-8'];
       var returnType = AnchoredEntryResponse;
@@ -494,7 +494,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['oauth2schema'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json;charset=UTF-8'];
       var returnType = AnchoredEntryResponse;

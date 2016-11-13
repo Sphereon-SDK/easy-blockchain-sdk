@@ -88,7 +88,7 @@
       var formParams = {
       };
 
-      var authNames = [];
+      var authNames = ['oauth2schema'];
       var contentTypes = ['application/json;charset=UTF-8'];
       var accepts = ['application/json;charset=UTF-8'];
       var returnType = CommittedChainResponse;

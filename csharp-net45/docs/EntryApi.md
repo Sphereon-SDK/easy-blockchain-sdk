@@ -36,6 +36,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new EntryApi();
             var chainId = chainId_example;  // string | chainId
             var entry = new Entry(); // Entry | Create a new entry for the specified chain
@@ -68,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -98,6 +101,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new EntryApi();
             var chainId = chainId_example;  // string | chainId
             var entryId = entryId_example;  // string | entryId
@@ -130,7 +136,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -160,6 +166,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new EntryApi();
             var chainId = chainId_example;  // string | chainId
             var entry = new Entry(); // Entry | Retrieve the entry
@@ -192,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -222,6 +231,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new EntryApi();
             var chainId = chainId_example;  // string | chainId
 
@@ -252,7 +264,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -282,6 +294,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new EntryApi();
             var chainId = chainId_example;  // string | chainId
 
@@ -312,7 +327,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -342,6 +357,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new EntryApi();
             var chainId = chainId_example;  // string | chainId
             var entryId = entryId_example;  // string | entryId
@@ -374,7 +392,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -404,6 +422,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new EntryApi();
             var chainId = chainId_example;  // string | chainId
             var entry = new Entry(); // Entry | Retrieve the entry
@@ -436,7 +457,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -466,6 +487,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new EntryApi();
             var chainId = chainId_example;  // string | chainId
             var entryId = entryId_example;  // string | entryId
@@ -498,7 +522,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
@@ -528,6 +552,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new EntryApi();
             var chainId = chainId_example;  // string | chainId
             var entry = new Entry(); // Entry | Retrieve the entry
@@ -560,7 +587,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2schema](../README.md#oauth2schema)
 
 ### HTTP request headers
 
