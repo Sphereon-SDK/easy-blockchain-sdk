@@ -8,7 +8,6 @@
     <name>Easy Blockchain API SDK Generator</name>
 
 
-
     <properties>
         <swagger-annotations-version>1.5.9</swagger-annotations-version>
         <jackson-version>2.4.2</jackson-version>
@@ -19,15 +18,71 @@
         <maven-plugin-version>1.0.0</maven-plugin-version>
         <junit-version>4.12</junit-version>
         <api-version>0.1.5</api-version>
+        <jersey-version>2.22.2</jersey-version>
+        <jackson-version>2.7.5</jackson-version>
+
         <sdk-package>com.sphereon.sdk.blockchain.easy</sdk-package>
-	<sdk-package-javascript>SphereonSDKBlockchainEasy</sdk-package-javascript>
+        <sdk-package-javascript>SphereonSDKBlockchainEasy</sdk-package-javascript>
         <sdk-package-csharp>Sphereon.SDK.Blockchain.Easy</sdk-package-csharp>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>sphereon-sdk</id>
+            <url>http://nexus.qa.sphereon.com/nexus/content/repositories/sphereon-sdk</url>
+        </repository>
+    </distributionManagement>
 
     <profiles>
+        <!--        <profile>
+                    <id>java8</id>
+                    <activation>
+                        <activeByDefault>true</activeByDefault>
+                    </activation>
+                    <build>
+                        <plugins>
+                            <plugin>
+                                <groupId>io.swagger</groupId>
+                                <artifactId>swagger-codegen-maven-plugin</artifactId>
+                                <version>2.2.1</version>
+
+                                <executions>
+
+                                    <execution>
+                                        <goals>
+                                            <goal>generate</goal>
+                                        </goals>
+                                        <configuration>
+                                            <inputSpec>swagger.json</inputSpec>
+
+
+                                            <language>java</language>
+
+                                            <configOptions>
+                                                <dateLibrary>java8</dateLibrary>
+                                            </configOptions>
+
+                                            <library>okhttp-gson</library>
+                                            <verbose>true</verbose>
+
+                                            <output>${project.basedir}/java8</output>
+                                            <groupId>com.sphereon.sdk</groupId>
+                                            <artifactId>blockchain-easy-sdk-java8</artifactId>
+                                            <artifactVersion>${project.version}</artifactVersion>
+                                            <addCompileSourceRoot>true</addCompileSourceRoot>
+                                            <apiPackage>${sdk-package}.api</apiPackage>
+                                            <modelPackage>${sdk-package}.model</modelPackage>
+                                            <invokerPackage>${sdk-package}.handler</invokerPackage>
+                                        </configuration>
+                                    </execution>
+                                </executions>
+                            </plugin>
+                        </plugins>
+                    </build>
+                </profile>
+        -->
         <profile>
-            <id>java8</id>
+            <id>java8-jersey2</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
@@ -60,12 +115,12 @@
                                     </configOptions>
 
                                     <!-- override the default library to jersey2 -->
-                                    <library>okhttp-gson</library>
+                                    <library>jersey2</library>
                                     <verbose>true</verbose>
 
-                                    <output>${project.basedir}/java8</output>
+                                    <output>${project.basedir}/java8-jersey2</output>
                                     <groupId>com.sphereon.sdk</groupId>
-                                    <artifactId>blockchain-easy-sdk-java8</artifactId>
+                                    <artifactId>blockchain-easy-sdk-java8-jersey2</artifactId>
                                     <artifactVersion>${project.version}</artifactVersion>
                                     <addCompileSourceRoot>true</addCompileSourceRoot>
                                     <apiPackage>${sdk-package}.api</apiPackage>
@@ -78,6 +133,7 @@
                 </plugins>
             </build>
         </profile>
+
         <profile>
             <id>csharp-net45</id>
             <activation>
@@ -128,7 +184,7 @@
                                     <artifactId>blockchain-easy-sdk-csharp-net45</artifactId>
                                     <artifactVersion>${project.version}</artifactVersion>
                                     <addCompileSourceRoot>true</addCompileSourceRoot>
-                                    
+
                                     <apiPackage>Api</apiPackage>
                                     <modelPackage>Model</modelPackage>
                                     <invokerPackage>Handler</invokerPackage>
@@ -140,7 +196,7 @@
             </build>
         </profile>
 
-	<profile>
+        <profile>
             <id>javascript</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -235,5 +291,47 @@
             <version>${junit-version}</version>
             <!--            <scope>test</scope>-->
         </dependency>
+
+
+        <!-- HTTP client: jersey-client -->
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>${jersey-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-multipart</artifactId>
+            <version>${jersey-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+            <version>${jersey-version}</version>
+        </dependency>
+
+        <!-- JSON processing: jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+
+
     </dependencies>
 </project>
