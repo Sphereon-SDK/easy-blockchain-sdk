@@ -64,8 +64,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json;charset=UTF-8
- - **Accept**: application/json;charset=UTF-8
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="entryById"></a>
 # **entryById**
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json;charset=UTF-8
+ - **Accept**: application/json
 
 <a name="entryByRequest"></a>
 # **entryByRequest**
@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json;charset=UTF-8
+ - **Accept**: application/json
 
 <a name="firstEntry"></a>
 # **firstEntry**
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json;charset=UTF-8
+ - **Accept**: application/json
 
 <a name="lastEntry"></a>
 # **lastEntry**
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json;charset=UTF-8
+ - **Accept**: application/json
 
 <a name="nextEntryById"></a>
 # **nextEntryById**
@@ -319,7 +319,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json;charset=UTF-8
+ - **Accept**: application/json
 
 <a name="nextEntryByRequest"></a>
 # **nextEntryByRequest**
@@ -371,7 +371,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json;charset=UTF-8
+ - **Accept**: application/json
 
 <a name="previousEntryById"></a>
 # **previousEntryById**
@@ -423,7 +423,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json;charset=UTF-8
+ - **Accept**: application/json
 
 <a name="previousEntryByRequest"></a>
 # **previousEntryByRequest**
@@ -475,5 +475,5 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json;charset=UTF-8
+ - **Accept**: application/json
 

@@ -48,8 +48,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         /// Initializes a new instance of the <see cref="EntryData" /> class.
         /// </summary>
         /// <param name="ExternalIds">External IDs.</param>
-        /// <param name="Content">Content (required).</param>
-        public EntryData(List<ExternalId> ExternalIds = null, byte[] Content = null)
+        /// <param name="Content">Content in base64 Alphabet (Table 1 of RFC 4648 and RFC 2045) (required).</param>
+        public EntryData(List<ExternalId> ExternalIds = null, string Content = null)
         {
             // to ensure "Content" is required (not null)
             if (Content == null)
@@ -70,11 +70,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         [DataMember(Name="externalIds", EmitDefaultValue=false)]
         public List<ExternalId> ExternalIds { get; set; }
         /// <summary>
-        /// Content
+        /// Content in base64 Alphabet (Table 1 of RFC 4648 and RFC 2045)
         /// </summary>
-        /// <value>Content</value>
+        /// <value>Content in base64 Alphabet (Table 1 of RFC 4648 and RFC 2045)</value>
         [DataMember(Name="content", EmitDefaultValue=false)]
-        public byte[] Content { get; set; }
+        public string Content { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

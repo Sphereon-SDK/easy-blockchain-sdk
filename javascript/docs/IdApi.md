@@ -57,7 +57,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json;charset=UTF-8
+ - **Accept**: application/json
 
 <a name="determineChainId"></a>
 # **determineChainId**
@@ -109,8 +109,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json;charset=UTF-8
- - **Accept**: application/json;charset=UTF-8
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="determineEntryId"></a>
 # **determineEntryId**
@@ -165,8 +165,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json;charset=UTF-8
- - **Accept**: application/json;charset=UTF-8
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="entryIdExists"></a>
 # **entryIdExists**
@@ -218,5 +218,5 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json;charset=UTF-8
+ - **Accept**: application/json
 

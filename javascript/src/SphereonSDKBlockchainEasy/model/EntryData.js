@@ -53,7 +53,7 @@
    * Entry Data
    * @alias module:SphereonSDKBlockchainEasy/model/EntryData
    * @class
-   * @param content {String} Content
+   * @param content {String} Content in base64 Alphabet (Table 1 of RFC 4648 and RFC 2045)
    */
   var exports = function(content) {
     var _this = this;
@@ -89,7 +89,7 @@
    */
   exports.prototype['externalIds'] = undefined;
   /**
-   * Content
+   * Content in base64 Alphabet (Table 1 of RFC 4648 and RFC 2045)
    * @member {String} content
    */
   exports.prototype['content'] = undefined;

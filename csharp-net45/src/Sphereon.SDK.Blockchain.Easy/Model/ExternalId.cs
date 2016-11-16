@@ -42,18 +42,18 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ExternalId" /> class.
         /// </summary>
-        /// <param name="Value">Metadata value.</param>
-        public ExternalId(byte[] Value = null)
+        /// <param name="Value">Metadata value in base64 Alphabet (Table 1 of RFC 4648 and RFC 2045).</param>
+        public ExternalId(string Value = null)
         {
             this.Value = Value;
         }
         
         /// <summary>
-        /// Metadata value
+        /// Metadata value in base64 Alphabet (Table 1 of RFC 4648 and RFC 2045)
         /// </summary>
-        /// <value>Metadata value</value>
+        /// <value>Metadata value in base64 Alphabet (Table 1 of RFC 4648 and RFC 2045)</value>
         [DataMember(Name="value", EmitDefaultValue=false)]
-        public byte[] Value { get; set; }
+        public string Value { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

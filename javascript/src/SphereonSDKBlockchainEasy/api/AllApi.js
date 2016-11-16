@@ -91,7 +91,7 @@
 
       var authNames = ['oauth2schema'];
       var contentTypes = ['application/json'];
-      var accepts = ['application/json;charset=UTF-8'];
+      var accepts = ['application/json'];
       var returnType = IdResponse;
 
       return this.apiClient.callApi(
@@ -134,8 +134,8 @@
       };
 
       var authNames = ['oauth2schema'];
-      var contentTypes = ['application/json;charset=UTF-8'];
-      var accepts = ['application/json;charset=UTF-8'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = CommittedChainResponse;
 
       return this.apiClient.callApi(
@@ -185,8 +185,8 @@
       };
 
       var authNames = ['oauth2schema'];
-      var contentTypes = ['application/json;charset=UTF-8'];
-      var accepts = ['application/json;charset=UTF-8'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = CommittedEntryResponse;
 
       return this.apiClient.callApi(
@@ -233,8 +233,8 @@
       };
 
       var authNames = ['oauth2schema'];
-      var contentTypes = ['application/json;charset=UTF-8'];
-      var accepts = ['application/json;charset=UTF-8'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = IdResponse;
 
       return this.apiClient.callApi(
@@ -288,8 +288,8 @@
       };
 
       var authNames = ['oauth2schema'];
-      var contentTypes = ['application/json;charset=UTF-8'];
-      var accepts = ['application/json;charset=UTF-8'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
       var returnType = IdResponse;
 
       return this.apiClient.callApi(
@@ -341,7 +341,7 @@
 
       var authNames = ['oauth2schema'];
       var contentTypes = ['application/json'];
-      var accepts = ['application/json;charset=UTF-8'];
+      var accepts = ['application/json'];
       var returnType = AnchoredEntryResponse;
 
       return this.apiClient.callApi(
@@ -392,7 +392,7 @@
 
       var authNames = ['oauth2schema'];
       var contentTypes = ['application/json'];
-      var accepts = ['application/json;charset=UTF-8'];
+      var accepts = ['application/json'];
       var returnType = AnchoredEntryResponse;
 
       return this.apiClient.callApi(
@@ -444,7 +444,7 @@
 
       var authNames = ['oauth2schema'];
       var contentTypes = ['application/json'];
-      var accepts = ['application/json;charset=UTF-8'];
+      var accepts = ['application/json'];
       var returnType = IdResponse;
 
       return this.apiClient.callApi(
@@ -489,7 +489,7 @@
 
       var authNames = ['oauth2schema'];
       var contentTypes = ['application/json'];
-      var accepts = ['application/json;charset=UTF-8'];
+      var accepts = ['application/json'];
       var returnType = AnchoredEntryResponse;
 
       return this.apiClient.callApi(
@@ -534,7 +534,7 @@
 
       var authNames = ['oauth2schema'];
       var contentTypes = ['application/json'];
-      var accepts = ['application/json;charset=UTF-8'];
+      var accepts = ['application/json'];
       var returnType = AnchoredEntryResponse;
 
       return this.apiClient.callApi(
@@ -586,7 +586,7 @@
 
       var authNames = ['oauth2schema'];
       var contentTypes = ['application/json'];
-      var accepts = ['application/json;charset=UTF-8'];
+      var accepts = ['application/json'];
       var returnType = AnchoredEntryResponse;
 
       return this.apiClient.callApi(
@@ -637,7 +637,7 @@
 
       var authNames = ['oauth2schema'];
       var contentTypes = ['application/json'];
-      var accepts = ['application/json;charset=UTF-8'];
+      var accepts = ['application/json'];
       var returnType = AnchoredEntryResponse;
 
       return this.apiClient.callApi(
@@ -689,7 +689,7 @@
 
       var authNames = ['oauth2schema'];
       var contentTypes = ['application/json'];
-      var accepts = ['application/json;charset=UTF-8'];
+      var accepts = ['application/json'];
       var returnType = AnchoredEntryResponse;
 
       return this.apiClient.callApi(
@@ -740,7 +740,7 @@
 
       var authNames = ['oauth2schema'];
       var contentTypes = ['application/json'];
-      var accepts = ['application/json;charset=UTF-8'];
+      var accepts = ['application/json'];
       var returnType = AnchoredEntryResponse;
 
       return this.apiClient.callApi(
