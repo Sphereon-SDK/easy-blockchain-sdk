@@ -9,8 +9,8 @@ See this page on our website for more information: https://sphereon.com/products
 ## Available SDKs
 
 The SDK currently supports the folowing languages:
- * [Java - Jersey2](java-jersey2)
- * [Java - Retrofit2](java-retrofit2)
+ * [Java - Jersey2](java8-jersey2)
+ * [Java - Retrofit2](java8-retrofit2)
  * [C# .NET](csharp-net45)
  * [Javascript](javascript)
  

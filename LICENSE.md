@@ -3,8 +3,8 @@ Copyright 2016 Sphereon BV
 Apache License
 ==============
 
-*Version 2.0, January 2004*_  
-*<<http://www.apache.org/licenses/>>;*
+_Version 2.0, January 2004__
+_&lt;<http://www.apache.org/licenses/>&gt;_
 
 ### Terms and Conditions for use, reproduction, and distribution
 
@@ -168,5 +168,3 @@ sole responsibility, not on behalf of any other Contributor, and only if You
 agree to indemnify, defend, and hold each Contributor harmless for any liability
 incurred by, or claims asserted against, such Contributor by reason of your
 accepting any such warranty or additional liability.
-
-_END OF TERMS AND CONDITIONS_
