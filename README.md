@@ -9,7 +9,7 @@ See this page on our website for more information: https://sphereon.com/products
 ## Available SDKs
 
 The SDK currently supports the folowing languages:
- * [Java - Jersey2](tree/mater/java8-jersey2)
+ * [Java - Jersey2](/sphereon-sdk/blockchain-proof-sdk/tree/master/java8-jersey2)
  * [Java - Retrofit2](tree/mater/java8-retrofit2)
  * [C# .NET](tree/mater/csharp-net45)
  * [Javascript](tree/mater/javascript)
