@@ -401,6 +401,67 @@
             </build>
         </profile>
 
+<profile>
+			<id>csharp-net35</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<!-- activate the plugin -->
+					<plugin>
+						<groupId>io.swagger</groupId>
+						<artifactId>swagger-codegen-maven-plugin</artifactId>
+						<version>2.2.1</version>
+
+						<executions>
+
+							<execution>
+								<goals>
+									<goal>generate</goal>
+								</goals>
+								<configuration>
+									<!-- specify the swagger yaml -->
+									<inputSpec>swagger.json</inputSpec>
+									<!--<inputSpec>https://store.sphereon.com/store/api-docs/admin/PDF/${api-version}</inputSpec>-->
+
+									<!-- target to generate -->
+									<language>csharp</language>
+
+									<!-- pass any necessary config options -->
+									<configOptions>
+
+										<packageCompany>Sphereon BV</packageCompany>
+										<apiPackage>${sdk-package-csharp}.Api</apiPackage>
+										<modelPackage>${sdk-package-csharp}.Model</modelPackage>
+										<invokerPackage>${sdk-package-csharp}.Handler</invokerPackage>
+										<packageName>${sdk-package-csharp}</packageName>
+										<targetFramework>v3.5</targetFramework>
+									</configOptions>
+
+									<configurationFile>src/main/resources/config/csharp-net35.json</configurationFile>
+									<!-- override the default library to jersey2 -->
+									<!-- <library>okhttp-gson</library>
+                                    -->
+									<verbose>true</verbose>
+
+									<output>${project.basedir}/csharp-net35</output>
+									<groupId>com.sphereon.sdk</groupId>
+									<artifactId>blockchain-easy-sdk-csharp-net35</artifactId>
+									<artifactVersion>${project.version}</artifactVersion>
+									<addCompileSourceRoot>true</addCompileSourceRoot>
+
+									<apiPackage>Api</apiPackage>
+									<modelPackage>Model</modelPackage>
+									<invokerPackage>Handler</invokerPackage>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>		
+		
         <profile>
             <id>javascript</id>
             <activation>

@@ -1,0 +1,36 @@
+{
+  "lang": "csharp",
+  "packageTitle": "PDF SDK C# .net35",
+  "inputSpec": "swagger.json",
+  "outputDir": "csharp-net35",
+  "verbose": true,
+  "skipOverwrite": false,
+  "templateDir": "src/main/resources",
+  "auth": "hello:world",
+  "apiPackage": "Sphereon.SDK.Pdf.Api",
+  "modelPackage": "Sphereon.SDK.Pdf.Model",
+  "invokerPackage": "Sphereon.SDK.Pdf.Invoker",
+  "groupId": "com.sphereon.sdk",
+  "artifactId": "pdf-sdk-csharp-net35",
+  "artifactVersion": "0.1.5-SNAPSHOT",
+  "systemProperties": {
+    "systemProp1": "value1"
+  },
+  "instantiationTypes": {
+    "hello": "world"
+  },
+  "typeMappings": {
+    "foo": "bar"
+  },
+  "additionalProperties": {
+    "addtProp1": "value2"
+  },
+  "importMappings": {
+    "type1": "import1"
+  },
+  "languageSpecificPrimitives": [
+    "rolex"
+  ],
+  "localVariablePrefix": "_"
+}
+
