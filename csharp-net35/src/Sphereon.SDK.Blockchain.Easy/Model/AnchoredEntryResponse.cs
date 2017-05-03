@@ -39,6 +39,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
     [DataContract]
     public partial class AnchoredEntryResponse :  IEquatable<AnchoredEntryResponse>
     {
+        private List<DateTime?> _anchorTimes;
+
         /// <summary>
         /// Gets or Sets AnchorState
         /// </summary>
@@ -104,7 +106,25 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         /// </summary>
         /// <value>The times at which the anchoredEntry was anchored in the blockchain in ISO 8601 format</value>
         [DataMember(Name="anchorTimes", EmitDefaultValue=false)]
-        public List<DateTime?> AnchorTimes { get; set; }
+        internal List<string> AnchorTimesRaw { get; }
+
+        public List<DateTime?> AnchorTimes
+        {
+            get
+            {
+                _anchorTimes = new List<DateTime?>();
+                if (AnchorTimesRaw == null)
+                    return _anchorTimes;
+
+                foreach (var rawTime in AnchorTimesRaw)
+                {
+                    _anchorTimes.Add(RestDateTimeParser.Parse(rawTime));
+                }
+                return _anchorTimes;
+            }
+            set { _anchorTimes = value; }
+        }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
