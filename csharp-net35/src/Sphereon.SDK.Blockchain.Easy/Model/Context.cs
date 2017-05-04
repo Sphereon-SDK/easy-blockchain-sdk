@@ -34,26 +34,39 @@ using Newtonsoft.Json.Converters;
 namespace Sphereon.SDK.Blockchain.Easy.Model
 {
     /// <summary>
-    /// External ID - metadata field
+    /// Context
     /// </summary>
     [DataContract]
-    public partial class ExternalId :  IEquatable<ExternalId>
+    public partial class Context :  IEquatable<Context>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ExternalId" /> class.
+        /// Initializes a new instance of the <see cref="Context" /> class.
         /// </summary>
-        /// <param name="Value">Metadata value.</param>
-        public ExternalId(byte[] Value = null)
+        /// <param name="Name">Name.</param>
+        /// <param name="Id">Id.</param>
+        /// <param name="AllBackends">AllBackends.</param>
+        public Context(string Name = null, string Id = null, List<Backend> AllBackends = null)
         {
-            this.Value = Value;
+            this.Name = Name;
+            this.Id = Id;
+            this.AllBackends = AllBackends;
         }
         
         /// <summary>
-        /// Metadata value
+        /// Gets or Sets Name
         /// </summary>
-        /// <value>Metadata value</value>
-        [DataMember(Name="value", EmitDefaultValue=false)]
-        public byte[] Value { get; set; }
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
+        /// <summary>
+        /// Gets or Sets Id
+        /// </summary>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public string Id { get; set; }
+        /// <summary>
+        /// Gets or Sets AllBackends
+        /// </summary>
+        [DataMember(Name="allBackends", EmitDefaultValue=false)]
+        public List<Backend> AllBackends { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -61,8 +74,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ExternalId {\n");
-            sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("class Context {\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  AllBackends: ").Append(AllBackends).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -84,15 +99,15 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as ExternalId);
+            return this.Equals(obj as Context);
         }
 
         /// <summary>
-        /// Returns true if ExternalId instances are equal
+        /// Returns true if Context instances are equal
         /// </summary>
-        /// <param name="other">Instance of ExternalId to be compared</param>
+        /// <param name="other">Instance of Context to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ExternalId other)
+        public bool Equals(Context other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -100,9 +115,19 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
 
             return 
                 (
-                    this.Value == other.Value ||
-                    this.Value != null &&
-                    this.Value.Equals(other.Value)
+                    this.Name == other.Name ||
+                    this.Name != null &&
+                    this.Name.Equals(other.Name)
+                ) && 
+                (
+                    this.Id == other.Id ||
+                    this.Id != null &&
+                    this.Id.Equals(other.Id)
+                ) && 
+                (
+                    this.AllBackends == other.AllBackends ||
+                    this.AllBackends != null &&
+                    this.AllBackends.SequenceEqual(other.AllBackends)
                 );
         }
 
@@ -117,8 +142,12 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Value != null)
-                    hash = hash * 59 + this.Value.GetHashCode();
+                if (this.Name != null)
+                    hash = hash * 59 + this.Name.GetHashCode();
+                if (this.Id != null)
+                    hash = hash * 59 + this.Id.GetHashCode();
+                if (this.AllBackends != null)
+                    hash = hash * 59 + this.AllBackends.GetHashCode();
                 return hash;
             }
         }

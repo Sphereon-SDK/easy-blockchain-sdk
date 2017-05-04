@@ -33,47 +33,66 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IChainApi : IApiAccessor
+    public interface IContextApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// Create a new chain
+        /// Create a new context
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="context">context</param>
-        /// <param name="chain">Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
-        /// <returns>CommittedChainResponse</returns>
-        CommittedChainResponse CreateChain (string context, Chain chain);
+        /// <param name="entity">entity</param>
+        /// <returns>Context</returns>
+        Context CreateContext (Context entity);
 
         /// <summary>
-        /// Create a new chain
+        /// Create a new context
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entity">entity</param>
+        /// <returns>ApiResponse of Context</returns>
+        ApiResponse<Context> CreateContextWithHttpInfo (Context entity);
+        /// <summary>
+        /// Create a new context
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
-        /// <param name="chain">Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
-        /// <returns>ApiResponse of CommittedChainResponse</returns>
-        ApiResponse<CommittedChainResponse> CreateChainWithHttpInfo (string context, Chain chain);
+        /// <returns>Context</returns>
+        Context GetContext (string context);
+
+        /// <summary>
+        /// Create a new context
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="context">context</param>
+        /// <returns>ApiResponse of Context</returns>
+        ApiResponse<Context> GetContextWithHttpInfo (string context);
         #endregion Synchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class ChainApi : IChainApi
+    public partial class ContextApi : IContextApi
     {
         private Sphereon.SDK.Blockchain.Easy.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChainApi"/> class.
+        /// Initializes a new instance of the <see cref="ContextApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public ChainApi(String basePath)
+        public ContextApi(String basePath)
         {
             this.Configuration = new Configuration(new ApiClient(basePath));
 
@@ -87,12 +106,12 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChainApi"/> class
+        /// Initializes a new instance of the <see cref="ContextApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public ChainApi(Configuration configuration = null)
+        public ContextApi(Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default;
@@ -172,35 +191,30 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new chain 
+        /// Create a new context 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="context">context</param>
-        /// <param name="chain">Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
-        /// <returns>CommittedChainResponse</returns>
-        public CommittedChainResponse CreateChain (string context, Chain chain)
+        /// <param name="entity">entity</param>
+        /// <returns>Context</returns>
+        public Context CreateContext (Context entity)
         {
-             ApiResponse<CommittedChainResponse> localVarResponse = CreateChainWithHttpInfo(context, chain);
+             ApiResponse<Context> localVarResponse = CreateContextWithHttpInfo(entity);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Create a new chain 
+        /// Create a new context 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="context">context</param>
-        /// <param name="chain">Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
-        /// <returns>ApiResponse of CommittedChainResponse</returns>
-        public ApiResponse< CommittedChainResponse > CreateChainWithHttpInfo (string context, Chain chain)
+        /// <param name="entity">entity</param>
+        /// <returns>ApiResponse of Context</returns>
+        public ApiResponse< Context > CreateContextWithHttpInfo (Context entity)
         {
-            // verify the required parameter 'context' is set
-            if (context == null)
-                throw new ApiException(400, "Missing required parameter 'context' when calling ChainApi->CreateChain");
-            // verify the required parameter 'chain' is set
-            if (chain == null)
-                throw new ApiException(400, "Missing required parameter 'chain' when calling ChainApi->CreateChain");
+            // verify the required parameter 'entity' is set
+            if (entity == null)
+                throw new ApiException(400, "Missing required parameter 'entity' when calling ContextApi->CreateContext");
 
-            var localVarPath = "/blockchain/easy/0.9.1/{context}/chains";
+            var localVarPath = "/blockchain/easy/0.9.1/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -225,14 +239,13 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (context != null) localVarPathParams.Add("context", Configuration.ApiClient.ParameterToString(context)); // path parameter
-            if (chain != null && chain.GetType() != typeof(byte[]))
+            if (entity != null && entity.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(chain); // http body (model) parameter
+                localVarPostBody = Configuration.ApiClient.Serialize(entity); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = chain; // byte array
+                localVarPostBody = entity; // byte array
             }
 
             // authentication (oauth2schema) required
@@ -251,13 +264,90 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("CreateChain", localVarResponse);
+                Exception exception = ExceptionFactory("CreateContext", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<CommittedChainResponse>(localVarStatusCode,
+            return new ApiResponse<Context>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (CommittedChainResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(CommittedChainResponse)));
+                (Context) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Context)));
+            
+        }
+
+        /// <summary>
+        /// Create a new context 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="context">context</param>
+        /// <returns>Context</returns>
+        public Context GetContext (string context)
+        {
+             ApiResponse<Context> localVarResponse = GetContextWithHttpInfo(context);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create a new context 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="context">context</param>
+        /// <returns>ApiResponse of Context</returns>
+        public ApiResponse< Context > GetContextWithHttpInfo (string context)
+        {
+            // verify the required parameter 'context' is set
+            if (context == null)
+                throw new ApiException(400, "Missing required parameter 'context' when calling ContextApi->GetContext");
+
+            var localVarPath = "/blockchain/easy/0.9.1/{context}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=UTF-8"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (context != null) localVarPathParams.Add("context", Configuration.ApiClient.ParameterToString(context)); // path parameter
+
+            // authentication (oauth2schema) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetContext", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Context>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Context) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Context)));
             
         }
 

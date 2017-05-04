@@ -34,80 +34,80 @@ using Newtonsoft.Json.Converters;
 namespace Sphereon.SDK.Blockchain.Easy.Model
 {
     /// <summary>
-    /// Commited Entry
+    /// RpcProvider
     /// </summary>
     [DataContract]
-    public partial class CommittedEntry :  IEquatable<CommittedEntry>
+    public partial class RpcProvider :  IEquatable<RpcProvider>
     {
         /// <summary>
-        /// Gets or Sets DataStructure
+        /// Gets or Sets RpcProviderType
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-        public enum DataStructureEnum
+        public enum RpcProviderTypeEnum
         {
             
             /// <summary>
-            /// Enum Factom for "Factom"
+            /// Enum SPHEREON for "SPHEREON"
             /// </summary>
-            [EnumMember(Value = "Factom")]
-            Factom
-        }
-
-        /// <summary>
-        /// Gets or Sets BlockchainImplementation
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum BlockchainImplementationEnum
-        {
+            [EnumMember(Value = "SPHEREON")]
+            SPHEREON,
             
             /// <summary>
-            /// Enum Bitcoin for "Bitcoin"
+            /// Enum CLIENT for "CLIENT"
             /// </summary>
-            [EnumMember(Value = "Bitcoin")]
-            Bitcoin
+            [EnumMember(Value = "CLIENT")]
+            CLIENT
         }
 
         /// <summary>
-        /// Gets or Sets DataStructure
+        /// Gets or Sets RpcProviderType
         /// </summary>
-        [DataMember(Name="dataStructure", EmitDefaultValue=false)]
-        public DataStructureEnum? DataStructure { get; set; }
+        [DataMember(Name="rpcProviderType", EmitDefaultValue=false)]
+        public RpcProviderTypeEnum? RpcProviderType { get; set; }
         /// <summary>
-        /// Gets or Sets BlockchainImplementation
+        /// Initializes a new instance of the <see cref="RpcProvider" /> class.
         /// </summary>
-        [DataMember(Name="blockchainImplementation", EmitDefaultValue=false)]
-        public BlockchainImplementationEnum? BlockchainImplementation { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CommittedEntry" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected CommittedEntry() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CommittedEntry" /> class.
-        /// </summary>
-        /// <param name="Entry">Entry.</param>
-        public CommittedEntry(Entry Entry = null)
+        /// <param name="Owner">Owner.</param>
+        /// <param name="Password">Password.</param>
+        /// <param name="Host">Host.</param>
+        /// <param name="RpcProviderType">RpcProviderType.</param>
+        /// <param name="Id">Id.</param>
+        /// <param name="Username">Username.</param>
+        public RpcProvider(string Owner = null, string Password = null, string Host = null, RpcProviderTypeEnum? RpcProviderType = null, string Id = null, string Username = null)
         {
-            this.Entry = Entry;
+            this.Owner = Owner;
+            this.Password = Password;
+            this.Host = Host;
+            this.RpcProviderType = RpcProviderType;
+            this.Id = Id;
+            this.Username = Username;
         }
         
         /// <summary>
-        /// Gets or Sets Entry
+        /// Gets or Sets Owner
         /// </summary>
-        [DataMember(Name="entry", EmitDefaultValue=false)]
-        public Entry Entry { get; set; }
+        [DataMember(Name="owner", EmitDefaultValue=false)]
+        public string Owner { get; set; }
         /// <summary>
-        /// Chain ID
+        /// Gets or Sets Password
         /// </summary>
-        /// <value>Chain ID</value>
-        [DataMember(Name="chainId", EmitDefaultValue=false)]
-        public string ChainId { get; private set; }
+        [DataMember(Name="password", EmitDefaultValue=false)]
+        public string Password { get; set; }
         /// <summary>
-        /// Entry ID
+        /// Gets or Sets Host
         /// </summary>
-        /// <value>Entry ID</value>
-        [DataMember(Name="entryId", EmitDefaultValue=false)]
-        public string EntryId { get; private set; }
+        [DataMember(Name="host", EmitDefaultValue=false)]
+        public string Host { get; set; }
+        /// <summary>
+        /// Gets or Sets Id
+        /// </summary>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public string Id { get; set; }
+        /// <summary>
+        /// Gets or Sets Username
+        /// </summary>
+        [DataMember(Name="username", EmitDefaultValue=false)]
+        public string Username { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -115,12 +115,13 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class CommittedEntry {\n");
-            sb.Append("  Entry: ").Append(Entry).Append("\n");
-            sb.Append("  ChainId: ").Append(ChainId).Append("\n");
-            sb.Append("  DataStructure: ").Append(DataStructure).Append("\n");
-            sb.Append("  BlockchainImplementation: ").Append(BlockchainImplementation).Append("\n");
-            sb.Append("  EntryId: ").Append(EntryId).Append("\n");
+            sb.Append("class RpcProvider {\n");
+            sb.Append("  Owner: ").Append(Owner).Append("\n");
+            sb.Append("  Password: ").Append(Password).Append("\n");
+            sb.Append("  Host: ").Append(Host).Append("\n");
+            sb.Append("  RpcProviderType: ").Append(RpcProviderType).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -142,15 +143,15 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as CommittedEntry);
+            return this.Equals(obj as RpcProvider);
         }
 
         /// <summary>
-        /// Returns true if CommittedEntry instances are equal
+        /// Returns true if RpcProvider instances are equal
         /// </summary>
-        /// <param name="other">Instance of CommittedEntry to be compared</param>
+        /// <param name="other">Instance of RpcProvider to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CommittedEntry other)
+        public bool Equals(RpcProvider other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -158,29 +159,34 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
 
             return 
                 (
-                    this.Entry == other.Entry ||
-                    this.Entry != null &&
-                    this.Entry.Equals(other.Entry)
+                    this.Owner == other.Owner ||
+                    this.Owner != null &&
+                    this.Owner.Equals(other.Owner)
                 ) && 
                 (
-                    this.ChainId == other.ChainId ||
-                    this.ChainId != null &&
-                    this.ChainId.Equals(other.ChainId)
+                    this.Password == other.Password ||
+                    this.Password != null &&
+                    this.Password.Equals(other.Password)
                 ) && 
                 (
-                    this.DataStructure == other.DataStructure ||
-                    this.DataStructure != null &&
-                    this.DataStructure.Equals(other.DataStructure)
+                    this.Host == other.Host ||
+                    this.Host != null &&
+                    this.Host.Equals(other.Host)
                 ) && 
                 (
-                    this.BlockchainImplementation == other.BlockchainImplementation ||
-                    this.BlockchainImplementation != null &&
-                    this.BlockchainImplementation.Equals(other.BlockchainImplementation)
+                    this.RpcProviderType == other.RpcProviderType ||
+                    this.RpcProviderType != null &&
+                    this.RpcProviderType.Equals(other.RpcProviderType)
                 ) && 
                 (
-                    this.EntryId == other.EntryId ||
-                    this.EntryId != null &&
-                    this.EntryId.Equals(other.EntryId)
+                    this.Id == other.Id ||
+                    this.Id != null &&
+                    this.Id.Equals(other.Id)
+                ) && 
+                (
+                    this.Username == other.Username ||
+                    this.Username != null &&
+                    this.Username.Equals(other.Username)
                 );
         }
 
@@ -195,16 +201,18 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Entry != null)
-                    hash = hash * 59 + this.Entry.GetHashCode();
-                if (this.ChainId != null)
-                    hash = hash * 59 + this.ChainId.GetHashCode();
-                if (this.DataStructure != null)
-                    hash = hash * 59 + this.DataStructure.GetHashCode();
-                if (this.BlockchainImplementation != null)
-                    hash = hash * 59 + this.BlockchainImplementation.GetHashCode();
-                if (this.EntryId != null)
-                    hash = hash * 59 + this.EntryId.GetHashCode();
+                if (this.Owner != null)
+                    hash = hash * 59 + this.Owner.GetHashCode();
+                if (this.Password != null)
+                    hash = hash * 59 + this.Password.GetHashCode();
+                if (this.Host != null)
+                    hash = hash * 59 + this.Host.GetHashCode();
+                if (this.RpcProviderType != null)
+                    hash = hash * 59 + this.RpcProviderType.GetHashCode();
+                if (this.Id != null)
+                    hash = hash * 59 + this.Id.GetHashCode();
+                if (this.Username != null)
+                    hash = hash * 59 + this.Username.GetHashCode();
                 return hash;
             }
         }

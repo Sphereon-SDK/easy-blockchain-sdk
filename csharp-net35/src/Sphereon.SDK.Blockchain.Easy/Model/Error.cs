@@ -34,80 +34,101 @@ using Newtonsoft.Json.Converters;
 namespace Sphereon.SDK.Blockchain.Easy.Model
 {
     /// <summary>
-    /// Commited Entry
+    /// An error
     /// </summary>
     [DataContract]
-    public partial class CommittedEntry :  IEquatable<CommittedEntry>
+    public partial class Error :  IEquatable<Error>
     {
         /// <summary>
-        /// Gets or Sets DataStructure
+        /// Gets or Sets Level
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-        public enum DataStructureEnum
+        public enum LevelEnum
         {
             
             /// <summary>
-            /// Enum Factom for "Factom"
+            /// Enum INFO for "INFO"
             /// </summary>
-            [EnumMember(Value = "Factom")]
-            Factom
-        }
-
-        /// <summary>
-        /// Gets or Sets BlockchainImplementation
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum BlockchainImplementationEnum
-        {
+            [EnumMember(Value = "INFO")]
+            INFO,
             
             /// <summary>
-            /// Enum Bitcoin for "Bitcoin"
+            /// Enum WARNING for "WARNING"
             /// </summary>
-            [EnumMember(Value = "Bitcoin")]
-            Bitcoin
+            [EnumMember(Value = "WARNING")]
+            WARNING,
+            
+            /// <summary>
+            /// Enum FATAL for "FATAL"
+            /// </summary>
+            [EnumMember(Value = "FATAL")]
+            FATAL
         }
 
         /// <summary>
-        /// Gets or Sets DataStructure
+        /// Gets or Sets Level
         /// </summary>
-        [DataMember(Name="dataStructure", EmitDefaultValue=false)]
-        public DataStructureEnum? DataStructure { get; set; }
+        [DataMember(Name="level", EmitDefaultValue=false)]
+        public LevelEnum? Level { get; set; }
         /// <summary>
-        /// Gets or Sets BlockchainImplementation
-        /// </summary>
-        [DataMember(Name="blockchainImplementation", EmitDefaultValue=false)]
-        public BlockchainImplementationEnum? BlockchainImplementation { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CommittedEntry" /> class.
+        /// Initializes a new instance of the <see cref="Error" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected CommittedEntry() { }
+        protected Error() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="CommittedEntry" /> class.
+        /// Initializes a new instance of the <see cref="Error" /> class.
         /// </summary>
-        /// <param name="Entry">Entry.</param>
-        public CommittedEntry(Entry Entry = null)
+        /// <param name="Code">Code (required).</param>
+        /// <param name="Level">Level (required).</param>
+        /// <param name="Cause">Cause.</param>
+        /// <param name="Message">Message (required).</param>
+        public Error(string Code = null, LevelEnum? Level = null, Error Cause = null, string Message = null)
         {
-            this.Entry = Entry;
+            // to ensure "Code" is required (not null)
+            if (Code == null)
+            {
+                throw new InvalidDataException("Code is a required property for Error and cannot be null");
+            }
+            else
+            {
+                this.Code = Code;
+            }
+            // to ensure "Level" is required (not null)
+            if (Level == null)
+            {
+                throw new InvalidDataException("Level is a required property for Error and cannot be null");
+            }
+            else
+            {
+                this.Level = Level;
+            }
+            // to ensure "Message" is required (not null)
+            if (Message == null)
+            {
+                throw new InvalidDataException("Message is a required property for Error and cannot be null");
+            }
+            else
+            {
+                this.Message = Message;
+            }
+            this.Cause = Cause;
         }
         
         /// <summary>
-        /// Gets or Sets Entry
+        /// Gets or Sets Code
         /// </summary>
-        [DataMember(Name="entry", EmitDefaultValue=false)]
-        public Entry Entry { get; set; }
+        [DataMember(Name="code", EmitDefaultValue=false)]
+        public string Code { get; set; }
         /// <summary>
-        /// Chain ID
+        /// Gets or Sets Cause
         /// </summary>
-        /// <value>Chain ID</value>
-        [DataMember(Name="chainId", EmitDefaultValue=false)]
-        public string ChainId { get; private set; }
+        [DataMember(Name="cause", EmitDefaultValue=false)]
+        public Error Cause { get; set; }
         /// <summary>
-        /// Entry ID
+        /// Gets or Sets Message
         /// </summary>
-        /// <value>Entry ID</value>
-        [DataMember(Name="entryId", EmitDefaultValue=false)]
-        public string EntryId { get; private set; }
+        [DataMember(Name="message", EmitDefaultValue=false)]
+        public string Message { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -115,12 +136,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class CommittedEntry {\n");
-            sb.Append("  Entry: ").Append(Entry).Append("\n");
-            sb.Append("  ChainId: ").Append(ChainId).Append("\n");
-            sb.Append("  DataStructure: ").Append(DataStructure).Append("\n");
-            sb.Append("  BlockchainImplementation: ").Append(BlockchainImplementation).Append("\n");
-            sb.Append("  EntryId: ").Append(EntryId).Append("\n");
+            sb.Append("class Error {\n");
+            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("  Level: ").Append(Level).Append("\n");
+            sb.Append("  Cause: ").Append(Cause).Append("\n");
+            sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -142,15 +162,15 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as CommittedEntry);
+            return this.Equals(obj as Error);
         }
 
         /// <summary>
-        /// Returns true if CommittedEntry instances are equal
+        /// Returns true if Error instances are equal
         /// </summary>
-        /// <param name="other">Instance of CommittedEntry to be compared</param>
+        /// <param name="other">Instance of Error to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CommittedEntry other)
+        public bool Equals(Error other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -158,29 +178,24 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
 
             return 
                 (
-                    this.Entry == other.Entry ||
-                    this.Entry != null &&
-                    this.Entry.Equals(other.Entry)
+                    this.Code == other.Code ||
+                    this.Code != null &&
+                    this.Code.Equals(other.Code)
                 ) && 
                 (
-                    this.ChainId == other.ChainId ||
-                    this.ChainId != null &&
-                    this.ChainId.Equals(other.ChainId)
+                    this.Level == other.Level ||
+                    this.Level != null &&
+                    this.Level.Equals(other.Level)
                 ) && 
                 (
-                    this.DataStructure == other.DataStructure ||
-                    this.DataStructure != null &&
-                    this.DataStructure.Equals(other.DataStructure)
+                    this.Cause == other.Cause ||
+                    this.Cause != null &&
+                    this.Cause.Equals(other.Cause)
                 ) && 
                 (
-                    this.BlockchainImplementation == other.BlockchainImplementation ||
-                    this.BlockchainImplementation != null &&
-                    this.BlockchainImplementation.Equals(other.BlockchainImplementation)
-                ) && 
-                (
-                    this.EntryId == other.EntryId ||
-                    this.EntryId != null &&
-                    this.EntryId.Equals(other.EntryId)
+                    this.Message == other.Message ||
+                    this.Message != null &&
+                    this.Message.Equals(other.Message)
                 );
         }
 
@@ -195,16 +210,14 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Entry != null)
-                    hash = hash * 59 + this.Entry.GetHashCode();
-                if (this.ChainId != null)
-                    hash = hash * 59 + this.ChainId.GetHashCode();
-                if (this.DataStructure != null)
-                    hash = hash * 59 + this.DataStructure.GetHashCode();
-                if (this.BlockchainImplementation != null)
-                    hash = hash * 59 + this.BlockchainImplementation.GetHashCode();
-                if (this.EntryId != null)
-                    hash = hash * 59 + this.EntryId.GetHashCode();
+                if (this.Code != null)
+                    hash = hash * 59 + this.Code.GetHashCode();
+                if (this.Level != null)
+                    hash = hash * 59 + this.Level.GetHashCode();
+                if (this.Cause != null)
+                    hash = hash * 59 + this.Cause.GetHashCode();
+                if (this.Message != null)
+                    hash = hash * 59 + this.Message.GetHashCode();
                 return hash;
             }
         }

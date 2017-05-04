@@ -34,26 +34,25 @@ using Newtonsoft.Json.Converters;
 namespace Sphereon.SDK.Blockchain.Easy.Model
 {
     /// <summary>
-    /// External ID - metadata field
+    /// The error response
     /// </summary>
     [DataContract]
-    public partial class ExternalId :  IEquatable<ExternalId>
+    public partial class ErrorResponse :  IEquatable<ErrorResponse>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ExternalId" /> class.
+        /// Initializes a new instance of the <see cref="ErrorResponse" /> class.
         /// </summary>
-        /// <param name="Value">Metadata value.</param>
-        public ExternalId(byte[] Value = null)
+        /// <param name="Errors">Errors.</param>
+        public ErrorResponse(List<Error> Errors = null)
         {
-            this.Value = Value;
+            this.Errors = Errors;
         }
         
         /// <summary>
-        /// Metadata value
+        /// Gets or Sets Errors
         /// </summary>
-        /// <value>Metadata value</value>
-        [DataMember(Name="value", EmitDefaultValue=false)]
-        public byte[] Value { get; set; }
+        [DataMember(Name="errors", EmitDefaultValue=false)]
+        public List<Error> Errors { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -61,8 +60,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ExternalId {\n");
-            sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("class ErrorResponse {\n");
+            sb.Append("  Errors: ").Append(Errors).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -84,15 +83,15 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as ExternalId);
+            return this.Equals(obj as ErrorResponse);
         }
 
         /// <summary>
-        /// Returns true if ExternalId instances are equal
+        /// Returns true if ErrorResponse instances are equal
         /// </summary>
-        /// <param name="other">Instance of ExternalId to be compared</param>
+        /// <param name="other">Instance of ErrorResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ExternalId other)
+        public bool Equals(ErrorResponse other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -100,9 +99,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
 
             return 
                 (
-                    this.Value == other.Value ||
-                    this.Value != null &&
-                    this.Value.Equals(other.Value)
+                    this.Errors == other.Errors ||
+                    this.Errors != null &&
+                    this.Errors.SequenceEqual(other.Errors)
                 );
         }
 
@@ -117,8 +116,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Value != null)
-                    hash = hash * 59 + this.Value.GetHashCode();
+                if (this.Errors != null)
+                    hash = hash * 59 + this.Errors.GetHashCode();
                 return hash;
             }
         }
