@@ -3,7 +3,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Owner** | **string** |  | [optional] 
 **RpcProviders** | [**List&lt;RpcProvider&gt;**](RpcProvider.md) |  | [optional] 
 **ApiVersion** | **int?** |  | [optional] 
 **LedgerName** | **string** |  | [optional] 
@@ -12,6 +11,7 @@ Name | Type | Description | Notes
 **End** | **DateTime?** |  | [optional] 
 **DataStructure** | **string** |  | [optional] 
 **Id** | **string** |  | [optional] 
+**ExternalAccess** | [**Access**](Access.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

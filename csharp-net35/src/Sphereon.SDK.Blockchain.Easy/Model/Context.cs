@@ -42,31 +42,31 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Context" /> class.
         /// </summary>
+        /// <param name="Access">Access.</param>
+        /// <param name="BackendIds">BackendIds.</param>
         /// <param name="Name">Name.</param>
-        /// <param name="Id">Id.</param>
-        /// <param name="AllBackends">AllBackends.</param>
-        public Context(string Name = null, string Id = null, List<Backend> AllBackends = null)
+        public Context(Access Access = null, List<string> BackendIds = null, string Name = null)
         {
+            this.Access = Access;
+            this.BackendIds = BackendIds;
             this.Name = Name;
-            this.Id = Id;
-            this.AllBackends = AllBackends;
         }
         
+        /// <summary>
+        /// Gets or Sets Access
+        /// </summary>
+        [DataMember(Name="access", EmitDefaultValue=false)]
+        public Access Access { get; set; }
+        /// <summary>
+        /// Gets or Sets BackendIds
+        /// </summary>
+        [DataMember(Name="backendIds", EmitDefaultValue=false)]
+        public List<string> BackendIds { get; set; }
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
-        /// <summary>
-        /// Gets or Sets Id
-        /// </summary>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public string Id { get; set; }
-        /// <summary>
-        /// Gets or Sets AllBackends
-        /// </summary>
-        [DataMember(Name="allBackends", EmitDefaultValue=false)]
-        public List<Backend> AllBackends { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -75,9 +75,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Context {\n");
+            sb.Append("  Access: ").Append(Access).Append("\n");
+            sb.Append("  BackendIds: ").Append(BackendIds).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  AllBackends: ").Append(AllBackends).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -115,19 +115,19 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
 
             return 
                 (
+                    this.Access == other.Access ||
+                    this.Access != null &&
+                    this.Access.Equals(other.Access)
+                ) && 
+                (
+                    this.BackendIds == other.BackendIds ||
+                    this.BackendIds != null &&
+                    this.BackendIds.SequenceEqual(other.BackendIds)
+                ) && 
+                (
                     this.Name == other.Name ||
                     this.Name != null &&
                     this.Name.Equals(other.Name)
-                ) && 
-                (
-                    this.Id == other.Id ||
-                    this.Id != null &&
-                    this.Id.Equals(other.Id)
-                ) && 
-                (
-                    this.AllBackends == other.AllBackends ||
-                    this.AllBackends != null &&
-                    this.AllBackends.SequenceEqual(other.AllBackends)
                 );
         }
 
@@ -142,12 +142,12 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
+                if (this.Access != null)
+                    hash = hash * 59 + this.Access.GetHashCode();
+                if (this.BackendIds != null)
+                    hash = hash * 59 + this.BackendIds.GetHashCode();
                 if (this.Name != null)
                     hash = hash * 59 + this.Name.GetHashCode();
-                if (this.Id != null)
-                    hash = hash * 59 + this.Id.GetHashCode();
-                if (this.AllBackends != null)
-                    hash = hash * 59 + this.AllBackends.GetHashCode();
                 return hash;
             }
         }

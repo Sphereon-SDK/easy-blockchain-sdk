@@ -56,7 +56,7 @@
                                 </goals>
                                 <configuration>
                                     <!-- specify the swagger yaml -->
-                                    <inputSpec>swagger.json</inputSpec>
+                                    <inputSpec>swagger.sdk.json</inputSpec>
                                     <!--<inputSpec>https://store.sphereon.com/store/api-docs/admin/PDF/${api-version}</inputSpec>-->
 
 
@@ -130,7 +130,7 @@
                                     <goal>generate</goal>
                                 </goals>
                                 <configuration>
-                                    <inputSpec>swagger.json</inputSpec>
+                                    <inputSpec>swagger.sdk.json</inputSpec>
 
 
                                     <language>java</language>
@@ -226,7 +226,7 @@
 
                                 <configuration>
                                     <!-- specify the swagger yaml -->
-                                    <inputSpec>swagger.json</inputSpec>
+                                    <inputSpec>swagger.sdk.json</inputSpec>
                                     <!--<inputSpec>https://store.sphereon.com/store/api-docs/admin/PDF/${api-version}</inputSpec>-->
 
 
@@ -306,7 +306,7 @@
                                 </goals>
                                 <configuration>
                                     <!-- specify the swagger yaml -->
-                                    <inputSpec>swagger.json</inputSpec>
+                                    <inputSpec>swagger.sdk.json</inputSpec>
                                     <!--<inputSpec>https://store.sphereon.com/store/api-docs/admin/PDF/${api-version}</inputSpec>-->
 
 
@@ -360,7 +360,7 @@
                                 </goals>
                                 <configuration>
                                     <!-- specify the swagger yaml -->
-                                    <inputSpec>swagger.json</inputSpec>
+                                    <inputSpec>swagger.sdk.json</inputSpec>
                                     <!--<inputSpec>https://store.sphereon.com/store/api-docs/admin/PDF/${api-version}</inputSpec>-->
 
                                     <!-- target to generate -->
@@ -422,7 +422,7 @@
 								</goals>
 								<configuration>
 									<!-- specify the swagger yaml -->
-									<inputSpec>swagger.json</inputSpec>
+									<inputSpec>swagger.sdk.json</inputSpec>
 									<!--<inputSpec>https://store.sphereon.com/store/api-docs/admin/PDF/${api-version}</inputSpec>-->
 
 									<!-- target to generate -->
@@ -483,7 +483,7 @@
                                 </goals>
                                 <configuration>
                                     <!-- specify the swagger yaml -->
-                                    <inputSpec>swagger.json</inputSpec>
+                                    <inputSpec>swagger.sdk.json</inputSpec>
                                     <!--<inputSpec>https://store.sphereon.com/store/api-docs/admin/PDF/${api-version}</inputSpec>-->
 
 

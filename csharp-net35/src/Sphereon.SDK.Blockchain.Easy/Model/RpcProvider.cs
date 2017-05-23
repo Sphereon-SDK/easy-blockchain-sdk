@@ -40,59 +40,86 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
     public partial class RpcProvider :  IEquatable<RpcProvider>
     {
         /// <summary>
-        /// Gets or Sets RpcProviderType
+        /// Gets or Sets OwnerType
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-        public enum RpcProviderTypeEnum
+        public enum OwnerTypeEnum
         {
             
             /// <summary>
-            /// Enum SPHEREON for "SPHEREON"
+            /// Enum PROVIDER for "PROVIDER"
             /// </summary>
-            [EnumMember(Value = "SPHEREON")]
-            SPHEREON,
+            [EnumMember(Value = "PROVIDER")]
+            PROVIDER,
             
             /// <summary>
-            /// Enum CLIENT for "CLIENT"
+            /// Enum CUSTOMER for "CUSTOMER"
             /// </summary>
-            [EnumMember(Value = "CLIENT")]
-            CLIENT
+            [EnumMember(Value = "CUSTOMER")]
+            CUSTOMER
         }
 
         /// <summary>
-        /// Gets or Sets RpcProviderType
+        /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="rpcProviderType", EmitDefaultValue=false)]
-        public RpcProviderTypeEnum? RpcProviderType { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum TypeEnum
+        {
+            
+            /// <summary>
+            /// Enum API for "API"
+            /// </summary>
+            [EnumMember(Value = "API")]
+            API,
+            
+            /// <summary>
+            /// Enum WALLET for "WALLET"
+            /// </summary>
+            [EnumMember(Value = "WALLET")]
+            WALLET
+        }
+
+        /// <summary>
+        /// Gets or Sets OwnerType
+        /// </summary>
+        [DataMember(Name="ownerType", EmitDefaultValue=false)]
+        public OwnerTypeEnum? OwnerType { get; set; }
+        /// <summary>
+        /// Gets or Sets Type
+        /// </summary>
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public TypeEnum? Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="RpcProvider" /> class.
         /// </summary>
-        /// <param name="Owner">Owner.</param>
+        /// <param name="OwnerType">OwnerType.</param>
         /// <param name="Password">Password.</param>
+        /// <param name="Access">Access.</param>
         /// <param name="Host">Host.</param>
-        /// <param name="RpcProviderType">RpcProviderType.</param>
         /// <param name="Id">Id.</param>
+        /// <param name="Type">Type.</param>
         /// <param name="Username">Username.</param>
-        public RpcProvider(string Owner = null, string Password = null, string Host = null, RpcProviderTypeEnum? RpcProviderType = null, string Id = null, string Username = null)
+        public RpcProvider(OwnerTypeEnum? OwnerType = null, string Password = null, Access Access = null, string Host = null, string Id = null, TypeEnum? Type = null, string Username = null)
         {
-            this.Owner = Owner;
+            this.OwnerType = OwnerType;
             this.Password = Password;
+            this.Access = Access;
             this.Host = Host;
-            this.RpcProviderType = RpcProviderType;
             this.Id = Id;
+            this.Type = Type;
             this.Username = Username;
         }
         
-        /// <summary>
-        /// Gets or Sets Owner
-        /// </summary>
-        [DataMember(Name="owner", EmitDefaultValue=false)]
-        public string Owner { get; set; }
         /// <summary>
         /// Gets or Sets Password
         /// </summary>
         [DataMember(Name="password", EmitDefaultValue=false)]
         public string Password { get; set; }
+        /// <summary>
+        /// Gets or Sets Access
+        /// </summary>
+        [DataMember(Name="access", EmitDefaultValue=false)]
+        public Access Access { get; set; }
         /// <summary>
         /// Gets or Sets Host
         /// </summary>
@@ -116,11 +143,12 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         {
             var sb = new StringBuilder();
             sb.Append("class RpcProvider {\n");
-            sb.Append("  Owner: ").Append(Owner).Append("\n");
+            sb.Append("  OwnerType: ").Append(OwnerType).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
+            sb.Append("  Access: ").Append(Access).Append("\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
-            sb.Append("  RpcProviderType: ").Append(RpcProviderType).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -159,9 +187,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
 
             return 
                 (
-                    this.Owner == other.Owner ||
-                    this.Owner != null &&
-                    this.Owner.Equals(other.Owner)
+                    this.OwnerType == other.OwnerType ||
+                    this.OwnerType != null &&
+                    this.OwnerType.Equals(other.OwnerType)
                 ) && 
                 (
                     this.Password == other.Password ||
@@ -169,19 +197,24 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                     this.Password.Equals(other.Password)
                 ) && 
                 (
+                    this.Access == other.Access ||
+                    this.Access != null &&
+                    this.Access.Equals(other.Access)
+                ) && 
+                (
                     this.Host == other.Host ||
                     this.Host != null &&
                     this.Host.Equals(other.Host)
                 ) && 
                 (
-                    this.RpcProviderType == other.RpcProviderType ||
-                    this.RpcProviderType != null &&
-                    this.RpcProviderType.Equals(other.RpcProviderType)
-                ) && 
-                (
                     this.Id == other.Id ||
                     this.Id != null &&
                     this.Id.Equals(other.Id)
+                ) && 
+                (
+                    this.Type == other.Type ||
+                    this.Type != null &&
+                    this.Type.Equals(other.Type)
                 ) && 
                 (
                     this.Username == other.Username ||
@@ -201,16 +234,18 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Owner != null)
-                    hash = hash * 59 + this.Owner.GetHashCode();
+                if (this.OwnerType != null)
+                    hash = hash * 59 + this.OwnerType.GetHashCode();
                 if (this.Password != null)
                     hash = hash * 59 + this.Password.GetHashCode();
+                if (this.Access != null)
+                    hash = hash * 59 + this.Access.GetHashCode();
                 if (this.Host != null)
                     hash = hash * 59 + this.Host.GetHashCode();
-                if (this.RpcProviderType != null)
-                    hash = hash * 59 + this.RpcProviderType.GetHashCode();
                 if (this.Id != null)
                     hash = hash * 59 + this.Id.GetHashCode();
+                if (this.Type != null)
+                    hash = hash * 59 + this.Type.GetHashCode();
                 if (this.Username != null)
                     hash = hash * 59 + this.Username.GetHashCode();
                 return hash;

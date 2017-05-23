@@ -4,25 +4,27 @@ All URIs are relative to *https://gw.api.cloud.sphereon.com/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**chainIdExists**](AllApi.md#chainIdExists) | **GET** /blockchain/easy/0.1.0/chains/id/{chainId} | Determine whether the Id of a chain exists in the blockchain
-[**createChain**](AllApi.md#createChain) | **POST** /blockchain/easy/0.1.0/chains | Create a new chain
-[**createEntry**](AllApi.md#createEntry) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries | Create a new entry in the provided chain
-[**determineChainId**](AllApi.md#determineChainId) | **POST** /blockchain/easy/0.1.0/chains/id | Pre determine the Id of a chain request without anchoring it in the blockchain
-[**determineEntryId**](AllApi.md#determineEntryId) | **POST** /blockchain/easy/0.1.0/chains/id/{chainId}/entries | Pre determine the Id of an entry request without anchoring the entry
-[**entryById**](AllApi.md#entryById) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
-[**entryByRequest**](AllApi.md#entryByRequest) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
-[**entryIdExists**](AllApi.md#entryIdExists) | **GET** /blockchain/easy/0.1.0/chains/id/{chainId}/entries/{entryId} | Determine whether the Id of an entry exists in the blockchain
-[**firstEntry**](AllApi.md#firstEntry) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail
-[**lastEntry**](AllApi.md#lastEntry) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head
-[**nextEntryById**](AllApi.md#nextEntryById) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
-[**nextEntryByRequest**](AllApi.md#nextEntryByRequest) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
-[**previousEntryById**](AllApi.md#previousEntryById) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
-[**previousEntryByRequest**](AllApi.md#previousEntryByRequest) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries/entry/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
+[**chainIdExists**](AllApi.md#chainIdExists) | **GET** /blockchain/easy/0.9.1/{context}/chains/id/{chainId} | Determine whether the Id of a chain exists in the blockchain
+[**createChain**](AllApi.md#createChain) | **POST** /blockchain/easy/0.9.1/{context}/chains | Create a new chain
+[**createContext**](AllApi.md#createContext) | **POST** /blockchain/easy/0.9.1/ | Create a new context
+[**createEntry**](AllApi.md#createEntry) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries | Create a new entry in the provided chain
+[**determineChainId**](AllApi.md#determineChainId) | **POST** /blockchain/easy/0.9.1/{context}/chains/id | Pre determine the Id of a chain request without anchoring it in the blockchain
+[**determineEntryId**](AllApi.md#determineEntryId) | **POST** /blockchain/easy/0.9.1/{context}/chains/id/{chainId}/entries | Pre determine the Id of an entry request without anchoring the entry
+[**entryById**](AllApi.md#entryById) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
+[**entryByRequest**](AllApi.md#entryByRequest) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
+[**entryIdExists**](AllApi.md#entryIdExists) | **GET** /blockchain/easy/0.9.1/{context}/chains/id/{chainId}/entries/{entryId} | Determine whether the Id of an entry exists in the blockchain
+[**firstEntry**](AllApi.md#firstEntry) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+[**getContext**](AllApi.md#getContext) | **GET** /blockchain/easy/0.9.1/{context} | Create a new context
+[**lastEntry**](AllApi.md#lastEntry) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head
+[**nextEntryById**](AllApi.md#nextEntryById) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
+[**nextEntryByRequest**](AllApi.md#nextEntryByRequest) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
+[**previousEntryById**](AllApi.md#previousEntryById) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
+[**previousEntryByRequest**](AllApi.md#previousEntryByRequest) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
 
 
 <a name="chainIdExists"></a>
 # **chainIdExists**
-> IdResponse chainIdExists(chainId)
+> IdResponse chainIdExists(context, chainId)
 
 Determine whether the Id of a chain exists in the blockchain
 
@@ -42,9 +44,10 @@ OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
 oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 AllApi apiInstance = new AllApi();
+String context = "context_example"; // String | context
 String chainId = "chainId_example"; // String | chainId
 try {
-    IdResponse result = apiInstance.chainIdExists(chainId);
+    IdResponse result = apiInstance.chainIdExists(context, chainId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AllApi#chainIdExists");
@@ -56,6 +59,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context |
  **chainId** | **String**| chainId |
 
 ### Return type
@@ -69,11 +73,11 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="createChain"></a>
 # **createChain**
-> CommittedChainResponse createChain(chain)
+> CommittedChainResponse createChain(context, chain)
 
 Create a new chain
 
@@ -93,9 +97,10 @@ OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
 oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 AllApi apiInstance = new AllApi();
+String context = "context_example"; // String | context
 Chain chain = new Chain(); // Chain | Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
 try {
-    CommittedChainResponse result = apiInstance.createChain(chain);
+    CommittedChainResponse result = apiInstance.createChain(context, chain);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AllApi#createChain");
@@ -107,6 +112,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context |
  **chain** | [**Chain**](Chain.md)| Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! |
 
 ### Return type
@@ -119,12 +125,63 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json;charset=UTF-8
+ - **Accept**: application/json;charset=UTF-8
+
+<a name="createContext"></a>
+# **createContext**
+> Context createContext(entity)
+
+Create a new context
+
+### Example
+```java
+// Import classes:
+//import com.sphereon.sdk.blockchain.easy.handler.ApiClient;
+//import com.sphereon.sdk.blockchain.easy.handler.ApiException;
+//import com.sphereon.sdk.blockchain.easy.handler.Configuration;
+//import com.sphereon.sdk.blockchain.easy.handler.auth.*;
+//import com.sphereon.sdk.blockchain.easy.api.AllApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: oauth2schema
+OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
+oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
+
+AllApi apiInstance = new AllApi();
+Context entity = new Context(); // Context | entity
+try {
+    Context result = apiInstance.createContext(entity);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AllApi#createContext");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entity** | [**Context**](Context.md)| entity |
+
+### Return type
+
+[**Context**](Context.md)
+
+### Authorization
+
+[oauth2schema](../README.md#oauth2schema)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json;charset=UTF-8
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="createEntry"></a>
 # **createEntry**
-> CommittedEntryResponse createEntry(chainId, entry)
+> CommittedEntryResponse createEntry(context, chainId, entry)
 
 Create a new entry in the provided chain
 
@@ -144,10 +201,11 @@ OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
 oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 AllApi apiInstance = new AllApi();
+String context = "context_example"; // String | context
 String chainId = "chainId_example"; // String | chainId
 Entry entry = new Entry(); // Entry | Create a new entry for the specified chain
 try {
-    CommittedEntryResponse result = apiInstance.createEntry(chainId, entry);
+    CommittedEntryResponse result = apiInstance.createEntry(context, chainId, entry);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AllApi#createEntry");
@@ -159,6 +217,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context |
  **chainId** | **String**| chainId |
  **entry** | [**Entry**](Entry.md)| Create a new entry for the specified chain |
 
@@ -172,12 +231,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json;charset=UTF-8
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="determineChainId"></a>
 # **determineChainId**
-> IdResponse determineChainId(chain, checkExistence)
+> IdResponse determineChainId(context, chain, checkExistence)
 
 Pre determine the Id of a chain request without anchoring it in the blockchain
 
@@ -197,10 +256,11 @@ OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
 oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 AllApi apiInstance = new AllApi();
+String context = "context_example"; // String | context
 Chain chain = new Chain(); // Chain | Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
 Boolean checkExistence = false; // Boolean | Check whether the id exists
 try {
-    IdResponse result = apiInstance.determineChainId(chain, checkExistence);
+    IdResponse result = apiInstance.determineChainId(context, chain, checkExistence);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AllApi#determineChainId");
@@ -212,6 +272,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context |
  **chain** | [**Chain**](Chain.md)| Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! |
  **checkExistence** | **Boolean**| Check whether the id exists | [optional] [default to false]
 
@@ -225,12 +286,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json;charset=UTF-8
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="determineEntryId"></a>
 # **determineEntryId**
-> IdResponse determineEntryId(chainId, entry, checkExistence)
+> IdResponse determineEntryId(context, chainId, entry, checkExistence)
 
 Pre determine the Id of an entry request without anchoring the entry
 
@@ -250,11 +311,12 @@ OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
 oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 AllApi apiInstance = new AllApi();
+String context = "context_example"; // String | context
 String chainId = "chainId_example"; // String | chainId
 Entry entry = new Entry(); // Entry | The entry to determine the hash for on the specified chain
 Boolean checkExistence = false; // Boolean | Check whether the id exists
 try {
-    IdResponse result = apiInstance.determineEntryId(chainId, entry, checkExistence);
+    IdResponse result = apiInstance.determineEntryId(context, chainId, entry, checkExistence);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AllApi#determineEntryId");
@@ -266,6 +328,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context |
  **chainId** | **String**| chainId |
  **entry** | [**Entry**](Entry.md)| The entry to determine the hash for on the specified chain |
  **checkExistence** | **Boolean**| Check whether the id exists | [optional] [default to false]
@@ -280,12 +343,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json;charset=UTF-8
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="entryById"></a>
 # **entryById**
-> AnchoredEntryResponse entryById(chainId, entryId)
+> AnchoredEntryResponse entryById(context, chainId, entryId)
 
 Get an existing entry in the provided chain
 
@@ -305,10 +368,11 @@ OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
 oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 AllApi apiInstance = new AllApi();
+String context = "context_example"; // String | context
 String chainId = "chainId_example"; // String | chainId
 String entryId = "entryId_example"; // String | entryId
 try {
-    AnchoredEntryResponse result = apiInstance.entryById(chainId, entryId);
+    AnchoredEntryResponse result = apiInstance.entryById(context, chainId, entryId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AllApi#entryById");
@@ -320,6 +384,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context |
  **chainId** | **String**| chainId |
  **entryId** | **String**| entryId |
 
@@ -334,11 +399,11 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="entryByRequest"></a>
 # **entryByRequest**
-> AnchoredEntryResponse entryByRequest(chainId, entry)
+> AnchoredEntryResponse entryByRequest(context, chainId, entry)
 
 Get an existing entry in the provided chain
 
@@ -358,10 +423,11 @@ OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
 oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 AllApi apiInstance = new AllApi();
+String context = "context_example"; // String | context
 String chainId = "chainId_example"; // String | chainId
 Entry entry = new Entry(); // Entry | Retrieve the entry
 try {
-    AnchoredEntryResponse result = apiInstance.entryByRequest(chainId, entry);
+    AnchoredEntryResponse result = apiInstance.entryByRequest(context, chainId, entry);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AllApi#entryByRequest");
@@ -373,6 +439,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context |
  **chainId** | **String**| chainId |
  **entry** | [**Entry**](Entry.md)| Retrieve the entry |
 
@@ -387,11 +454,11 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="entryIdExists"></a>
 # **entryIdExists**
-> IdResponse entryIdExists(chainId, entryId)
+> IdResponse entryIdExists(context, chainId, entryId)
 
 Determine whether the Id of an entry exists in the blockchain
 
@@ -411,10 +478,11 @@ OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
 oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 AllApi apiInstance = new AllApi();
+String context = "context_example"; // String | context
 String chainId = "chainId_example"; // String | chainId
 String entryId = "entryId_example"; // String | entryId
 try {
-    IdResponse result = apiInstance.entryIdExists(chainId, entryId);
+    IdResponse result = apiInstance.entryIdExists(context, chainId, entryId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AllApi#entryIdExists");
@@ -426,6 +494,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context |
  **chainId** | **String**| chainId |
  **entryId** | **String**| entryId |
 
@@ -440,11 +509,11 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="firstEntry"></a>
 # **firstEntry**
-> AnchoredEntryResponse firstEntry(chainId)
+> AnchoredEntryResponse firstEntry(context, chainId)
 
 Get the first entry in the provided chain. This is the oldest entry also called the chain tail
 
@@ -464,9 +533,10 @@ OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
 oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 AllApi apiInstance = new AllApi();
+String context = "context_example"; // String | context
 String chainId = "chainId_example"; // String | chainId
 try {
-    AnchoredEntryResponse result = apiInstance.firstEntry(chainId);
+    AnchoredEntryResponse result = apiInstance.firstEntry(context, chainId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AllApi#firstEntry");
@@ -478,6 +548,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context |
  **chainId** | **String**| chainId |
 
 ### Return type
@@ -491,11 +562,62 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
+
+<a name="getContext"></a>
+# **getContext**
+> Context getContext(context)
+
+Create a new context
+
+### Example
+```java
+// Import classes:
+//import com.sphereon.sdk.blockchain.easy.handler.ApiClient;
+//import com.sphereon.sdk.blockchain.easy.handler.ApiException;
+//import com.sphereon.sdk.blockchain.easy.handler.Configuration;
+//import com.sphereon.sdk.blockchain.easy.handler.auth.*;
+//import com.sphereon.sdk.blockchain.easy.api.AllApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: oauth2schema
+OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
+oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
+
+AllApi apiInstance = new AllApi();
+String context = "context_example"; // String | context
+try {
+    Context result = apiInstance.getContext(context);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AllApi#getContext");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **context** | **String**| context |
+
+### Return type
+
+[**Context**](Context.md)
+
+### Authorization
+
+[oauth2schema](../README.md#oauth2schema)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="lastEntry"></a>
 # **lastEntry**
-> AnchoredEntryResponse lastEntry(chainId)
+> AnchoredEntryResponse lastEntry(context, chainId)
 
 Get the last entry in the provided chain. This is the most recent entry also called the chain head
 
@@ -515,9 +637,10 @@ OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
 oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 AllApi apiInstance = new AllApi();
+String context = "context_example"; // String | context
 String chainId = "chainId_example"; // String | chainId
 try {
-    AnchoredEntryResponse result = apiInstance.lastEntry(chainId);
+    AnchoredEntryResponse result = apiInstance.lastEntry(context, chainId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AllApi#lastEntry");
@@ -529,6 +652,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context |
  **chainId** | **String**| chainId |
 
 ### Return type
@@ -542,11 +666,11 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="nextEntryById"></a>
 # **nextEntryById**
-> AnchoredEntryResponse nextEntryById(chainId, entryId)
+> AnchoredEntryResponse nextEntryById(context, chainId, entryId)
 
 Get the entry after the supplied entry Id (the next) in the provided chain
 
@@ -566,10 +690,11 @@ OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
 oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 AllApi apiInstance = new AllApi();
+String context = "context_example"; // String | context
 String chainId = "chainId_example"; // String | chainId
 String entryId = "entryId_example"; // String | entryId
 try {
-    AnchoredEntryResponse result = apiInstance.nextEntryById(chainId, entryId);
+    AnchoredEntryResponse result = apiInstance.nextEntryById(context, chainId, entryId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AllApi#nextEntryById");
@@ -581,6 +706,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context |
  **chainId** | **String**| chainId |
  **entryId** | **String**| entryId |
 
@@ -595,11 +721,11 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="nextEntryByRequest"></a>
 # **nextEntryByRequest**
-> AnchoredEntryResponse nextEntryByRequest(chainId, entry)
+> AnchoredEntryResponse nextEntryByRequest(context, chainId, entry)
 
 Get the entry after the supplied entry Id (the next) in the provided chain
 
@@ -619,10 +745,11 @@ OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
 oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 AllApi apiInstance = new AllApi();
+String context = "context_example"; // String | context
 String chainId = "chainId_example"; // String | chainId
 Entry entry = new Entry(); // Entry | Retrieve the entry
 try {
-    AnchoredEntryResponse result = apiInstance.nextEntryByRequest(chainId, entry);
+    AnchoredEntryResponse result = apiInstance.nextEntryByRequest(context, chainId, entry);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AllApi#nextEntryByRequest");
@@ -634,6 +761,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context |
  **chainId** | **String**| chainId |
  **entry** | [**Entry**](Entry.md)| Retrieve the entry |
 
@@ -648,11 +776,11 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="previousEntryById"></a>
 # **previousEntryById**
-> AnchoredEntryResponse previousEntryById(chainId, entryId)
+> AnchoredEntryResponse previousEntryById(context, chainId, entryId)
 
 Get the entry before the supplied entry Id (the previous) in the provided chain
 
@@ -672,10 +800,11 @@ OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
 oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 AllApi apiInstance = new AllApi();
+String context = "context_example"; // String | context
 String chainId = "chainId_example"; // String | chainId
 String entryId = "entryId_example"; // String | entryId
 try {
-    AnchoredEntryResponse result = apiInstance.previousEntryById(chainId, entryId);
+    AnchoredEntryResponse result = apiInstance.previousEntryById(context, chainId, entryId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AllApi#previousEntryById");
@@ -687,6 +816,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context |
  **chainId** | **String**| chainId |
  **entryId** | **String**| entryId |
 
@@ -701,11 +831,11 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="previousEntryByRequest"></a>
 # **previousEntryByRequest**
-> AnchoredEntryResponse previousEntryByRequest(chainId, entry)
+> AnchoredEntryResponse previousEntryByRequest(context, chainId, entry)
 
 Get the entry before the supplied entry Id (the previous) in the provided chain
 
@@ -725,10 +855,11 @@ OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
 oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 AllApi apiInstance = new AllApi();
+String context = "context_example"; // String | context
 String chainId = "chainId_example"; // String | chainId
 Entry entry = new Entry(); // Entry | Retrieve the entry
 try {
-    AnchoredEntryResponse result = apiInstance.previousEntryByRequest(chainId, entry);
+    AnchoredEntryResponse result = apiInstance.previousEntryByRequest(context, chainId, entry);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AllApi#previousEntryByRequest");
@@ -740,6 +871,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context |
  **chainId** | **String**| chainId |
  **entry** | [**Entry**](Entry.md)| Retrieve the entry |
 
@@ -754,5 +886,5 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 

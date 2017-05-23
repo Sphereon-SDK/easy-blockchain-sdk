@@ -60,6 +60,27 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>ApiResponse of IdResponse</returns>
         ApiResponse<IdResponse> ChainIdExistsWithHttpInfo (string context, string chainId);
         /// <summary>
+        /// Create a new backend
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="backend">backend</param>
+        /// <returns>Backend</returns>
+        Backend CreateBackend (Backend backend);
+
+        /// <summary>
+        /// Create a new backend
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="backend">backend</param>
+        /// <returns>ApiResponse of Backend</returns>
+        ApiResponse<Backend> CreateBackendWithHttpInfo (Backend backend);
+        /// <summary>
         /// Create a new chain
         /// </summary>
         /// <remarks>
@@ -89,9 +110,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// 
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entity">entity</param>
+        /// <param name="context">context</param>
         /// <returns>Context</returns>
-        Context CreateContext (Context entity);
+        Context CreateContext (Context context);
 
         /// <summary>
         /// Create a new context
@@ -100,9 +121,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// 
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entity">entity</param>
+        /// <param name="context">context</param>
         /// <returns>ApiResponse of Context</returns>
-        ApiResponse<Context> CreateContextWithHttpInfo (Context entity);
+        ApiResponse<Context> CreateContextWithHttpInfo (Context context);
         /// <summary>
         /// Create a new entry in the provided chain
         /// </summary>
@@ -113,8 +134,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Create a new entry for the specified chain</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>CommittedEntryResponse</returns>
-        CommittedEntryResponse CreateEntry (string context, string chainId, Entry entry);
+        CommittedEntryResponse CreateEntry (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null);
 
         /// <summary>
         /// Create a new entry in the provided chain
@@ -126,8 +148,30 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Create a new entry for the specified chain</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of CommittedEntryResponse</returns>
-        ApiResponse<CommittedEntryResponse> CreateEntryWithHttpInfo (string context, string chainId, Entry entry);
+        ApiResponse<CommittedEntryResponse> CreateEntryWithHttpInfo (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null);
+        /// <summary>
+        /// Delete backend by id (not by ledgername)
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="backendId">backendId</param>
+        /// <returns></returns>
+        void DeleteBackend (string backendId);
+
+        /// <summary>
+        /// Delete backend by id (not by ledgername)
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="backendId">backendId</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteBackendWithHttpInfo (string backendId);
         /// <summary>
         /// Pre determine the Id of a chain request without anchoring it in the blockchain
         /// </summary>
@@ -190,8 +234,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        AnchoredEntryResponse EntryById (string context, string chainId, string entryId);
+        AnchoredEntryResponse EntryById (string context, string chainId, string entryId, DateTime? currentAnchorTime = null);
 
         /// <summary>
         /// Get an existing entry in the provided chain
@@ -203,8 +248,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        ApiResponse<AnchoredEntryResponse> EntryByIdWithHttpInfo (string context, string chainId, string entryId);
+        ApiResponse<AnchoredEntryResponse> EntryByIdWithHttpInfo (string context, string chainId, string entryId, DateTime? currentAnchorTime = null);
         /// <summary>
         /// Get an existing entry in the provided chain
         /// </summary>
@@ -215,8 +261,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        AnchoredEntryResponse EntryByRequest (string context, string chainId, Entry entry);
+        AnchoredEntryResponse EntryByRequest (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null);
 
         /// <summary>
         /// Get an existing entry in the provided chain
@@ -228,8 +275,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        ApiResponse<AnchoredEntryResponse> EntryByRequestWithHttpInfo (string context, string chainId, Entry entry);
+        ApiResponse<AnchoredEntryResponse> EntryByRequestWithHttpInfo (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null);
         /// <summary>
         /// Determine whether the Id of an entry exists in the blockchain
         /// </summary>
@@ -256,7 +304,30 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>ApiResponse of IdResponse</returns>
         ApiResponse<IdResponse> EntryIdExistsWithHttpInfo (string context, string chainId, string entryId);
         /// <summary>
-        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+        /// Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="backendId">backendId</param>
+        /// <param name="includePublic">includePublic (optional, default to false)</param>
+        /// <returns>List&lt;Backend&gt;</returns>
+        List<Backend> FindBackends (string backendId, bool? includePublic = null);
+
+        /// <summary>
+        /// Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="backendId">backendId</param>
+        /// <param name="includePublic">includePublic (optional, default to false)</param>
+        /// <returns>ApiResponse of List&lt;Backend&gt;</returns>
+        ApiResponse<List<Backend>> FindBackendsWithHttpInfo (string backendId, bool? includePublic = null);
+        /// <summary>
+        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
         /// </summary>
         /// <remarks>
         /// 
@@ -268,7 +339,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         AnchoredEntryResponse FirstEntry (string context, string chainId);
 
         /// <summary>
-        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
         /// </summary>
         /// <remarks>
         /// 
@@ -279,7 +350,30 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
         ApiResponse<AnchoredEntryResponse> FirstEntryWithHttpInfo (string context, string chainId);
         /// <summary>
-        /// Create a new context
+        /// Get existing backend by id (not by ledgername). Optionally including public backend of others
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="backendId">backendId</param>
+        /// <param name="includePublic">includePublic (optional, default to false)</param>
+        /// <returns>Backend</returns>
+        Backend GetBackend (string backendId, bool? includePublic = null);
+
+        /// <summary>
+        /// Get existing backend by id (not by ledgername). Optionally including public backend of others
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="backendId">backendId</param>
+        /// <param name="includePublic">includePublic (optional, default to false)</param>
+        /// <returns>ApiResponse of Backend</returns>
+        ApiResponse<Backend> GetBackendWithHttpInfo (string backendId, bool? includePublic = null);
+        /// <summary>
+        /// Get an existing context
         /// </summary>
         /// <remarks>
         /// 
@@ -290,7 +384,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         Context GetContext (string context);
 
         /// <summary>
-        /// Create a new context
+        /// Get an existing context
         /// </summary>
         /// <remarks>
         /// 
@@ -300,7 +394,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>ApiResponse of Context</returns>
         ApiResponse<Context> GetContextWithHttpInfo (string context);
         /// <summary>
-        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head
+        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
         /// </summary>
         /// <remarks>
         /// 
@@ -312,7 +406,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         AnchoredEntryResponse LastEntry (string context, string chainId);
 
         /// <summary>
-        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head
+        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
         /// </summary>
         /// <remarks>
         /// 
@@ -323,6 +417,25 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
         ApiResponse<AnchoredEntryResponse> LastEntryWithHttpInfo (string context, string chainId);
         /// <summary>
+        /// List existing backends.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>List&lt;Backend&gt;</returns>
+        List<Backend> ListBackends ();
+
+        /// <summary>
+        /// List existing backends.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of List&lt;Backend&gt;</returns>
+        ApiResponse<List<Backend>> ListBackendsWithHttpInfo ();
+        /// <summary>
         /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <remarks>
@@ -332,8 +445,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        AnchoredEntryResponse NextEntryById (string context, string chainId, string entryId);
+        AnchoredEntryResponse NextEntryById (string context, string chainId, string entryId, DateTime? currentAnchorTime = null);
 
         /// <summary>
         /// Get the entry after the supplied entry Id (the next) in the provided chain
@@ -345,8 +459,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        ApiResponse<AnchoredEntryResponse> NextEntryByIdWithHttpInfo (string context, string chainId, string entryId);
+        ApiResponse<AnchoredEntryResponse> NextEntryByIdWithHttpInfo (string context, string chainId, string entryId, DateTime? currentAnchorTime = null);
         /// <summary>
         /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
@@ -357,8 +472,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        AnchoredEntryResponse NextEntryByRequest (string context, string chainId, Entry entry);
+        AnchoredEntryResponse NextEntryByRequest (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null);
 
         /// <summary>
         /// Get the entry after the supplied entry Id (the next) in the provided chain
@@ -370,8 +486,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        ApiResponse<AnchoredEntryResponse> NextEntryByRequestWithHttpInfo (string context, string chainId, Entry entry);
+        ApiResponse<AnchoredEntryResponse> NextEntryByRequestWithHttpInfo (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null);
         /// <summary>
         /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
@@ -382,8 +499,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        AnchoredEntryResponse PreviousEntryById (string context, string chainId, string entryId);
+        AnchoredEntryResponse PreviousEntryById (string context, string chainId, string entryId, DateTime? currentAnchorTime = null);
 
         /// <summary>
         /// Get the entry before the supplied entry Id (the previous) in the provided chain
@@ -395,8 +513,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        ApiResponse<AnchoredEntryResponse> PreviousEntryByIdWithHttpInfo (string context, string chainId, string entryId);
+        ApiResponse<AnchoredEntryResponse> PreviousEntryByIdWithHttpInfo (string context, string chainId, string entryId, DateTime? currentAnchorTime = null);
         /// <summary>
         /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
@@ -407,8 +526,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        AnchoredEntryResponse PreviousEntryByRequest (string context, string chainId, Entry entry);
+        AnchoredEntryResponse PreviousEntryByRequest (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null);
 
         /// <summary>
         /// Get the entry before the supplied entry Id (the previous) in the provided chain
@@ -420,8 +540,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        ApiResponse<AnchoredEntryResponse> PreviousEntryByRequestWithHttpInfo (string context, string chainId, Entry entry);
+        ApiResponse<AnchoredEntryResponse> PreviousEntryByRequestWithHttpInfo (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null);
         #endregion Synchronous Operations
     }
 
@@ -618,6 +739,90 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
+        /// Create a new backend 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="backend">backend</param>
+        /// <returns>Backend</returns>
+        public Backend CreateBackend (Backend backend)
+        {
+             ApiResponse<Backend> localVarResponse = CreateBackendWithHttpInfo(backend);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create a new backend 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="backend">backend</param>
+        /// <returns>ApiResponse of Backend</returns>
+        public ApiResponse< Backend > CreateBackendWithHttpInfo (Backend backend)
+        {
+            // verify the required parameter 'backend' is set
+            if (backend == null)
+                throw new ApiException(400, "Missing required parameter 'backend' when calling AllApi->CreateBackend");
+
+            var localVarPath = "/blockchain/easy/0.9.1/backends";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=UTF-8"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=UTF-8"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (backend != null && backend.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(backend); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = backend; // byte array
+            }
+
+            // authentication (oauth2schema) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CreateBackend", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Backend>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Backend) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Backend)));
+            
+        }
+
+        /// <summary>
         /// Create a new chain 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
@@ -711,11 +916,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Create a new context 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entity">entity</param>
+        /// <param name="context">context</param>
         /// <returns>Context</returns>
-        public Context CreateContext (Context entity)
+        public Context CreateContext (Context context)
         {
-             ApiResponse<Context> localVarResponse = CreateContextWithHttpInfo(entity);
+             ApiResponse<Context> localVarResponse = CreateContextWithHttpInfo(context);
              return localVarResponse.Data;
         }
 
@@ -723,13 +928,13 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Create a new context 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entity">entity</param>
+        /// <param name="context">context</param>
         /// <returns>ApiResponse of Context</returns>
-        public ApiResponse< Context > CreateContextWithHttpInfo (Context entity)
+        public ApiResponse< Context > CreateContextWithHttpInfo (Context context)
         {
-            // verify the required parameter 'entity' is set
-            if (entity == null)
-                throw new ApiException(400, "Missing required parameter 'entity' when calling AllApi->CreateContext");
+            // verify the required parameter 'context' is set
+            if (context == null)
+                throw new ApiException(400, "Missing required parameter 'context' when calling AllApi->CreateContext");
 
             var localVarPath = "/blockchain/easy/0.9.1/";
             var localVarPathParams = new Dictionary<String, String>();
@@ -756,13 +961,13 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (entity != null && entity.GetType() != typeof(byte[]))
+            if (context != null && context.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(entity); // http body (model) parameter
+                localVarPostBody = Configuration.ApiClient.Serialize(context); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = entity; // byte array
+                localVarPostBody = context; // byte array
             }
 
             // authentication (oauth2schema) required
@@ -798,10 +1003,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Create a new entry for the specified chain</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>CommittedEntryResponse</returns>
-        public CommittedEntryResponse CreateEntry (string context, string chainId, Entry entry)
+        public CommittedEntryResponse CreateEntry (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null)
         {
-             ApiResponse<CommittedEntryResponse> localVarResponse = CreateEntryWithHttpInfo(context, chainId, entry);
+             ApiResponse<CommittedEntryResponse> localVarResponse = CreateEntryWithHttpInfo(context, chainId, entry, currentAnchorTime);
              return localVarResponse.Data;
         }
 
@@ -812,8 +1018,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Create a new entry for the specified chain</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of CommittedEntryResponse</returns>
-        public ApiResponse< CommittedEntryResponse > CreateEntryWithHttpInfo (string context, string chainId, Entry entry)
+        public ApiResponse< CommittedEntryResponse > CreateEntryWithHttpInfo (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null)
         {
             // verify the required parameter 'context' is set
             if (context == null)
@@ -852,6 +1059,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             localVarPathParams.Add("format", "json");
             if (context != null) localVarPathParams.Add("context", Configuration.ApiClient.ParameterToString(context)); // path parameter
             if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
+            if (currentAnchorTime != null) localVarQueryParams.Add("currentAnchorTime", Configuration.ApiClient.ParameterToString(currentAnchorTime)); // query parameter
             if (entry != null && entry.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(entry); // http body (model) parameter
@@ -885,6 +1093,82 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (CommittedEntryResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(CommittedEntryResponse)));
             
+        }
+
+        /// <summary>
+        /// Delete backend by id (not by ledgername) 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="backendId">backendId</param>
+        /// <returns></returns>
+        public void DeleteBackend (string backendId)
+        {
+             DeleteBackendWithHttpInfo(backendId);
+        }
+
+        /// <summary>
+        /// Delete backend by id (not by ledgername) 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="backendId">backendId</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> DeleteBackendWithHttpInfo (string backendId)
+        {
+            // verify the required parameter 'backendId' is set
+            if (backendId == null)
+                throw new ApiException(400, "Missing required parameter 'backendId' when calling AllApi->DeleteBackend");
+
+            var localVarPath = "/blockchain/easy/0.9.1/backends/{backendId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "*_/_*"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (backendId != null) localVarPathParams.Add("backendId", Configuration.ApiClient.ParameterToString(backendId)); // path parameter
+
+            // authentication (oauth2schema) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteBackend", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
         }
 
         /// <summary>
@@ -1086,10 +1370,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        public AnchoredEntryResponse EntryById (string context, string chainId, string entryId)
+        public AnchoredEntryResponse EntryById (string context, string chainId, string entryId, DateTime? currentAnchorTime = null)
         {
-             ApiResponse<AnchoredEntryResponse> localVarResponse = EntryByIdWithHttpInfo(context, chainId, entryId);
+             ApiResponse<AnchoredEntryResponse> localVarResponse = EntryByIdWithHttpInfo(context, chainId, entryId, currentAnchorTime);
              return localVarResponse.Data;
         }
 
@@ -1100,8 +1385,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        public ApiResponse< AnchoredEntryResponse > EntryByIdWithHttpInfo (string context, string chainId, string entryId)
+        public ApiResponse< AnchoredEntryResponse > EntryByIdWithHttpInfo (string context, string chainId, string entryId, DateTime? currentAnchorTime = null)
         {
             // verify the required parameter 'context' is set
             if (context == null)
@@ -1141,6 +1427,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (context != null) localVarPathParams.Add("context", Configuration.ApiClient.ParameterToString(context)); // path parameter
             if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
             if (entryId != null) localVarPathParams.Add("entryId", Configuration.ApiClient.ParameterToString(entryId)); // path parameter
+            if (currentAnchorTime != null) localVarQueryParams.Add("currentAnchorTime", Configuration.ApiClient.ParameterToString(currentAnchorTime)); // query parameter
 
             // authentication (oauth2schema) required
             // oauth required
@@ -1175,10 +1462,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        public AnchoredEntryResponse EntryByRequest (string context, string chainId, Entry entry)
+        public AnchoredEntryResponse EntryByRequest (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null)
         {
-             ApiResponse<AnchoredEntryResponse> localVarResponse = EntryByRequestWithHttpInfo(context, chainId, entry);
+             ApiResponse<AnchoredEntryResponse> localVarResponse = EntryByRequestWithHttpInfo(context, chainId, entry, currentAnchorTime);
              return localVarResponse.Data;
         }
 
@@ -1189,8 +1477,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        public ApiResponse< AnchoredEntryResponse > EntryByRequestWithHttpInfo (string context, string chainId, Entry entry)
+        public ApiResponse< AnchoredEntryResponse > EntryByRequestWithHttpInfo (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null)
         {
             // verify the required parameter 'context' is set
             if (context == null)
@@ -1229,6 +1518,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             localVarPathParams.Add("format", "json");
             if (context != null) localVarPathParams.Add("context", Configuration.ApiClient.ParameterToString(context)); // path parameter
             if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
+            if (currentAnchorTime != null) localVarQueryParams.Add("currentAnchorTime", Configuration.ApiClient.ParameterToString(currentAnchorTime)); // query parameter
             if (entry != null && entry.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(entry); // http body (model) parameter
@@ -1354,7 +1644,87 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail 
+        /// Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="backendId">backendId</param>
+        /// <param name="includePublic">includePublic (optional, default to false)</param>
+        /// <returns>List&lt;Backend&gt;</returns>
+        public List<Backend> FindBackends (string backendId, bool? includePublic = null)
+        {
+             ApiResponse<List<Backend>> localVarResponse = FindBackendsWithHttpInfo(backendId, includePublic);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="backendId">backendId</param>
+        /// <param name="includePublic">includePublic (optional, default to false)</param>
+        /// <returns>ApiResponse of List&lt;Backend&gt;</returns>
+        public ApiResponse< List<Backend> > FindBackendsWithHttpInfo (string backendId, bool? includePublic = null)
+        {
+            // verify the required parameter 'backendId' is set
+            if (backendId == null)
+                throw new ApiException(400, "Missing required parameter 'backendId' when calling AllApi->FindBackends");
+
+            var localVarPath = "/blockchain/easy/0.9.1/backends/{backendId}/find";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=UTF-8"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (backendId != null) localVarPathParams.Add("backendId", Configuration.ApiClient.ParameterToString(backendId)); // path parameter
+            if (includePublic != null) localVarQueryParams.Add("includePublic", Configuration.ApiClient.ParameterToString(includePublic)); // query parameter
+
+            // authentication (oauth2schema) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("FindBackends", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<Backend>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<Backend>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Backend>)));
+            
+        }
+
+        /// <summary>
+        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1367,7 +1737,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail 
+        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1437,7 +1807,87 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new context 
+        /// Get existing backend by id (not by ledgername). Optionally including public backend of others 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="backendId">backendId</param>
+        /// <param name="includePublic">includePublic (optional, default to false)</param>
+        /// <returns>Backend</returns>
+        public Backend GetBackend (string backendId, bool? includePublic = null)
+        {
+             ApiResponse<Backend> localVarResponse = GetBackendWithHttpInfo(backendId, includePublic);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get existing backend by id (not by ledgername). Optionally including public backend of others 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="backendId">backendId</param>
+        /// <param name="includePublic">includePublic (optional, default to false)</param>
+        /// <returns>ApiResponse of Backend</returns>
+        public ApiResponse< Backend > GetBackendWithHttpInfo (string backendId, bool? includePublic = null)
+        {
+            // verify the required parameter 'backendId' is set
+            if (backendId == null)
+                throw new ApiException(400, "Missing required parameter 'backendId' when calling AllApi->GetBackend");
+
+            var localVarPath = "/blockchain/easy/0.9.1/backends/{backendId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=UTF-8"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (backendId != null) localVarPathParams.Add("backendId", Configuration.ApiClient.ParameterToString(backendId)); // path parameter
+            if (includePublic != null) localVarQueryParams.Add("includePublic", Configuration.ApiClient.ParameterToString(includePublic)); // query parameter
+
+            // authentication (oauth2schema) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetBackend", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Backend>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Backend) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Backend)));
+            
+        }
+
+        /// <summary>
+        /// Get an existing context 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1449,7 +1899,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new context 
+        /// Get an existing context 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1514,7 +1964,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head 
+        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1527,7 +1977,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head 
+        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1597,16 +2047,88 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
+        /// List existing backends. 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>List&lt;Backend&gt;</returns>
+        public List<Backend> ListBackends ()
+        {
+             ApiResponse<List<Backend>> localVarResponse = ListBackendsWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List existing backends. 
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of List&lt;Backend&gt;</returns>
+        public ApiResponse< List<Backend> > ListBackendsWithHttpInfo ()
+        {
+
+            var localVarPath = "/blockchain/easy/0.9.1/backends";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=UTF-8"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+
+            // authentication (oauth2schema) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ListBackends", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<Backend>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<Backend>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Backend>)));
+            
+        }
+
+        /// <summary>
         /// Get the entry after the supplied entry Id (the next) in the provided chain 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        public AnchoredEntryResponse NextEntryById (string context, string chainId, string entryId)
+        public AnchoredEntryResponse NextEntryById (string context, string chainId, string entryId, DateTime? currentAnchorTime = null)
         {
-             ApiResponse<AnchoredEntryResponse> localVarResponse = NextEntryByIdWithHttpInfo(context, chainId, entryId);
+             ApiResponse<AnchoredEntryResponse> localVarResponse = NextEntryByIdWithHttpInfo(context, chainId, entryId, currentAnchorTime);
              return localVarResponse.Data;
         }
 
@@ -1617,8 +2139,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        public ApiResponse< AnchoredEntryResponse > NextEntryByIdWithHttpInfo (string context, string chainId, string entryId)
+        public ApiResponse< AnchoredEntryResponse > NextEntryByIdWithHttpInfo (string context, string chainId, string entryId, DateTime? currentAnchorTime = null)
         {
             // verify the required parameter 'context' is set
             if (context == null)
@@ -1658,6 +2181,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (context != null) localVarPathParams.Add("context", Configuration.ApiClient.ParameterToString(context)); // path parameter
             if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
             if (entryId != null) localVarPathParams.Add("entryId", Configuration.ApiClient.ParameterToString(entryId)); // path parameter
+            if (currentAnchorTime != null) localVarQueryParams.Add("currentAnchorTime", Configuration.ApiClient.ParameterToString(currentAnchorTime)); // query parameter
 
             // authentication (oauth2schema) required
             // oauth required
@@ -1692,10 +2216,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        public AnchoredEntryResponse NextEntryByRequest (string context, string chainId, Entry entry)
+        public AnchoredEntryResponse NextEntryByRequest (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null)
         {
-             ApiResponse<AnchoredEntryResponse> localVarResponse = NextEntryByRequestWithHttpInfo(context, chainId, entry);
+             ApiResponse<AnchoredEntryResponse> localVarResponse = NextEntryByRequestWithHttpInfo(context, chainId, entry, currentAnchorTime);
              return localVarResponse.Data;
         }
 
@@ -1706,8 +2231,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        public ApiResponse< AnchoredEntryResponse > NextEntryByRequestWithHttpInfo (string context, string chainId, Entry entry)
+        public ApiResponse< AnchoredEntryResponse > NextEntryByRequestWithHttpInfo (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null)
         {
             // verify the required parameter 'context' is set
             if (context == null)
@@ -1746,6 +2272,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             localVarPathParams.Add("format", "json");
             if (context != null) localVarPathParams.Add("context", Configuration.ApiClient.ParameterToString(context)); // path parameter
             if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
+            if (currentAnchorTime != null) localVarQueryParams.Add("currentAnchorTime", Configuration.ApiClient.ParameterToString(currentAnchorTime)); // query parameter
             if (entry != null && entry.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(entry); // http body (model) parameter
@@ -1788,10 +2315,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        public AnchoredEntryResponse PreviousEntryById (string context, string chainId, string entryId)
+        public AnchoredEntryResponse PreviousEntryById (string context, string chainId, string entryId, DateTime? currentAnchorTime = null)
         {
-             ApiResponse<AnchoredEntryResponse> localVarResponse = PreviousEntryByIdWithHttpInfo(context, chainId, entryId);
+             ApiResponse<AnchoredEntryResponse> localVarResponse = PreviousEntryByIdWithHttpInfo(context, chainId, entryId, currentAnchorTime);
              return localVarResponse.Data;
         }
 
@@ -1802,8 +2330,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        public ApiResponse< AnchoredEntryResponse > PreviousEntryByIdWithHttpInfo (string context, string chainId, string entryId)
+        public ApiResponse< AnchoredEntryResponse > PreviousEntryByIdWithHttpInfo (string context, string chainId, string entryId, DateTime? currentAnchorTime = null)
         {
             // verify the required parameter 'context' is set
             if (context == null)
@@ -1843,6 +2372,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (context != null) localVarPathParams.Add("context", Configuration.ApiClient.ParameterToString(context)); // path parameter
             if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
             if (entryId != null) localVarPathParams.Add("entryId", Configuration.ApiClient.ParameterToString(entryId)); // path parameter
+            if (currentAnchorTime != null) localVarQueryParams.Add("currentAnchorTime", Configuration.ApiClient.ParameterToString(currentAnchorTime)); // query parameter
 
             // authentication (oauth2schema) required
             // oauth required
@@ -1877,10 +2407,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        public AnchoredEntryResponse PreviousEntryByRequest (string context, string chainId, Entry entry)
+        public AnchoredEntryResponse PreviousEntryByRequest (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null)
         {
-             ApiResponse<AnchoredEntryResponse> localVarResponse = PreviousEntryByRequestWithHttpInfo(context, chainId, entry);
+             ApiResponse<AnchoredEntryResponse> localVarResponse = PreviousEntryByRequestWithHttpInfo(context, chainId, entry, currentAnchorTime);
              return localVarResponse.Data;
         }
 
@@ -1891,8 +2422,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
+        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        public ApiResponse< AnchoredEntryResponse > PreviousEntryByRequestWithHttpInfo (string context, string chainId, Entry entry)
+        public ApiResponse< AnchoredEntryResponse > PreviousEntryByRequestWithHttpInfo (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null)
         {
             // verify the required parameter 'context' is set
             if (context == null)
@@ -1931,6 +2463,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             localVarPathParams.Add("format", "json");
             if (context != null) localVarPathParams.Add("context", Configuration.ApiClient.ParameterToString(context)); // path parameter
             if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
+            if (currentAnchorTime != null) localVarQueryParams.Add("currentAnchorTime", Configuration.ApiClient.ParameterToString(currentAnchorTime)); // query parameter
             if (entry != null && entry.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(entry); // http body (model) parameter

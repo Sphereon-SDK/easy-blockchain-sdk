@@ -92,7 +92,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Backend" /> class.
         /// </summary>
-        /// <param name="Owner">Owner.</param>
         /// <param name="RpcProviders">RpcProviders.</param>
         /// <param name="ApiVersion">ApiVersion.</param>
         /// <param name="LedgerName">LedgerName.</param>
@@ -100,10 +99,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         /// <param name="Start">Start.</param>
         /// <param name="End">End.</param>
         /// <param name="DataStructure">DataStructure.</param>
-        /// <param name="Id">Id.</param>
-        public Backend(string Owner = null, List<RpcProvider> RpcProviders = null, int? ApiVersion = null, string LedgerName = null, ImplementationEnum? Implementation = null, DateTime? Start = null, DateTime? End = null, DataStructureEnum? DataStructure = null, string Id = null)
+        /// <param name="ExternalAccess">ExternalAccess.</param>
+        public Backend(List<RpcProvider> RpcProviders = null, int? ApiVersion = null, string LedgerName = null, ImplementationEnum? Implementation = null, DateTime? Start = null, DateTime? End = null, DataStructureEnum? DataStructure = null, Access ExternalAccess = null)
         {
-            this.Owner = Owner;
             this.RpcProviders = RpcProviders;
             this.ApiVersion = ApiVersion;
             this.LedgerName = LedgerName;
@@ -111,14 +109,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             this.Start = Start;
             this.End = End;
             this.DataStructure = DataStructure;
-            this.Id = Id;
+            this.ExternalAccess = ExternalAccess;
         }
         
-        /// <summary>
-        /// Gets or Sets Owner
-        /// </summary>
-        [DataMember(Name="owner", EmitDefaultValue=false)]
-        public string Owner { get; set; }
         /// <summary>
         /// Gets or Sets RpcProviders
         /// </summary>
@@ -148,7 +141,12 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public string Id { get; set; }
+        public string Id { get; private set; }
+        /// <summary>
+        /// Gets or Sets ExternalAccess
+        /// </summary>
+        [DataMember(Name="externalAccess", EmitDefaultValue=false)]
+        public Access ExternalAccess { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -157,7 +155,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Backend {\n");
-            sb.Append("  Owner: ").Append(Owner).Append("\n");
             sb.Append("  RpcProviders: ").Append(RpcProviders).Append("\n");
             sb.Append("  ApiVersion: ").Append(ApiVersion).Append("\n");
             sb.Append("  LedgerName: ").Append(LedgerName).Append("\n");
@@ -166,6 +163,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             sb.Append("  End: ").Append(End).Append("\n");
             sb.Append("  DataStructure: ").Append(DataStructure).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  ExternalAccess: ").Append(ExternalAccess).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -202,11 +200,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                 return false;
 
             return 
-                (
-                    this.Owner == other.Owner ||
-                    this.Owner != null &&
-                    this.Owner.Equals(other.Owner)
-                ) && 
                 (
                     this.RpcProviders == other.RpcProviders ||
                     this.RpcProviders != null &&
@@ -246,6 +239,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                     this.Id == other.Id ||
                     this.Id != null &&
                     this.Id.Equals(other.Id)
+                ) && 
+                (
+                    this.ExternalAccess == other.ExternalAccess ||
+                    this.ExternalAccess != null &&
+                    this.ExternalAccess.Equals(other.ExternalAccess)
                 );
         }
 
@@ -260,8 +258,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Owner != null)
-                    hash = hash * 59 + this.Owner.GetHashCode();
                 if (this.RpcProviders != null)
                     hash = hash * 59 + this.RpcProviders.GetHashCode();
                 if (this.ApiVersion != null)
@@ -278,6 +274,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                     hash = hash * 59 + this.DataStructure.GetHashCode();
                 if (this.Id != null)
                     hash = hash * 59 + this.Id.GetHashCode();
+                if (this.ExternalAccess != null)
+                    hash = hash * 59 + this.ExternalAccess.GetHashCode();
                 return hash;
             }
         }

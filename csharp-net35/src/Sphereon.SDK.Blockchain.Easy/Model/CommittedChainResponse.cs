@@ -66,18 +66,25 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         /// </summary>
         [DataMember(Name="chain", EmitDefaultValue=false)]
         public CommittedChain Chain { get; set; }
+
         /// <summary>
         /// The time at which the chain was first committed in ISO 8601 format
         /// </summary>
         /// <value>The time at which the chain was first committed in ISO 8601 format</value>
         [DataMember(Name="commitTime", EmitDefaultValue=false)]
-        public DateTime? CommitTime { get; private set; }
+        internal string CommitTimeRaw { get; }
+        public DateTime? CommitTime => RestDateTimeParser.Parse(CommitTimeRaw);
+
+
         /// <summary>
         /// The time at which the chain creation was first requested in ISO 8601 format
         /// </summary>
         /// <value>The time at which the chain creation was first requested in ISO 8601 format</value>
         [DataMember(Name="creationRequestTime", EmitDefaultValue=false)]
-        public DateTime? CreationRequestTime { get; private set; }
+        internal string CreationRequestTimeRaw { get; }
+
+        public DateTime? CreationRequestTime => RestDateTimeParser.Parse(CreationRequestTimeRaw);
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
