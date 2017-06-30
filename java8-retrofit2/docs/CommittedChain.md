@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 Name | Value
 ---- | -----
 FACTOM | &quot;Factom&quot;
+MULTICHAIN | &quot;Multichain&quot;
 
 
 <a name="BlockchainImplementationEnum"></a>
@@ -22,6 +23,7 @@ FACTOM | &quot;Factom&quot;
 Name | Value
 ---- | -----
 BITCOIN | &quot;Bitcoin&quot;
+NONE | &quot;None&quot;
 
 
 

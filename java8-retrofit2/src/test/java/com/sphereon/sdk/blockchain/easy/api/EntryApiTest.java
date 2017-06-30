@@ -3,7 +3,7 @@ package com.sphereon.sdk.blockchain.easy.api;
 import com.sphereon.sdk.blockchain.easy.handler.ApiClient;
 import com.sphereon.sdk.blockchain.easy.model.CommittedEntryResponse;
 import com.sphereon.sdk.blockchain.easy.model.Entry;
-import com.sphereon.sdk.blockchain.easy.model.VndErrors;
+import com.sphereon.sdk.blockchain.easy.model.ErrorResponse;
 import com.sphereon.sdk.blockchain.easy.model.AnchoredEntryResponse;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,9 +33,10 @@ public class EntryApiTest {
      */
     @Test
     public void createEntryTest() {
+        String context = null;
         String chainId = null;
         Entry entry = null;
-        // CommittedEntryResponse response = api.createEntry(chainId, entry);
+        // CommittedEntryResponse response = api.createEntry(context, chainId, entry);
 
         // TODO: test validations
     }
@@ -47,9 +48,10 @@ public class EntryApiTest {
      */
     @Test
     public void entryByIdTest() {
+        String context = null;
         String chainId = null;
         String entryId = null;
-        // AnchoredEntryResponse response = api.entryById(chainId, entryId);
+        // AnchoredEntryResponse response = api.entryById(context, chainId, entryId);
 
         // TODO: test validations
     }
@@ -61,9 +63,10 @@ public class EntryApiTest {
      */
     @Test
     public void entryByRequestTest() {
+        String context = null;
         String chainId = null;
         Entry entry = null;
-        // AnchoredEntryResponse response = api.entryByRequest(chainId, entry);
+        // AnchoredEntryResponse response = api.entryByRequest(context, chainId, entry);
 
         // TODO: test validations
     }
@@ -75,8 +78,9 @@ public class EntryApiTest {
      */
     @Test
     public void firstEntryTest() {
+        String context = null;
         String chainId = null;
-        // AnchoredEntryResponse response = api.firstEntry(chainId);
+        // AnchoredEntryResponse response = api.firstEntry(context, chainId);
 
         // TODO: test validations
     }
@@ -88,8 +92,9 @@ public class EntryApiTest {
      */
     @Test
     public void lastEntryTest() {
+        String context = null;
         String chainId = null;
-        // AnchoredEntryResponse response = api.lastEntry(chainId);
+        // AnchoredEntryResponse response = api.lastEntry(context, chainId);
 
         // TODO: test validations
     }
@@ -101,9 +106,10 @@ public class EntryApiTest {
      */
     @Test
     public void nextEntryByIdTest() {
+        String context = null;
         String chainId = null;
         String entryId = null;
-        // AnchoredEntryResponse response = api.nextEntryById(chainId, entryId);
+        // AnchoredEntryResponse response = api.nextEntryById(context, chainId, entryId);
 
         // TODO: test validations
     }
@@ -115,9 +121,10 @@ public class EntryApiTest {
      */
     @Test
     public void nextEntryByRequestTest() {
+        String context = null;
         String chainId = null;
         Entry entry = null;
-        // AnchoredEntryResponse response = api.nextEntryByRequest(chainId, entry);
+        // AnchoredEntryResponse response = api.nextEntryByRequest(context, chainId, entry);
 
         // TODO: test validations
     }
@@ -129,9 +136,10 @@ public class EntryApiTest {
      */
     @Test
     public void previousEntryByIdTest() {
+        String context = null;
         String chainId = null;
         String entryId = null;
-        // AnchoredEntryResponse response = api.previousEntryById(chainId, entryId);
+        // AnchoredEntryResponse response = api.previousEntryById(context, chainId, entryId);
 
         // TODO: test validations
     }
@@ -143,9 +151,10 @@ public class EntryApiTest {
      */
     @Test
     public void previousEntryByRequestTest() {
+        String context = null;
         String chainId = null;
         Entry entry = null;
-        // AnchoredEntryResponse response = api.previousEntryByRequest(chainId, entry);
+        // AnchoredEntryResponse response = api.previousEntryByRequest(context, chainId, entry);
 
         // TODO: test validations
     }

@@ -5,7 +5,7 @@
   <artifactId>blockchain-easy-sdk-java8-jersey2</artifactId>
   <packaging>jar</packaging>
   <name>blockchain-easy-sdk-java8-jersey2</name>
-  <version>0.1.0</version>
+  <version>0.9.1</version>
   <scm>
     <connection>scm:git:git@github.com:swagger-api/swagger-mustache.git</connection>
     <developerConnection>scm:git:git@github.com:swagger-api/swagger-codegen.git</developerConnection>
@@ -14,13 +14,6 @@
   <prerequisites>
     <maven>2.2.0</maven>
   </prerequisites>
-
-  <distributionManagement>
-    <repository>
-      <id>sphereon-sdk</id>
-      <url>http://nexus.qa.sphereon.com/nexus/content/repositories/sphereon-sdk</url>
-    </repository>
-  </distributionManagement>
 
   <build>
     <plugins>
@@ -110,6 +103,11 @@
           <source>1.8</source>
           <target>1.8</target>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.10.4</version>
       </plugin>
     </plugins>
   </build>

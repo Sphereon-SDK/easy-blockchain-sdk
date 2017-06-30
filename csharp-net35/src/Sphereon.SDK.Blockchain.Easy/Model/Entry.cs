@@ -50,7 +50,13 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             /// Enum Factom for "Factom"
             /// </summary>
             [EnumMember(Value = "Factom")]
-            Factom
+            Factom,
+            
+            /// <summary>
+            /// Enum Multichain for "Multichain"
+            /// </summary>
+            [EnumMember(Value = "Multichain")]
+            Multichain
         }
 
         /// <summary>
