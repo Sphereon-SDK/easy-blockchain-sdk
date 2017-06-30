@@ -34,55 +34,19 @@ using Newtonsoft.Json.Converters;
 namespace Sphereon.SDK.Blockchain.Easy.Model
 {
     /// <summary>
-    /// Committed EntryData response
+    /// RawBackendStructure
     /// </summary>
     [DataContract]
-    public partial class CommittedEntryResponse :  IEquatable<CommittedEntryResponse>
+    public partial class RawBackendStructure :  IEquatable<RawBackendStructure>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CommittedEntryResponse" /> class.
+        /// Initializes a new instance of the <see cref="RawBackendStructure" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected CommittedEntryResponse() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CommittedEntryResponse" /> class.
-        /// </summary>
-        /// <param name="Entry">Entry (required).</param>
-        public CommittedEntryResponse(CommittedEntry Entry = null)
+        public RawBackendStructure()
         {
-            // to ensure "Entry" is required (not null)
-            if (Entry == null)
-            {
-                throw new InvalidDataException("Entry is a required property for CommittedEntryResponse and cannot be null");
-            }
-            else
-            {
-                this.Entry = Entry;
-            }
         }
         
-        /// <summary>
-        /// Gets or Sets Entry
-        /// </summary>
-        [DataMember(Name="entry", EmitDefaultValue=false)]
-        public CommittedEntry Entry { get; set; }
-        /// <summary>
-        /// The time at which the entry creation was first requested in ISO 8601 format
-        /// </summary>
-        /// <value>The time at which the entry creation was first requested in ISO 8601 format</value>
-        [DataMember(Name="commitTime", EmitDefaultValue=false)]
-        internal string CommitTimeRaw { get; }
-        public DateTime? CommitTime => RestDateTimeParser.Parse(CommitTimeRaw);
-        
-        /// <summary>
-        /// The time at which the entry creation was first requested in ISO 8601 format
-        /// </summary>
-        /// <value>The time at which the entry creation was first requested in ISO 8601 format</value>
-        [DataMember(Name="creationRequestTime", EmitDefaultValue=false)]
-        internal string CreationRequestTimeRaw { get; }
-
-        public DateTime? CreationRequestTime => RestDateTimeParser.Parse(CreationRequestTimeRaw);
-
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -90,10 +54,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class CommittedEntryResponse {\n");
-            sb.Append("  Entry: ").Append(Entry).Append("\n");
-            sb.Append("  CommitTime: ").Append(CommitTime).Append("\n");
-            sb.Append("  CreationRequestTime: ").Append(CreationRequestTime).Append("\n");
+            sb.Append("class RawBackendStructure {\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -115,36 +76,21 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as CommittedEntryResponse);
+            return this.Equals(obj as RawBackendStructure);
         }
 
         /// <summary>
-        /// Returns true if CommittedEntryResponse instances are equal
+        /// Returns true if RawBackendStructure instances are equal
         /// </summary>
-        /// <param name="other">Instance of CommittedEntryResponse to be compared</param>
+        /// <param name="other">Instance of RawBackendStructure to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CommittedEntryResponse other)
+        public bool Equals(RawBackendStructure other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
                 return false;
 
-            return 
-                (
-                    this.Entry == other.Entry ||
-                    this.Entry != null &&
-                    this.Entry.Equals(other.Entry)
-                ) && 
-                (
-                    this.CommitTime == other.CommitTime ||
-                    this.CommitTime != null &&
-                    this.CommitTime.Equals(other.CommitTime)
-                ) && 
-                (
-                    this.CreationRequestTime == other.CreationRequestTime ||
-                    this.CreationRequestTime != null &&
-                    this.CreationRequestTime.Equals(other.CreationRequestTime)
-                );
+            return false;
         }
 
         /// <summary>
@@ -158,12 +104,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Entry != null)
-                    hash = hash * 59 + this.Entry.GetHashCode();
-                if (this.CommitTime != null)
-                    hash = hash * 59 + this.CommitTime.GetHashCode();
-                if (this.CreationRequestTime != null)
-                    hash = hash * 59 + this.CreationRequestTime.GetHashCode();
                 return hash;
             }
         }

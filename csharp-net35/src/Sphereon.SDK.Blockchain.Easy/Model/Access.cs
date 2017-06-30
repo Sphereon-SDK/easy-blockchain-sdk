@@ -34,55 +34,73 @@ using Newtonsoft.Json.Converters;
 namespace Sphereon.SDK.Blockchain.Easy.Model
 {
     /// <summary>
-    /// Committed EntryData response
+    /// Access
     /// </summary>
     [DataContract]
-    public partial class CommittedEntryResponse :  IEquatable<CommittedEntryResponse>
+    public partial class Access :  IEquatable<Access>
     {
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="CommittedEntryResponse" /> class.
+        /// Gets or Sets Modes
         /// </summary>
-        [JsonConstructorAttribute]
-        protected CommittedEntryResponse() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CommittedEntryResponse" /> class.
-        /// </summary>
-        /// <param name="Entry">Entry (required).</param>
-        public CommittedEntryResponse(CommittedEntry Entry = null)
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum ModesEnum
         {
-            // to ensure "Entry" is required (not null)
-            if (Entry == null)
-            {
-                throw new InvalidDataException("Entry is a required property for CommittedEntryResponse and cannot be null");
-            }
-            else
-            {
-                this.Entry = Entry;
-            }
+            
+            /// <summary>
+            /// Enum NONE for "NONE"
+            /// </summary>
+            [EnumMember(Value = "NONE")]
+            NONE,
+            
+            /// <summary>
+            /// Enum READ for "READ"
+            /// </summary>
+            [EnumMember(Value = "READ")]
+            READ,
+            
+            /// <summary>
+            /// Enum WRITE for "WRITE"
+            /// </summary>
+            [EnumMember(Value = "WRITE")]
+            WRITE
+        }
+
+        /// <summary>
+        /// Gets or Sets Modes
+        /// </summary>
+        [DataMember(Name="modes", EmitDefaultValue=false)]
+        public List<ModesEnum> Modes { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Access" /> class.
+        /// </summary>
+        /// <param name="Modes">Modes.</param>
+        /// <param name="_Public">_Public.</param>
+        /// <param name="BlackList">BlackList.</param>
+        /// <param name="WhiteList">WhiteList.</param>
+        public Access(List<ModesEnum> Modes = null, bool? _Public = null, List<string> BlackList = null, List<string> WhiteList = null)
+        {
+            this.Modes = Modes;
+            this._Public = _Public;
+            this.BlackList = BlackList;
+            this.WhiteList = WhiteList;
         }
         
         /// <summary>
-        /// Gets or Sets Entry
+        /// Gets or Sets _Public
         /// </summary>
-        [DataMember(Name="entry", EmitDefaultValue=false)]
-        public CommittedEntry Entry { get; set; }
+        [DataMember(Name="public", EmitDefaultValue=false)]
+        public bool? _Public { get; set; }
         /// <summary>
-        /// The time at which the entry creation was first requested in ISO 8601 format
+        /// Gets or Sets BlackList
         /// </summary>
-        /// <value>The time at which the entry creation was first requested in ISO 8601 format</value>
-        [DataMember(Name="commitTime", EmitDefaultValue=false)]
-        internal string CommitTimeRaw { get; }
-        public DateTime? CommitTime => RestDateTimeParser.Parse(CommitTimeRaw);
-        
+        [DataMember(Name="blackList", EmitDefaultValue=false)]
+        public List<string> BlackList { get; set; }
         /// <summary>
-        /// The time at which the entry creation was first requested in ISO 8601 format
+        /// Gets or Sets WhiteList
         /// </summary>
-        /// <value>The time at which the entry creation was first requested in ISO 8601 format</value>
-        [DataMember(Name="creationRequestTime", EmitDefaultValue=false)]
-        internal string CreationRequestTimeRaw { get; }
-
-        public DateTime? CreationRequestTime => RestDateTimeParser.Parse(CreationRequestTimeRaw);
-
+        [DataMember(Name="whiteList", EmitDefaultValue=false)]
+        public List<string> WhiteList { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -90,10 +108,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class CommittedEntryResponse {\n");
-            sb.Append("  Entry: ").Append(Entry).Append("\n");
-            sb.Append("  CommitTime: ").Append(CommitTime).Append("\n");
-            sb.Append("  CreationRequestTime: ").Append(CreationRequestTime).Append("\n");
+            sb.Append("class Access {\n");
+            sb.Append("  Modes: ").Append(Modes).Append("\n");
+            sb.Append("  _Public: ").Append(_Public).Append("\n");
+            sb.Append("  BlackList: ").Append(BlackList).Append("\n");
+            sb.Append("  WhiteList: ").Append(WhiteList).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -115,15 +134,15 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as CommittedEntryResponse);
+            return this.Equals(obj as Access);
         }
 
         /// <summary>
-        /// Returns true if CommittedEntryResponse instances are equal
+        /// Returns true if Access instances are equal
         /// </summary>
-        /// <param name="other">Instance of CommittedEntryResponse to be compared</param>
+        /// <param name="other">Instance of Access to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CommittedEntryResponse other)
+        public bool Equals(Access other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -131,19 +150,24 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
 
             return 
                 (
-                    this.Entry == other.Entry ||
-                    this.Entry != null &&
-                    this.Entry.Equals(other.Entry)
+                    this.Modes == other.Modes ||
+                    this.Modes != null &&
+                    this.Modes.SequenceEqual(other.Modes)
                 ) && 
                 (
-                    this.CommitTime == other.CommitTime ||
-                    this.CommitTime != null &&
-                    this.CommitTime.Equals(other.CommitTime)
+                    this._Public == other._Public ||
+                    this._Public != null &&
+                    this._Public.Equals(other._Public)
                 ) && 
                 (
-                    this.CreationRequestTime == other.CreationRequestTime ||
-                    this.CreationRequestTime != null &&
-                    this.CreationRequestTime.Equals(other.CreationRequestTime)
+                    this.BlackList == other.BlackList ||
+                    this.BlackList != null &&
+                    this.BlackList.SequenceEqual(other.BlackList)
+                ) && 
+                (
+                    this.WhiteList == other.WhiteList ||
+                    this.WhiteList != null &&
+                    this.WhiteList.SequenceEqual(other.WhiteList)
                 );
         }
 
@@ -158,12 +182,14 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Entry != null)
-                    hash = hash * 59 + this.Entry.GetHashCode();
-                if (this.CommitTime != null)
-                    hash = hash * 59 + this.CommitTime.GetHashCode();
-                if (this.CreationRequestTime != null)
-                    hash = hash * 59 + this.CreationRequestTime.GetHashCode();
+                if (this.Modes != null)
+                    hash = hash * 59 + this.Modes.GetHashCode();
+                if (this._Public != null)
+                    hash = hash * 59 + this._Public.GetHashCode();
+                if (this.BlackList != null)
+                    hash = hash * 59 + this.BlackList.GetHashCode();
+                if (this.WhiteList != null)
+                    hash = hash * 59 + this.WhiteList.GetHashCode();
                 return hash;
             }
         }

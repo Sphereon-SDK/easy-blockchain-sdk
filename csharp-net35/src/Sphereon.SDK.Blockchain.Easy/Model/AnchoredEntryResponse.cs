@@ -144,13 +144,17 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         /// </summary>
         /// <value>The last anchor time of the entry (if any) in the blockchain in ISO 8601 format</value>
         [DataMember(Name="lastAnchorTime", EmitDefaultValue=false)]
-        public DateTime? LastAnchorTime { get; private set; }
+        internal string LastAnchorTimeRaw { get; }
+
+        public DateTime? LastAnchorTime => RestDateTimeParser.Parse(LastAnchorTimeRaw);
         /// <summary>
         /// The first anchor time of the entry (if any) in the blockchain in ISO 8601 format
         /// </summary>
         /// <value>The first anchor time of the entry (if any) in the blockchain in ISO 8601 format</value>
         [DataMember(Name="firstAnchorTime", EmitDefaultValue=false)]
-        public DateTime? FirstAnchorTime { get; private set; }
+        internal string FirstAnchorTimeRaw { get; }
+
+        public DateTime? FirstAnchorTime => RestDateTimeParser.Parse(FirstAnchorTimeRaw);
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
