@@ -28,6 +28,7 @@ package com.sphereon.sdk.blockchain.easy.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.sphereon.sdk.blockchain.easy.model.Access;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -35,31 +36,19 @@ import io.swagger.annotations.ApiModelProperty;
  * RpcProvider
  */
 @ApiModel(description = "RpcProvider")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-05-09T13:08:27.372+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-06-30T16:07:37.862+02:00")
 public class RpcProvider {
-  @JsonProperty("host")
-  private String host = null;
-
-  @JsonProperty("id")
-  private String id = null;
-
-  @JsonProperty("owner")
-  private String owner = null;
-
-  @JsonProperty("password")
-  private String password = null;
-
   /**
-   * Gets or Sets rpcProviderType
+   * Gets or Sets ownerType
    */
-  public enum RpcProviderTypeEnum {
-    SPHEREON("SPHEREON"),
+  public enum OwnerTypeEnum {
+    PROVIDER("PROVIDER"),
     
-    CLIENT("CLIENT");
+    CUSTOMER("CUSTOMER");
 
     private String value;
 
-    RpcProviderTypeEnum(String value) {
+    OwnerTypeEnum(String value) {
       this.value = value;
     }
 
@@ -69,8 +58,8 @@ public class RpcProvider {
     }
 
     @JsonCreator
-    public static RpcProviderTypeEnum fromValue(String text) {
-      for (RpcProviderTypeEnum b : RpcProviderTypeEnum.values()) {
+    public static OwnerTypeEnum fromValue(String text) {
+      for (OwnerTypeEnum b : OwnerTypeEnum.values()) {
         if (String.valueOf(b.value).equals(text)) {
           return b;
         }
@@ -79,11 +68,110 @@ public class RpcProvider {
     }
   }
 
-  @JsonProperty("rpcProviderType")
-  private RpcProviderTypeEnum rpcProviderType = null;
+  @JsonProperty("ownerType")
+  private OwnerTypeEnum ownerType = null;
+
+  @JsonProperty("password")
+  private String password = null;
+
+  @JsonProperty("access")
+  private Access access = null;
+
+  @JsonProperty("host")
+  private String host = null;
+
+  @JsonProperty("id")
+  private String id = null;
+
+  /**
+   * Gets or Sets type
+   */
+  public enum TypeEnum {
+    API("API"),
+    
+    WALLET("WALLET");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static TypeEnum fromValue(String text) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("type")
+  private TypeEnum type = null;
 
   @JsonProperty("username")
   private String username = null;
+
+  public RpcProvider ownerType(OwnerTypeEnum ownerType) {
+    this.ownerType = ownerType;
+    return this;
+  }
+
+   /**
+   * Get ownerType
+   * @return ownerType
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public OwnerTypeEnum getOwnerType() {
+    return ownerType;
+  }
+
+  public void setOwnerType(OwnerTypeEnum ownerType) {
+    this.ownerType = ownerType;
+  }
+
+  public RpcProvider password(String password) {
+    this.password = password;
+    return this;
+  }
+
+   /**
+   * Get password
+   * @return password
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public RpcProvider access(Access access) {
+    this.access = access;
+    return this;
+  }
+
+   /**
+   * Get access
+   * @return access
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public Access getAccess() {
+    return access;
+  }
+
+  public void setAccess(Access access) {
+    this.access = access;
+  }
 
   public RpcProvider host(String host) {
     this.host = host;
@@ -121,58 +209,22 @@ public class RpcProvider {
     this.id = id;
   }
 
-  public RpcProvider owner(String owner) {
-    this.owner = owner;
+  public RpcProvider type(TypeEnum type) {
+    this.type = type;
     return this;
   }
 
    /**
-   * Get owner
-   * @return owner
+   * Get type
+   * @return type
   **/
   @ApiModelProperty(example = "null", value = "")
-  public String getOwner() {
-    return owner;
+  public TypeEnum getType() {
+    return type;
   }
 
-  public void setOwner(String owner) {
-    this.owner = owner;
-  }
-
-  public RpcProvider password(String password) {
-    this.password = password;
-    return this;
-  }
-
-   /**
-   * Get password
-   * @return password
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
-  public RpcProvider rpcProviderType(RpcProviderTypeEnum rpcProviderType) {
-    this.rpcProviderType = rpcProviderType;
-    return this;
-  }
-
-   /**
-   * Get rpcProviderType
-   * @return rpcProviderType
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public RpcProviderTypeEnum getRpcProviderType() {
-    return rpcProviderType;
-  }
-
-  public void setRpcProviderType(RpcProviderTypeEnum rpcProviderType) {
-    this.rpcProviderType = rpcProviderType;
+  public void setType(TypeEnum type) {
+    this.type = type;
   }
 
   public RpcProvider username(String username) {
@@ -203,17 +255,18 @@ public class RpcProvider {
       return false;
     }
     RpcProvider rpcProvider = (RpcProvider) o;
-    return Objects.equals(this.host, rpcProvider.host) &&
-        Objects.equals(this.id, rpcProvider.id) &&
-        Objects.equals(this.owner, rpcProvider.owner) &&
+    return Objects.equals(this.ownerType, rpcProvider.ownerType) &&
         Objects.equals(this.password, rpcProvider.password) &&
-        Objects.equals(this.rpcProviderType, rpcProvider.rpcProviderType) &&
+        Objects.equals(this.access, rpcProvider.access) &&
+        Objects.equals(this.host, rpcProvider.host) &&
+        Objects.equals(this.id, rpcProvider.id) &&
+        Objects.equals(this.type, rpcProvider.type) &&
         Objects.equals(this.username, rpcProvider.username);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(host, id, owner, password, rpcProviderType, username);
+    return Objects.hash(ownerType, password, access, host, id, type, username);
   }
 
 
@@ -222,11 +275,12 @@ public class RpcProvider {
     StringBuilder sb = new StringBuilder();
     sb.append("class RpcProvider {\n");
     
+    sb.append("    ownerType: ").append(toIndentedString(ownerType)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("    access: ").append(toIndentedString(access)).append("\n");
     sb.append("    host: ").append(toIndentedString(host)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    rpcProviderType: ").append(toIndentedString(rpcProviderType)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("}");
     return sb.toString();

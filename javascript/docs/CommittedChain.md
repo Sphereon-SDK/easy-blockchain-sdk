@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 
 * `Factom` (value: `"Factom"`)
 
+* `Multichain` (value: `"Multichain"`)
+
 
 
 
@@ -23,6 +25,8 @@ Name | Type | Description | Notes
 
 
 * `Bitcoin` (value: `"Bitcoin"`)
+
+* `None` (value: `"None"`)
 
 
 

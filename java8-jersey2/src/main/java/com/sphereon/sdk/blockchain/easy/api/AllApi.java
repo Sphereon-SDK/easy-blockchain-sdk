@@ -9,6 +9,7 @@ import javax.ws.rs.core.GenericType;
 
 import com.sphereon.sdk.blockchain.easy.model.IdResponse;
 import com.sphereon.sdk.blockchain.easy.model.ErrorResponse;
+import com.sphereon.sdk.blockchain.easy.model.Backend;
 import com.sphereon.sdk.blockchain.easy.model.CommittedChainResponse;
 import com.sphereon.sdk.blockchain.easy.model.Chain;
 import com.sphereon.sdk.blockchain.easy.model.Context;
@@ -21,7 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-05-09T13:08:27.372+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-06-30T16:07:37.862+02:00")
 public class AllApi {
   private ApiClient apiClient;
 
@@ -91,6 +92,47 @@ public class AllApi {
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
+   * Create a new backend
+   * 
+   * @param backend backend (required)
+   * @return Backend
+   * @throws ApiException if fails to make API call
+   */
+  public Backend createBackend(Backend backend) throws ApiException {
+    Object localVarPostBody = backend;
+    
+    // verify the required parameter 'backend' is set
+    if (backend == null) {
+      throw new ApiException(400, "Missing the required parameter 'backend' when calling createBackend");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/blockchain/easy/0.9.1/backends".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "oauth2schema" };
+
+    GenericType<Backend> localVarReturnType = new GenericType<Backend>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
    * Create a new chain
    * 
    * @param context context (required)
@@ -141,16 +183,16 @@ public class AllApi {
   /**
    * Create a new context
    * 
-   * @param entity entity (required)
+   * @param context context (required)
    * @return Context
    * @throws ApiException if fails to make API call
    */
-  public Context createContext(Context entity) throws ApiException {
-    Object localVarPostBody = entity;
+  public Context createContext(Context context) throws ApiException {
+    Object localVarPostBody = context;
     
-    // verify the required parameter 'entity' is set
-    if (entity == null) {
-      throw new ApiException(400, "Missing the required parameter 'entity' when calling createContext");
+    // verify the required parameter 'context' is set
+    if (context == null) {
+      throw new ApiException(400, "Missing the required parameter 'context' when calling createContext");
     }
     
     // create path and map variables
@@ -234,6 +276,47 @@ public class AllApi {
     GenericType<CommittedEntryResponse> localVarReturnType = new GenericType<CommittedEntryResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
+  /**
+   * Delete backend by id (not by ledgername)
+   * 
+   * @param backendId backendId (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteBackend(String backendId) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'backendId' is set
+    if (backendId == null) {
+      throw new ApiException(400, "Missing the required parameter 'backendId' when calling deleteBackend");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/blockchain/easy/0.9.1/backends/{backendId}".replaceAll("\\{format\\}","json")
+      .replaceAll("\\{" + "backendId" + "\\}", apiClient.escapeString(backendId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "*_/_*"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "oauth2schema" };
+
+
+    apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
+  }
   /**
    * Pre determine the Id of a chain request without anchoring it in the blockchain
    * 
@@ -509,6 +592,50 @@ public class AllApi {
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
+   * Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
+   * 
+   * @param backendId backendId (required)
+   * @param includePublic includePublic (optional, default to false)
+   * @return List<Backend>
+   * @throws ApiException if fails to make API call
+   */
+  public List<Backend> findBackends(String backendId, Boolean includePublic) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'backendId' is set
+    if (backendId == null) {
+      throw new ApiException(400, "Missing the required parameter 'backendId' when calling findBackends");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/blockchain/easy/0.9.1/backends/{backendId}/find".replaceAll("\\{format\\}","json")
+      .replaceAll("\\{" + "backendId" + "\\}", apiClient.escapeString(backendId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "includePublic", includePublic));
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "oauth2schema" };
+
+    GenericType<List<Backend>> localVarReturnType = new GenericType<List<Backend>>() {};
+    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
    * Get the first entry in the provided chain. This is the oldest entry also called the chain tail
    * 
    * @param context context (required)
@@ -558,7 +685,51 @@ public class AllApi {
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
-   * Create a new context
+   * Get existing backend by id (not by ledgername). Optionally including public backend of others
+   * 
+   * @param backendId backendId (required)
+   * @param includePublic includePublic (optional, default to false)
+   * @return Backend
+   * @throws ApiException if fails to make API call
+   */
+  public Backend getBackend(String backendId, Boolean includePublic) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'backendId' is set
+    if (backendId == null) {
+      throw new ApiException(400, "Missing the required parameter 'backendId' when calling getBackend");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/blockchain/easy/0.9.1/backends/{backendId}".replaceAll("\\{format\\}","json")
+      .replaceAll("\\{" + "backendId" + "\\}", apiClient.escapeString(backendId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "includePublic", includePublic));
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "oauth2schema" };
+
+    GenericType<Backend> localVarReturnType = new GenericType<Backend>() {};
+    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Get an existing context
    * 
    * @param context context (required)
    * @return Context
@@ -646,6 +817,41 @@ public class AllApi {
     String[] localVarAuthNames = new String[] { "oauth2schema" };
 
     GenericType<AnchoredEntryResponse> localVarReturnType = new GenericType<AnchoredEntryResponse>() {};
+    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * List existing backends.
+   * 
+   * @return List<Backend>
+   * @throws ApiException if fails to make API call
+   */
+  public List<Backend> listBackends() throws ApiException {
+    Object localVarPostBody = null;
+    
+    // create path and map variables
+    String localVarPath = "/blockchain/easy/0.9.1/backends".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "oauth2schema" };
+
+    GenericType<List<Backend>> localVarReturnType = new GenericType<List<Backend>>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**

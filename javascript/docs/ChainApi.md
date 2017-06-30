@@ -4,12 +4,12 @@ All URIs are relative to *https://gw.api.cloud.sphereon.com/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createChain**](ChainApi.md#createChain) | **POST** /blockchain/easy/0.1.0/chains | Create a new chain
+[**createChain**](ChainApi.md#createChain) | **POST** /blockchain/easy/0.9.1/{context}/chains | Create a new chain
 
 
 <a name="createChain"></a>
 # **createChain**
-> CommittedChainResponse createChain(chain)
+> CommittedChainResponse createChain(context, chain)
 
 Create a new chain
 
@@ -24,6 +24,8 @@ oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.ChainApi();
 
+var context = "context_example"; // String | context
+
 var chain = new EasyBlockchainApi.Chain(); // Chain | Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
 
 
@@ -34,13 +36,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.createChain(chain, callback);
+apiInstance.createChain(context, chain, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context | 
  **chain** | [**Chain**](Chain.md)| Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! | 
 
 ### Return type
@@ -53,6 +56,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json;charset=UTF-8
+ - **Accept**: application/json;charset=UTF-8
 

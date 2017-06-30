@@ -37,34 +37,16 @@ import java.time.OffsetDateTime;
  * Committed EntryData response
  */
 @ApiModel(description = "Committed EntryData response")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-05-09T13:08:27.372+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-06-30T16:07:37.862+02:00")
 public class CommittedEntryResponse {
+  @JsonProperty("entry")
+  private CommittedEntry entry = null;
+
   @JsonProperty("commitTime")
   private OffsetDateTime commitTime = null;
 
   @JsonProperty("creationRequestTime")
   private OffsetDateTime creationRequestTime = null;
-
-  @JsonProperty("entry")
-  private CommittedEntry entry = null;
-
-   /**
-   * The time at which the entry creation was first requested in ISO 8601 format
-   * @return commitTime
-  **/
-  @ApiModelProperty(example = "null", value = "The time at which the entry creation was first requested in ISO 8601 format")
-  public OffsetDateTime getCommitTime() {
-    return commitTime;
-  }
-
-   /**
-   * The time at which the entry creation was first requested in ISO 8601 format
-   * @return creationRequestTime
-  **/
-  @ApiModelProperty(example = "null", value = "The time at which the entry creation was first requested in ISO 8601 format")
-  public OffsetDateTime getCreationRequestTime() {
-    return creationRequestTime;
-  }
 
   public CommittedEntryResponse entry(CommittedEntry entry) {
     this.entry = entry;
@@ -84,6 +66,24 @@ public class CommittedEntryResponse {
     this.entry = entry;
   }
 
+   /**
+   * The time at which the entry creation was first requested in ISO 8601 format
+   * @return commitTime
+  **/
+  @ApiModelProperty(example = "null", value = "The time at which the entry creation was first requested in ISO 8601 format")
+  public OffsetDateTime getCommitTime() {
+    return commitTime;
+  }
+
+   /**
+   * The time at which the entry creation was first requested in ISO 8601 format
+   * @return creationRequestTime
+  **/
+  @ApiModelProperty(example = "null", value = "The time at which the entry creation was first requested in ISO 8601 format")
+  public OffsetDateTime getCreationRequestTime() {
+    return creationRequestTime;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -94,14 +94,14 @@ public class CommittedEntryResponse {
       return false;
     }
     CommittedEntryResponse committedEntryResponse = (CommittedEntryResponse) o;
-    return Objects.equals(this.commitTime, committedEntryResponse.commitTime) &&
-        Objects.equals(this.creationRequestTime, committedEntryResponse.creationRequestTime) &&
-        Objects.equals(this.entry, committedEntryResponse.entry);
+    return Objects.equals(this.entry, committedEntryResponse.entry) &&
+        Objects.equals(this.commitTime, committedEntryResponse.commitTime) &&
+        Objects.equals(this.creationRequestTime, committedEntryResponse.creationRequestTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(commitTime, creationRequestTime, entry);
+    return Objects.hash(entry, commitTime, creationRequestTime);
   }
 
 
@@ -110,9 +110,9 @@ public class CommittedEntryResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class CommittedEntryResponse {\n");
     
+    sb.append("    entry: ").append(toIndentedString(entry)).append("\n");
     sb.append("    commitTime: ").append(toIndentedString(commitTime)).append("\n");
     sb.append("    creationRequestTime: ").append(toIndentedString(creationRequestTime)).append("\n");
-    sb.append("    entry: ").append(toIndentedString(entry)).append("\n");
     sb.append("}");
     return sb.toString();
   }

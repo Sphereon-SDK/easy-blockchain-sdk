@@ -36,8 +36,45 @@ import io.swagger.annotations.ApiModelProperty;
  * Commited Entry
  */
 @ApiModel(description = "Commited Entry")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-05-09T13:08:27.372+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-06-30T16:07:37.862+02:00")
 public class CommittedEntry {
+  @JsonProperty("entry")
+  private Entry entry = null;
+
+  @JsonProperty("chainId")
+  private String chainId = null;
+
+  /**
+   * Gets or Sets dataStructure
+   */
+  public enum DataStructureEnum {
+    FACTOM("Factom");
+
+    private String value;
+
+    DataStructureEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static DataStructureEnum fromValue(String text) {
+      for (DataStructureEnum b : DataStructureEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("dataStructure")
+  private DataStructureEnum dataStructure = null;
+
   /**
    * Gets or Sets blockchainImplementation
    */
@@ -69,55 +106,25 @@ public class CommittedEntry {
   @JsonProperty("blockchainImplementation")
   private BlockchainImplementationEnum blockchainImplementation = null;
 
-  @JsonProperty("chainId")
-  private String chainId = null;
-
-  /**
-   * Gets or Sets dataStructure
-   */
-  public enum DataStructureEnum {
-    FACTOM("Factom"),
-    
-    MULTICHAIN("Multichain");
-
-    private String value;
-
-    DataStructureEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static DataStructureEnum fromValue(String text) {
-      for (DataStructureEnum b : DataStructureEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("dataStructure")
-  private DataStructureEnum dataStructure = null;
-
-  @JsonProperty("entry")
-  private Entry entry = null;
-
   @JsonProperty("entryId")
   private String entryId = null;
 
+  public CommittedEntry entry(Entry entry) {
+    this.entry = entry;
+    return this;
+  }
+
    /**
-   * Get blockchainImplementation
-   * @return blockchainImplementation
+   * Get entry
+   * @return entry
   **/
-  @ApiModelProperty(example = "null", required = true, value = "")
-  public BlockchainImplementationEnum getBlockchainImplementation() {
-    return blockchainImplementation;
+  @ApiModelProperty(example = "null", value = "")
+  public Entry getEntry() {
+    return entry;
+  }
+
+  public void setEntry(Entry entry) {
+    this.entry = entry;
   }
 
    /**
@@ -138,22 +145,13 @@ public class CommittedEntry {
     return dataStructure;
   }
 
-  public CommittedEntry entry(Entry entry) {
-    this.entry = entry;
-    return this;
-  }
-
    /**
-   * Get entry
-   * @return entry
+   * Get blockchainImplementation
+   * @return blockchainImplementation
   **/
-  @ApiModelProperty(example = "null", value = "")
-  public Entry getEntry() {
-    return entry;
-  }
-
-  public void setEntry(Entry entry) {
-    this.entry = entry;
+  @ApiModelProperty(example = "null", required = true, value = "")
+  public BlockchainImplementationEnum getBlockchainImplementation() {
+    return blockchainImplementation;
   }
 
    /**
@@ -175,16 +173,16 @@ public class CommittedEntry {
       return false;
     }
     CommittedEntry committedEntry = (CommittedEntry) o;
-    return Objects.equals(this.blockchainImplementation, committedEntry.blockchainImplementation) &&
+    return Objects.equals(this.entry, committedEntry.entry) &&
         Objects.equals(this.chainId, committedEntry.chainId) &&
         Objects.equals(this.dataStructure, committedEntry.dataStructure) &&
-        Objects.equals(this.entry, committedEntry.entry) &&
+        Objects.equals(this.blockchainImplementation, committedEntry.blockchainImplementation) &&
         Objects.equals(this.entryId, committedEntry.entryId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(blockchainImplementation, chainId, dataStructure, entry, entryId);
+    return Objects.hash(entry, chainId, dataStructure, blockchainImplementation, entryId);
   }
 
 
@@ -193,10 +191,10 @@ public class CommittedEntry {
     StringBuilder sb = new StringBuilder();
     sb.append("class CommittedEntry {\n");
     
-    sb.append("    blockchainImplementation: ").append(toIndentedString(blockchainImplementation)).append("\n");
+    sb.append("    entry: ").append(toIndentedString(entry)).append("\n");
     sb.append("    chainId: ").append(toIndentedString(chainId)).append("\n");
     sb.append("    dataStructure: ").append(toIndentedString(dataStructure)).append("\n");
-    sb.append("    entry: ").append(toIndentedString(entry)).append("\n");
+    sb.append("    blockchainImplementation: ").append(toIndentedString(blockchainImplementation)).append("\n");
     sb.append("    entryId: ").append(toIndentedString(entryId)).append("\n");
     sb.append("}");
     return sb.toString();

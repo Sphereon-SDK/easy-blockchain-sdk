@@ -39,8 +39,14 @@ import java.util.List;
  * Anchored Entry response
  */
 @ApiModel(description = "Anchored Entry response")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-05-09T13:08:27.372+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-06-30T16:07:37.862+02:00")
 public class AnchoredEntryResponse {
+  @JsonProperty("anchoredEntry")
+  private CommittedEntry anchoredEntry = null;
+
+  @JsonProperty("anchorTimes")
+  private List<OffsetDateTime> anchorTimes = new ArrayList<OffsetDateTime>();
+
   /**
    * Gets or Sets anchorState
    */
@@ -76,19 +82,22 @@ public class AnchoredEntryResponse {
   @JsonProperty("anchorState")
   private AnchorStateEnum anchorState = null;
 
-  @JsonProperty("anchorTimes")
-  private List<OffsetDateTime> anchorTimes = new ArrayList<OffsetDateTime>();
-
-  @JsonProperty("anchoredEntry")
-  private CommittedEntry anchoredEntry = null;
+  public AnchoredEntryResponse anchoredEntry(CommittedEntry anchoredEntry) {
+    this.anchoredEntry = anchoredEntry;
+    return this;
+  }
 
    /**
-   * Get anchorState
-   * @return anchorState
+   * Get anchoredEntry
+   * @return anchoredEntry
   **/
   @ApiModelProperty(example = "null", required = true, value = "")
-  public AnchorStateEnum getAnchorState() {
-    return anchorState;
+  public CommittedEntry getAnchoredEntry() {
+    return anchoredEntry;
+  }
+
+  public void setAnchoredEntry(CommittedEntry anchoredEntry) {
+    this.anchoredEntry = anchoredEntry;
   }
 
   public AnchoredEntryResponse anchorTimes(List<OffsetDateTime> anchorTimes) {
@@ -114,22 +123,13 @@ public class AnchoredEntryResponse {
     this.anchorTimes = anchorTimes;
   }
 
-  public AnchoredEntryResponse anchoredEntry(CommittedEntry anchoredEntry) {
-    this.anchoredEntry = anchoredEntry;
-    return this;
-  }
-
    /**
-   * Get anchoredEntry
-   * @return anchoredEntry
+   * Get anchorState
+   * @return anchorState
   **/
   @ApiModelProperty(example = "null", required = true, value = "")
-  public CommittedEntry getAnchoredEntry() {
-    return anchoredEntry;
-  }
-
-  public void setAnchoredEntry(CommittedEntry anchoredEntry) {
-    this.anchoredEntry = anchoredEntry;
+  public AnchorStateEnum getAnchorState() {
+    return anchorState;
   }
 
 
@@ -142,14 +142,14 @@ public class AnchoredEntryResponse {
       return false;
     }
     AnchoredEntryResponse anchoredEntryResponse = (AnchoredEntryResponse) o;
-    return Objects.equals(this.anchorState, anchoredEntryResponse.anchorState) &&
+    return Objects.equals(this.anchoredEntry, anchoredEntryResponse.anchoredEntry) &&
         Objects.equals(this.anchorTimes, anchoredEntryResponse.anchorTimes) &&
-        Objects.equals(this.anchoredEntry, anchoredEntryResponse.anchoredEntry);
+        Objects.equals(this.anchorState, anchoredEntryResponse.anchorState);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(anchorState, anchorTimes, anchoredEntry);
+    return Objects.hash(anchoredEntry, anchorTimes, anchorState);
   }
 
 
@@ -158,9 +158,9 @@ public class AnchoredEntryResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class AnchoredEntryResponse {\n");
     
-    sb.append("    anchorState: ").append(toIndentedString(anchorState)).append("\n");
-    sb.append("    anchorTimes: ").append(toIndentedString(anchorTimes)).append("\n");
     sb.append("    anchoredEntry: ").append(toIndentedString(anchoredEntry)).append("\n");
+    sb.append("    anchorTimes: ").append(toIndentedString(anchorTimes)).append("\n");
+    sb.append("    anchorState: ").append(toIndentedString(anchorState)).append("\n");
     sb.append("}");
     return sb.toString();
   }

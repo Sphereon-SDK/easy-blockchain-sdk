@@ -35,75 +35,8 @@ import io.swagger.annotations.ApiModelProperty;
  * Id response
  */
 @ApiModel(description = "Id response")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-05-09T13:08:27.372+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-06-30T16:07:37.862+02:00")
 public class IdResponse {
-  @JsonProperty("Id")
-  private String id = null;
-
-  /**
-   * Gets or Sets blockchainImplementation
-   */
-  public enum BlockchainImplementationEnum {
-    BITCOIN("Bitcoin");
-
-    private String value;
-
-    BlockchainImplementationEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static BlockchainImplementationEnum fromValue(String text) {
-      for (BlockchainImplementationEnum b : BlockchainImplementationEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("blockchainImplementation")
-  private BlockchainImplementationEnum blockchainImplementation = null;
-
-  /**
-   * Gets or Sets dataStructure
-   */
-  public enum DataStructureEnum {
-    FACTOM("Factom"),
-    
-    MULTICHAIN("Multichain");
-
-    private String value;
-
-    DataStructureEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static DataStructureEnum fromValue(String text) {
-      for (DataStructureEnum b : DataStructureEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("dataStructure")
-  private DataStructureEnum dataStructure = null;
-
   /**
    * Gets or Sets exists
    */
@@ -139,41 +72,70 @@ public class IdResponse {
   @JsonProperty("exists")
   private ExistsEnum exists = null;
 
-  public IdResponse id(String id) {
-    this.id = id;
-    return this;
+  @JsonProperty("Id")
+  private String id = null;
+
+  /**
+   * Gets or Sets dataStructure
+   */
+  public enum DataStructureEnum {
+    FACTOM("Factom");
+
+    private String value;
+
+    DataStructureEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static DataStructureEnum fromValue(String text) {
+      for (DataStructureEnum b : DataStructureEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
   }
 
-   /**
-   * The Id
-   * @return id
-  **/
-  @ApiModelProperty(example = "null", value = "The Id")
-  public String getId() {
-    return id;
+  @JsonProperty("dataStructure")
+  private DataStructureEnum dataStructure = null;
+
+  /**
+   * Gets or Sets blockchainImplementation
+   */
+  public enum BlockchainImplementationEnum {
+    BITCOIN("Bitcoin");
+
+    private String value;
+
+    BlockchainImplementationEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static BlockchainImplementationEnum fromValue(String text) {
+      for (BlockchainImplementationEnum b : BlockchainImplementationEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
   }
 
-  public void setId(String id) {
-    this.id = id;
-  }
-
-   /**
-   * Get blockchainImplementation
-   * @return blockchainImplementation
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public BlockchainImplementationEnum getBlockchainImplementation() {
-    return blockchainImplementation;
-  }
-
-   /**
-   * Get dataStructure
-   * @return dataStructure
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public DataStructureEnum getDataStructure() {
-    return dataStructure;
-  }
+  @JsonProperty("blockchainImplementation")
+  private BlockchainImplementationEnum blockchainImplementation = null;
 
   public IdResponse exists(ExistsEnum exists) {
     this.exists = exists;
@@ -193,6 +155,42 @@ public class IdResponse {
     this.exists = exists;
   }
 
+  public IdResponse id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * The Id
+   * @return id
+  **/
+  @ApiModelProperty(example = "null", value = "The Id")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+   /**
+   * Get dataStructure
+   * @return dataStructure
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public DataStructureEnum getDataStructure() {
+    return dataStructure;
+  }
+
+   /**
+   * Get blockchainImplementation
+   * @return blockchainImplementation
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public BlockchainImplementationEnum getBlockchainImplementation() {
+    return blockchainImplementation;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -203,15 +201,15 @@ public class IdResponse {
       return false;
     }
     IdResponse idResponse = (IdResponse) o;
-    return Objects.equals(this.id, idResponse.id) &&
-        Objects.equals(this.blockchainImplementation, idResponse.blockchainImplementation) &&
+    return Objects.equals(this.exists, idResponse.exists) &&
+        Objects.equals(this.id, idResponse.id) &&
         Objects.equals(this.dataStructure, idResponse.dataStructure) &&
-        Objects.equals(this.exists, idResponse.exists);
+        Objects.equals(this.blockchainImplementation, idResponse.blockchainImplementation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, blockchainImplementation, dataStructure, exists);
+    return Objects.hash(exists, id, dataStructure, blockchainImplementation);
   }
 
 
@@ -220,10 +218,10 @@ public class IdResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class IdResponse {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    blockchainImplementation: ").append(toIndentedString(blockchainImplementation)).append("\n");
-    sb.append("    dataStructure: ").append(toIndentedString(dataStructure)).append("\n");
     sb.append("    exists: ").append(toIndentedString(exists)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    dataStructure: ").append(toIndentedString(dataStructure)).append("\n");
+    sb.append("    blockchainImplementation: ").append(toIndentedString(blockchainImplementation)).append("\n");
     sb.append("}");
     return sb.toString();
   }

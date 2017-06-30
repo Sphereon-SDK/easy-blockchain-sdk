@@ -4,16 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**blockchainImplementation** | [**BlockchainImplementationEnum**](#BlockchainImplementationEnum) |  |  [optional]
-**dataStructure** | [**DataStructureEnum**](#DataStructureEnum) |  |  [optional]
 **entryData** | [**EntryData**](EntryData.md) |  | 
-
-
-<a name="BlockchainImplementationEnum"></a>
-## Enum: BlockchainImplementationEnum
-Name | Value
----- | -----
-BITCOIN | &quot;Bitcoin&quot;
+**dataStructure** | [**DataStructureEnum**](#DataStructureEnum) |  |  [optional]
+**blockchainImplementation** | [**BlockchainImplementationEnum**](#BlockchainImplementationEnum) |  |  [optional]
 
 
 <a name="DataStructureEnum"></a>
@@ -22,6 +15,13 @@ Name | Value
 ---- | -----
 FACTOM | &quot;Factom&quot;
 MULTICHAIN | &quot;Multichain&quot;
+
+
+<a name="BlockchainImplementationEnum"></a>
+## Enum: BlockchainImplementationEnum
+Name | Value
+---- | -----
+BITCOIN | &quot;Bitcoin&quot;
 
 
 

@@ -48,7 +48,7 @@ import com.sphereon.sdk.blockchain.easy.handler.auth.HttpBasicAuth;
 import com.sphereon.sdk.blockchain.easy.handler.auth.ApiKeyAuth;
 import com.sphereon.sdk.blockchain.easy.handler.auth.OAuth;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-05-09T13:08:27.372+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-06-30T16:07:37.862+02:00")
 public class ApiClient {
   private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
   private String basePath = "https://gw.api.cloud.sphereon.com/";

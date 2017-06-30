@@ -36,11 +36,8 @@ import io.swagger.annotations.ApiModelProperty;
  * An error
  */
 @ApiModel(description = "An error")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-05-09T13:08:27.372+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-06-30T16:07:37.862+02:00")
 public class Error {
-  @JsonProperty("cause")
-  private Error cause = null;
-
   @JsonProperty("code")
   private String code = null;
 
@@ -79,26 +76,11 @@ public class Error {
   @JsonProperty("level")
   private LevelEnum level = null;
 
+  @JsonProperty("cause")
+  private Error cause = null;
+
   @JsonProperty("message")
   private String message = null;
-
-  public Error cause(Error cause) {
-    this.cause = cause;
-    return this;
-  }
-
-   /**
-   * Get cause
-   * @return cause
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public Error getCause() {
-    return cause;
-  }
-
-  public void setCause(Error cause) {
-    this.cause = cause;
-  }
 
   public Error code(String code) {
     this.code = code;
@@ -136,6 +118,24 @@ public class Error {
     this.level = level;
   }
 
+  public Error cause(Error cause) {
+    this.cause = cause;
+    return this;
+  }
+
+   /**
+   * Get cause
+   * @return cause
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public Error getCause() {
+    return cause;
+  }
+
+  public void setCause(Error cause) {
+    this.cause = cause;
+  }
+
   public Error message(String message) {
     this.message = message;
     return this;
@@ -164,15 +164,15 @@ public class Error {
       return false;
     }
     Error error = (Error) o;
-    return Objects.equals(this.cause, error.cause) &&
-        Objects.equals(this.code, error.code) &&
+    return Objects.equals(this.code, error.code) &&
         Objects.equals(this.level, error.level) &&
+        Objects.equals(this.cause, error.cause) &&
         Objects.equals(this.message, error.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cause, code, level, message);
+    return Objects.hash(code, level, cause, message);
   }
 
 
@@ -181,9 +181,9 @@ public class Error {
     StringBuilder sb = new StringBuilder();
     sb.append("class Error {\n");
     
-    sb.append("    cause: ").append(toIndentedString(cause)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
+    sb.append("    cause: ").append(toIndentedString(cause)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();

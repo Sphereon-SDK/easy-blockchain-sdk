@@ -28,6 +28,7 @@ package com.sphereon.sdk.blockchain.easy.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.sphereon.sdk.blockchain.easy.model.Access;
 import com.sphereon.sdk.blockchain.easy.model.RpcProvider;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -39,49 +40,16 @@ import java.util.List;
  * Backend
  */
 @ApiModel(description = "Backend")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-05-09T13:08:27.372+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-06-30T16:07:37.862+02:00")
 public class Backend {
+  @JsonProperty("rpcProviders")
+  private List<RpcProvider> rpcProviders = new ArrayList<RpcProvider>();
+
   @JsonProperty("apiVersion")
   private Integer apiVersion = null;
 
-  /**
-   * Gets or Sets dataStructure
-   */
-  public enum DataStructureEnum {
-    FACTOM("Factom"),
-    
-    MULTICHAIN("Multichain");
-
-    private String value;
-
-    DataStructureEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static DataStructureEnum fromValue(String text) {
-      for (DataStructureEnum b : DataStructureEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("dataStructure")
-  private DataStructureEnum dataStructure = null;
-
-  @JsonProperty("end")
-  private OffsetDateTime end = null;
-
-  @JsonProperty("id")
-  private String id = null;
+  @JsonProperty("ledgerName")
+  private String ledgerName = null;
 
   /**
    * Gets or Sets implementation
@@ -116,143 +84,50 @@ public class Backend {
   @JsonProperty("implementation")
   private ImplementationEnum implementation = null;
 
-  @JsonProperty("ledgerName")
-  private String ledgerName = null;
-
-  @JsonProperty("owner")
-  private String owner = null;
-
-  @JsonProperty("rpcProviders")
-  private List<RpcProvider> rpcProviders = new ArrayList<RpcProvider>();
-
   @JsonProperty("start")
   private OffsetDateTime start = null;
 
-  public Backend apiVersion(Integer apiVersion) {
-    this.apiVersion = apiVersion;
-    return this;
+  @JsonProperty("end")
+  private OffsetDateTime end = null;
+
+  /**
+   * Gets or Sets dataStructure
+   */
+  public enum DataStructureEnum {
+    FACTOM("Factom"),
+    
+    MULTICHAIN("Multichain");
+
+    private String value;
+
+    DataStructureEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static DataStructureEnum fromValue(String text) {
+      for (DataStructureEnum b : DataStructureEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
   }
 
-   /**
-   * Get apiVersion
-   * @return apiVersion
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public Integer getApiVersion() {
-    return apiVersion;
-  }
+  @JsonProperty("dataStructure")
+  private DataStructureEnum dataStructure = null;
 
-  public void setApiVersion(Integer apiVersion) {
-    this.apiVersion = apiVersion;
-  }
+  @JsonProperty("id")
+  private String id = null;
 
-  public Backend dataStructure(DataStructureEnum dataStructure) {
-    this.dataStructure = dataStructure;
-    return this;
-  }
-
-   /**
-   * Get dataStructure
-   * @return dataStructure
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public DataStructureEnum getDataStructure() {
-    return dataStructure;
-  }
-
-  public void setDataStructure(DataStructureEnum dataStructure) {
-    this.dataStructure = dataStructure;
-  }
-
-  public Backend end(OffsetDateTime end) {
-    this.end = end;
-    return this;
-  }
-
-   /**
-   * Get end
-   * @return end
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public OffsetDateTime getEnd() {
-    return end;
-  }
-
-  public void setEnd(OffsetDateTime end) {
-    this.end = end;
-  }
-
-  public Backend id(String id) {
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Get id
-   * @return id
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public Backend implementation(ImplementationEnum implementation) {
-    this.implementation = implementation;
-    return this;
-  }
-
-   /**
-   * Get implementation
-   * @return implementation
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public ImplementationEnum getImplementation() {
-    return implementation;
-  }
-
-  public void setImplementation(ImplementationEnum implementation) {
-    this.implementation = implementation;
-  }
-
-  public Backend ledgerName(String ledgerName) {
-    this.ledgerName = ledgerName;
-    return this;
-  }
-
-   /**
-   * Get ledgerName
-   * @return ledgerName
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public String getLedgerName() {
-    return ledgerName;
-  }
-
-  public void setLedgerName(String ledgerName) {
-    this.ledgerName = ledgerName;
-  }
-
-  public Backend owner(String owner) {
-    this.owner = owner;
-    return this;
-  }
-
-   /**
-   * Get owner
-   * @return owner
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public String getOwner() {
-    return owner;
-  }
-
-  public void setOwner(String owner) {
-    this.owner = owner;
-  }
+  @JsonProperty("externalAccess")
+  private Access externalAccess = null;
 
   public Backend rpcProviders(List<RpcProvider> rpcProviders) {
     this.rpcProviders = rpcProviders;
@@ -277,6 +152,60 @@ public class Backend {
     this.rpcProviders = rpcProviders;
   }
 
+  public Backend apiVersion(Integer apiVersion) {
+    this.apiVersion = apiVersion;
+    return this;
+  }
+
+   /**
+   * Get apiVersion
+   * @return apiVersion
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public Integer getApiVersion() {
+    return apiVersion;
+  }
+
+  public void setApiVersion(Integer apiVersion) {
+    this.apiVersion = apiVersion;
+  }
+
+  public Backend ledgerName(String ledgerName) {
+    this.ledgerName = ledgerName;
+    return this;
+  }
+
+   /**
+   * Get ledgerName
+   * @return ledgerName
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public String getLedgerName() {
+    return ledgerName;
+  }
+
+  public void setLedgerName(String ledgerName) {
+    this.ledgerName = ledgerName;
+  }
+
+  public Backend implementation(ImplementationEnum implementation) {
+    this.implementation = implementation;
+    return this;
+  }
+
+   /**
+   * Get implementation
+   * @return implementation
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public ImplementationEnum getImplementation() {
+    return implementation;
+  }
+
+  public void setImplementation(ImplementationEnum implementation) {
+    this.implementation = implementation;
+  }
+
   public Backend start(OffsetDateTime start) {
     this.start = start;
     return this;
@@ -295,6 +224,69 @@ public class Backend {
     this.start = start;
   }
 
+  public Backend end(OffsetDateTime end) {
+    this.end = end;
+    return this;
+  }
+
+   /**
+   * Get end
+   * @return end
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public OffsetDateTime getEnd() {
+    return end;
+  }
+
+  public void setEnd(OffsetDateTime end) {
+    this.end = end;
+  }
+
+  public Backend dataStructure(DataStructureEnum dataStructure) {
+    this.dataStructure = dataStructure;
+    return this;
+  }
+
+   /**
+   * Get dataStructure
+   * @return dataStructure
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public DataStructureEnum getDataStructure() {
+    return dataStructure;
+  }
+
+  public void setDataStructure(DataStructureEnum dataStructure) {
+    this.dataStructure = dataStructure;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public String getId() {
+    return id;
+  }
+
+  public Backend externalAccess(Access externalAccess) {
+    this.externalAccess = externalAccess;
+    return this;
+  }
+
+   /**
+   * Get externalAccess
+   * @return externalAccess
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public Access getExternalAccess() {
+    return externalAccess;
+  }
+
+  public void setExternalAccess(Access externalAccess) {
+    this.externalAccess = externalAccess;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -305,20 +297,20 @@ public class Backend {
       return false;
     }
     Backend backend = (Backend) o;
-    return Objects.equals(this.apiVersion, backend.apiVersion) &&
-        Objects.equals(this.dataStructure, backend.dataStructure) &&
-        Objects.equals(this.end, backend.end) &&
-        Objects.equals(this.id, backend.id) &&
-        Objects.equals(this.implementation, backend.implementation) &&
+    return Objects.equals(this.rpcProviders, backend.rpcProviders) &&
+        Objects.equals(this.apiVersion, backend.apiVersion) &&
         Objects.equals(this.ledgerName, backend.ledgerName) &&
-        Objects.equals(this.owner, backend.owner) &&
-        Objects.equals(this.rpcProviders, backend.rpcProviders) &&
-        Objects.equals(this.start, backend.start);
+        Objects.equals(this.implementation, backend.implementation) &&
+        Objects.equals(this.start, backend.start) &&
+        Objects.equals(this.end, backend.end) &&
+        Objects.equals(this.dataStructure, backend.dataStructure) &&
+        Objects.equals(this.id, backend.id) &&
+        Objects.equals(this.externalAccess, backend.externalAccess);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(apiVersion, dataStructure, end, id, implementation, ledgerName, owner, rpcProviders, start);
+    return Objects.hash(rpcProviders, apiVersion, ledgerName, implementation, start, end, dataStructure, id, externalAccess);
   }
 
 
@@ -327,15 +319,15 @@ public class Backend {
     StringBuilder sb = new StringBuilder();
     sb.append("class Backend {\n");
     
-    sb.append("    apiVersion: ").append(toIndentedString(apiVersion)).append("\n");
-    sb.append("    dataStructure: ").append(toIndentedString(dataStructure)).append("\n");
-    sb.append("    end: ").append(toIndentedString(end)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    implementation: ").append(toIndentedString(implementation)).append("\n");
-    sb.append("    ledgerName: ").append(toIndentedString(ledgerName)).append("\n");
-    sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
     sb.append("    rpcProviders: ").append(toIndentedString(rpcProviders)).append("\n");
+    sb.append("    apiVersion: ").append(toIndentedString(apiVersion)).append("\n");
+    sb.append("    ledgerName: ").append(toIndentedString(ledgerName)).append("\n");
+    sb.append("    implementation: ").append(toIndentedString(implementation)).append("\n");
     sb.append("    start: ").append(toIndentedString(start)).append("\n");
+    sb.append("    end: ").append(toIndentedString(end)).append("\n");
+    sb.append("    dataStructure: ").append(toIndentedString(dataStructure)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    externalAccess: ").append(toIndentedString(externalAccess)).append("\n");
     sb.append("}");
     return sb.toString();
   }

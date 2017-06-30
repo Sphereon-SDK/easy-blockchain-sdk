@@ -38,31 +38,13 @@ import java.util.List;
  * Entry Data
  */
 @ApiModel(description = "Entry Data")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-05-09T13:08:27.372+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-06-30T16:07:37.862+02:00")
 public class EntryData {
-  @JsonProperty("content")
-  private byte[] content = null;
-
   @JsonProperty("externalIds")
   private List<ExternalId> externalIds = new ArrayList<ExternalId>();
 
-  public EntryData content(byte[] content) {
-    this.content = content;
-    return this;
-  }
-
-   /**
-   * Content
-   * @return content
-  **/
-  @ApiModelProperty(example = "null", required = true, value = "Content")
-  public byte[] getContent() {
-    return content;
-  }
-
-  public void setContent(byte[] content) {
-    this.content = content;
-  }
+  @JsonProperty("content")
+  private byte[] content = null;
 
   public EntryData externalIds(List<ExternalId> externalIds) {
     this.externalIds = externalIds;
@@ -87,6 +69,24 @@ public class EntryData {
     this.externalIds = externalIds;
   }
 
+  public EntryData content(byte[] content) {
+    this.content = content;
+    return this;
+  }
+
+   /**
+   * Content
+   * @return content
+  **/
+  @ApiModelProperty(example = "null", required = true, value = "Content")
+  public byte[] getContent() {
+    return content;
+  }
+
+  public void setContent(byte[] content) {
+    this.content = content;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -97,13 +97,13 @@ public class EntryData {
       return false;
     }
     EntryData entryData = (EntryData) o;
-    return Objects.equals(this.content, entryData.content) &&
-        Objects.equals(this.externalIds, entryData.externalIds);
+    return Objects.equals(this.externalIds, entryData.externalIds) &&
+        Objects.equals(this.content, entryData.content);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(content, externalIds);
+    return Objects.hash(externalIds, content);
   }
 
 
@@ -112,8 +112,8 @@ public class EntryData {
     StringBuilder sb = new StringBuilder();
     sb.append("class EntryData {\n");
     
-    sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("    externalIds: ").append(toIndentedString(externalIds)).append("\n");
+    sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("}");
     return sb.toString();
   }

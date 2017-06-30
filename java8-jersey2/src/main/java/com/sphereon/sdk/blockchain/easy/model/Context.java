@@ -28,7 +28,7 @@ package com.sphereon.sdk.blockchain.easy.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.sphereon.sdk.blockchain.easy.model.Backend;
+import com.sphereon.sdk.blockchain.easy.model.Access;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -37,56 +37,56 @@ import java.util.List;
 /**
  * Context
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-05-09T13:08:27.372+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-06-30T16:07:37.862+02:00")
 public class Context {
-  @JsonProperty("allBackends")
-  private List<Backend> allBackends = new ArrayList<Backend>();
+  @JsonProperty("access")
+  private Access access = null;
 
-  @JsonProperty("id")
-  private String id = null;
+  @JsonProperty("backendIds")
+  private List<String> backendIds = new ArrayList<String>();
 
   @JsonProperty("name")
   private String name = null;
 
-  public Context allBackends(List<Backend> allBackends) {
-    this.allBackends = allBackends;
-    return this;
-  }
-
-  public Context addAllBackendsItem(Backend allBackendsItem) {
-    this.allBackends.add(allBackendsItem);
+  public Context access(Access access) {
+    this.access = access;
     return this;
   }
 
    /**
-   * Get allBackends
-   * @return allBackends
+   * Get access
+   * @return access
   **/
   @ApiModelProperty(example = "null", value = "")
-  public List<Backend> getAllBackends() {
-    return allBackends;
+  public Access getAccess() {
+    return access;
   }
 
-  public void setAllBackends(List<Backend> allBackends) {
-    this.allBackends = allBackends;
+  public void setAccess(Access access) {
+    this.access = access;
   }
 
-  public Context id(String id) {
-    this.id = id;
+  public Context backendIds(List<String> backendIds) {
+    this.backendIds = backendIds;
+    return this;
+  }
+
+  public Context addBackendIdsItem(String backendIdsItem) {
+    this.backendIds.add(backendIdsItem);
     return this;
   }
 
    /**
-   * Get id
-   * @return id
+   * Get backendIds
+   * @return backendIds
   **/
   @ApiModelProperty(example = "null", value = "")
-  public String getId() {
-    return id;
+  public List<String> getBackendIds() {
+    return backendIds;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public void setBackendIds(List<String> backendIds) {
+    this.backendIds = backendIds;
   }
 
   public Context name(String name) {
@@ -117,14 +117,14 @@ public class Context {
       return false;
     }
     Context context = (Context) o;
-    return Objects.equals(this.allBackends, context.allBackends) &&
-        Objects.equals(this.id, context.id) &&
+    return Objects.equals(this.access, context.access) &&
+        Objects.equals(this.backendIds, context.backendIds) &&
         Objects.equals(this.name, context.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(allBackends, id, name);
+    return Objects.hash(access, backendIds, name);
   }
 
 
@@ -133,8 +133,8 @@ public class Context {
     StringBuilder sb = new StringBuilder();
     sb.append("class Context {\n");
     
-    sb.append("    allBackends: ").append(toIndentedString(allBackends)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    access: ").append(toIndentedString(access)).append("\n");
+    sb.append("    backendIds: ").append(toIndentedString(backendIds)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();

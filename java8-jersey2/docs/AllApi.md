@@ -5,17 +5,22 @@ All URIs are relative to *https://gw.api.cloud.sphereon.com/*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**chainIdExists**](AllApi.md#chainIdExists) | **GET** /blockchain/easy/0.9.1/{context}/chains/id/{chainId} | Determine whether the Id of a chain exists in the blockchain
+[**createBackend**](AllApi.md#createBackend) | **POST** /blockchain/easy/0.9.1/backends | Create a new backend
 [**createChain**](AllApi.md#createChain) | **POST** /blockchain/easy/0.9.1/{context}/chains | Create a new chain
 [**createContext**](AllApi.md#createContext) | **POST** /blockchain/easy/0.9.1/ | Create a new context
 [**createEntry**](AllApi.md#createEntry) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries | Create a new entry in the provided chain
+[**deleteBackend**](AllApi.md#deleteBackend) | **DELETE** /blockchain/easy/0.9.1/backends/{backendId} | Delete backend by id (not by ledgername)
 [**determineChainId**](AllApi.md#determineChainId) | **POST** /blockchain/easy/0.9.1/{context}/chains/id | Pre determine the Id of a chain request without anchoring it in the blockchain
 [**determineEntryId**](AllApi.md#determineEntryId) | **POST** /blockchain/easy/0.9.1/{context}/chains/id/{chainId}/entries | Pre determine the Id of an entry request without anchoring the entry
 [**entryById**](AllApi.md#entryById) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
 [**entryByRequest**](AllApi.md#entryByRequest) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
 [**entryIdExists**](AllApi.md#entryIdExists) | **GET** /blockchain/easy/0.9.1/{context}/chains/id/{chainId}/entries/{entryId} | Determine whether the Id of an entry exists in the blockchain
+[**findBackends**](AllApi.md#findBackends) | **GET** /blockchain/easy/0.9.1/backends/{backendId}/find | Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
 [**firstEntry**](AllApi.md#firstEntry) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail
-[**getContext**](AllApi.md#getContext) | **GET** /blockchain/easy/0.9.1/{context} | Create a new context
+[**getBackend**](AllApi.md#getBackend) | **GET** /blockchain/easy/0.9.1/backends/{backendId} | Get existing backend by id (not by ledgername). Optionally including public backend of others
+[**getContext**](AllApi.md#getContext) | **GET** /blockchain/easy/0.9.1/{context} | Get an existing context
 [**lastEntry**](AllApi.md#lastEntry) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head
+[**listBackends**](AllApi.md#listBackends) | **GET** /blockchain/easy/0.9.1/backends | List existing backends.
 [**nextEntryById**](AllApi.md#nextEntryById) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
 [**nextEntryByRequest**](AllApi.md#nextEntryByRequest) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
 [**previousEntryById**](AllApi.md#previousEntryById) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
@@ -75,6 +80,57 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json;charset=UTF-8
 
+<a name="createBackend"></a>
+# **createBackend**
+> Backend createBackend(backend)
+
+Create a new backend
+
+### Example
+```java
+// Import classes:
+//import com.sphereon.sdk.blockchain.easy.handler.ApiClient;
+//import com.sphereon.sdk.blockchain.easy.handler.ApiException;
+//import com.sphereon.sdk.blockchain.easy.handler.Configuration;
+//import com.sphereon.sdk.blockchain.easy.handler.auth.*;
+//import com.sphereon.sdk.blockchain.easy.api.AllApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: oauth2schema
+OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
+oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
+
+AllApi apiInstance = new AllApi();
+Backend backend = new Backend(); // Backend | backend
+try {
+    Backend result = apiInstance.createBackend(backend);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AllApi#createBackend");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **backend** | [**Backend**](Backend.md)| backend |
+
+### Return type
+
+[**Backend**](Backend.md)
+
+### Authorization
+
+[oauth2schema](../README.md#oauth2schema)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json;charset=UTF-8
+ - **Accept**: application/json;charset=UTF-8
+
 <a name="createChain"></a>
 # **createChain**
 > CommittedChainResponse createChain(context, chain)
@@ -130,7 +186,7 @@ Name | Type | Description  | Notes
 
 <a name="createContext"></a>
 # **createContext**
-> Context createContext(entity)
+> Context createContext(context)
 
 Create a new context
 
@@ -150,9 +206,9 @@ OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
 oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 AllApi apiInstance = new AllApi();
-Context entity = new Context(); // Context | entity
+Context context = new Context(); // Context | context
 try {
-    Context result = apiInstance.createContext(entity);
+    Context result = apiInstance.createContext(context);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AllApi#createContext");
@@ -164,7 +220,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **entity** | [**Context**](Context.md)| entity |
+ **context** | [**Context**](Context.md)| context |
 
 ### Return type
 
@@ -233,6 +289,56 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json;charset=UTF-8
  - **Accept**: application/json;charset=UTF-8
+
+<a name="deleteBackend"></a>
+# **deleteBackend**
+> deleteBackend(backendId)
+
+Delete backend by id (not by ledgername)
+
+### Example
+```java
+// Import classes:
+//import com.sphereon.sdk.blockchain.easy.handler.ApiClient;
+//import com.sphereon.sdk.blockchain.easy.handler.ApiException;
+//import com.sphereon.sdk.blockchain.easy.handler.Configuration;
+//import com.sphereon.sdk.blockchain.easy.handler.auth.*;
+//import com.sphereon.sdk.blockchain.easy.api.AllApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: oauth2schema
+OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
+oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
+
+AllApi apiInstance = new AllApi();
+String backendId = "backendId_example"; // String | backendId
+try {
+    apiInstance.deleteBackend(backendId);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AllApi#deleteBackend");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **backendId** | **String**| backendId |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth2schema](../README.md#oauth2schema)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: *_/_*
 
 <a name="determineChainId"></a>
 # **determineChainId**
@@ -511,6 +617,59 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json;charset=UTF-8
 
+<a name="findBackends"></a>
+# **findBackends**
+> List&lt;Backend&gt; findBackends(backendId, includePublic)
+
+Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
+
+### Example
+```java
+// Import classes:
+//import com.sphereon.sdk.blockchain.easy.handler.ApiClient;
+//import com.sphereon.sdk.blockchain.easy.handler.ApiException;
+//import com.sphereon.sdk.blockchain.easy.handler.Configuration;
+//import com.sphereon.sdk.blockchain.easy.handler.auth.*;
+//import com.sphereon.sdk.blockchain.easy.api.AllApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: oauth2schema
+OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
+oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
+
+AllApi apiInstance = new AllApi();
+String backendId = "backendId_example"; // String | backendId
+Boolean includePublic = false; // Boolean | includePublic
+try {
+    List<Backend> result = apiInstance.findBackends(backendId, includePublic);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AllApi#findBackends");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **backendId** | **String**| backendId |
+ **includePublic** | **Boolean**| includePublic | [optional] [default to false]
+
+### Return type
+
+[**List&lt;Backend&gt;**](Backend.md)
+
+### Authorization
+
+[oauth2schema](../README.md#oauth2schema)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json;charset=UTF-8
+
 <a name="firstEntry"></a>
 # **firstEntry**
 > AnchoredEntryResponse firstEntry(context, chainId)
@@ -564,11 +723,64 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json;charset=UTF-8
 
+<a name="getBackend"></a>
+# **getBackend**
+> Backend getBackend(backendId, includePublic)
+
+Get existing backend by id (not by ledgername). Optionally including public backend of others
+
+### Example
+```java
+// Import classes:
+//import com.sphereon.sdk.blockchain.easy.handler.ApiClient;
+//import com.sphereon.sdk.blockchain.easy.handler.ApiException;
+//import com.sphereon.sdk.blockchain.easy.handler.Configuration;
+//import com.sphereon.sdk.blockchain.easy.handler.auth.*;
+//import com.sphereon.sdk.blockchain.easy.api.AllApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: oauth2schema
+OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
+oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
+
+AllApi apiInstance = new AllApi();
+String backendId = "backendId_example"; // String | backendId
+Boolean includePublic = false; // Boolean | includePublic
+try {
+    Backend result = apiInstance.getBackend(backendId, includePublic);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AllApi#getBackend");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **backendId** | **String**| backendId |
+ **includePublic** | **Boolean**| includePublic | [optional] [default to false]
+
+### Return type
+
+[**Backend**](Backend.md)
+
+### Authorization
+
+[oauth2schema](../README.md#oauth2schema)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json;charset=UTF-8
+
 <a name="getContext"></a>
 # **getContext**
 > Context getContext(context)
 
-Create a new context
+Get an existing context
 
 ### Example
 ```java
@@ -658,6 +870,53 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AnchoredEntryResponse**](AnchoredEntryResponse.md)
+
+### Authorization
+
+[oauth2schema](../README.md#oauth2schema)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json;charset=UTF-8
+
+<a name="listBackends"></a>
+# **listBackends**
+> List&lt;Backend&gt; listBackends()
+
+List existing backends.
+
+### Example
+```java
+// Import classes:
+//import com.sphereon.sdk.blockchain.easy.handler.ApiClient;
+//import com.sphereon.sdk.blockchain.easy.handler.ApiException;
+//import com.sphereon.sdk.blockchain.easy.handler.Configuration;
+//import com.sphereon.sdk.blockchain.easy.handler.auth.*;
+//import com.sphereon.sdk.blockchain.easy.api.AllApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: oauth2schema
+OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
+oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
+
+AllApi apiInstance = new AllApi();
+try {
+    List<Backend> result = apiInstance.listBackends();
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AllApi#listBackends");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List&lt;Backend&gt;**](Backend.md)
 
 ### Authorization
 

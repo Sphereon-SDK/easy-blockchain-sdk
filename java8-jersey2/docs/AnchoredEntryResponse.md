@@ -4,9 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**anchorState** | [**AnchorStateEnum**](#AnchorStateEnum) |  | 
-**anchorTimes** | [**List&lt;OffsetDateTime&gt;**](OffsetDateTime.md) | The times at which the anchoredEntry was anchored in the blockchain in ISO 8601 format |  [optional]
 **anchoredEntry** | [**CommittedEntry**](CommittedEntry.md) |  | 
+**anchorTimes** | [**List&lt;OffsetDateTime&gt;**](OffsetDateTime.md) | The times at which the anchoredEntry was anchored in the blockchain in ISO 8601 format |  [optional]
+**anchorState** | [**AnchorStateEnum**](#AnchorStateEnum) |  | 
 
 
 <a name="AnchorStateEnum"></a>

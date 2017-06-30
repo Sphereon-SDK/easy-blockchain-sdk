@@ -41,13 +41,6 @@
           "description": "entryId",
           "type": "string",
           "required": true
-        },
-        {
-          "in": "query",
-          "name": "currentAnchorTime",
-          "format": "date-time",
-          "type": "string",
-          "required": false
         }
       ],
       "tags": [
@@ -96,13 +89,6 @@
           "description": "entryId",
           "type": "string",
           "required": true
-        },
-        {
-          "in": "query",
-          "name": "currentAnchorTime",
-          "format": "date-time",
-          "type": "string",
-          "required": false
         }
       ],
       "tags": [
@@ -151,13 +137,6 @@
           "name": "entry",
           "description": "Retrieve the entry",
           "required": true
-        },
-        {
-          "in": "query",
-          "name": "currentAnchorTime",
-          "format": "date-time",
-          "type": "string",
-          "required": false
         }
       ],
       "tags": [
@@ -206,13 +185,6 @@
           "description": "entryId",
           "type": "string",
           "required": true
-        },
-        {
-          "in": "query",
-          "name": "currentAnchorTime",
-          "format": "date-time",
-          "type": "string",
-          "required": false
         }
       ],
       "tags": [
@@ -261,13 +233,6 @@
           "name": "entry",
           "description": "Retrieve the entry",
           "required": true
-        },
-        {
-          "in": "query",
-          "name": "currentAnchorTime",
-          "format": "date-time",
-          "type": "string",
-          "required": false
         }
       ],
       "tags": [
@@ -705,13 +670,6 @@
           "name": "entry",
           "description": "Retrieve the entry",
           "required": true
-        },
-        {
-          "in": "query",
-          "name": "currentAnchorTime",
-          "format": "date-time",
-          "type": "string",
-          "required": false
         }
       ],
       "tags": [
@@ -838,13 +796,6 @@
           "name": "entry",
           "description": "Create a new entry for the specified chain",
           "required": true
-        },
-        {
-          "in": "query",
-          "name": "currentAnchorTime",
-          "format": "date-time",
-          "type": "string",
-          "required": false
         }
       ],
       "tags": [
@@ -890,7 +841,7 @@
       "consumes": ["application/json;charset=UTF-8"]
     }},
     "/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/last": {"get": {
-      "summary": "Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times",
+      "summary": "Get the last entry in the provided chain. This is the most recent entry also called the chain head",
       "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
       "operationId": "lastEntry",
@@ -931,7 +882,7 @@
       "consumes": ["application/json"]
     }},
     "/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/first": {"get": {
-      "summary": "Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times",
+      "summary": "Get the first entry in the provided chain. This is the oldest entry also called the chain tail",
       "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
       "operationId": "firstEntry",
@@ -995,12 +946,32 @@
     "CommittedChain": {
       "description": "Commited Chain",
       "type": "object",
+      "required": [
+        "blockchainImplementation",
+        "dataStructure"
+      ],
       "properties": {
         "chain": {"$ref": "#/definitions/Chain"},
+        "dataStructure": {
+          "readOnly": true,
+          "type": "string",
+          "enum": [
+            "Factom",
+            "Multichain"
+          ]
+        },
         "id": {
           "description": "Chain ID",
           "readOnly": true,
           "type": "string"
+        },
+        "blockchainImplementation": {
+          "readOnly": true,
+          "type": "string",
+          "enum": [
+            "Bitcoin",
+            "None"
+          ]
         }
       }
     },
@@ -1026,6 +997,16 @@
         "Id": {
           "description": "The Id",
           "type": "string"
+        },
+        "dataStructure": {
+          "readOnly": true,
+          "type": "string",
+          "enum": ["Factom"]
+        },
+        "blockchainImplementation": {
+          "readOnly": true,
+          "type": "string",
+          "enum": ["Bitcoin"]
         }
       }
     },
@@ -1039,7 +1020,7 @@
       "properties": {
         "anchoredEntry": {"$ref": "#/definitions/CommittedEntry"},
         "anchorTimes": {
-          "description": "All the times at which the Entry with the same Id was anchored in the blockchain in ISO 8601 format. The first, current and last Anchor Times will also be in this list",
+          "description": "The times at which the anchoredEntry was anchored in the blockchain in ISO 8601 format",
           "readOnly": true,
           "type": "array",
           "items": {
@@ -1047,33 +1028,14 @@
             "type": "string"
           }
         },
-        "currentAnchorTime": {
-          "format": "date-time",
-          "description": "The current anchor time (this is not necessarely the last anchor time!) of the entry (if any) in the blockchain in ISO 8601 format",
-          "readOnly": true,
-          "type": "string"
-        },
         "anchorState": {
           "readOnly": true,
           "type": "string",
           "enum": [
             "REQUESTED",
             "COMMITTED",
-            "NOT_FOUND",
-            "ANCHORED"
+            "NOT_FOUND"
           ]
-        },
-        "lastAnchorTime": {
-          "format": "date-time",
-          "description": "The last anchor time of the entry (if any) in the blockchain in ISO 8601 format",
-          "readOnly": true,
-          "type": "string"
-        },
-        "firstAnchorTime": {
-          "format": "date-time",
-          "description": "The first anchor time of the entry (if any) in the blockchain in ISO 8601 format",
-          "readOnly": true,
-          "type": "string"
         }
       }
     },
@@ -1249,7 +1211,20 @@
       "description": "Entry",
       "type": "object",
       "required": ["entryData"],
-      "properties": {"entryData": {"$ref": "#/definitions/EntryData"}}
+      "properties": {
+        "entryData": {"$ref": "#/definitions/EntryData"},
+        "dataStructure": {
+          "type": "string",
+          "enum": [
+            "Factom",
+            "Multichain"
+          ]
+        },
+        "blockchainImplementation": {
+          "type": "string",
+          "enum": ["Bitcoin"]
+        }
+      }
     },
     "CommittedEntryResponse": {
       "description": "Committed EntryData response",
@@ -1274,6 +1249,10 @@
     "CommittedEntry": {
       "description": "Commited Entry",
       "type": "object",
+      "required": [
+        "blockchainImplementation",
+        "dataStructure"
+      ],
       "properties": {
         "entry": {"$ref": "#/definitions/Entry"},
         "chainId": {
@@ -1281,11 +1260,15 @@
           "readOnly": true,
           "type": "string"
         },
-        "rawBackendStructures": {
-          "description": "Raw data structures of backend",
+        "dataStructure": {
           "readOnly": true,
-          "type": "array",
-          "items": {"$ref": "#/definitions/RawBackendStructure"}
+          "type": "string",
+          "enum": ["Factom"]
+        },
+        "blockchainImplementation": {
+          "readOnly": true,
+          "type": "string",
+          "enum": ["Bitcoin"]
         },
         "entryId": {
           "description": "Entry ID",
@@ -1293,8 +1276,7 @@
           "type": "string"
         }
       }
-    },
-    "RawBackendStructure": {"type": "object"}
+    }
   },
   "swagger": "2.0",
   "info": {

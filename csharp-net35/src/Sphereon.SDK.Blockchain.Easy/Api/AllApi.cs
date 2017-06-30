@@ -134,9 +134,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Create a new entry for the specified chain</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>CommittedEntryResponse</returns>
-        CommittedEntryResponse CreateEntry (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null);
+        CommittedEntryResponse CreateEntry (string context, string chainId, Entry entry);
 
         /// <summary>
         /// Create a new entry in the provided chain
@@ -148,9 +147,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Create a new entry for the specified chain</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of CommittedEntryResponse</returns>
-        ApiResponse<CommittedEntryResponse> CreateEntryWithHttpInfo (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null);
+        ApiResponse<CommittedEntryResponse> CreateEntryWithHttpInfo (string context, string chainId, Entry entry);
         /// <summary>
         /// Delete backend by id (not by ledgername)
         /// </summary>
@@ -234,9 +232,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        AnchoredEntryResponse EntryById (string context, string chainId, string entryId, DateTime? currentAnchorTime = null);
+        AnchoredEntryResponse EntryById (string context, string chainId, string entryId);
 
         /// <summary>
         /// Get an existing entry in the provided chain
@@ -248,9 +245,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        ApiResponse<AnchoredEntryResponse> EntryByIdWithHttpInfo (string context, string chainId, string entryId, DateTime? currentAnchorTime = null);
+        ApiResponse<AnchoredEntryResponse> EntryByIdWithHttpInfo (string context, string chainId, string entryId);
         /// <summary>
         /// Get an existing entry in the provided chain
         /// </summary>
@@ -261,9 +257,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        AnchoredEntryResponse EntryByRequest (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null);
+        AnchoredEntryResponse EntryByRequest (string context, string chainId, Entry entry);
 
         /// <summary>
         /// Get an existing entry in the provided chain
@@ -275,9 +270,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        ApiResponse<AnchoredEntryResponse> EntryByRequestWithHttpInfo (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null);
+        ApiResponse<AnchoredEntryResponse> EntryByRequestWithHttpInfo (string context, string chainId, Entry entry);
         /// <summary>
         /// Determine whether the Id of an entry exists in the blockchain
         /// </summary>
@@ -327,7 +321,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>ApiResponse of List&lt;Backend&gt;</returns>
         ApiResponse<List<Backend>> FindBackendsWithHttpInfo (string backendId, bool? includePublic = null);
         /// <summary>
-        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
+        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail
         /// </summary>
         /// <remarks>
         /// 
@@ -339,7 +333,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         AnchoredEntryResponse FirstEntry (string context, string chainId);
 
         /// <summary>
-        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
+        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail
         /// </summary>
         /// <remarks>
         /// 
@@ -394,7 +388,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>ApiResponse of Context</returns>
         ApiResponse<Context> GetContextWithHttpInfo (string context);
         /// <summary>
-        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
+        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head
         /// </summary>
         /// <remarks>
         /// 
@@ -406,7 +400,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         AnchoredEntryResponse LastEntry (string context, string chainId);
 
         /// <summary>
-        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
+        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head
         /// </summary>
         /// <remarks>
         /// 
@@ -445,9 +439,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        AnchoredEntryResponse NextEntryById (string context, string chainId, string entryId, DateTime? currentAnchorTime = null);
+        AnchoredEntryResponse NextEntryById (string context, string chainId, string entryId);
 
         /// <summary>
         /// Get the entry after the supplied entry Id (the next) in the provided chain
@@ -459,9 +452,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        ApiResponse<AnchoredEntryResponse> NextEntryByIdWithHttpInfo (string context, string chainId, string entryId, DateTime? currentAnchorTime = null);
+        ApiResponse<AnchoredEntryResponse> NextEntryByIdWithHttpInfo (string context, string chainId, string entryId);
         /// <summary>
         /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
@@ -472,9 +464,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        AnchoredEntryResponse NextEntryByRequest (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null);
+        AnchoredEntryResponse NextEntryByRequest (string context, string chainId, Entry entry);
 
         /// <summary>
         /// Get the entry after the supplied entry Id (the next) in the provided chain
@@ -486,9 +477,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        ApiResponse<AnchoredEntryResponse> NextEntryByRequestWithHttpInfo (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null);
+        ApiResponse<AnchoredEntryResponse> NextEntryByRequestWithHttpInfo (string context, string chainId, Entry entry);
         /// <summary>
         /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
@@ -499,9 +489,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        AnchoredEntryResponse PreviousEntryById (string context, string chainId, string entryId, DateTime? currentAnchorTime = null);
+        AnchoredEntryResponse PreviousEntryById (string context, string chainId, string entryId);
 
         /// <summary>
         /// Get the entry before the supplied entry Id (the previous) in the provided chain
@@ -513,9 +502,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        ApiResponse<AnchoredEntryResponse> PreviousEntryByIdWithHttpInfo (string context, string chainId, string entryId, DateTime? currentAnchorTime = null);
+        ApiResponse<AnchoredEntryResponse> PreviousEntryByIdWithHttpInfo (string context, string chainId, string entryId);
         /// <summary>
         /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
@@ -526,9 +514,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        AnchoredEntryResponse PreviousEntryByRequest (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null);
+        AnchoredEntryResponse PreviousEntryByRequest (string context, string chainId, Entry entry);
 
         /// <summary>
         /// Get the entry before the supplied entry Id (the previous) in the provided chain
@@ -540,9 +527,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        ApiResponse<AnchoredEntryResponse> PreviousEntryByRequestWithHttpInfo (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null);
+        ApiResponse<AnchoredEntryResponse> PreviousEntryByRequestWithHttpInfo (string context, string chainId, Entry entry);
         #endregion Synchronous Operations
     }
 
@@ -1003,11 +989,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Create a new entry for the specified chain</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>CommittedEntryResponse</returns>
-        public CommittedEntryResponse CreateEntry (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null)
+        public CommittedEntryResponse CreateEntry (string context, string chainId, Entry entry)
         {
-             ApiResponse<CommittedEntryResponse> localVarResponse = CreateEntryWithHttpInfo(context, chainId, entry, currentAnchorTime);
+             ApiResponse<CommittedEntryResponse> localVarResponse = CreateEntryWithHttpInfo(context, chainId, entry);
              return localVarResponse.Data;
         }
 
@@ -1018,9 +1003,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Create a new entry for the specified chain</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of CommittedEntryResponse</returns>
-        public ApiResponse< CommittedEntryResponse > CreateEntryWithHttpInfo (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null)
+        public ApiResponse< CommittedEntryResponse > CreateEntryWithHttpInfo (string context, string chainId, Entry entry)
         {
             // verify the required parameter 'context' is set
             if (context == null)
@@ -1059,7 +1043,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             localVarPathParams.Add("format", "json");
             if (context != null) localVarPathParams.Add("context", Configuration.ApiClient.ParameterToString(context)); // path parameter
             if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
-            if (currentAnchorTime != null) localVarQueryParams.Add("currentAnchorTime", Configuration.ApiClient.ParameterToString(currentAnchorTime)); // query parameter
             if (entry != null && entry.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(entry); // http body (model) parameter
@@ -1370,11 +1353,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        public AnchoredEntryResponse EntryById (string context, string chainId, string entryId, DateTime? currentAnchorTime = null)
+        public AnchoredEntryResponse EntryById (string context, string chainId, string entryId)
         {
-             ApiResponse<AnchoredEntryResponse> localVarResponse = EntryByIdWithHttpInfo(context, chainId, entryId, currentAnchorTime);
+             ApiResponse<AnchoredEntryResponse> localVarResponse = EntryByIdWithHttpInfo(context, chainId, entryId);
              return localVarResponse.Data;
         }
 
@@ -1385,9 +1367,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        public ApiResponse< AnchoredEntryResponse > EntryByIdWithHttpInfo (string context, string chainId, string entryId, DateTime? currentAnchorTime = null)
+        public ApiResponse< AnchoredEntryResponse > EntryByIdWithHttpInfo (string context, string chainId, string entryId)
         {
             // verify the required parameter 'context' is set
             if (context == null)
@@ -1427,7 +1408,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (context != null) localVarPathParams.Add("context", Configuration.ApiClient.ParameterToString(context)); // path parameter
             if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
             if (entryId != null) localVarPathParams.Add("entryId", Configuration.ApiClient.ParameterToString(entryId)); // path parameter
-            if (currentAnchorTime != null) localVarQueryParams.Add("currentAnchorTime", Configuration.ApiClient.ParameterToString(currentAnchorTime)); // query parameter
 
             // authentication (oauth2schema) required
             // oauth required
@@ -1462,11 +1442,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        public AnchoredEntryResponse EntryByRequest (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null)
+        public AnchoredEntryResponse EntryByRequest (string context, string chainId, Entry entry)
         {
-             ApiResponse<AnchoredEntryResponse> localVarResponse = EntryByRequestWithHttpInfo(context, chainId, entry, currentAnchorTime);
+             ApiResponse<AnchoredEntryResponse> localVarResponse = EntryByRequestWithHttpInfo(context, chainId, entry);
              return localVarResponse.Data;
         }
 
@@ -1477,9 +1456,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        public ApiResponse< AnchoredEntryResponse > EntryByRequestWithHttpInfo (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null)
+        public ApiResponse< AnchoredEntryResponse > EntryByRequestWithHttpInfo (string context, string chainId, Entry entry)
         {
             // verify the required parameter 'context' is set
             if (context == null)
@@ -1518,7 +1496,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             localVarPathParams.Add("format", "json");
             if (context != null) localVarPathParams.Add("context", Configuration.ApiClient.ParameterToString(context)); // path parameter
             if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
-            if (currentAnchorTime != null) localVarQueryParams.Add("currentAnchorTime", Configuration.ApiClient.ParameterToString(currentAnchorTime)); // query parameter
             if (entry != null && entry.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(entry); // http body (model) parameter
@@ -1724,7 +1701,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times 
+        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1737,7 +1714,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times 
+        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1964,7 +1941,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times 
+        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1977,7 +1954,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times 
+        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head 
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -2124,11 +2101,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        public AnchoredEntryResponse NextEntryById (string context, string chainId, string entryId, DateTime? currentAnchorTime = null)
+        public AnchoredEntryResponse NextEntryById (string context, string chainId, string entryId)
         {
-             ApiResponse<AnchoredEntryResponse> localVarResponse = NextEntryByIdWithHttpInfo(context, chainId, entryId, currentAnchorTime);
+             ApiResponse<AnchoredEntryResponse> localVarResponse = NextEntryByIdWithHttpInfo(context, chainId, entryId);
              return localVarResponse.Data;
         }
 
@@ -2139,9 +2115,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        public ApiResponse< AnchoredEntryResponse > NextEntryByIdWithHttpInfo (string context, string chainId, string entryId, DateTime? currentAnchorTime = null)
+        public ApiResponse< AnchoredEntryResponse > NextEntryByIdWithHttpInfo (string context, string chainId, string entryId)
         {
             // verify the required parameter 'context' is set
             if (context == null)
@@ -2181,7 +2156,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (context != null) localVarPathParams.Add("context", Configuration.ApiClient.ParameterToString(context)); // path parameter
             if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
             if (entryId != null) localVarPathParams.Add("entryId", Configuration.ApiClient.ParameterToString(entryId)); // path parameter
-            if (currentAnchorTime != null) localVarQueryParams.Add("currentAnchorTime", Configuration.ApiClient.ParameterToString(currentAnchorTime)); // query parameter
 
             // authentication (oauth2schema) required
             // oauth required
@@ -2216,11 +2190,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        public AnchoredEntryResponse NextEntryByRequest (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null)
+        public AnchoredEntryResponse NextEntryByRequest (string context, string chainId, Entry entry)
         {
-             ApiResponse<AnchoredEntryResponse> localVarResponse = NextEntryByRequestWithHttpInfo(context, chainId, entry, currentAnchorTime);
+             ApiResponse<AnchoredEntryResponse> localVarResponse = NextEntryByRequestWithHttpInfo(context, chainId, entry);
              return localVarResponse.Data;
         }
 
@@ -2231,9 +2204,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        public ApiResponse< AnchoredEntryResponse > NextEntryByRequestWithHttpInfo (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null)
+        public ApiResponse< AnchoredEntryResponse > NextEntryByRequestWithHttpInfo (string context, string chainId, Entry entry)
         {
             // verify the required parameter 'context' is set
             if (context == null)
@@ -2272,7 +2244,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             localVarPathParams.Add("format", "json");
             if (context != null) localVarPathParams.Add("context", Configuration.ApiClient.ParameterToString(context)); // path parameter
             if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
-            if (currentAnchorTime != null) localVarQueryParams.Add("currentAnchorTime", Configuration.ApiClient.ParameterToString(currentAnchorTime)); // query parameter
             if (entry != null && entry.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(entry); // http body (model) parameter
@@ -2315,11 +2286,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        public AnchoredEntryResponse PreviousEntryById (string context, string chainId, string entryId, DateTime? currentAnchorTime = null)
+        public AnchoredEntryResponse PreviousEntryById (string context, string chainId, string entryId)
         {
-             ApiResponse<AnchoredEntryResponse> localVarResponse = PreviousEntryByIdWithHttpInfo(context, chainId, entryId, currentAnchorTime);
+             ApiResponse<AnchoredEntryResponse> localVarResponse = PreviousEntryByIdWithHttpInfo(context, chainId, entryId);
              return localVarResponse.Data;
         }
 
@@ -2330,9 +2300,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entryId">entryId</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        public ApiResponse< AnchoredEntryResponse > PreviousEntryByIdWithHttpInfo (string context, string chainId, string entryId, DateTime? currentAnchorTime = null)
+        public ApiResponse< AnchoredEntryResponse > PreviousEntryByIdWithHttpInfo (string context, string chainId, string entryId)
         {
             // verify the required parameter 'context' is set
             if (context == null)
@@ -2372,7 +2341,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (context != null) localVarPathParams.Add("context", Configuration.ApiClient.ParameterToString(context)); // path parameter
             if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
             if (entryId != null) localVarPathParams.Add("entryId", Configuration.ApiClient.ParameterToString(entryId)); // path parameter
-            if (currentAnchorTime != null) localVarQueryParams.Add("currentAnchorTime", Configuration.ApiClient.ParameterToString(currentAnchorTime)); // query parameter
 
             // authentication (oauth2schema) required
             // oauth required
@@ -2407,11 +2375,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>AnchoredEntryResponse</returns>
-        public AnchoredEntryResponse PreviousEntryByRequest (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null)
+        public AnchoredEntryResponse PreviousEntryByRequest (string context, string chainId, Entry entry)
         {
-             ApiResponse<AnchoredEntryResponse> localVarResponse = PreviousEntryByRequestWithHttpInfo(context, chainId, entry, currentAnchorTime);
+             ApiResponse<AnchoredEntryResponse> localVarResponse = PreviousEntryByRequestWithHttpInfo(context, chainId, entry);
              return localVarResponse.Data;
         }
 
@@ -2422,9 +2389,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <param name="context">context</param>
         /// <param name="chainId">chainId</param>
         /// <param name="entry">Retrieve the entry</param>
-        /// <param name="currentAnchorTime"> (optional)</param>
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
-        public ApiResponse< AnchoredEntryResponse > PreviousEntryByRequestWithHttpInfo (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null)
+        public ApiResponse< AnchoredEntryResponse > PreviousEntryByRequestWithHttpInfo (string context, string chainId, Entry entry)
         {
             // verify the required parameter 'context' is set
             if (context == null)
@@ -2463,7 +2429,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             localVarPathParams.Add("format", "json");
             if (context != null) localVarPathParams.Add("context", Configuration.ApiClient.ParameterToString(context)); // path parameter
             if (chainId != null) localVarPathParams.Add("chainId", Configuration.ApiClient.ParameterToString(chainId)); // path parameter
-            if (currentAnchorTime != null) localVarQueryParams.Add("currentAnchorTime", Configuration.ApiClient.ParameterToString(currentAnchorTime)); // query parameter
             if (entry != null && entry.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(entry); // http body (model) parameter

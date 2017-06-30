@@ -4,12 +4,12 @@ All URIs are relative to *https://gw.api.cloud.sphereon.com/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateChain**](ChainApi.md#createchain) | **POST** /blockchain/easy/0.1.0/chains | Create a new chain
+[**CreateChain**](ChainApi.md#createchain) | **POST** /blockchain/easy/0.9.1/{context}/chains | Create a new chain
 
 
 <a name="createchain"></a>
 # **CreateChain**
-> CommittedChainResponse CreateChain (Chain chain)
+> CommittedChainResponse CreateChain (string context, Chain chain)
 
 Create a new chain
 
@@ -32,12 +32,13 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new ChainApi();
+            var context = context_example;  // string | context
             var chain = new Chain(); // Chain | Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
 
             try
             {
                 // Create a new chain
-                CommittedChainResponse result = apiInstance.CreateChain(chain);
+                CommittedChainResponse result = apiInstance.CreateChain(context, chain);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -53,6 +54,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **string**| context | 
  **chain** | [**Chain**](Chain.md)| Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! | 
 
 ### Return type
@@ -65,8 +67,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json;charset=UTF-8
+ - **Accept**: application/json;charset=UTF-8
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

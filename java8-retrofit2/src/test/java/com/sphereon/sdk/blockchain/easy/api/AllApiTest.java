@@ -1,16 +1,22 @@
 package com.sphereon.sdk.blockchain.easy.api;
 
 import com.sphereon.sdk.blockchain.easy.handler.ApiClient;
-import com.sphereon.sdk.blockchain.easy.model.Chain;
-import com.sphereon.sdk.blockchain.easy.model.Entry;
 import com.sphereon.sdk.blockchain.easy.model.IdResponse;
-import org.junit.Assert;
+import com.sphereon.sdk.blockchain.easy.model.ErrorResponse;
+import com.sphereon.sdk.blockchain.easy.model.Backend;
+import com.sphereon.sdk.blockchain.easy.model.CommittedChainResponse;
+import com.sphereon.sdk.blockchain.easy.model.Chain;
+import com.sphereon.sdk.blockchain.easy.model.Context;
+import com.sphereon.sdk.blockchain.easy.model.CommittedEntryResponse;
+import com.sphereon.sdk.blockchain.easy.model.Entry;
+import com.sphereon.sdk.blockchain.easy.model.AnchoredEntryResponse;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
-import retrofit2.Response;
 
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * API tests for AllApi
@@ -21,179 +27,307 @@ public class AllApiTest {
 
     @Before
     public void setup() {
-        ApiClient apiClient = new ApiClient("oauth2schema");
-        apiClient.setAccessToken("1234567789");
-        api = apiClient.createService(AllApi.class);
-
+        api = new ApiClient().createService(AllApi.class);
     }
 
-
+    
     /**
      * Determine whether the Id of a chain exists in the blockchain
+     *
+     * 
      */
     @Test
-    @Ignore
-    public void chainIdExistsTest() throws IOException {
-        String chainId = "432434";
-        Response<IdResponse> response = api.chainIdExists(chainId).execute();
-        Assert.assertEquals(200, response.code());
-        IdResponse idResponse = response.body();
-        Assert.assertNotNull(idResponse);
-        Assert.assertEquals(IdResponse.ExistsEnum.FALSE, idResponse.getExists());
-    }
+    public void chainIdExistsTest() {
+        String context = null;
+        String chainId = null;
+        // IdResponse response = api.chainIdExists(context, chainId);
 
+        // TODO: test validations
+    }
+    
+    /**
+     * Create a new backend
+     *
+     * 
+     */
+    @Test
+    public void createBackendTest() {
+        Backend backend = null;
+        // Backend response = api.createBackend(backend);
+
+        // TODO: test validations
+    }
+    
     /**
      * Create a new chain
+     *
+     * 
      */
     @Test
     public void createChainTest() {
+        String context = null;
         Chain chain = null;
-        // CommittedChainResponse response = api.createChain(chain);
+        // CommittedChainResponse response = api.createChain(context, chain);
 
         // TODO: test validations
     }
+    
+    /**
+     * Create a new context
+     *
+     * 
+     */
+    @Test
+    public void createContextTest() {
+        Context context = null;
+        // Context response = api.createContext(context);
 
+        // TODO: test validations
+    }
+    
     /**
      * Create a new entry in the provided chain
+     *
+     * 
      */
     @Test
     public void createEntryTest() {
+        String context = null;
         String chainId = null;
         Entry entry = null;
-        // CommittedEntryResponse response = api.createEntry(chainId, entry);
+        // CommittedEntryResponse response = api.createEntry(context, chainId, entry);
 
         // TODO: test validations
     }
+    
+    /**
+     * Delete backend by id (not by ledgername)
+     *
+     * 
+     */
+    @Test
+    public void deleteBackendTest() {
+        String backendId = null;
+        // Void response = api.deleteBackend(backendId);
 
+        // TODO: test validations
+    }
+    
     /**
      * Pre determine the Id of a chain request without anchoring it in the blockchain
+     *
+     * 
      */
     @Test
     public void determineChainIdTest() {
+        String context = null;
         Chain chain = null;
         Boolean checkExistence = null;
-        // IdResponse response = api.determineChainId(chain, checkExistence);
+        // IdResponse response = api.determineChainId(context, chain, checkExistence);
 
         // TODO: test validations
     }
-
+    
     /**
      * Pre determine the Id of an entry request without anchoring the entry
+     *
+     * 
      */
     @Test
     public void determineEntryIdTest() {
+        String context = null;
         String chainId = null;
         Entry entry = null;
         Boolean checkExistence = null;
-        // IdResponse response = api.determineEntryId(chainId, entry, checkExistence);
+        // IdResponse response = api.determineEntryId(context, chainId, entry, checkExistence);
 
         // TODO: test validations
     }
-
+    
     /**
      * Get an existing entry in the provided chain
+     *
+     * 
      */
     @Test
     public void entryByIdTest() {
+        String context = null;
         String chainId = null;
         String entryId = null;
-        // AnchoredEntryResponse response = api.entryById(chainId, entryId);
+        // AnchoredEntryResponse response = api.entryById(context, chainId, entryId);
 
         // TODO: test validations
     }
-
+    
     /**
      * Get an existing entry in the provided chain
+     *
+     * 
      */
     @Test
     public void entryByRequestTest() {
+        String context = null;
         String chainId = null;
         Entry entry = null;
-        // AnchoredEntryResponse response = api.entryByRequest(chainId, entry);
+        // AnchoredEntryResponse response = api.entryByRequest(context, chainId, entry);
 
         // TODO: test validations
     }
-
+    
     /**
      * Determine whether the Id of an entry exists in the blockchain
+     *
+     * 
      */
     @Test
     public void entryIdExistsTest() {
+        String context = null;
         String chainId = null;
         String entryId = null;
-        // IdResponse response = api.entryIdExists(chainId, entryId);
+        // IdResponse response = api.entryIdExists(context, chainId, entryId);
 
         // TODO: test validations
     }
+    
+    /**
+     * Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
+     *
+     * 
+     */
+    @Test
+    public void findBackendsTest() {
+        String backendId = null;
+        Boolean includePublic = null;
+        // List<Backend> response = api.findBackends(backendId, includePublic);
 
+        // TODO: test validations
+    }
+    
     /**
      * Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+     *
+     * 
      */
     @Test
     public void firstEntryTest() {
+        String context = null;
         String chainId = null;
-        // AnchoredEntryResponse response = api.firstEntry(chainId);
+        // AnchoredEntryResponse response = api.firstEntry(context, chainId);
 
         // TODO: test validations
     }
+    
+    /**
+     * Get existing backend by id (not by ledgername). Optionally including public backend of others
+     *
+     * 
+     */
+    @Test
+    public void getBackendTest() {
+        String backendId = null;
+        Boolean includePublic = null;
+        // Backend response = api.getBackend(backendId, includePublic);
 
+        // TODO: test validations
+    }
+    
+    /**
+     * Get an existing context
+     *
+     * 
+     */
+    @Test
+    public void getContextTest() {
+        String context = null;
+        // Context response = api.getContext(context);
+
+        // TODO: test validations
+    }
+    
     /**
      * Get the last entry in the provided chain. This is the most recent entry also called the chain head
+     *
+     * 
      */
     @Test
     public void lastEntryTest() {
+        String context = null;
         String chainId = null;
-        // AnchoredEntryResponse response = api.lastEntry(chainId);
+        // AnchoredEntryResponse response = api.lastEntry(context, chainId);
 
         // TODO: test validations
     }
+    
+    /**
+     * List existing backends.
+     *
+     * 
+     */
+    @Test
+    public void listBackendsTest() {
+        // List<Backend> response = api.listBackends();
 
+        // TODO: test validations
+    }
+    
     /**
      * Get the entry after the supplied entry Id (the next) in the provided chain
+     *
+     * 
      */
     @Test
     public void nextEntryByIdTest() {
+        String context = null;
         String chainId = null;
         String entryId = null;
-        // AnchoredEntryResponse response = api.nextEntryById(chainId, entryId);
+        // AnchoredEntryResponse response = api.nextEntryById(context, chainId, entryId);
 
         // TODO: test validations
     }
-
+    
     /**
      * Get the entry after the supplied entry Id (the next) in the provided chain
+     *
+     * 
      */
     @Test
     public void nextEntryByRequestTest() {
+        String context = null;
         String chainId = null;
         Entry entry = null;
-        // AnchoredEntryResponse response = api.nextEntryByRequest(chainId, entry);
+        // AnchoredEntryResponse response = api.nextEntryByRequest(context, chainId, entry);
 
         // TODO: test validations
     }
-
+    
     /**
      * Get the entry before the supplied entry Id (the previous) in the provided chain
+     *
+     * 
      */
     @Test
     public void previousEntryByIdTest() {
+        String context = null;
         String chainId = null;
         String entryId = null;
-        // AnchoredEntryResponse response = api.previousEntryById(chainId, entryId);
+        // AnchoredEntryResponse response = api.previousEntryById(context, chainId, entryId);
 
         // TODO: test validations
     }
-
+    
     /**
      * Get the entry before the supplied entry Id (the previous) in the provided chain
+     *
+     * 
      */
     @Test
     public void previousEntryByRequestTest() {
+        String context = null;
         String chainId = null;
         Entry entry = null;
-        // AnchoredEntryResponse response = api.previousEntryByRequest(chainId, entry);
+        // AnchoredEntryResponse response = api.previousEntryByRequest(context, chainId, entry);
 
         // TODO: test validations
     }
-
+    
 }

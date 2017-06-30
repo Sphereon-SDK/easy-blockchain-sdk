@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 
 * `Factom` (value: `"Factom"`)
 
+* `Multichain` (value: `"Multichain"`)
+
 
 
 
