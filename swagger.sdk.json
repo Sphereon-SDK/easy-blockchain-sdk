@@ -1,0 +1,1323 @@
+{
+  "basePath": "/",
+  "paths": {
+    "/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}": {"get": {
+      "summary": "Get an existing entry in the provided chain",
+      "security": [{"oauth2schema": ["global"]}],
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "entryById",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
+          "description": "The existing entry"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid chain id"
+        },
+        "404": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Entry does not exists"
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "context",
+          "description": "context",
+          "type": "string",
+          "required": true
+        },
+        {
+          "in": "path",
+          "name": "chainId",
+          "description": "chainId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "in": "path",
+          "name": "entryId",
+          "description": "entryId",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "tags": [
+        "Entry",
+        "All"
+      ],
+      "consumes": ["application/json"]
+    }},
+    "/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/next": {"get": {
+      "summary": "Get the entry after the supplied entry Id (the next) in the provided chain",
+      "security": [{"oauth2schema": ["global"]}],
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "nextEntryById",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
+          "description": "The existing next entry"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid chain id"
+        },
+        "404": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Entry does not exists"
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "context",
+          "description": "context",
+          "type": "string",
+          "required": true
+        },
+        {
+          "in": "path",
+          "name": "chainId",
+          "description": "chainId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "in": "path",
+          "name": "entryId",
+          "description": "entryId",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "tags": [
+        "Entry",
+        "All"
+      ],
+      "consumes": ["application/json"]
+    }},
+    "/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/next": {"post": {
+      "summary": "Get the entry after the supplied entry Id (the next) in the provided chain",
+      "security": [{"oauth2schema": ["global"]}],
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "nextEntryByRequest",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
+          "description": "The existing next entry"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid chain id"
+        },
+        "404": {
+          "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
+          "description": "Request entry does not exists"
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "context",
+          "description": "context",
+          "type": "string",
+          "required": true
+        },
+        {
+          "in": "path",
+          "name": "chainId",
+          "description": "chainId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "schema": {"$ref": "#/definitions/Entry"},
+          "in": "body",
+          "name": "entry",
+          "description": "Retrieve the entry",
+          "required": true
+        }
+      ],
+      "tags": [
+        "Entry",
+        "All"
+      ],
+      "consumes": ["application/json"]
+    }},
+    "/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/previous": {"get": {
+      "summary": "Get the entry before the supplied entry Id (the previous) in the provided chain",
+      "security": [{"oauth2schema": ["global"]}],
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "previousEntryById",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
+          "description": "The existing  previous entry"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid chain id"
+        },
+        "404": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Entry does not exists"
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "context",
+          "description": "context",
+          "type": "string",
+          "required": true
+        },
+        {
+          "in": "path",
+          "name": "chainId",
+          "description": "chainId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "in": "path",
+          "name": "entryId",
+          "description": "entryId",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "tags": [
+        "Entry",
+        "All"
+      ],
+      "consumes": ["application/json"]
+    }},
+    "/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/previous": {"post": {
+      "summary": "Get the entry before the supplied entry Id (the previous) in the provided chain",
+      "security": [{"oauth2schema": ["global"]}],
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "previousEntryByRequest",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
+          "description": "The existing previous entry"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid chain id"
+        },
+        "404": {
+          "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
+          "description": "Request entry does not exists"
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "context",
+          "description": "context",
+          "type": "string",
+          "required": true
+        },
+        {
+          "in": "path",
+          "name": "chainId",
+          "description": "chainId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "schema": {"$ref": "#/definitions/Entry"},
+          "in": "body",
+          "name": "entry",
+          "description": "Retrieve the entry",
+          "required": true
+        }
+      ],
+      "tags": [
+        "Entry",
+        "All"
+      ],
+      "consumes": ["application/json"]
+    }},
+    "/blockchain/easy/0.9.1/{context}/chains": {"post": {
+      "summary": "Create a new chain",
+      "security": [{"oauth2schema": ["global"]}],
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "createChain",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/CommittedChainResponse"},
+          "description": "Chain already exists"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid blockchain request"
+        },
+        "202": {
+          "schema": {"$ref": "#/definitions/CommittedChainResponse"},
+          "description": "Chain creation request received"
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "context",
+          "description": "context",
+          "type": "string",
+          "required": true
+        },
+        {
+          "schema": {"$ref": "#/definitions/Chain"},
+          "in": "body",
+          "name": "chain",
+          "description": "Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!",
+          "required": true
+        }
+      ],
+      "tags": [
+        "Chain",
+        "All"
+      ],
+      "consumes": ["application/json;charset=UTF-8"]
+    }},
+    "/blockchain/easy/0.9.1/{context}/chains/id/{chainId}": {"get": {
+      "summary": "Determine whether the Id of a chain exists in the blockchain",
+      "security": [{"oauth2schema": ["global"]}],
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "chainIdExists",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/IdResponse"},
+          "description": "Chain existence"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid blockchain request"
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "context",
+          "description": "context",
+          "type": "string",
+          "required": true
+        },
+        {
+          "in": "path",
+          "name": "chainId",
+          "description": "chainId",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "tags": [
+        "Id",
+        "All"
+      ],
+      "consumes": ["application/json"]
+    }},
+    "/blockchain/easy/0.9.1/backends/{backendId}/find": {"get": {
+      "summary": "Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others",
+      "security": [{"oauth2schema": ["global"]}],
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "findBackends",
+      "responses": {
+        "200": {
+          "schema": {
+            "type": "array",
+            "items": {"$ref": "#/definitions/Backend"}
+          },
+          "description": "List of backend"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid backend request"
+        },
+        "401": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Backend request not allowed"
+        },
+        "404": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Backend not found"
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "backendId",
+          "description": "backendId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "default": false,
+          "in": "query",
+          "name": "includePublic",
+          "description": "includePublic",
+          "type": "boolean",
+          "required": false
+        }
+      ],
+      "tags": [
+        "Context",
+        "All"
+      ],
+      "consumes": ["application/json"]
+    }},
+    "/blockchain/easy/0.9.1/{context}/chains/id": {"post": {
+      "summary": "Pre determine the Id of a chain request without anchoring it in the blockchain",
+      "security": [{"oauth2schema": ["global"]}],
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "determineChainId",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/IdResponse"},
+          "description": "Chain request received and hash calculated"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid blockchain request"
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "context",
+          "description": "context",
+          "type": "string",
+          "required": true
+        },
+        {
+          "schema": {"$ref": "#/definitions/Chain"},
+          "in": "body",
+          "name": "chain",
+          "description": "Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!",
+          "required": true
+        },
+        {
+          "default": false,
+          "in": "query",
+          "name": "checkExistence",
+          "description": "Check whether the id exists",
+          "type": "boolean",
+          "required": false
+        }
+      ],
+      "tags": [
+        "Id",
+        "All"
+      ],
+      "consumes": ["application/json;charset=UTF-8"]
+    }},
+    "/blockchain/easy/0.9.1/{context}/chains/id/{chainId}/entries": {"post": {
+      "summary": "Pre determine the Id of an entry request without anchoring the entry",
+      "security": [{"oauth2schema": ["global"]}],
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "determineEntryId",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/IdResponse"},
+          "description": "Entry request received and hash calculated"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid entry request"
+        },
+        "404": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid chain id. Only possible when existence is checked"
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "context",
+          "description": "context",
+          "type": "string",
+          "required": true
+        },
+        {
+          "in": "path",
+          "name": "chainId",
+          "description": "chainId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "schema": {"$ref": "#/definitions/Entry"},
+          "in": "body",
+          "name": "entry",
+          "description": "The entry to determine the hash for on the specified chain",
+          "required": true
+        },
+        {
+          "default": false,
+          "in": "query",
+          "name": "checkExistence",
+          "description": "Check whether the id exists",
+          "type": "boolean",
+          "required": false
+        }
+      ],
+      "tags": [
+        "Id",
+        "All"
+      ],
+      "consumes": ["application/json;charset=UTF-8"]
+    }},
+    "/blockchain/easy/0.9.1/{context}/chains/id/{chainId}/entries/{entryId}": {"get": {
+      "summary": "Determine whether the Id of an entry exists in the blockchain",
+      "security": [{"oauth2schema": ["global"]}],
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "entryIdExists",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/IdResponse"},
+          "description": "Entry existence"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid blockchain request"
+        },
+        "404": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid chain id"
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "context",
+          "description": "context",
+          "type": "string",
+          "required": true
+        },
+        {
+          "in": "path",
+          "name": "chainId",
+          "description": "chainId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "in": "path",
+          "name": "entryId",
+          "description": "entryId",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "tags": [
+        "Id",
+        "All"
+      ],
+      "consumes": ["application/json"]
+    }},
+    "/blockchain/easy/0.9.1/{context}": {"get": {
+      "summary": "Get an existing context",
+      "security": [{"oauth2schema": ["global"]}],
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "getContext",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/Context"},
+          "description": "Context"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid context request"
+        },
+        "404": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Context not found"
+        }
+      },
+      "parameters": [{
+        "in": "path",
+        "name": "context",
+        "description": "context",
+        "type": "string",
+        "required": true
+      }],
+      "tags": [
+        "Context",
+        "All"
+      ],
+      "consumes": ["application/json"]
+    }},
+    "/blockchain/easy/0.9.1/backends/{backendId}": {
+      "get": {
+        "summary": "Get existing backend by id (not by ledgername). Optionally including public backend of others",
+        "security": [{"oauth2schema": ["global"]}],
+        "produces": ["application/json;charset=UTF-8"],
+        "operationId": "getBackend",
+        "responses": {
+          "200": {
+            "schema": {"$ref": "#/definitions/Backend"},
+            "description": "Backend"
+          },
+          "400": {
+            "schema": {"$ref": "#/definitions/ErrorResponse"},
+            "description": "Invalid backend request"
+          },
+          "401": {
+            "schema": {"$ref": "#/definitions/ErrorResponse"},
+            "description": "Backend request not allowed"
+          },
+          "404": {
+            "schema": {"$ref": "#/definitions/ErrorResponse"},
+            "description": "Backend not found"
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "backendId",
+            "description": "backendId",
+            "type": "string",
+            "required": true
+          },
+          {
+            "default": false,
+            "in": "query",
+            "name": "includePublic",
+            "description": "includePublic",
+            "type": "boolean",
+            "required": false
+          }
+        ],
+        "tags": [
+          "Context",
+          "All"
+        ],
+        "consumes": ["application/json"]
+      },
+      "delete": {
+        "summary": "Delete backend by id (not by ledgername)",
+        "security": [{"oauth2schema": ["global"]}],
+        "produces": ["*/*"],
+        "operationId": "deleteBackend",
+        "responses": {
+          "200": {"description": "Backend deleted"},
+          "400": {
+            "schema": {"$ref": "#/definitions/ErrorResponse"},
+            "description": "Invalid backend request"
+          },
+          "401": {
+            "schema": {"$ref": "#/definitions/ErrorResponse"},
+            "description": "Backend request not allowed"
+          },
+          "404": {
+            "schema": {"$ref": "#/definitions/ErrorResponse"},
+            "description": "Backend not found"
+          }
+        },
+        "parameters": [{
+          "in": "path",
+          "name": "backendId",
+          "description": "backendId",
+          "type": "string",
+          "required": true
+        }],
+        "tags": [
+          "Context",
+          "All"
+        ],
+        "consumes": ["application/json"]
+      }
+    },
+    "/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry": {"post": {
+      "summary": "Get an existing entry in the provided chain",
+      "security": [{"oauth2schema": ["global"]}],
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "entryByRequest",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
+          "description": "The existing request entry"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid chain id"
+        },
+        "404": {
+          "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
+          "description": "Request entry does not exists"
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "context",
+          "description": "context",
+          "type": "string",
+          "required": true
+        },
+        {
+          "in": "path",
+          "name": "chainId",
+          "description": "chainId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "schema": {"$ref": "#/definitions/Entry"},
+          "in": "body",
+          "name": "entry",
+          "description": "Retrieve the entry",
+          "required": true
+        }
+      ],
+      "tags": [
+        "Entry",
+        "All"
+      ],
+      "consumes": ["application/json"]
+    }},
+    "/blockchain/easy/0.9.1/backends": {
+      "post": {
+        "summary": "Create a new backend",
+        "security": [{"oauth2schema": ["global"]}],
+        "produces": ["application/json;charset=UTF-8"],
+        "operationId": "createBackend",
+        "responses": {
+          "200": {
+            "schema": {"$ref": "#/definitions/Backend"},
+            "description": "OK"
+          },
+          "400": {
+            "schema": {"$ref": "#/definitions/ErrorResponse"},
+            "description": "Invalid backend request"
+          },
+          "202": {
+            "schema": {"$ref": "#/definitions/Backend"},
+            "description": "Backend creation request received"
+          },
+          "401": {
+            "schema": {"$ref": "#/definitions/ErrorResponse"},
+            "description": "Backend request not allowed"
+          }
+        },
+        "parameters": [{
+          "schema": {"$ref": "#/definitions/Backend"},
+          "in": "body",
+          "name": "backend",
+          "description": "backend",
+          "required": true
+        }],
+        "tags": [
+          "Context",
+          "All"
+        ],
+        "consumes": ["application/json;charset=UTF-8"]
+      },
+      "get": {
+        "summary": "List existing backends.",
+        "security": [{"oauth2schema": ["global"]}],
+        "produces": ["application/json;charset=UTF-8"],
+        "operationId": "listBackends",
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "array",
+              "items": {"$ref": "#/definitions/Backend"}
+            },
+            "description": "List of backend"
+          },
+          "400": {
+            "schema": {"$ref": "#/definitions/ErrorResponse"},
+            "description": "Invalid backend request"
+          },
+          "401": {
+            "schema": {"$ref": "#/definitions/ErrorResponse"},
+            "description": "Backend request not allowed"
+          },
+          "404": {
+            "schema": {"$ref": "#/definitions/ErrorResponse"},
+            "description": "Backend not found"
+          }
+        },
+        "tags": [
+          "Context",
+          "All"
+        ],
+        "consumes": ["application/json"]
+      }
+    },
+    "/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries": {"post": {
+      "summary": "Create a new entry in the provided chain",
+      "security": [{"oauth2schema": ["global"]}],
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "createEntry",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/CommittedEntryResponse"},
+          "description": "OK"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid entry request"
+        },
+        "202": {
+          "schema": {"$ref": "#/definitions/CommittedEntryResponse"},
+          "description": "Entry already exists"
+        },
+        "204": {
+          "schema": {"$ref": "#/definitions/CommittedEntryResponse"},
+          "description": "Entry creation request received"
+        },
+        "404": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Chain does not exist (yet)"
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "context",
+          "description": "context",
+          "type": "string",
+          "required": true
+        },
+        {
+          "in": "path",
+          "name": "chainId",
+          "description": "chainId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "schema": {"$ref": "#/definitions/Entry"},
+          "in": "body",
+          "name": "entry",
+          "description": "Create a new entry for the specified chain",
+          "required": true
+        }
+      ],
+      "tags": [
+        "Entry",
+        "All"
+      ],
+      "consumes": ["application/json;charset=UTF-8"]
+    }},
+    "/blockchain/easy/0.9.1/": {"post": {
+      "summary": "Create a new context",
+      "security": [{"oauth2schema": ["global"]}],
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "createContext",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/Context"},
+          "description": "Context already exists"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid context request"
+        },
+        "202": {
+          "schema": {"$ref": "#/definitions/Context"},
+          "description": "Context creation request received"
+        },
+        "401": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Backend request not allowed"
+        }
+      },
+      "parameters": [{
+        "schema": {"$ref": "#/definitions/Context"},
+        "in": "body",
+        "name": "context",
+        "description": "context",
+        "required": true
+      }],
+      "tags": [
+        "Context",
+        "All"
+      ],
+      "consumes": ["application/json;charset=UTF-8"]
+    }},
+    "/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/last": {"get": {
+      "summary": "Get the last entry in the provided chain. This is the most recent entry also called the chain head",
+      "security": [{"oauth2schema": ["global"]}],
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "lastEntry",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
+          "description": "The existing anchored entry"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid chain id"
+        },
+        "404": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Entry does not exists"
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "context",
+          "description": "context",
+          "type": "string",
+          "required": true
+        },
+        {
+          "in": "path",
+          "name": "chainId",
+          "description": "chainId",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "tags": [
+        "Entry",
+        "All"
+      ],
+      "consumes": ["application/json"]
+    }},
+    "/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/first": {"get": {
+      "summary": "Get the first entry in the provided chain. This is the oldest entry also called the chain tail",
+      "security": [{"oauth2schema": ["global"]}],
+      "produces": ["application/json;charset=UTF-8"],
+      "operationId": "firstEntry",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/AnchoredEntryResponse"},
+          "description": "The existing anchored first entry"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid chain id"
+        },
+        "404": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Entry does not exists"
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "context",
+          "description": "context",
+          "type": "string",
+          "required": true
+        },
+        {
+          "in": "path",
+          "name": "chainId",
+          "description": "chainId",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "tags": [
+        "Entry",
+        "All"
+      ],
+      "consumes": ["application/json"]
+    }}
+  },
+  "host": "gw.api.cloud.sphereon.com",
+  "schemes": ["https"],
+  "securityDefinitions": {"oauth2schema": {
+    "tokenUrl": "https://gw.api.cloud.sphereon.com/token",
+    "scopes": {"global": "accessEverything"},
+    "type": "oauth2",
+    "flow": "application"
+  }},
+  "definitions": {
+    "Context": {
+      "type": "object",
+      "properties": {
+        "access": {"$ref": "#/definitions/Access"},
+        "backendIds": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "name": {"type": "string"}
+      }
+    },
+    "CommittedChain": {
+      "description": "Commited Chain",
+      "type": "object",
+      "required": [
+        "blockchainImplementation",
+        "dataStructure"
+      ],
+      "properties": {
+        "chain": {"$ref": "#/definitions/Chain"},
+        "dataStructure": {
+          "readOnly": true,
+          "type": "string",
+          "enum": [
+            "Factom",
+            "Multichain"
+          ]
+        },
+        "id": {
+          "description": "Chain ID",
+          "readOnly": true,
+          "type": "string"
+        },
+        "blockchainImplementation": {
+          "readOnly": true,
+          "type": "string",
+          "enum": [
+            "Bitcoin",
+            "None"
+          ]
+        }
+      }
+    },
+    "Chain": {
+      "description": "Chain",
+      "type": "object",
+      "required": ["firstEntry"],
+      "properties": {"firstEntry": {"$ref": "#/definitions/Entry"}}
+    },
+    "IdResponse": {
+      "description": "Id response",
+      "type": "object",
+      "required": ["exists"],
+      "properties": {
+        "exists": {
+          "type": "string",
+          "enum": [
+            "True",
+            "False",
+            "Unknown"
+          ]
+        },
+        "Id": {
+          "description": "The Id",
+          "type": "string"
+        },
+        "dataStructure": {
+          "readOnly": true,
+          "type": "string",
+          "enum": ["Factom"]
+        },
+        "blockchainImplementation": {
+          "readOnly": true,
+          "type": "string",
+          "enum": ["Bitcoin"]
+        }
+      }
+    },
+    "AnchoredEntryResponse": {
+      "description": "Anchored Entry response",
+      "type": "object",
+      "required": [
+        "anchorState",
+        "anchoredEntry"
+      ],
+      "properties": {
+        "anchoredEntry": {"$ref": "#/definitions/CommittedEntry"},
+        "anchorTimes": {
+          "description": "The times at which the anchoredEntry was anchored in the blockchain in ISO 8601 format",
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "anchorState": {
+          "readOnly": true,
+          "type": "string",
+          "enum": [
+            "REQUESTED",
+            "COMMITTED",
+            "NOT_FOUND"
+          ]
+        }
+      }
+    },
+    "EntryData": {
+      "description": "Entry Data",
+      "type": "object",
+      "required": ["content"],
+      "properties": {
+        "externalIds": {
+          "description": "External IDs",
+          "type": "array",
+          "items": {"$ref": "#/definitions/ExternalId"}
+        },
+        "content": {
+          "format": "byte",
+          "description": "Content",
+          "type": "string"
+        }
+      }
+    },
+    "ExternalId": {
+      "description": "External ID - metadata field",
+      "type": "object",
+      "properties": {"value": {
+        "format": "byte",
+        "description": "Metadata value",
+        "type": "string"
+      }}
+    },
+    "Access": {
+      "type": "object",
+      "properties": {
+        "modes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "NONE",
+              "READ",
+              "WRITE"
+            ]
+          }
+        },
+        "public": {"type": "boolean"},
+        "blackList": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "whiteList": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "Error": {
+      "description": "An error",
+      "type": "object",
+      "required": [
+        "code",
+        "level",
+        "message"
+      ],
+      "properties": {
+        "code": {"type": "string"},
+        "level": {
+          "type": "string",
+          "enum": [
+            "INFO",
+            "WARNING",
+            "FATAL"
+          ]
+        },
+        "cause": {"$ref": "#/definitions/Error"},
+        "message": {"type": "string"}
+      }
+    },
+    "RpcProvider": {
+      "description": "RpcProvider",
+      "type": "object",
+      "properties": {
+        "ownerType": {
+          "type": "string",
+          "enum": [
+            "PROVIDER",
+            "CUSTOMER"
+          ]
+        },
+        "password": {"type": "string"},
+        "access": {"$ref": "#/definitions/Access"},
+        "host": {"type": "string"},
+        "id": {"type": "string"},
+        "type": {
+          "type": "string",
+          "enum": [
+            "API",
+            "WALLET"
+          ]
+        },
+        "username": {"type": "string"}
+      }
+    },
+    "ErrorResponse": {
+      "description": "The error response",
+      "type": "object",
+      "properties": {"errors": {
+        "type": "array",
+        "items": {"$ref": "#/definitions/Error"}
+      }}
+    },
+    "CommittedChainResponse": {
+      "description": "Committed Chain response",
+      "type": "object",
+      "required": ["chain"],
+      "properties": {
+        "chain": {"$ref": "#/definitions/CommittedChain"},
+        "commitTime": {
+          "format": "date-time",
+          "description": "The time at which the chain was first committed in ISO 8601 format",
+          "readOnly": true,
+          "type": "string"
+        },
+        "creationRequestTime": {
+          "format": "date-time",
+          "description": "The time at which the chain creation was first requested in ISO 8601 format",
+          "readOnly": true,
+          "type": "string"
+        }
+      }
+    },
+    "Backend": {
+      "description": "Backend",
+      "type": "object",
+      "properties": {
+        "rpcProviders": {
+          "type": "array",
+          "items": {"$ref": "#/definitions/RpcProvider"}
+        },
+        "apiVersion": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ledgerName": {"type": "string"},
+        "implementation": {
+          "type": "string",
+          "enum": [
+            "Bitcoin",
+            "None"
+          ]
+        },
+        "start": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "end": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "dataStructure": {
+          "type": "string",
+          "enum": [
+            "Factom",
+            "Multichain"
+          ]
+        },
+        "id": {
+          "readOnly": true,
+          "type": "string"
+        },
+        "externalAccess": {"$ref": "#/definitions/Access"}
+      }
+    },
+    "Entry": {
+      "description": "Entry",
+      "type": "object",
+      "required": ["entryData"],
+      "properties": {
+        "entryData": {"$ref": "#/definitions/EntryData"},
+        "dataStructure": {
+          "type": "string",
+          "enum": [
+            "Factom",
+            "Multichain"
+          ]
+        },
+        "blockchainImplementation": {
+          "type": "string",
+          "enum": ["Bitcoin"]
+        }
+      }
+    },
+    "CommittedEntryResponse": {
+      "description": "Committed EntryData response",
+      "type": "object",
+      "required": ["entry"],
+      "properties": {
+        "entry": {"$ref": "#/definitions/CommittedEntry"},
+        "commitTime": {
+          "format": "date-time",
+          "description": "The time at which the entry creation was first requested in ISO 8601 format",
+          "readOnly": true,
+          "type": "string"
+        },
+        "creationRequestTime": {
+          "format": "date-time",
+          "description": "The time at which the entry creation was first requested in ISO 8601 format",
+          "readOnly": true,
+          "type": "string"
+        }
+      }
+    },
+    "CommittedEntry": {
+      "description": "Commited Entry",
+      "type": "object",
+      "required": [
+        "blockchainImplementation",
+        "dataStructure"
+      ],
+      "properties": {
+        "entry": {"$ref": "#/definitions/Entry"},
+        "chainId": {
+          "description": "Chain ID",
+          "readOnly": true,
+          "type": "string"
+        },
+        "dataStructure": {
+          "readOnly": true,
+          "type": "string",
+          "enum": ["Factom"]
+        },
+        "blockchainImplementation": {
+          "readOnly": true,
+          "type": "string",
+          "enum": ["Bitcoin"]
+        },
+        "entryId": {
+          "description": "Entry ID",
+          "readOnly": true,
+          "type": "string"
+        }
+      }
+    }
+  },
+  "swagger": "2.0",
+  "info": {
+    "license": {
+      "name": "Apache License Version 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    },
+    "contact": {
+      "name": "Sphereon DevOps Team",
+      "url": "https://sphereon.com",
+      "email": "dev@sphereon.com"
+    },
+    "description": "<b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom or Multichain. The latter also allows for a private blockchain. In the future other solutions will be made available<\/b>\r\n\r\nThe flow is generally as follows:\r\n1. Make sure a context is available using the / POST endpoint. Normally you only need one context. This is the place where backend providers and blockchain implementations are being specified.\r\n2. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is a relative expensive operation.\r\n3. Store entries on the chain from step 2. The entries will contain the content and metadata you want to store forever on the specified chain.\r\n4. Retrieve an existing entry from the chain to verify or retrieve data\r\n\r\n\r\n<b>Interactive testing: <\/b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store<\/a>",
+    "termsOfService": "https://sphereon.com",
+    "title": "Easy Blockchain API",
+    "version": "0.9.1"
+  },
+  "tags": [
+    {
+      "name": "Entry",
+      "description": "Entry related APIs"
+    },
+    {
+      "name": "Context",
+      "description": "Context and backend related APIs"
+    },
+    {
+      "name": "Id",
+      "description": "Id determination and existence APIs"
+    },
+    {
+      "name": "Backend",
+      "description": "Backend related APIs"
+    },
+    {
+      "name": "Chain",
+      "description": "Chain related APIs"
+    },
+    {
+      "name": "All",
+      "description": "All Blockchain APIs"
+    }
+  ]
+}

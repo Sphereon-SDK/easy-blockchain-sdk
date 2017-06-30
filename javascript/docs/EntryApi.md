@@ -4,20 +4,20 @@ All URIs are relative to *https://gw.api.cloud.sphereon.com/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createEntry**](EntryApi.md#createEntry) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries | Create a new entry in the provided chain
-[**entryById**](EntryApi.md#entryById) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
-[**entryByRequest**](EntryApi.md#entryByRequest) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
-[**firstEntry**](EntryApi.md#firstEntry) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail
-[**lastEntry**](EntryApi.md#lastEntry) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head
-[**nextEntryById**](EntryApi.md#nextEntryById) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
-[**nextEntryByRequest**](EntryApi.md#nextEntryByRequest) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
-[**previousEntryById**](EntryApi.md#previousEntryById) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
-[**previousEntryByRequest**](EntryApi.md#previousEntryByRequest) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries/entry/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
+[**createEntry**](EntryApi.md#createEntry) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries | Create a new entry in the provided chain
+[**entryById**](EntryApi.md#entryById) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
+[**entryByRequest**](EntryApi.md#entryByRequest) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
+[**firstEntry**](EntryApi.md#firstEntry) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+[**lastEntry**](EntryApi.md#lastEntry) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head
+[**nextEntryById**](EntryApi.md#nextEntryById) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
+[**nextEntryByRequest**](EntryApi.md#nextEntryByRequest) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
+[**previousEntryById**](EntryApi.md#previousEntryById) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
+[**previousEntryByRequest**](EntryApi.md#previousEntryByRequest) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
 
 
 <a name="createEntry"></a>
 # **createEntry**
-> CommittedEntryResponse createEntry(chainId, entry)
+> CommittedEntryResponse createEntry(context, chainId, entry)
 
 Create a new entry in the provided chain
 
@@ -32,6 +32,8 @@ oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.EntryApi();
 
+var context = "context_example"; // String | context
+
 var chainId = "chainId_example"; // String | chainId
 
 var entry = new EasyBlockchainApi.Entry(); // Entry | Create a new entry for the specified chain
@@ -44,13 +46,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.createEntry(chainId, entry, callback);
+apiInstance.createEntry(context, chainId, entry, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context | 
  **chainId** | **String**| chainId | 
  **entry** | [**Entry**](Entry.md)| Create a new entry for the specified chain | 
 
@@ -64,12 +67,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json;charset=UTF-8
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="entryById"></a>
 # **entryById**
-> AnchoredEntryResponse entryById(chainId, entryId)
+> AnchoredEntryResponse entryById(context, chainId, entryId)
 
 Get an existing entry in the provided chain
 
@@ -84,6 +87,8 @@ oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.EntryApi();
 
+var context = "context_example"; // String | context
+
 var chainId = "chainId_example"; // String | chainId
 
 var entryId = "entryId_example"; // String | entryId
@@ -96,13 +101,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.entryById(chainId, entryId, callback);
+apiInstance.entryById(context, chainId, entryId, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context | 
  **chainId** | **String**| chainId | 
  **entryId** | **String**| entryId | 
 
@@ -117,11 +123,11 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="entryByRequest"></a>
 # **entryByRequest**
-> AnchoredEntryResponse entryByRequest(chainId, entry)
+> AnchoredEntryResponse entryByRequest(context, chainId, entry)
 
 Get an existing entry in the provided chain
 
@@ -136,6 +142,8 @@ oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.EntryApi();
 
+var context = "context_example"; // String | context
+
 var chainId = "chainId_example"; // String | chainId
 
 var entry = new EasyBlockchainApi.Entry(); // Entry | Retrieve the entry
@@ -148,13 +156,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.entryByRequest(chainId, entry, callback);
+apiInstance.entryByRequest(context, chainId, entry, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context | 
  **chainId** | **String**| chainId | 
  **entry** | [**Entry**](Entry.md)| Retrieve the entry | 
 
@@ -169,11 +178,11 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="firstEntry"></a>
 # **firstEntry**
-> AnchoredEntryResponse firstEntry(chainId)
+> AnchoredEntryResponse firstEntry(context, chainId)
 
 Get the first entry in the provided chain. This is the oldest entry also called the chain tail
 
@@ -188,6 +197,8 @@ oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.EntryApi();
 
+var context = "context_example"; // String | context
+
 var chainId = "chainId_example"; // String | chainId
 
 
@@ -198,13 +209,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.firstEntry(chainId, callback);
+apiInstance.firstEntry(context, chainId, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context | 
  **chainId** | **String**| chainId | 
 
 ### Return type
@@ -218,11 +230,11 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="lastEntry"></a>
 # **lastEntry**
-> AnchoredEntryResponse lastEntry(chainId)
+> AnchoredEntryResponse lastEntry(context, chainId)
 
 Get the last entry in the provided chain. This is the most recent entry also called the chain head
 
@@ -237,6 +249,8 @@ oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.EntryApi();
 
+var context = "context_example"; // String | context
+
 var chainId = "chainId_example"; // String | chainId
 
 
@@ -247,13 +261,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.lastEntry(chainId, callback);
+apiInstance.lastEntry(context, chainId, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context | 
  **chainId** | **String**| chainId | 
 
 ### Return type
@@ -267,11 +282,11 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="nextEntryById"></a>
 # **nextEntryById**
-> AnchoredEntryResponse nextEntryById(chainId, entryId)
+> AnchoredEntryResponse nextEntryById(context, chainId, entryId)
 
 Get the entry after the supplied entry Id (the next) in the provided chain
 
@@ -286,6 +301,8 @@ oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.EntryApi();
 
+var context = "context_example"; // String | context
+
 var chainId = "chainId_example"; // String | chainId
 
 var entryId = "entryId_example"; // String | entryId
@@ -298,13 +315,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.nextEntryById(chainId, entryId, callback);
+apiInstance.nextEntryById(context, chainId, entryId, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context | 
  **chainId** | **String**| chainId | 
  **entryId** | **String**| entryId | 
 
@@ -319,11 +337,11 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="nextEntryByRequest"></a>
 # **nextEntryByRequest**
-> AnchoredEntryResponse nextEntryByRequest(chainId, entry)
+> AnchoredEntryResponse nextEntryByRequest(context, chainId, entry)
 
 Get the entry after the supplied entry Id (the next) in the provided chain
 
@@ -338,6 +356,8 @@ oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.EntryApi();
 
+var context = "context_example"; // String | context
+
 var chainId = "chainId_example"; // String | chainId
 
 var entry = new EasyBlockchainApi.Entry(); // Entry | Retrieve the entry
@@ -350,13 +370,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.nextEntryByRequest(chainId, entry, callback);
+apiInstance.nextEntryByRequest(context, chainId, entry, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context | 
  **chainId** | **String**| chainId | 
  **entry** | [**Entry**](Entry.md)| Retrieve the entry | 
 
@@ -371,11 +392,11 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="previousEntryById"></a>
 # **previousEntryById**
-> AnchoredEntryResponse previousEntryById(chainId, entryId)
+> AnchoredEntryResponse previousEntryById(context, chainId, entryId)
 
 Get the entry before the supplied entry Id (the previous) in the provided chain
 
@@ -390,6 +411,8 @@ oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.EntryApi();
 
+var context = "context_example"; // String | context
+
 var chainId = "chainId_example"; // String | chainId
 
 var entryId = "entryId_example"; // String | entryId
@@ -402,13 +425,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.previousEntryById(chainId, entryId, callback);
+apiInstance.previousEntryById(context, chainId, entryId, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context | 
  **chainId** | **String**| chainId | 
  **entryId** | **String**| entryId | 
 
@@ -423,11 +447,11 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="previousEntryByRequest"></a>
 # **previousEntryByRequest**
-> AnchoredEntryResponse previousEntryByRequest(chainId, entry)
+> AnchoredEntryResponse previousEntryByRequest(context, chainId, entry)
 
 Get the entry before the supplied entry Id (the previous) in the provided chain
 
@@ -442,6 +466,8 @@ oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.EntryApi();
 
+var context = "context_example"; // String | context
+
 var chainId = "chainId_example"; // String | chainId
 
 var entry = new EasyBlockchainApi.Entry(); // Entry | Retrieve the entry
@@ -454,13 +480,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.previousEntryByRequest(chainId, entry, callback);
+apiInstance.previousEntryByRequest(context, chainId, entry, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context | 
  **chainId** | **String**| chainId | 
  **entry** | [**Entry**](Entry.md)| Retrieve the entry | 
 
@@ -475,5 +502,5 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
