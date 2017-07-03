@@ -40,55 +40,14 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
     public partial class CommittedEntry :  IEquatable<CommittedEntry>
     {
         /// <summary>
-        /// Gets or Sets DataStructure
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum DataStructureEnum
-        {
-            
-            /// <summary>
-            /// Enum Factom for "Factom"
-            /// </summary>
-            [EnumMember(Value = "Factom")]
-            Factom
-        }
-
-        /// <summary>
-        /// Gets or Sets BlockchainImplementation
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum BlockchainImplementationEnum
-        {
-            
-            /// <summary>
-            /// Enum Bitcoin for "Bitcoin"
-            /// </summary>
-            [EnumMember(Value = "Bitcoin")]
-            Bitcoin
-        }
-
-        /// <summary>
-        /// Gets or Sets DataStructure
-        /// </summary>
-        [DataMember(Name="dataStructure", EmitDefaultValue=false)]
-        public DataStructureEnum? DataStructure { get; set; }
-        /// <summary>
-        /// Gets or Sets BlockchainImplementation
-        /// </summary>
-        [DataMember(Name="blockchainImplementation", EmitDefaultValue=false)]
-        public BlockchainImplementationEnum? BlockchainImplementation { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CommittedEntry" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected CommittedEntry() { }
-        /// <summary>
         /// Initializes a new instance of the <see cref="CommittedEntry" /> class.
         /// </summary>
         /// <param name="Entry">Entry.</param>
-        public CommittedEntry(Entry Entry = null)
+        /// <param name="RawBackendStructures">Raw data structures of backend.</param>
+        public CommittedEntry(Entry Entry = null, List<RawBackendStructure> RawBackendStructures = null)
         {
             this.Entry = Entry;
+            this.RawBackendStructures = RawBackendStructures;
         }
         
         /// <summary>
@@ -102,6 +61,12 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         /// <value>Chain ID</value>
         [DataMember(Name="chainId", EmitDefaultValue=false)]
         public string ChainId { get; private set; }
+        /// <summary>
+        /// Raw data structures of backend
+        /// </summary>
+        /// <value>Raw data structures of backend</value>
+        [DataMember(Name="rawBackendStructures", EmitDefaultValue=false)]
+        public List<RawBackendStructure> RawBackendStructures { get; set; }
         /// <summary>
         /// Entry ID
         /// </summary>
@@ -118,8 +83,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             sb.Append("class CommittedEntry {\n");
             sb.Append("  Entry: ").Append(Entry).Append("\n");
             sb.Append("  ChainId: ").Append(ChainId).Append("\n");
-            sb.Append("  DataStructure: ").Append(DataStructure).Append("\n");
-            sb.Append("  BlockchainImplementation: ").Append(BlockchainImplementation).Append("\n");
+            sb.Append("  RawBackendStructures: ").Append(RawBackendStructures).Append("\n");
             sb.Append("  EntryId: ").Append(EntryId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -168,14 +132,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                     this.ChainId.Equals(other.ChainId)
                 ) && 
                 (
-                    this.DataStructure == other.DataStructure ||
-                    this.DataStructure != null &&
-                    this.DataStructure.Equals(other.DataStructure)
-                ) && 
-                (
-                    this.BlockchainImplementation == other.BlockchainImplementation ||
-                    this.BlockchainImplementation != null &&
-                    this.BlockchainImplementation.Equals(other.BlockchainImplementation)
+                    this.RawBackendStructures == other.RawBackendStructures ||
+                    this.RawBackendStructures != null &&
+                    this.RawBackendStructures.SequenceEqual(other.RawBackendStructures)
                 ) && 
                 (
                     this.EntryId == other.EntryId ||
@@ -199,10 +158,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                     hash = hash * 59 + this.Entry.GetHashCode();
                 if (this.ChainId != null)
                     hash = hash * 59 + this.ChainId.GetHashCode();
-                if (this.DataStructure != null)
-                    hash = hash * 59 + this.DataStructure.GetHashCode();
-                if (this.BlockchainImplementation != null)
-                    hash = hash * 59 + this.BlockchainImplementation.GetHashCode();
+                if (this.RawBackendStructures != null)
+                    hash = hash * 59 + this.RawBackendStructures.GetHashCode();
                 if (this.EntryId != null)
                     hash = hash * 59 + this.EntryId.GetHashCode();
                 return hash;

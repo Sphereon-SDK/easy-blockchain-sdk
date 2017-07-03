@@ -7,8 +7,8 @@ Method | HTTP request | Description
 [**createEntry**](EntryApi.md#createEntry) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries | Create a new entry in the provided chain
 [**entryById**](EntryApi.md#entryById) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
 [**entryByRequest**](EntryApi.md#entryByRequest) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
-[**firstEntry**](EntryApi.md#firstEntry) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail
-[**lastEntry**](EntryApi.md#lastEntry) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head
+[**firstEntry**](EntryApi.md#firstEntry) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
+[**lastEntry**](EntryApi.md#lastEntry) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
 [**nextEntryById**](EntryApi.md#nextEntryById) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
 [**nextEntryByRequest**](EntryApi.md#nextEntryByRequest) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
 [**previousEntryById**](EntryApi.md#previousEntryById) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 <a name="createEntry"></a>
 # **createEntry**
-> CommittedEntryResponse createEntry(context, chainId, entry)
+> CommittedEntryResponse createEntry(context, chainId, entry, opts)
 
 Create a new entry in the provided chain
 
@@ -38,6 +38,9 @@ var chainId = "chainId_example"; // String | chainId
 
 var entry = new EasyBlockchainApi.Entry(); // Entry | Create a new entry for the specified chain
 
+var opts = { 
+  'currentAnchorTime': new Date("2013-10-20T19:20:30+01:00") // Date | 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -46,7 +49,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.createEntry(context, chainId, entry, callback);
+apiInstance.createEntry(context, chainId, entry, opts, callback);
 ```
 
 ### Parameters
@@ -56,6 +59,7 @@ Name | Type | Description  | Notes
  **context** | **String**| context | 
  **chainId** | **String**| chainId | 
  **entry** | [**Entry**](Entry.md)| Create a new entry for the specified chain | 
+ **currentAnchorTime** | **Date**|  | [optional] 
 
 ### Return type
 
@@ -72,7 +76,7 @@ Name | Type | Description  | Notes
 
 <a name="entryById"></a>
 # **entryById**
-> AnchoredEntryResponse entryById(context, chainId, entryId)
+> AnchoredEntryResponse entryById(context, chainId, entryId, opts)
 
 Get an existing entry in the provided chain
 
@@ -93,6 +97,9 @@ var chainId = "chainId_example"; // String | chainId
 
 var entryId = "entryId_example"; // String | entryId
 
+var opts = { 
+  'currentAnchorTime': new Date("2013-10-20T19:20:30+01:00") // Date | 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -101,7 +108,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.entryById(context, chainId, entryId, callback);
+apiInstance.entryById(context, chainId, entryId, opts, callback);
 ```
 
 ### Parameters
@@ -111,6 +118,7 @@ Name | Type | Description  | Notes
  **context** | **String**| context | 
  **chainId** | **String**| chainId | 
  **entryId** | **String**| entryId | 
+ **currentAnchorTime** | **Date**|  | [optional] 
 
 ### Return type
 
@@ -127,7 +135,7 @@ Name | Type | Description  | Notes
 
 <a name="entryByRequest"></a>
 # **entryByRequest**
-> AnchoredEntryResponse entryByRequest(context, chainId, entry)
+> AnchoredEntryResponse entryByRequest(context, chainId, entry, opts)
 
 Get an existing entry in the provided chain
 
@@ -148,6 +156,9 @@ var chainId = "chainId_example"; // String | chainId
 
 var entry = new EasyBlockchainApi.Entry(); // Entry | Retrieve the entry
 
+var opts = { 
+  'currentAnchorTime': new Date("2013-10-20T19:20:30+01:00") // Date | 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -156,7 +167,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.entryByRequest(context, chainId, entry, callback);
+apiInstance.entryByRequest(context, chainId, entry, opts, callback);
 ```
 
 ### Parameters
@@ -166,6 +177,7 @@ Name | Type | Description  | Notes
  **context** | **String**| context | 
  **chainId** | **String**| chainId | 
  **entry** | [**Entry**](Entry.md)| Retrieve the entry | 
+ **currentAnchorTime** | **Date**|  | [optional] 
 
 ### Return type
 
@@ -184,7 +196,7 @@ Name | Type | Description  | Notes
 # **firstEntry**
 > AnchoredEntryResponse firstEntry(context, chainId)
 
-Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
 
 ### Example
 ```javascript
@@ -236,7 +248,7 @@ Name | Type | Description  | Notes
 # **lastEntry**
 > AnchoredEntryResponse lastEntry(context, chainId)
 
-Get the last entry in the provided chain. This is the most recent entry also called the chain head
+Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
 
 ### Example
 ```javascript
@@ -286,7 +298,7 @@ Name | Type | Description  | Notes
 
 <a name="nextEntryById"></a>
 # **nextEntryById**
-> AnchoredEntryResponse nextEntryById(context, chainId, entryId)
+> AnchoredEntryResponse nextEntryById(context, chainId, entryId, opts)
 
 Get the entry after the supplied entry Id (the next) in the provided chain
 
@@ -307,6 +319,9 @@ var chainId = "chainId_example"; // String | chainId
 
 var entryId = "entryId_example"; // String | entryId
 
+var opts = { 
+  'currentAnchorTime': new Date("2013-10-20T19:20:30+01:00") // Date | 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -315,7 +330,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.nextEntryById(context, chainId, entryId, callback);
+apiInstance.nextEntryById(context, chainId, entryId, opts, callback);
 ```
 
 ### Parameters
@@ -325,6 +340,7 @@ Name | Type | Description  | Notes
  **context** | **String**| context | 
  **chainId** | **String**| chainId | 
  **entryId** | **String**| entryId | 
+ **currentAnchorTime** | **Date**|  | [optional] 
 
 ### Return type
 
@@ -341,7 +357,7 @@ Name | Type | Description  | Notes
 
 <a name="nextEntryByRequest"></a>
 # **nextEntryByRequest**
-> AnchoredEntryResponse nextEntryByRequest(context, chainId, entry)
+> AnchoredEntryResponse nextEntryByRequest(context, chainId, entry, opts)
 
 Get the entry after the supplied entry Id (the next) in the provided chain
 
@@ -362,6 +378,9 @@ var chainId = "chainId_example"; // String | chainId
 
 var entry = new EasyBlockchainApi.Entry(); // Entry | Retrieve the entry
 
+var opts = { 
+  'currentAnchorTime': new Date("2013-10-20T19:20:30+01:00") // Date | 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -370,7 +389,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.nextEntryByRequest(context, chainId, entry, callback);
+apiInstance.nextEntryByRequest(context, chainId, entry, opts, callback);
 ```
 
 ### Parameters
@@ -380,6 +399,7 @@ Name | Type | Description  | Notes
  **context** | **String**| context | 
  **chainId** | **String**| chainId | 
  **entry** | [**Entry**](Entry.md)| Retrieve the entry | 
+ **currentAnchorTime** | **Date**|  | [optional] 
 
 ### Return type
 
@@ -396,7 +416,7 @@ Name | Type | Description  | Notes
 
 <a name="previousEntryById"></a>
 # **previousEntryById**
-> AnchoredEntryResponse previousEntryById(context, chainId, entryId)
+> AnchoredEntryResponse previousEntryById(context, chainId, entryId, opts)
 
 Get the entry before the supplied entry Id (the previous) in the provided chain
 
@@ -417,6 +437,9 @@ var chainId = "chainId_example"; // String | chainId
 
 var entryId = "entryId_example"; // String | entryId
 
+var opts = { 
+  'currentAnchorTime': new Date("2013-10-20T19:20:30+01:00") // Date | 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -425,7 +448,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.previousEntryById(context, chainId, entryId, callback);
+apiInstance.previousEntryById(context, chainId, entryId, opts, callback);
 ```
 
 ### Parameters
@@ -435,6 +458,7 @@ Name | Type | Description  | Notes
  **context** | **String**| context | 
  **chainId** | **String**| chainId | 
  **entryId** | **String**| entryId | 
+ **currentAnchorTime** | **Date**|  | [optional] 
 
 ### Return type
 
@@ -451,7 +475,7 @@ Name | Type | Description  | Notes
 
 <a name="previousEntryByRequest"></a>
 # **previousEntryByRequest**
-> AnchoredEntryResponse previousEntryByRequest(context, chainId, entry)
+> AnchoredEntryResponse previousEntryByRequest(context, chainId, entry, opts)
 
 Get the entry before the supplied entry Id (the previous) in the provided chain
 
@@ -472,6 +496,9 @@ var chainId = "chainId_example"; // String | chainId
 
 var entry = new EasyBlockchainApi.Entry(); // Entry | Retrieve the entry
 
+var opts = { 
+  'currentAnchorTime': new Date("2013-10-20T19:20:30+01:00") // Date | 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -480,7 +507,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.previousEntryByRequest(context, chainId, entry, callback);
+apiInstance.previousEntryByRequest(context, chainId, entry, opts, callback);
 ```
 
 ### Parameters
@@ -490,6 +517,7 @@ Name | Type | Description  | Notes
  **context** | **String**| context | 
  **chainId** | **String**| chainId | 
  **entry** | [**Entry**](Entry.md)| Retrieve the entry | 
+ **currentAnchorTime** | **Date**|  | [optional] 
 
 ### Return type
 

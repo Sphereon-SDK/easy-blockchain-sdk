@@ -7,8 +7,8 @@ Method | HTTP request | Description
 [**createEntry**](EntryApi.md#createEntry) | **POST** blockchain/easy/0.9.1/{context}/chains/{chainId}/entries | Create a new entry in the provided chain
 [**entryById**](EntryApi.md#entryById) | **GET** blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
 [**entryByRequest**](EntryApi.md#entryByRequest) | **POST** blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
-[**firstEntry**](EntryApi.md#firstEntry) | **GET** blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail
-[**lastEntry**](EntryApi.md#lastEntry) | **GET** blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head
+[**firstEntry**](EntryApi.md#firstEntry) | **GET** blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
+[**lastEntry**](EntryApi.md#lastEntry) | **GET** blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
 [**nextEntryById**](EntryApi.md#nextEntryById) | **GET** blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
 [**nextEntryByRequest**](EntryApi.md#nextEntryByRequest) | **POST** blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
 [**previousEntryById**](EntryApi.md#previousEntryById) | **GET** blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 <a name="createEntry"></a>
 # **createEntry**
-> CommittedEntryResponse createEntry(context, chainId, entry)
+> CommittedEntryResponse createEntry(context, chainId, entry, currentAnchorTime)
 
 Create a new entry in the provided chain
 
@@ -40,8 +40,9 @@ EntryApi apiInstance = new EntryApi();
 String context = "context_example"; // String | context
 String chainId = "chainId_example"; // String | chainId
 Entry entry = new Entry(); // Entry | Create a new entry for the specified chain
+OffsetDateTime currentAnchorTime = new OffsetDateTime(); // OffsetDateTime | 
 try {
-    CommittedEntryResponse result = apiInstance.createEntry(context, chainId, entry);
+    CommittedEntryResponse result = apiInstance.createEntry(context, chainId, entry, currentAnchorTime);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling EntryApi#createEntry");
@@ -56,6 +57,7 @@ Name | Type | Description  | Notes
  **context** | **String**| context |
  **chainId** | **String**| chainId |
  **entry** | [**Entry**](Entry.md)| Create a new entry for the specified chain |
+ **currentAnchorTime** | **OffsetDateTime**|  | [optional]
 
 ### Return type
 
@@ -72,7 +74,7 @@ Name | Type | Description  | Notes
 
 <a name="entryById"></a>
 # **entryById**
-> AnchoredEntryResponse entryById(context, chainId, entryId)
+> AnchoredEntryResponse entryById(context, chainId, entryId, currentAnchorTime)
 
 Get an existing entry in the provided chain
 
@@ -95,8 +97,9 @@ EntryApi apiInstance = new EntryApi();
 String context = "context_example"; // String | context
 String chainId = "chainId_example"; // String | chainId
 String entryId = "entryId_example"; // String | entryId
+OffsetDateTime currentAnchorTime = new OffsetDateTime(); // OffsetDateTime | 
 try {
-    AnchoredEntryResponse result = apiInstance.entryById(context, chainId, entryId);
+    AnchoredEntryResponse result = apiInstance.entryById(context, chainId, entryId, currentAnchorTime);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling EntryApi#entryById");
@@ -111,6 +114,7 @@ Name | Type | Description  | Notes
  **context** | **String**| context |
  **chainId** | **String**| chainId |
  **entryId** | **String**| entryId |
+ **currentAnchorTime** | **OffsetDateTime**|  | [optional]
 
 ### Return type
 
@@ -127,7 +131,7 @@ Name | Type | Description  | Notes
 
 <a name="entryByRequest"></a>
 # **entryByRequest**
-> AnchoredEntryResponse entryByRequest(context, chainId, entry)
+> AnchoredEntryResponse entryByRequest(context, chainId, entry, currentAnchorTime)
 
 Get an existing entry in the provided chain
 
@@ -150,8 +154,9 @@ EntryApi apiInstance = new EntryApi();
 String context = "context_example"; // String | context
 String chainId = "chainId_example"; // String | chainId
 Entry entry = new Entry(); // Entry | Retrieve the entry
+OffsetDateTime currentAnchorTime = new OffsetDateTime(); // OffsetDateTime | 
 try {
-    AnchoredEntryResponse result = apiInstance.entryByRequest(context, chainId, entry);
+    AnchoredEntryResponse result = apiInstance.entryByRequest(context, chainId, entry, currentAnchorTime);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling EntryApi#entryByRequest");
@@ -166,6 +171,7 @@ Name | Type | Description  | Notes
  **context** | **String**| context |
  **chainId** | **String**| chainId |
  **entry** | [**Entry**](Entry.md)| Retrieve the entry |
+ **currentAnchorTime** | **OffsetDateTime**|  | [optional]
 
 ### Return type
 
@@ -184,7 +190,7 @@ Name | Type | Description  | Notes
 # **firstEntry**
 > AnchoredEntryResponse firstEntry(context, chainId)
 
-Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
 
 ### Example
 ```java
@@ -237,7 +243,7 @@ Name | Type | Description  | Notes
 # **lastEntry**
 > AnchoredEntryResponse lastEntry(context, chainId)
 
-Get the last entry in the provided chain. This is the most recent entry also called the chain head
+Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
 
 ### Example
 ```java
@@ -288,7 +294,7 @@ Name | Type | Description  | Notes
 
 <a name="nextEntryById"></a>
 # **nextEntryById**
-> AnchoredEntryResponse nextEntryById(context, chainId, entryId)
+> AnchoredEntryResponse nextEntryById(context, chainId, entryId, currentAnchorTime)
 
 Get the entry after the supplied entry Id (the next) in the provided chain
 
@@ -311,8 +317,9 @@ EntryApi apiInstance = new EntryApi();
 String context = "context_example"; // String | context
 String chainId = "chainId_example"; // String | chainId
 String entryId = "entryId_example"; // String | entryId
+OffsetDateTime currentAnchorTime = new OffsetDateTime(); // OffsetDateTime | 
 try {
-    AnchoredEntryResponse result = apiInstance.nextEntryById(context, chainId, entryId);
+    AnchoredEntryResponse result = apiInstance.nextEntryById(context, chainId, entryId, currentAnchorTime);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling EntryApi#nextEntryById");
@@ -327,6 +334,7 @@ Name | Type | Description  | Notes
  **context** | **String**| context |
  **chainId** | **String**| chainId |
  **entryId** | **String**| entryId |
+ **currentAnchorTime** | **OffsetDateTime**|  | [optional]
 
 ### Return type
 
@@ -343,7 +351,7 @@ Name | Type | Description  | Notes
 
 <a name="nextEntryByRequest"></a>
 # **nextEntryByRequest**
-> AnchoredEntryResponse nextEntryByRequest(context, chainId, entry)
+> AnchoredEntryResponse nextEntryByRequest(context, chainId, entry, currentAnchorTime)
 
 Get the entry after the supplied entry Id (the next) in the provided chain
 
@@ -366,8 +374,9 @@ EntryApi apiInstance = new EntryApi();
 String context = "context_example"; // String | context
 String chainId = "chainId_example"; // String | chainId
 Entry entry = new Entry(); // Entry | Retrieve the entry
+OffsetDateTime currentAnchorTime = new OffsetDateTime(); // OffsetDateTime | 
 try {
-    AnchoredEntryResponse result = apiInstance.nextEntryByRequest(context, chainId, entry);
+    AnchoredEntryResponse result = apiInstance.nextEntryByRequest(context, chainId, entry, currentAnchorTime);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling EntryApi#nextEntryByRequest");
@@ -382,6 +391,7 @@ Name | Type | Description  | Notes
  **context** | **String**| context |
  **chainId** | **String**| chainId |
  **entry** | [**Entry**](Entry.md)| Retrieve the entry |
+ **currentAnchorTime** | **OffsetDateTime**|  | [optional]
 
 ### Return type
 
@@ -398,7 +408,7 @@ Name | Type | Description  | Notes
 
 <a name="previousEntryById"></a>
 # **previousEntryById**
-> AnchoredEntryResponse previousEntryById(context, chainId, entryId)
+> AnchoredEntryResponse previousEntryById(context, chainId, entryId, currentAnchorTime)
 
 Get the entry before the supplied entry Id (the previous) in the provided chain
 
@@ -421,8 +431,9 @@ EntryApi apiInstance = new EntryApi();
 String context = "context_example"; // String | context
 String chainId = "chainId_example"; // String | chainId
 String entryId = "entryId_example"; // String | entryId
+OffsetDateTime currentAnchorTime = new OffsetDateTime(); // OffsetDateTime | 
 try {
-    AnchoredEntryResponse result = apiInstance.previousEntryById(context, chainId, entryId);
+    AnchoredEntryResponse result = apiInstance.previousEntryById(context, chainId, entryId, currentAnchorTime);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling EntryApi#previousEntryById");
@@ -437,6 +448,7 @@ Name | Type | Description  | Notes
  **context** | **String**| context |
  **chainId** | **String**| chainId |
  **entryId** | **String**| entryId |
+ **currentAnchorTime** | **OffsetDateTime**|  | [optional]
 
 ### Return type
 
@@ -453,7 +465,7 @@ Name | Type | Description  | Notes
 
 <a name="previousEntryByRequest"></a>
 # **previousEntryByRequest**
-> AnchoredEntryResponse previousEntryByRequest(context, chainId, entry)
+> AnchoredEntryResponse previousEntryByRequest(context, chainId, entry, currentAnchorTime)
 
 Get the entry before the supplied entry Id (the previous) in the provided chain
 
@@ -476,8 +488,9 @@ EntryApi apiInstance = new EntryApi();
 String context = "context_example"; // String | context
 String chainId = "chainId_example"; // String | chainId
 Entry entry = new Entry(); // Entry | Retrieve the entry
+OffsetDateTime currentAnchorTime = new OffsetDateTime(); // OffsetDateTime | 
 try {
-    AnchoredEntryResponse result = apiInstance.previousEntryByRequest(context, chainId, entry);
+    AnchoredEntryResponse result = apiInstance.previousEntryByRequest(context, chainId, entry, currentAnchorTime);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling EntryApi#previousEntryByRequest");
@@ -492,6 +505,7 @@ Name | Type | Description  | Notes
  **context** | **String**| context |
  **chainId** | **String**| chainId |
  **entry** | [**Entry**](Entry.md)| Retrieve the entry |
+ **currentAnchorTime** | **OffsetDateTime**|  | [optional]
 
 ### Return type
 

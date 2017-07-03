@@ -40,50 +40,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
     public partial class Entry :  IEquatable<Entry>
     {
         /// <summary>
-        /// Gets or Sets DataStructure
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum DataStructureEnum
-        {
-            
-            /// <summary>
-            /// Enum Factom for "Factom"
-            /// </summary>
-            [EnumMember(Value = "Factom")]
-            Factom,
-            
-            /// <summary>
-            /// Enum Multichain for "Multichain"
-            /// </summary>
-            [EnumMember(Value = "Multichain")]
-            Multichain
-        }
-
-        /// <summary>
-        /// Gets or Sets BlockchainImplementation
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum BlockchainImplementationEnum
-        {
-            
-            /// <summary>
-            /// Enum Bitcoin for "Bitcoin"
-            /// </summary>
-            [EnumMember(Value = "Bitcoin")]
-            Bitcoin
-        }
-
-        /// <summary>
-        /// Gets or Sets DataStructure
-        /// </summary>
-        [DataMember(Name="dataStructure", EmitDefaultValue=false)]
-        public DataStructureEnum? DataStructure { get; set; }
-        /// <summary>
-        /// Gets or Sets BlockchainImplementation
-        /// </summary>
-        [DataMember(Name="blockchainImplementation", EmitDefaultValue=false)]
-        public BlockchainImplementationEnum? BlockchainImplementation { get; set; }
-        /// <summary>
         /// Initializes a new instance of the <see cref="Entry" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -92,9 +48,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         /// Initializes a new instance of the <see cref="Entry" /> class.
         /// </summary>
         /// <param name="EntryData">EntryData (required).</param>
-        /// <param name="DataStructure">DataStructure.</param>
-        /// <param name="BlockchainImplementation">BlockchainImplementation.</param>
-        public Entry(EntryData EntryData = null, DataStructureEnum? DataStructure = null, BlockchainImplementationEnum? BlockchainImplementation = null)
+        public Entry(EntryData EntryData = null)
         {
             // to ensure "EntryData" is required (not null)
             if (EntryData == null)
@@ -105,8 +59,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             {
                 this.EntryData = EntryData;
             }
-            this.DataStructure = DataStructure;
-            this.BlockchainImplementation = BlockchainImplementation;
         }
         
         /// <summary>
@@ -123,8 +75,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             var sb = new StringBuilder();
             sb.Append("class Entry {\n");
             sb.Append("  EntryData: ").Append(EntryData).Append("\n");
-            sb.Append("  DataStructure: ").Append(DataStructure).Append("\n");
-            sb.Append("  BlockchainImplementation: ").Append(BlockchainImplementation).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -165,16 +115,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                     this.EntryData == other.EntryData ||
                     this.EntryData != null &&
                     this.EntryData.Equals(other.EntryData)
-                ) && 
-                (
-                    this.DataStructure == other.DataStructure ||
-                    this.DataStructure != null &&
-                    this.DataStructure.Equals(other.DataStructure)
-                ) && 
-                (
-                    this.BlockchainImplementation == other.BlockchainImplementation ||
-                    this.BlockchainImplementation != null &&
-                    this.BlockchainImplementation.Equals(other.BlockchainImplementation)
                 );
         }
 
@@ -191,10 +131,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                 // Suitable nullity checks etc, of course :)
                 if (this.EntryData != null)
                     hash = hash * 59 + this.EntryData.GetHashCode();
-                if (this.DataStructure != null)
-                    hash = hash * 59 + this.DataStructure.GetHashCode();
-                if (this.BlockchainImplementation != null)
-                    hash = hash * 59 + this.BlockchainImplementation.GetHashCode();
                 return hash;
             }
         }

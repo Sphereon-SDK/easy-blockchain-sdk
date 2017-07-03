@@ -38,13 +38,16 @@ import java.util.List;
  * Anchored Entry response
  */
 @ApiModel(description = "Anchored Entry response")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-06-30T16:07:46.287+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-03T11:20:12.030+02:00")
 public class AnchoredEntryResponse {
   @SerializedName("anchoredEntry")
   private CommittedEntry anchoredEntry = null;
 
   @SerializedName("anchorTimes")
   private List<OffsetDateTime> anchorTimes = new ArrayList<OffsetDateTime>();
+
+  @SerializedName("currentAnchorTime")
+  private OffsetDateTime currentAnchorTime = null;
 
   /**
    * Gets or Sets anchorState
@@ -57,7 +60,10 @@ public class AnchoredEntryResponse {
     COMMITTED("COMMITTED"),
     
     @SerializedName("NOT_FOUND")
-    NOT_FOUND("NOT_FOUND");
+    NOT_FOUND("NOT_FOUND"),
+    
+    @SerializedName("ANCHORED")
+    ANCHORED("ANCHORED");
 
     private String value;
 
@@ -73,6 +79,12 @@ public class AnchoredEntryResponse {
 
   @SerializedName("anchorState")
   private AnchorStateEnum anchorState = null;
+
+  @SerializedName("lastAnchorTime")
+  private OffsetDateTime lastAnchorTime = null;
+
+  @SerializedName("firstAnchorTime")
+  private OffsetDateTime firstAnchorTime = null;
 
   public AnchoredEntryResponse anchoredEntry(CommittedEntry anchoredEntry) {
     this.anchoredEntry = anchoredEntry;
@@ -103,10 +115,10 @@ public class AnchoredEntryResponse {
   }
 
    /**
-   * The times at which the anchoredEntry was anchored in the blockchain in ISO 8601 format
+   * All the times at which the Entry with the same Id was anchored in the blockchain in ISO 8601 format. The first, current and last Anchor Times will also be in this list
    * @return anchorTimes
   **/
-  @ApiModelProperty(example = "null", value = "The times at which the anchoredEntry was anchored in the blockchain in ISO 8601 format")
+  @ApiModelProperty(example = "null", value = "All the times at which the Entry with the same Id was anchored in the blockchain in ISO 8601 format. The first, current and last Anchor Times will also be in this list")
   public List<OffsetDateTime> getAnchorTimes() {
     return anchorTimes;
   }
@@ -116,12 +128,39 @@ public class AnchoredEntryResponse {
   }
 
    /**
+   * The current anchor time (this is not necessarely the last anchor time!) of the entry (if any) in the blockchain in ISO 8601 format
+   * @return currentAnchorTime
+  **/
+  @ApiModelProperty(example = "null", value = "The current anchor time (this is not necessarely the last anchor time!) of the entry (if any) in the blockchain in ISO 8601 format")
+  public OffsetDateTime getCurrentAnchorTime() {
+    return currentAnchorTime;
+  }
+
+   /**
    * Get anchorState
    * @return anchorState
   **/
   @ApiModelProperty(example = "null", required = true, value = "")
   public AnchorStateEnum getAnchorState() {
     return anchorState;
+  }
+
+   /**
+   * The last anchor time of the entry (if any) in the blockchain in ISO 8601 format
+   * @return lastAnchorTime
+  **/
+  @ApiModelProperty(example = "null", value = "The last anchor time of the entry (if any) in the blockchain in ISO 8601 format")
+  public OffsetDateTime getLastAnchorTime() {
+    return lastAnchorTime;
+  }
+
+   /**
+   * The first anchor time of the entry (if any) in the blockchain in ISO 8601 format
+   * @return firstAnchorTime
+  **/
+  @ApiModelProperty(example = "null", value = "The first anchor time of the entry (if any) in the blockchain in ISO 8601 format")
+  public OffsetDateTime getFirstAnchorTime() {
+    return firstAnchorTime;
   }
 
 
@@ -136,12 +175,15 @@ public class AnchoredEntryResponse {
     AnchoredEntryResponse anchoredEntryResponse = (AnchoredEntryResponse) o;
     return Objects.equals(this.anchoredEntry, anchoredEntryResponse.anchoredEntry) &&
         Objects.equals(this.anchorTimes, anchoredEntryResponse.anchorTimes) &&
-        Objects.equals(this.anchorState, anchoredEntryResponse.anchorState);
+        Objects.equals(this.currentAnchorTime, anchoredEntryResponse.currentAnchorTime) &&
+        Objects.equals(this.anchorState, anchoredEntryResponse.anchorState) &&
+        Objects.equals(this.lastAnchorTime, anchoredEntryResponse.lastAnchorTime) &&
+        Objects.equals(this.firstAnchorTime, anchoredEntryResponse.firstAnchorTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(anchoredEntry, anchorTimes, anchorState);
+    return Objects.hash(anchoredEntry, anchorTimes, currentAnchorTime, anchorState, lastAnchorTime, firstAnchorTime);
   }
 
 
@@ -152,7 +194,10 @@ public class AnchoredEntryResponse {
     
     sb.append("    anchoredEntry: ").append(toIndentedString(anchoredEntry)).append("\n");
     sb.append("    anchorTimes: ").append(toIndentedString(anchorTimes)).append("\n");
+    sb.append("    currentAnchorTime: ").append(toIndentedString(currentAnchorTime)).append("\n");
     sb.append("    anchorState: ").append(toIndentedString(anchorState)).append("\n");
+    sb.append("    lastAnchorTime: ").append(toIndentedString(lastAnchorTime)).append("\n");
+    sb.append("    firstAnchorTime: ").append(toIndentedString(firstAnchorTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

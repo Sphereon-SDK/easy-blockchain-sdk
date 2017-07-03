@@ -86,7 +86,7 @@ limitations under the License.
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
       <ProjectReference Include="..\Sphereon.SDK.Blockchain.Easy\Sphereon.SDK.Blockchain.Easy.csproj">
-          <Project>{5536C1BE-9F6D-42CB-9600-2583044EC91C}</Project>
+          <Project>{306F89D5-F205-4009-9B50-FE145E5BD0E2}</Project>
           <Name>Sphereon.SDK.Blockchain.Easy</Name>
       </ProjectReference>
   </ItemGroup>

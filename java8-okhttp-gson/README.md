@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.sphereon.sdk</groupId>
     <artifactId>blockchain-easy-sdk-java8</artifactId>
-    <version>0.9.1</version>
+    <version>0.1.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.sphereon.sdk:blockchain-easy-sdk-java8:0.9.1"
+compile "com.sphereon.sdk:blockchain-easy-sdk-java8:0.1.0"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/blockchain-easy-sdk-java8-0.9.1.jar
+* target/blockchain-easy-sdk-java8-0.1.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -108,10 +108,10 @@ Class | Method | HTTP request | Description
 *AllApi* | [**entryByRequest**](docs/AllApi.md#entryByRequest) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
 *AllApi* | [**entryIdExists**](docs/AllApi.md#entryIdExists) | **GET** /blockchain/easy/0.9.1/{context}/chains/id/{chainId}/entries/{entryId} | Determine whether the Id of an entry exists in the blockchain
 *AllApi* | [**findBackends**](docs/AllApi.md#findBackends) | **GET** /blockchain/easy/0.9.1/backends/{backendId}/find | Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
-*AllApi* | [**firstEntry**](docs/AllApi.md#firstEntry) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+*AllApi* | [**firstEntry**](docs/AllApi.md#firstEntry) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
 *AllApi* | [**getBackend**](docs/AllApi.md#getBackend) | **GET** /blockchain/easy/0.9.1/backends/{backendId} | Get existing backend by id (not by ledgername). Optionally including public backend of others
 *AllApi* | [**getContext**](docs/AllApi.md#getContext) | **GET** /blockchain/easy/0.9.1/{context} | Get an existing context
-*AllApi* | [**lastEntry**](docs/AllApi.md#lastEntry) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head
+*AllApi* | [**lastEntry**](docs/AllApi.md#lastEntry) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
 *AllApi* | [**listBackends**](docs/AllApi.md#listBackends) | **GET** /blockchain/easy/0.9.1/backends | List existing backends.
 *AllApi* | [**nextEntryById**](docs/AllApi.md#nextEntryById) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
 *AllApi* | [**nextEntryByRequest**](docs/AllApi.md#nextEntryByRequest) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
@@ -128,8 +128,8 @@ Class | Method | HTTP request | Description
 *EntryApi* | [**createEntry**](docs/EntryApi.md#createEntry) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries | Create a new entry in the provided chain
 *EntryApi* | [**entryById**](docs/EntryApi.md#entryById) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
 *EntryApi* | [**entryByRequest**](docs/EntryApi.md#entryByRequest) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
-*EntryApi* | [**firstEntry**](docs/EntryApi.md#firstEntry) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail
-*EntryApi* | [**lastEntry**](docs/EntryApi.md#lastEntry) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head
+*EntryApi* | [**firstEntry**](docs/EntryApi.md#firstEntry) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
+*EntryApi* | [**lastEntry**](docs/EntryApi.md#lastEntry) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
 *EntryApi* | [**nextEntryById**](docs/EntryApi.md#nextEntryById) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
 *EntryApi* | [**nextEntryByRequest**](docs/EntryApi.md#nextEntryByRequest) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
 *EntryApi* | [**previousEntryById**](docs/EntryApi.md#previousEntryById) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
@@ -157,6 +157,7 @@ Class | Method | HTTP request | Description
  - [ErrorResponse](docs/ErrorResponse.md)
  - [ExternalId](docs/ExternalId.md)
  - [IdResponse](docs/IdResponse.md)
+ - [RawBackendStructure](docs/RawBackendStructure.md)
  - [RpcProvider](docs/RpcProvider.md)
 
 

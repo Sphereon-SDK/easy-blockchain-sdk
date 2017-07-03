@@ -59,8 +59,6 @@
     var _this = this;
 
     _this['entryData'] = entryData;
-
-
   };
 
   /**
@@ -77,12 +75,6 @@
       if (data.hasOwnProperty('entryData')) {
         obj['entryData'] = EntryData.constructFromObject(data['entryData']);
       }
-      if (data.hasOwnProperty('dataStructure')) {
-        obj['dataStructure'] = ApiClient.convertToType(data['dataStructure'], 'String');
-      }
-      if (data.hasOwnProperty('blockchainImplementation')) {
-        obj['blockchainImplementation'] = ApiClient.convertToType(data['blockchainImplementation'], 'String');
-      }
     }
     return obj;
   }
@@ -91,44 +83,7 @@
    * @member {module:SphereonSDKBlockchainEasy/model/EntryData} entryData
    */
   exports.prototype['entryData'] = undefined;
-  /**
-   * @member {module:SphereonSDKBlockchainEasy/model/Entry.DataStructureEnum} dataStructure
-   */
-  exports.prototype['dataStructure'] = undefined;
-  /**
-   * @member {module:SphereonSDKBlockchainEasy/model/Entry.BlockchainImplementationEnum} blockchainImplementation
-   */
-  exports.prototype['blockchainImplementation'] = undefined;
 
-
-  /**
-   * Allowed values for the <code>dataStructure</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.DataStructureEnum = {
-    /**
-     * value: "Factom"
-     * @const
-     */
-    "Factom": "Factom",
-    /**
-     * value: "Multichain"
-     * @const
-     */
-    "Multichain": "Multichain"  };
-
-  /**
-   * Allowed values for the <code>blockchainImplementation</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.BlockchainImplementationEnum = {
-    /**
-     * value: "Bitcoin"
-     * @const
-     */
-    "Bitcoin": "Bitcoin"  };
 
 
   return exports;

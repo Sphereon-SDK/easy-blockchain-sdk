@@ -62,7 +62,13 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             /// Enum NOTFOUND for "NOT_FOUND"
             /// </summary>
             [EnumMember(Value = "NOT_FOUND")]
-            NOTFOUND
+            NOTFOUND,
+            
+            /// <summary>
+            /// Enum ANCHORED for "ANCHORED"
+            /// </summary>
+            [EnumMember(Value = "ANCHORED")]
+            ANCHORED
         }
 
         /// <summary>
@@ -79,7 +85,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         /// Initializes a new instance of the <see cref="AnchoredEntryResponse" /> class.
         /// </summary>
         /// <param name="AnchoredEntry">AnchoredEntry (required).</param>
-        /// <param name="AnchorTimes">The times at which the anchoredEntry was anchored in the blockchain in ISO 8601 format.</param>
+        /// <param name="AnchorTimes">All the times at which the Entry with the same Id was anchored in the blockchain in ISO 8601 format. The first, current and last Anchor Times will also be in this list.</param>
         public AnchoredEntryResponse(CommittedEntry AnchoredEntry = null, List<DateTime?> AnchorTimes = null)
         {
             // to ensure "AnchoredEntry" is required (not null)
@@ -100,11 +106,29 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         [DataMember(Name="anchoredEntry", EmitDefaultValue=false)]
         public CommittedEntry AnchoredEntry { get; set; }
         /// <summary>
-        /// The times at which the anchoredEntry was anchored in the blockchain in ISO 8601 format
+        /// All the times at which the Entry with the same Id was anchored in the blockchain in ISO 8601 format. The first, current and last Anchor Times will also be in this list
         /// </summary>
-        /// <value>The times at which the anchoredEntry was anchored in the blockchain in ISO 8601 format</value>
+        /// <value>All the times at which the Entry with the same Id was anchored in the blockchain in ISO 8601 format. The first, current and last Anchor Times will also be in this list</value>
         [DataMember(Name="anchorTimes", EmitDefaultValue=false)]
         public List<DateTime?> AnchorTimes { get; set; }
+        /// <summary>
+        /// The current anchor time (this is not necessarely the last anchor time!) of the entry (if any) in the blockchain in ISO 8601 format
+        /// </summary>
+        /// <value>The current anchor time (this is not necessarely the last anchor time!) of the entry (if any) in the blockchain in ISO 8601 format</value>
+        [DataMember(Name="currentAnchorTime", EmitDefaultValue=false)]
+        public DateTime? CurrentAnchorTime { get; private set; }
+        /// <summary>
+        /// The last anchor time of the entry (if any) in the blockchain in ISO 8601 format
+        /// </summary>
+        /// <value>The last anchor time of the entry (if any) in the blockchain in ISO 8601 format</value>
+        [DataMember(Name="lastAnchorTime", EmitDefaultValue=false)]
+        public DateTime? LastAnchorTime { get; private set; }
+        /// <summary>
+        /// The first anchor time of the entry (if any) in the blockchain in ISO 8601 format
+        /// </summary>
+        /// <value>The first anchor time of the entry (if any) in the blockchain in ISO 8601 format</value>
+        [DataMember(Name="firstAnchorTime", EmitDefaultValue=false)]
+        public DateTime? FirstAnchorTime { get; private set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -115,7 +139,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             sb.Append("class AnchoredEntryResponse {\n");
             sb.Append("  AnchoredEntry: ").Append(AnchoredEntry).Append("\n");
             sb.Append("  AnchorTimes: ").Append(AnchorTimes).Append("\n");
+            sb.Append("  CurrentAnchorTime: ").Append(CurrentAnchorTime).Append("\n");
             sb.Append("  AnchorState: ").Append(AnchorState).Append("\n");
+            sb.Append("  LastAnchorTime: ").Append(LastAnchorTime).Append("\n");
+            sb.Append("  FirstAnchorTime: ").Append(FirstAnchorTime).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -163,9 +190,24 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                     this.AnchorTimes.SequenceEqual(other.AnchorTimes)
                 ) && 
                 (
+                    this.CurrentAnchorTime == other.CurrentAnchorTime ||
+                    this.CurrentAnchorTime != null &&
+                    this.CurrentAnchorTime.Equals(other.CurrentAnchorTime)
+                ) && 
+                (
                     this.AnchorState == other.AnchorState ||
                     this.AnchorState != null &&
                     this.AnchorState.Equals(other.AnchorState)
+                ) && 
+                (
+                    this.LastAnchorTime == other.LastAnchorTime ||
+                    this.LastAnchorTime != null &&
+                    this.LastAnchorTime.Equals(other.LastAnchorTime)
+                ) && 
+                (
+                    this.FirstAnchorTime == other.FirstAnchorTime ||
+                    this.FirstAnchorTime != null &&
+                    this.FirstAnchorTime.Equals(other.FirstAnchorTime)
                 );
         }
 
@@ -184,8 +226,14 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                     hash = hash * 59 + this.AnchoredEntry.GetHashCode();
                 if (this.AnchorTimes != null)
                     hash = hash * 59 + this.AnchorTimes.GetHashCode();
+                if (this.CurrentAnchorTime != null)
+                    hash = hash * 59 + this.CurrentAnchorTime.GetHashCode();
                 if (this.AnchorState != null)
                     hash = hash * 59 + this.AnchorState.GetHashCode();
+                if (this.LastAnchorTime != null)
+                    hash = hash * 59 + this.LastAnchorTime.GetHashCode();
+                if (this.FirstAnchorTime != null)
+                    hash = hash * 59 + this.FirstAnchorTime.GetHashCode();
                 return hash;
             }
         }

@@ -738,16 +738,34 @@ margin-bottom: 20px;
     },
     "anchorTimes" : {
       "type" : "array",
-      "description" : "The times at which the anchoredEntry was anchored in the blockchain in ISO 8601 format",
+      "description" : "All the times at which the Entry with the same Id was anchored in the blockchain in ISO 8601 format. The first, current and last Anchor Times will also be in this list",
       "items" : {
         "type" : "string",
         "format" : "date-time"
       }
     },
+    "currentAnchorTime" : {
+      "type" : "string",
+      "format" : "date-time",
+      "description" : "The current anchor time (this is not necessarely the last anchor time!) of the entry (if any) in the blockchain in ISO 8601 format",
+      "readOnly" : true
+    },
     "anchorState" : {
       "type" : "string",
       "readOnly" : true,
-      "enum" : [ "REQUESTED", "COMMITTED", "NOT_FOUND" ]
+      "enum" : [ "REQUESTED", "COMMITTED", "NOT_FOUND", "ANCHORED" ]
+    },
+    "lastAnchorTime" : {
+      "type" : "string",
+      "format" : "date-time",
+      "description" : "The last anchor time of the entry (if any) in the blockchain in ISO 8601 format",
+      "readOnly" : true
+    },
+    "firstAnchorTime" : {
+      "type" : "string",
+      "format" : "date-time",
+      "description" : "The first anchor time of the entry (if any) in the blockchain in ISO 8601 format",
+      "readOnly" : true
     }
   },
   "description" : "Anchored Entry response"
@@ -806,25 +824,14 @@ margin-bottom: 20px;
 };
   defs.CommittedChain = {
   "type" : "object",
-  "required" : [ "blockchainImplementation", "dataStructure" ],
   "properties" : {
     "chain" : {
       "$ref" : "#/definitions/Chain"
-    },
-    "dataStructure" : {
-      "type" : "string",
-      "readOnly" : true,
-      "enum" : [ "Factom", "Multichain" ]
     },
     "id" : {
       "type" : "string",
       "description" : "Chain ID",
       "readOnly" : true
-    },
-    "blockchainImplementation" : {
-      "type" : "string",
-      "readOnly" : true,
-      "enum" : [ "Bitcoin", "None" ]
     }
   },
   "description" : "Commited Chain"
@@ -853,7 +860,6 @@ margin-bottom: 20px;
 };
   defs.CommittedEntry = {
   "type" : "object",
-  "required" : [ "blockchainImplementation", "dataStructure" ],
   "properties" : {
     "entry" : {
       "$ref" : "#/definitions/Entry"
@@ -863,15 +869,12 @@ margin-bottom: 20px;
       "description" : "Chain ID",
       "readOnly" : true
     },
-    "dataStructure" : {
-      "type" : "string",
-      "readOnly" : true,
-      "enum" : [ "Factom" ]
-    },
-    "blockchainImplementation" : {
-      "type" : "string",
-      "readOnly" : true,
-      "enum" : [ "Bitcoin" ]
+    "rawBackendStructures" : {
+      "type" : "array",
+      "description" : "Raw data structures of backend",
+      "items" : {
+        "$ref" : "#/definitions/RawBackendStructure"
+      }
     },
     "entryId" : {
       "type" : "string",
@@ -926,14 +929,6 @@ margin-bottom: 20px;
   "properties" : {
     "entryData" : {
       "$ref" : "#/definitions/EntryData"
-    },
-    "dataStructure" : {
-      "type" : "string",
-      "enum" : [ "Factom", "Multichain" ]
-    },
-    "blockchainImplementation" : {
-      "type" : "string",
-      "enum" : [ "Bitcoin" ]
     }
   },
   "description" : "Entry"
@@ -1011,19 +1006,12 @@ margin-bottom: 20px;
     "Id" : {
       "type" : "string",
       "description" : "The Id"
-    },
-    "dataStructure" : {
-      "type" : "string",
-      "readOnly" : true,
-      "enum" : [ "Factom" ]
-    },
-    "blockchainImplementation" : {
-      "type" : "string",
-      "readOnly" : true,
-      "enum" : [ "Bitcoin" ]
     }
   },
   "description" : "Id response"
+};
+  defs.RawBackendStructure = {
+  "type" : "object"
 };
   defs.RpcProvider = {
   "type" : "object",
@@ -3718,7 +3706,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-createEntry-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries"
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries?currentAnchorTime="
 
 
 </code></pre>
@@ -3747,8 +3735,9 @@ public class AllApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         Entry entry = ; // Entry | Create a new entry for the specified chain
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            CommittedEntryResponse result = apiInstance.createEntry(context, chainId, entry);
+            CommittedEntryResponse result = apiInstance.createEntry(context, chainId, entry, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AllApi#createEntry");
@@ -3772,8 +3761,9 @@ public class AllApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         Entry entry = ; // Entry | Create a new entry for the specified chain
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            CommittedEntryResponse result = apiInstance.createEntry(context, chainId, entry);
+            CommittedEntryResponse result = apiInstance.createEntry(context, chainId, entry, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AllApi#createEntry");
@@ -3802,6 +3792,7 @@ Configuration *apiConfig = [Configuration sharedConfig];
 String *context = context_example; // context
 String *chainId = chainId_example; // chainId
 Entry *entry = ; // Create a new entry for the specified chain
+Date *currentAnchorTime = 2013-10-20T19:20:30+01:00; //  (optional)
 
 AllApi *apiInstance = [[AllApi alloc] init];
 
@@ -3809,6 +3800,7 @@ AllApi *apiInstance = [[AllApi alloc] init];
 [apiInstance createEntryWith:context
     chainId:chainId
     entry:entry
+    currentAnchorTime:currentAnchorTime
               completionHandler: ^(CommittedEntryResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -3837,6 +3829,9 @@ var chainId = chainId_example; // {String} chainId
 
 var entry = ; // {Entry} Create a new entry for the specified chain
 
+var opts = { 
+  'currentAnchorTime': 2013-10-20T19:20:30+01:00 // {Date} 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -3845,7 +3840,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.createEntry(context, chainId, entry, callback);
+api.createEntry(context, chainId, entry, opts, callback);
 
                                                     </code></pre>
                                                 </div>
@@ -3876,11 +3871,12 @@ namespace Example
             var context = context_example;  // String | context
             var chainId = chainId_example;  // String | chainId
             var entry = new Entry(); // Entry | Create a new entry for the specified chain
+            var currentAnchorTime = 2013-10-20T19:20:30+01:00;  // Date |  (optional) 
 
             try
             {
                 // Create a new entry in the provided chain
-                CommittedEntryResponse result = apiInstance.createEntry(context, chainId, entry);
+                CommittedEntryResponse result = apiInstance.createEntry(context, chainId, entry, currentAnchorTime);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -3907,9 +3903,10 @@ $api_instance = new com.sphereon.sdk.blockchain.easy\Api\AllApi();
 $context = context_example; // String | context
 $chainId = chainId_example; // String | chainId
 $entry = ; // Entry | Create a new entry for the specified chain
+$currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
 
 try {
-    $result = $api_instance->createEntry($context, $chainId, $entry);
+    $result = $api_instance->createEntry($context, $chainId, $entry, $currentAnchorTime);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AllApi->createEntry: ', $e->getMessage(), PHP_EOL;
@@ -4064,6 +4061,48 @@ try {
 
                                                 </table>
 
+                                                <div class="methodsubtabletitle">Query parameters</div>
+                                                <table id="methodsubtable">
+                                                    <tr>
+                                                        <th width="150px">Name</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                    <!---->
+                                                        <tr><td style="width:150px;">currentAnchorTime</td>
+<td>
+
+
+<script>
+												$(document).ready(function() {
+													var schemaWrapper = {
+  "name" : "currentAnchorTime",
+  "in" : "query",
+  "required" : false,
+  "type" : "string",
+  "format" : "date-time",
+  "x-codegen-hasMoreOptional" : false
+};
+													var schema = schemaWrapper;
+
+
+
+
+													var view = new JSONSchemaView(schema,0);
+													var result = $('#d2e199_createEntry_currentAnchorTime');
+													result.empty();
+													result.append(view.render());
+
+
+
+
+
+												});
+												</script>
+												<div id="d2e199_createEntry_currentAnchorTime"></div>
+</td>
+</tr>
+
+                                                </table>
 
                                             <h2>Responses</h2>
 
@@ -6457,7 +6496,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-entryById-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}"
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}?currentAnchorTime="
 
 
 </code></pre>
@@ -6486,8 +6525,9 @@ public class AllApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         String entryId = entryId_example; // String | entryId
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.entryById(context, chainId, entryId);
+            AnchoredEntryResponse result = apiInstance.entryById(context, chainId, entryId, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AllApi#entryById");
@@ -6511,8 +6551,9 @@ public class AllApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         String entryId = entryId_example; // String | entryId
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.entryById(context, chainId, entryId);
+            AnchoredEntryResponse result = apiInstance.entryById(context, chainId, entryId, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AllApi#entryById");
@@ -6541,6 +6582,7 @@ Configuration *apiConfig = [Configuration sharedConfig];
 String *context = context_example; // context
 String *chainId = chainId_example; // chainId
 String *entryId = entryId_example; // entryId
+Date *currentAnchorTime = 2013-10-20T19:20:30+01:00; //  (optional)
 
 AllApi *apiInstance = [[AllApi alloc] init];
 
@@ -6548,6 +6590,7 @@ AllApi *apiInstance = [[AllApi alloc] init];
 [apiInstance entryByIdWith:context
     chainId:chainId
     entryId:entryId
+    currentAnchorTime:currentAnchorTime
               completionHandler: ^(AnchoredEntryResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -6576,6 +6619,9 @@ var chainId = chainId_example; // {String} chainId
 
 var entryId = entryId_example; // {String} entryId
 
+var opts = { 
+  'currentAnchorTime': 2013-10-20T19:20:30+01:00 // {Date} 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -6584,7 +6630,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.entryById(context, chainId, entryId, callback);
+api.entryById(context, chainId, entryId, opts, callback);
 
                                                     </code></pre>
                                                 </div>
@@ -6615,11 +6661,12 @@ namespace Example
             var context = context_example;  // String | context
             var chainId = chainId_example;  // String | chainId
             var entryId = entryId_example;  // String | entryId
+            var currentAnchorTime = 2013-10-20T19:20:30+01:00;  // Date |  (optional) 
 
             try
             {
                 // Get an existing entry in the provided chain
-                AnchoredEntryResponse result = apiInstance.entryById(context, chainId, entryId);
+                AnchoredEntryResponse result = apiInstance.entryById(context, chainId, entryId, currentAnchorTime);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -6646,9 +6693,10 @@ $api_instance = new com.sphereon.sdk.blockchain.easy\Api\AllApi();
 $context = context_example; // String | context
 $chainId = chainId_example; // String | chainId
 $entryId = entryId_example; // String | entryId
+$currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
 
 try {
-    $result = $api_instance->entryById($context, $chainId, $entryId);
+    $result = $api_instance->entryById($context, $chainId, $entryId, $currentAnchorTime);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AllApi->entryById: ', $e->getMessage(), PHP_EOL;
@@ -6783,6 +6831,48 @@ try {
 
 
 
+                                                <div class="methodsubtabletitle">Query parameters</div>
+                                                <table id="methodsubtable">
+                                                    <tr>
+                                                        <th width="150px">Name</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                    <!---->
+                                                        <tr><td style="width:150px;">currentAnchorTime</td>
+<td>
+
+
+<script>
+												$(document).ready(function() {
+													var schemaWrapper = {
+  "name" : "currentAnchorTime",
+  "in" : "query",
+  "required" : false,
+  "type" : "string",
+  "format" : "date-time",
+  "x-codegen-hasMoreOptional" : false
+};
+													var schema = schemaWrapper;
+
+
+
+
+													var view = new JSONSchemaView(schema,0);
+													var result = $('#d2e199_entryById_currentAnchorTime');
+													result.empty();
+													result.append(view.render());
+
+
+
+
+
+												});
+												</script>
+												<div id="d2e199_entryById_currentAnchorTime"></div>
+</td>
+</tr>
+
+                                                </table>
 
                                             <h2>Responses</h2>
 
@@ -7096,7 +7186,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-entryByRequest-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry"
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry?currentAnchorTime="
 
 
 </code></pre>
@@ -7125,8 +7215,9 @@ public class AllApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         Entry entry = ; // Entry | Retrieve the entry
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.entryByRequest(context, chainId, entry);
+            AnchoredEntryResponse result = apiInstance.entryByRequest(context, chainId, entry, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AllApi#entryByRequest");
@@ -7150,8 +7241,9 @@ public class AllApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         Entry entry = ; // Entry | Retrieve the entry
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.entryByRequest(context, chainId, entry);
+            AnchoredEntryResponse result = apiInstance.entryByRequest(context, chainId, entry, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AllApi#entryByRequest");
@@ -7180,6 +7272,7 @@ Configuration *apiConfig = [Configuration sharedConfig];
 String *context = context_example; // context
 String *chainId = chainId_example; // chainId
 Entry *entry = ; // Retrieve the entry
+Date *currentAnchorTime = 2013-10-20T19:20:30+01:00; //  (optional)
 
 AllApi *apiInstance = [[AllApi alloc] init];
 
@@ -7187,6 +7280,7 @@ AllApi *apiInstance = [[AllApi alloc] init];
 [apiInstance entryByRequestWith:context
     chainId:chainId
     entry:entry
+    currentAnchorTime:currentAnchorTime
               completionHandler: ^(AnchoredEntryResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -7215,6 +7309,9 @@ var chainId = chainId_example; // {String} chainId
 
 var entry = ; // {Entry} Retrieve the entry
 
+var opts = { 
+  'currentAnchorTime': 2013-10-20T19:20:30+01:00 // {Date} 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -7223,7 +7320,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.entryByRequest(context, chainId, entry, callback);
+api.entryByRequest(context, chainId, entry, opts, callback);
 
                                                     </code></pre>
                                                 </div>
@@ -7254,11 +7351,12 @@ namespace Example
             var context = context_example;  // String | context
             var chainId = chainId_example;  // String | chainId
             var entry = new Entry(); // Entry | Retrieve the entry
+            var currentAnchorTime = 2013-10-20T19:20:30+01:00;  // Date |  (optional) 
 
             try
             {
                 // Get an existing entry in the provided chain
-                AnchoredEntryResponse result = apiInstance.entryByRequest(context, chainId, entry);
+                AnchoredEntryResponse result = apiInstance.entryByRequest(context, chainId, entry, currentAnchorTime);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -7285,9 +7383,10 @@ $api_instance = new com.sphereon.sdk.blockchain.easy\Api\AllApi();
 $context = context_example; // String | context
 $chainId = chainId_example; // String | chainId
 $entry = ; // Entry | Retrieve the entry
+$currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
 
 try {
-    $result = $api_instance->entryByRequest($context, $chainId, $entry);
+    $result = $api_instance->entryByRequest($context, $chainId, $entry, $currentAnchorTime);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AllApi->entryByRequest: ', $e->getMessage(), PHP_EOL;
@@ -7442,6 +7541,48 @@ try {
 
                                                 </table>
 
+                                                <div class="methodsubtabletitle">Query parameters</div>
+                                                <table id="methodsubtable">
+                                                    <tr>
+                                                        <th width="150px">Name</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                    <!---->
+                                                        <tr><td style="width:150px;">currentAnchorTime</td>
+<td>
+
+
+<script>
+												$(document).ready(function() {
+													var schemaWrapper = {
+  "name" : "currentAnchorTime",
+  "in" : "query",
+  "required" : false,
+  "type" : "string",
+  "format" : "date-time",
+  "x-codegen-hasMoreOptional" : false
+};
+													var schema = schemaWrapper;
+
+
+
+
+													var view = new JSONSchemaView(schema,0);
+													var result = $('#d2e199_entryByRequest_currentAnchorTime');
+													result.empty();
+													result.append(view.render());
+
+
+
+
+
+												});
+												</script>
+												<div id="d2e199_entryByRequest_currentAnchorTime"></div>
+</td>
+</tr>
+
+                                                </table>
 
                                             <h2>Responses</h2>
 
@@ -9165,7 +9306,7 @@ String *chainId = chainId_example; // chainId
 
 AllApi *apiInstance = [[AllApi alloc] init];
 
-// Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
 [apiInstance firstEntryWith:context
     chainId:chainId
               completionHandler: ^(AnchoredEntryResponse output, NSError* error) {
@@ -9235,7 +9376,7 @@ namespace Example
 
             try
             {
-                // Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+                // Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
                 AnchoredEntryResponse result = apiInstance.firstEntry(context, chainId);
                 Debug.WriteLine(result);
             }
@@ -10998,7 +11139,7 @@ String *chainId = chainId_example; // chainId
 
 AllApi *apiInstance = [[AllApi alloc] init];
 
-// Get the last entry in the provided chain. This is the most recent entry also called the chain head
+// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
 [apiInstance lastEntryWith:context
     chainId:chainId
               completionHandler: ^(AnchoredEntryResponse output, NSError* error) {
@@ -11068,7 +11209,7 @@ namespace Example
 
             try
             {
-                // Get the last entry in the provided chain. This is the most recent entry also called the chain head
+                // Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
                 AnchoredEntryResponse result = apiInstance.lastEntry(context, chainId);
                 Debug.WriteLine(result);
             }
@@ -12095,7 +12236,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-nextEntryById-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/next"
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/next?currentAnchorTime="
 
 
 </code></pre>
@@ -12124,8 +12265,9 @@ public class AllApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         String entryId = entryId_example; // String | entryId
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.nextEntryById(context, chainId, entryId);
+            AnchoredEntryResponse result = apiInstance.nextEntryById(context, chainId, entryId, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AllApi#nextEntryById");
@@ -12149,8 +12291,9 @@ public class AllApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         String entryId = entryId_example; // String | entryId
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.nextEntryById(context, chainId, entryId);
+            AnchoredEntryResponse result = apiInstance.nextEntryById(context, chainId, entryId, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AllApi#nextEntryById");
@@ -12179,6 +12322,7 @@ Configuration *apiConfig = [Configuration sharedConfig];
 String *context = context_example; // context
 String *chainId = chainId_example; // chainId
 String *entryId = entryId_example; // entryId
+Date *currentAnchorTime = 2013-10-20T19:20:30+01:00; //  (optional)
 
 AllApi *apiInstance = [[AllApi alloc] init];
 
@@ -12186,6 +12330,7 @@ AllApi *apiInstance = [[AllApi alloc] init];
 [apiInstance nextEntryByIdWith:context
     chainId:chainId
     entryId:entryId
+    currentAnchorTime:currentAnchorTime
               completionHandler: ^(AnchoredEntryResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -12214,6 +12359,9 @@ var chainId = chainId_example; // {String} chainId
 
 var entryId = entryId_example; // {String} entryId
 
+var opts = { 
+  'currentAnchorTime': 2013-10-20T19:20:30+01:00 // {Date} 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -12222,7 +12370,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.nextEntryById(context, chainId, entryId, callback);
+api.nextEntryById(context, chainId, entryId, opts, callback);
 
                                                     </code></pre>
                                                 </div>
@@ -12253,11 +12401,12 @@ namespace Example
             var context = context_example;  // String | context
             var chainId = chainId_example;  // String | chainId
             var entryId = entryId_example;  // String | entryId
+            var currentAnchorTime = 2013-10-20T19:20:30+01:00;  // Date |  (optional) 
 
             try
             {
                 // Get the entry after the supplied entry Id (the next) in the provided chain
-                AnchoredEntryResponse result = apiInstance.nextEntryById(context, chainId, entryId);
+                AnchoredEntryResponse result = apiInstance.nextEntryById(context, chainId, entryId, currentAnchorTime);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -12284,9 +12433,10 @@ $api_instance = new com.sphereon.sdk.blockchain.easy\Api\AllApi();
 $context = context_example; // String | context
 $chainId = chainId_example; // String | chainId
 $entryId = entryId_example; // String | entryId
+$currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
 
 try {
-    $result = $api_instance->nextEntryById($context, $chainId, $entryId);
+    $result = $api_instance->nextEntryById($context, $chainId, $entryId, $currentAnchorTime);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AllApi->nextEntryById: ', $e->getMessage(), PHP_EOL;
@@ -12421,6 +12571,48 @@ try {
 
 
 
+                                                <div class="methodsubtabletitle">Query parameters</div>
+                                                <table id="methodsubtable">
+                                                    <tr>
+                                                        <th width="150px">Name</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                    <!---->
+                                                        <tr><td style="width:150px;">currentAnchorTime</td>
+<td>
+
+
+<script>
+												$(document).ready(function() {
+													var schemaWrapper = {
+  "name" : "currentAnchorTime",
+  "in" : "query",
+  "required" : false,
+  "type" : "string",
+  "format" : "date-time",
+  "x-codegen-hasMoreOptional" : false
+};
+													var schema = schemaWrapper;
+
+
+
+
+													var view = new JSONSchemaView(schema,0);
+													var result = $('#d2e199_nextEntryById_currentAnchorTime');
+													result.empty();
+													result.append(view.render());
+
+
+
+
+
+												});
+												</script>
+												<div id="d2e199_nextEntryById_currentAnchorTime"></div>
+</td>
+</tr>
+
+                                                </table>
 
                                             <h2>Responses</h2>
 
@@ -12734,7 +12926,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-nextEntryByRequest-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/next"
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/next?currentAnchorTime="
 
 
 </code></pre>
@@ -12763,8 +12955,9 @@ public class AllApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         Entry entry = ; // Entry | Retrieve the entry
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.nextEntryByRequest(context, chainId, entry);
+            AnchoredEntryResponse result = apiInstance.nextEntryByRequest(context, chainId, entry, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AllApi#nextEntryByRequest");
@@ -12788,8 +12981,9 @@ public class AllApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         Entry entry = ; // Entry | Retrieve the entry
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.nextEntryByRequest(context, chainId, entry);
+            AnchoredEntryResponse result = apiInstance.nextEntryByRequest(context, chainId, entry, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AllApi#nextEntryByRequest");
@@ -12818,6 +13012,7 @@ Configuration *apiConfig = [Configuration sharedConfig];
 String *context = context_example; // context
 String *chainId = chainId_example; // chainId
 Entry *entry = ; // Retrieve the entry
+Date *currentAnchorTime = 2013-10-20T19:20:30+01:00; //  (optional)
 
 AllApi *apiInstance = [[AllApi alloc] init];
 
@@ -12825,6 +13020,7 @@ AllApi *apiInstance = [[AllApi alloc] init];
 [apiInstance nextEntryByRequestWith:context
     chainId:chainId
     entry:entry
+    currentAnchorTime:currentAnchorTime
               completionHandler: ^(AnchoredEntryResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -12853,6 +13049,9 @@ var chainId = chainId_example; // {String} chainId
 
 var entry = ; // {Entry} Retrieve the entry
 
+var opts = { 
+  'currentAnchorTime': 2013-10-20T19:20:30+01:00 // {Date} 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -12861,7 +13060,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.nextEntryByRequest(context, chainId, entry, callback);
+api.nextEntryByRequest(context, chainId, entry, opts, callback);
 
                                                     </code></pre>
                                                 </div>
@@ -12892,11 +13091,12 @@ namespace Example
             var context = context_example;  // String | context
             var chainId = chainId_example;  // String | chainId
             var entry = new Entry(); // Entry | Retrieve the entry
+            var currentAnchorTime = 2013-10-20T19:20:30+01:00;  // Date |  (optional) 
 
             try
             {
                 // Get the entry after the supplied entry Id (the next) in the provided chain
-                AnchoredEntryResponse result = apiInstance.nextEntryByRequest(context, chainId, entry);
+                AnchoredEntryResponse result = apiInstance.nextEntryByRequest(context, chainId, entry, currentAnchorTime);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -12923,9 +13123,10 @@ $api_instance = new com.sphereon.sdk.blockchain.easy\Api\AllApi();
 $context = context_example; // String | context
 $chainId = chainId_example; // String | chainId
 $entry = ; // Entry | Retrieve the entry
+$currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
 
 try {
-    $result = $api_instance->nextEntryByRequest($context, $chainId, $entry);
+    $result = $api_instance->nextEntryByRequest($context, $chainId, $entry, $currentAnchorTime);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AllApi->nextEntryByRequest: ', $e->getMessage(), PHP_EOL;
@@ -13080,6 +13281,48 @@ try {
 
                                                 </table>
 
+                                                <div class="methodsubtabletitle">Query parameters</div>
+                                                <table id="methodsubtable">
+                                                    <tr>
+                                                        <th width="150px">Name</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                    <!---->
+                                                        <tr><td style="width:150px;">currentAnchorTime</td>
+<td>
+
+
+<script>
+												$(document).ready(function() {
+													var schemaWrapper = {
+  "name" : "currentAnchorTime",
+  "in" : "query",
+  "required" : false,
+  "type" : "string",
+  "format" : "date-time",
+  "x-codegen-hasMoreOptional" : false
+};
+													var schema = schemaWrapper;
+
+
+
+
+													var view = new JSONSchemaView(schema,0);
+													var result = $('#d2e199_nextEntryByRequest_currentAnchorTime');
+													result.empty();
+													result.append(view.render());
+
+
+
+
+
+												});
+												</script>
+												<div id="d2e199_nextEntryByRequest_currentAnchorTime"></div>
+</td>
+</tr>
+
+                                                </table>
 
                                             <h2>Responses</h2>
 
@@ -13393,7 +13636,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-previousEntryById-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/previous"
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/previous?currentAnchorTime="
 
 
 </code></pre>
@@ -13422,8 +13665,9 @@ public class AllApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         String entryId = entryId_example; // String | entryId
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.previousEntryById(context, chainId, entryId);
+            AnchoredEntryResponse result = apiInstance.previousEntryById(context, chainId, entryId, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AllApi#previousEntryById");
@@ -13447,8 +13691,9 @@ public class AllApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         String entryId = entryId_example; // String | entryId
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.previousEntryById(context, chainId, entryId);
+            AnchoredEntryResponse result = apiInstance.previousEntryById(context, chainId, entryId, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AllApi#previousEntryById");
@@ -13477,6 +13722,7 @@ Configuration *apiConfig = [Configuration sharedConfig];
 String *context = context_example; // context
 String *chainId = chainId_example; // chainId
 String *entryId = entryId_example; // entryId
+Date *currentAnchorTime = 2013-10-20T19:20:30+01:00; //  (optional)
 
 AllApi *apiInstance = [[AllApi alloc] init];
 
@@ -13484,6 +13730,7 @@ AllApi *apiInstance = [[AllApi alloc] init];
 [apiInstance previousEntryByIdWith:context
     chainId:chainId
     entryId:entryId
+    currentAnchorTime:currentAnchorTime
               completionHandler: ^(AnchoredEntryResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -13512,6 +13759,9 @@ var chainId = chainId_example; // {String} chainId
 
 var entryId = entryId_example; // {String} entryId
 
+var opts = { 
+  'currentAnchorTime': 2013-10-20T19:20:30+01:00 // {Date} 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -13520,7 +13770,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.previousEntryById(context, chainId, entryId, callback);
+api.previousEntryById(context, chainId, entryId, opts, callback);
 
                                                     </code></pre>
                                                 </div>
@@ -13551,11 +13801,12 @@ namespace Example
             var context = context_example;  // String | context
             var chainId = chainId_example;  // String | chainId
             var entryId = entryId_example;  // String | entryId
+            var currentAnchorTime = 2013-10-20T19:20:30+01:00;  // Date |  (optional) 
 
             try
             {
                 // Get the entry before the supplied entry Id (the previous) in the provided chain
-                AnchoredEntryResponse result = apiInstance.previousEntryById(context, chainId, entryId);
+                AnchoredEntryResponse result = apiInstance.previousEntryById(context, chainId, entryId, currentAnchorTime);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -13582,9 +13833,10 @@ $api_instance = new com.sphereon.sdk.blockchain.easy\Api\AllApi();
 $context = context_example; // String | context
 $chainId = chainId_example; // String | chainId
 $entryId = entryId_example; // String | entryId
+$currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
 
 try {
-    $result = $api_instance->previousEntryById($context, $chainId, $entryId);
+    $result = $api_instance->previousEntryById($context, $chainId, $entryId, $currentAnchorTime);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AllApi->previousEntryById: ', $e->getMessage(), PHP_EOL;
@@ -13719,6 +13971,48 @@ try {
 
 
 
+                                                <div class="methodsubtabletitle">Query parameters</div>
+                                                <table id="methodsubtable">
+                                                    <tr>
+                                                        <th width="150px">Name</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                    <!---->
+                                                        <tr><td style="width:150px;">currentAnchorTime</td>
+<td>
+
+
+<script>
+												$(document).ready(function() {
+													var schemaWrapper = {
+  "name" : "currentAnchorTime",
+  "in" : "query",
+  "required" : false,
+  "type" : "string",
+  "format" : "date-time",
+  "x-codegen-hasMoreOptional" : false
+};
+													var schema = schemaWrapper;
+
+
+
+
+													var view = new JSONSchemaView(schema,0);
+													var result = $('#d2e199_previousEntryById_currentAnchorTime');
+													result.empty();
+													result.append(view.render());
+
+
+
+
+
+												});
+												</script>
+												<div id="d2e199_previousEntryById_currentAnchorTime"></div>
+</td>
+</tr>
+
+                                                </table>
 
                                             <h2>Responses</h2>
 
@@ -14032,7 +14326,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-previousEntryByRequest-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/previous"
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/previous?currentAnchorTime="
 
 
 </code></pre>
@@ -14061,8 +14355,9 @@ public class AllApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         Entry entry = ; // Entry | Retrieve the entry
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.previousEntryByRequest(context, chainId, entry);
+            AnchoredEntryResponse result = apiInstance.previousEntryByRequest(context, chainId, entry, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AllApi#previousEntryByRequest");
@@ -14086,8 +14381,9 @@ public class AllApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         Entry entry = ; // Entry | Retrieve the entry
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.previousEntryByRequest(context, chainId, entry);
+            AnchoredEntryResponse result = apiInstance.previousEntryByRequest(context, chainId, entry, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AllApi#previousEntryByRequest");
@@ -14116,6 +14412,7 @@ Configuration *apiConfig = [Configuration sharedConfig];
 String *context = context_example; // context
 String *chainId = chainId_example; // chainId
 Entry *entry = ; // Retrieve the entry
+Date *currentAnchorTime = 2013-10-20T19:20:30+01:00; //  (optional)
 
 AllApi *apiInstance = [[AllApi alloc] init];
 
@@ -14123,6 +14420,7 @@ AllApi *apiInstance = [[AllApi alloc] init];
 [apiInstance previousEntryByRequestWith:context
     chainId:chainId
     entry:entry
+    currentAnchorTime:currentAnchorTime
               completionHandler: ^(AnchoredEntryResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -14151,6 +14449,9 @@ var chainId = chainId_example; // {String} chainId
 
 var entry = ; // {Entry} Retrieve the entry
 
+var opts = { 
+  'currentAnchorTime': 2013-10-20T19:20:30+01:00 // {Date} 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -14159,7 +14460,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.previousEntryByRequest(context, chainId, entry, callback);
+api.previousEntryByRequest(context, chainId, entry, opts, callback);
 
                                                     </code></pre>
                                                 </div>
@@ -14190,11 +14491,12 @@ namespace Example
             var context = context_example;  // String | context
             var chainId = chainId_example;  // String | chainId
             var entry = new Entry(); // Entry | Retrieve the entry
+            var currentAnchorTime = 2013-10-20T19:20:30+01:00;  // Date |  (optional) 
 
             try
             {
                 // Get the entry before the supplied entry Id (the previous) in the provided chain
-                AnchoredEntryResponse result = apiInstance.previousEntryByRequest(context, chainId, entry);
+                AnchoredEntryResponse result = apiInstance.previousEntryByRequest(context, chainId, entry, currentAnchorTime);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -14221,9 +14523,10 @@ $api_instance = new com.sphereon.sdk.blockchain.easy\Api\AllApi();
 $context = context_example; // String | context
 $chainId = chainId_example; // String | chainId
 $entry = ; // Entry | Retrieve the entry
+$currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
 
 try {
-    $result = $api_instance->previousEntryByRequest($context, $chainId, $entry);
+    $result = $api_instance->previousEntryByRequest($context, $chainId, $entry, $currentAnchorTime);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AllApi->previousEntryByRequest: ', $e->getMessage(), PHP_EOL;
@@ -14378,6 +14681,48 @@ try {
 
                                                 </table>
 
+                                                <div class="methodsubtabletitle">Query parameters</div>
+                                                <table id="methodsubtable">
+                                                    <tr>
+                                                        <th width="150px">Name</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                    <!---->
+                                                        <tr><td style="width:150px;">currentAnchorTime</td>
+<td>
+
+
+<script>
+												$(document).ready(function() {
+													var schemaWrapper = {
+  "name" : "currentAnchorTime",
+  "in" : "query",
+  "required" : false,
+  "type" : "string",
+  "format" : "date-time",
+  "x-codegen-hasMoreOptional" : false
+};
+													var schema = schemaWrapper;
+
+
+
+
+													var view = new JSONSchemaView(schema,0);
+													var result = $('#d2e199_previousEntryByRequest_currentAnchorTime');
+													result.empty();
+													result.append(view.render());
+
+
+
+
+
+												});
+												</script>
+												<div id="d2e199_previousEntryByRequest_currentAnchorTime"></div>
+</td>
+</tr>
+
+                                                </table>
 
                                             <h2>Responses</h2>
 
@@ -19727,7 +20072,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Entry-createEntry-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries"
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries?currentAnchorTime="
 
 
 </code></pre>
@@ -19756,8 +20101,9 @@ public class EntryApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         Entry entry = ; // Entry | Create a new entry for the specified chain
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            CommittedEntryResponse result = apiInstance.createEntry(context, chainId, entry);
+            CommittedEntryResponse result = apiInstance.createEntry(context, chainId, entry, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EntryApi#createEntry");
@@ -19781,8 +20127,9 @@ public class EntryApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         Entry entry = ; // Entry | Create a new entry for the specified chain
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            CommittedEntryResponse result = apiInstance.createEntry(context, chainId, entry);
+            CommittedEntryResponse result = apiInstance.createEntry(context, chainId, entry, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EntryApi#createEntry");
@@ -19811,6 +20158,7 @@ Configuration *apiConfig = [Configuration sharedConfig];
 String *context = context_example; // context
 String *chainId = chainId_example; // chainId
 Entry *entry = ; // Create a new entry for the specified chain
+Date *currentAnchorTime = 2013-10-20T19:20:30+01:00; //  (optional)
 
 EntryApi *apiInstance = [[EntryApi alloc] init];
 
@@ -19818,6 +20166,7 @@ EntryApi *apiInstance = [[EntryApi alloc] init];
 [apiInstance createEntryWith:context
     chainId:chainId
     entry:entry
+    currentAnchorTime:currentAnchorTime
               completionHandler: ^(CommittedEntryResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -19846,6 +20195,9 @@ var chainId = chainId_example; // {String} chainId
 
 var entry = ; // {Entry} Create a new entry for the specified chain
 
+var opts = { 
+  'currentAnchorTime': 2013-10-20T19:20:30+01:00 // {Date} 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -19854,7 +20206,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.createEntry(context, chainId, entry, callback);
+api.createEntry(context, chainId, entry, opts, callback);
 
                                                     </code></pre>
                                                 </div>
@@ -19885,11 +20237,12 @@ namespace Example
             var context = context_example;  // String | context
             var chainId = chainId_example;  // String | chainId
             var entry = new Entry(); // Entry | Create a new entry for the specified chain
+            var currentAnchorTime = 2013-10-20T19:20:30+01:00;  // Date |  (optional) 
 
             try
             {
                 // Create a new entry in the provided chain
-                CommittedEntryResponse result = apiInstance.createEntry(context, chainId, entry);
+                CommittedEntryResponse result = apiInstance.createEntry(context, chainId, entry, currentAnchorTime);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -19916,9 +20269,10 @@ $api_instance = new com.sphereon.sdk.blockchain.easy\Api\EntryApi();
 $context = context_example; // String | context
 $chainId = chainId_example; // String | chainId
 $entry = ; // Entry | Create a new entry for the specified chain
+$currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
 
 try {
-    $result = $api_instance->createEntry($context, $chainId, $entry);
+    $result = $api_instance->createEntry($context, $chainId, $entry, $currentAnchorTime);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EntryApi->createEntry: ', $e->getMessage(), PHP_EOL;
@@ -20068,6 +20422,47 @@ try {
 
                                                 </table>
 
+                                                <div class="methodsubtabletitle">Query parameters</div>
+                                                <table id="methodsubtable">
+                                                    <tr>
+                                                        <th width="150px">Name</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                    <!---->
+                                                        <tr><td style="width:150px;">currentAnchorTime</td>
+<td>
+
+
+<script>
+												$(document).ready(function() {
+													var schemaWrapper = {
+  "name" : "currentAnchorTime",
+  "in" : "query",
+  "required" : false,
+  "type" : "string",
+  "format" : "date-time"
+};
+													var schema = schemaWrapper;
+
+
+
+
+													var view = new JSONSchemaView(schema,0);
+													var result = $('#d2e199_createEntry_currentAnchorTime');
+													result.empty();
+													result.append(view.render());
+
+
+
+
+
+												});
+												</script>
+												<div id="d2e199_createEntry_currentAnchorTime"></div>
+</td>
+</tr>
+
+                                                </table>
 
                                             <h2>Responses</h2>
 
@@ -20539,7 +20934,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Entry-entryById-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}"
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}?currentAnchorTime="
 
 
 </code></pre>
@@ -20568,8 +20963,9 @@ public class EntryApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         String entryId = entryId_example; // String | entryId
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.entryById(context, chainId, entryId);
+            AnchoredEntryResponse result = apiInstance.entryById(context, chainId, entryId, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EntryApi#entryById");
@@ -20593,8 +20989,9 @@ public class EntryApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         String entryId = entryId_example; // String | entryId
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.entryById(context, chainId, entryId);
+            AnchoredEntryResponse result = apiInstance.entryById(context, chainId, entryId, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EntryApi#entryById");
@@ -20623,6 +21020,7 @@ Configuration *apiConfig = [Configuration sharedConfig];
 String *context = context_example; // context
 String *chainId = chainId_example; // chainId
 String *entryId = entryId_example; // entryId
+Date *currentAnchorTime = 2013-10-20T19:20:30+01:00; //  (optional)
 
 EntryApi *apiInstance = [[EntryApi alloc] init];
 
@@ -20630,6 +21028,7 @@ EntryApi *apiInstance = [[EntryApi alloc] init];
 [apiInstance entryByIdWith:context
     chainId:chainId
     entryId:entryId
+    currentAnchorTime:currentAnchorTime
               completionHandler: ^(AnchoredEntryResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -20658,6 +21057,9 @@ var chainId = chainId_example; // {String} chainId
 
 var entryId = entryId_example; // {String} entryId
 
+var opts = { 
+  'currentAnchorTime': 2013-10-20T19:20:30+01:00 // {Date} 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -20666,7 +21068,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.entryById(context, chainId, entryId, callback);
+api.entryById(context, chainId, entryId, opts, callback);
 
                                                     </code></pre>
                                                 </div>
@@ -20697,11 +21099,12 @@ namespace Example
             var context = context_example;  // String | context
             var chainId = chainId_example;  // String | chainId
             var entryId = entryId_example;  // String | entryId
+            var currentAnchorTime = 2013-10-20T19:20:30+01:00;  // Date |  (optional) 
 
             try
             {
                 // Get an existing entry in the provided chain
-                AnchoredEntryResponse result = apiInstance.entryById(context, chainId, entryId);
+                AnchoredEntryResponse result = apiInstance.entryById(context, chainId, entryId, currentAnchorTime);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -20728,9 +21131,10 @@ $api_instance = new com.sphereon.sdk.blockchain.easy\Api\EntryApi();
 $context = context_example; // String | context
 $chainId = chainId_example; // String | chainId
 $entryId = entryId_example; // String | entryId
+$currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
 
 try {
-    $result = $api_instance->entryById($context, $chainId, $entryId);
+    $result = $api_instance->entryById($context, $chainId, $entryId, $currentAnchorTime);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EntryApi->entryById: ', $e->getMessage(), PHP_EOL;
@@ -20860,6 +21264,47 @@ try {
 
 
 
+                                                <div class="methodsubtabletitle">Query parameters</div>
+                                                <table id="methodsubtable">
+                                                    <tr>
+                                                        <th width="150px">Name</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                    <!---->
+                                                        <tr><td style="width:150px;">currentAnchorTime</td>
+<td>
+
+
+<script>
+												$(document).ready(function() {
+													var schemaWrapper = {
+  "name" : "currentAnchorTime",
+  "in" : "query",
+  "required" : false,
+  "type" : "string",
+  "format" : "date-time"
+};
+													var schema = schemaWrapper;
+
+
+
+
+													var view = new JSONSchemaView(schema,0);
+													var result = $('#d2e199_entryById_currentAnchorTime');
+													result.empty();
+													result.append(view.render());
+
+
+
+
+
+												});
+												</script>
+												<div id="d2e199_entryById_currentAnchorTime"></div>
+</td>
+</tr>
+
+                                                </table>
 
                                             <h2>Responses</h2>
 
@@ -21173,7 +21618,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Entry-entryByRequest-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry"
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry?currentAnchorTime="
 
 
 </code></pre>
@@ -21202,8 +21647,9 @@ public class EntryApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         Entry entry = ; // Entry | Retrieve the entry
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.entryByRequest(context, chainId, entry);
+            AnchoredEntryResponse result = apiInstance.entryByRequest(context, chainId, entry, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EntryApi#entryByRequest");
@@ -21227,8 +21673,9 @@ public class EntryApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         Entry entry = ; // Entry | Retrieve the entry
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.entryByRequest(context, chainId, entry);
+            AnchoredEntryResponse result = apiInstance.entryByRequest(context, chainId, entry, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EntryApi#entryByRequest");
@@ -21257,6 +21704,7 @@ Configuration *apiConfig = [Configuration sharedConfig];
 String *context = context_example; // context
 String *chainId = chainId_example; // chainId
 Entry *entry = ; // Retrieve the entry
+Date *currentAnchorTime = 2013-10-20T19:20:30+01:00; //  (optional)
 
 EntryApi *apiInstance = [[EntryApi alloc] init];
 
@@ -21264,6 +21712,7 @@ EntryApi *apiInstance = [[EntryApi alloc] init];
 [apiInstance entryByRequestWith:context
     chainId:chainId
     entry:entry
+    currentAnchorTime:currentAnchorTime
               completionHandler: ^(AnchoredEntryResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -21292,6 +21741,9 @@ var chainId = chainId_example; // {String} chainId
 
 var entry = ; // {Entry} Retrieve the entry
 
+var opts = { 
+  'currentAnchorTime': 2013-10-20T19:20:30+01:00 // {Date} 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -21300,7 +21752,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.entryByRequest(context, chainId, entry, callback);
+api.entryByRequest(context, chainId, entry, opts, callback);
 
                                                     </code></pre>
                                                 </div>
@@ -21331,11 +21783,12 @@ namespace Example
             var context = context_example;  // String | context
             var chainId = chainId_example;  // String | chainId
             var entry = new Entry(); // Entry | Retrieve the entry
+            var currentAnchorTime = 2013-10-20T19:20:30+01:00;  // Date |  (optional) 
 
             try
             {
                 // Get an existing entry in the provided chain
-                AnchoredEntryResponse result = apiInstance.entryByRequest(context, chainId, entry);
+                AnchoredEntryResponse result = apiInstance.entryByRequest(context, chainId, entry, currentAnchorTime);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -21362,9 +21815,10 @@ $api_instance = new com.sphereon.sdk.blockchain.easy\Api\EntryApi();
 $context = context_example; // String | context
 $chainId = chainId_example; // String | chainId
 $entry = ; // Entry | Retrieve the entry
+$currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
 
 try {
-    $result = $api_instance->entryByRequest($context, $chainId, $entry);
+    $result = $api_instance->entryByRequest($context, $chainId, $entry, $currentAnchorTime);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EntryApi->entryByRequest: ', $e->getMessage(), PHP_EOL;
@@ -21514,6 +21968,47 @@ try {
 
                                                 </table>
 
+                                                <div class="methodsubtabletitle">Query parameters</div>
+                                                <table id="methodsubtable">
+                                                    <tr>
+                                                        <th width="150px">Name</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                    <!---->
+                                                        <tr><td style="width:150px;">currentAnchorTime</td>
+<td>
+
+
+<script>
+												$(document).ready(function() {
+													var schemaWrapper = {
+  "name" : "currentAnchorTime",
+  "in" : "query",
+  "required" : false,
+  "type" : "string",
+  "format" : "date-time"
+};
+													var schema = schemaWrapper;
+
+
+
+
+													var view = new JSONSchemaView(schema,0);
+													var result = $('#d2e199_entryByRequest_currentAnchorTime');
+													result.empty();
+													result.append(view.render());
+
+
+
+
+
+												});
+												</script>
+												<div id="d2e199_entryByRequest_currentAnchorTime"></div>
+</td>
+</tr>
+
+                                                </table>
 
                                             <h2>Responses</h2>
 
@@ -21911,7 +22406,7 @@ String *chainId = chainId_example; // chainId
 
 EntryApi *apiInstance = [[EntryApi alloc] init];
 
-// Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
 [apiInstance firstEntryWith:context
     chainId:chainId
               completionHandler: ^(AnchoredEntryResponse output, NSError* error) {
@@ -21981,7 +22476,7 @@ namespace Example
 
             try
             {
-                // Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+                // Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
                 AnchoredEntryResponse result = apiInstance.firstEntry(context, chainId);
                 Debug.WriteLine(result);
             }
@@ -22504,7 +22999,7 @@ String *chainId = chainId_example; // chainId
 
 EntryApi *apiInstance = [[EntryApi alloc] init];
 
-// Get the last entry in the provided chain. This is the most recent entry also called the chain head
+// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
 [apiInstance lastEntryWith:context
     chainId:chainId
               completionHandler: ^(AnchoredEntryResponse output, NSError* error) {
@@ -22574,7 +23069,7 @@ namespace Example
 
             try
             {
-                // Get the last entry in the provided chain. This is the most recent entry also called the chain head
+                // Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
                 AnchoredEntryResponse result = apiInstance.lastEntry(context, chainId);
                 Debug.WriteLine(result);
             }
@@ -23013,7 +23508,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Entry-nextEntryById-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/next"
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/next?currentAnchorTime="
 
 
 </code></pre>
@@ -23042,8 +23537,9 @@ public class EntryApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         String entryId = entryId_example; // String | entryId
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.nextEntryById(context, chainId, entryId);
+            AnchoredEntryResponse result = apiInstance.nextEntryById(context, chainId, entryId, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EntryApi#nextEntryById");
@@ -23067,8 +23563,9 @@ public class EntryApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         String entryId = entryId_example; // String | entryId
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.nextEntryById(context, chainId, entryId);
+            AnchoredEntryResponse result = apiInstance.nextEntryById(context, chainId, entryId, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EntryApi#nextEntryById");
@@ -23097,6 +23594,7 @@ Configuration *apiConfig = [Configuration sharedConfig];
 String *context = context_example; // context
 String *chainId = chainId_example; // chainId
 String *entryId = entryId_example; // entryId
+Date *currentAnchorTime = 2013-10-20T19:20:30+01:00; //  (optional)
 
 EntryApi *apiInstance = [[EntryApi alloc] init];
 
@@ -23104,6 +23602,7 @@ EntryApi *apiInstance = [[EntryApi alloc] init];
 [apiInstance nextEntryByIdWith:context
     chainId:chainId
     entryId:entryId
+    currentAnchorTime:currentAnchorTime
               completionHandler: ^(AnchoredEntryResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -23132,6 +23631,9 @@ var chainId = chainId_example; // {String} chainId
 
 var entryId = entryId_example; // {String} entryId
 
+var opts = { 
+  'currentAnchorTime': 2013-10-20T19:20:30+01:00 // {Date} 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -23140,7 +23642,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.nextEntryById(context, chainId, entryId, callback);
+api.nextEntryById(context, chainId, entryId, opts, callback);
 
                                                     </code></pre>
                                                 </div>
@@ -23171,11 +23673,12 @@ namespace Example
             var context = context_example;  // String | context
             var chainId = chainId_example;  // String | chainId
             var entryId = entryId_example;  // String | entryId
+            var currentAnchorTime = 2013-10-20T19:20:30+01:00;  // Date |  (optional) 
 
             try
             {
                 // Get the entry after the supplied entry Id (the next) in the provided chain
-                AnchoredEntryResponse result = apiInstance.nextEntryById(context, chainId, entryId);
+                AnchoredEntryResponse result = apiInstance.nextEntryById(context, chainId, entryId, currentAnchorTime);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -23202,9 +23705,10 @@ $api_instance = new com.sphereon.sdk.blockchain.easy\Api\EntryApi();
 $context = context_example; // String | context
 $chainId = chainId_example; // String | chainId
 $entryId = entryId_example; // String | entryId
+$currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
 
 try {
-    $result = $api_instance->nextEntryById($context, $chainId, $entryId);
+    $result = $api_instance->nextEntryById($context, $chainId, $entryId, $currentAnchorTime);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EntryApi->nextEntryById: ', $e->getMessage(), PHP_EOL;
@@ -23334,6 +23838,47 @@ try {
 
 
 
+                                                <div class="methodsubtabletitle">Query parameters</div>
+                                                <table id="methodsubtable">
+                                                    <tr>
+                                                        <th width="150px">Name</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                    <!---->
+                                                        <tr><td style="width:150px;">currentAnchorTime</td>
+<td>
+
+
+<script>
+												$(document).ready(function() {
+													var schemaWrapper = {
+  "name" : "currentAnchorTime",
+  "in" : "query",
+  "required" : false,
+  "type" : "string",
+  "format" : "date-time"
+};
+													var schema = schemaWrapper;
+
+
+
+
+													var view = new JSONSchemaView(schema,0);
+													var result = $('#d2e199_nextEntryById_currentAnchorTime');
+													result.empty();
+													result.append(view.render());
+
+
+
+
+
+												});
+												</script>
+												<div id="d2e199_nextEntryById_currentAnchorTime"></div>
+</td>
+</tr>
+
+                                                </table>
 
                                             <h2>Responses</h2>
 
@@ -23647,7 +24192,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Entry-nextEntryByRequest-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/next"
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/next?currentAnchorTime="
 
 
 </code></pre>
@@ -23676,8 +24221,9 @@ public class EntryApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         Entry entry = ; // Entry | Retrieve the entry
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.nextEntryByRequest(context, chainId, entry);
+            AnchoredEntryResponse result = apiInstance.nextEntryByRequest(context, chainId, entry, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EntryApi#nextEntryByRequest");
@@ -23701,8 +24247,9 @@ public class EntryApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         Entry entry = ; // Entry | Retrieve the entry
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.nextEntryByRequest(context, chainId, entry);
+            AnchoredEntryResponse result = apiInstance.nextEntryByRequest(context, chainId, entry, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EntryApi#nextEntryByRequest");
@@ -23731,6 +24278,7 @@ Configuration *apiConfig = [Configuration sharedConfig];
 String *context = context_example; // context
 String *chainId = chainId_example; // chainId
 Entry *entry = ; // Retrieve the entry
+Date *currentAnchorTime = 2013-10-20T19:20:30+01:00; //  (optional)
 
 EntryApi *apiInstance = [[EntryApi alloc] init];
 
@@ -23738,6 +24286,7 @@ EntryApi *apiInstance = [[EntryApi alloc] init];
 [apiInstance nextEntryByRequestWith:context
     chainId:chainId
     entry:entry
+    currentAnchorTime:currentAnchorTime
               completionHandler: ^(AnchoredEntryResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -23766,6 +24315,9 @@ var chainId = chainId_example; // {String} chainId
 
 var entry = ; // {Entry} Retrieve the entry
 
+var opts = { 
+  'currentAnchorTime': 2013-10-20T19:20:30+01:00 // {Date} 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -23774,7 +24326,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.nextEntryByRequest(context, chainId, entry, callback);
+api.nextEntryByRequest(context, chainId, entry, opts, callback);
 
                                                     </code></pre>
                                                 </div>
@@ -23805,11 +24357,12 @@ namespace Example
             var context = context_example;  // String | context
             var chainId = chainId_example;  // String | chainId
             var entry = new Entry(); // Entry | Retrieve the entry
+            var currentAnchorTime = 2013-10-20T19:20:30+01:00;  // Date |  (optional) 
 
             try
             {
                 // Get the entry after the supplied entry Id (the next) in the provided chain
-                AnchoredEntryResponse result = apiInstance.nextEntryByRequest(context, chainId, entry);
+                AnchoredEntryResponse result = apiInstance.nextEntryByRequest(context, chainId, entry, currentAnchorTime);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -23836,9 +24389,10 @@ $api_instance = new com.sphereon.sdk.blockchain.easy\Api\EntryApi();
 $context = context_example; // String | context
 $chainId = chainId_example; // String | chainId
 $entry = ; // Entry | Retrieve the entry
+$currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
 
 try {
-    $result = $api_instance->nextEntryByRequest($context, $chainId, $entry);
+    $result = $api_instance->nextEntryByRequest($context, $chainId, $entry, $currentAnchorTime);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EntryApi->nextEntryByRequest: ', $e->getMessage(), PHP_EOL;
@@ -23988,6 +24542,47 @@ try {
 
                                                 </table>
 
+                                                <div class="methodsubtabletitle">Query parameters</div>
+                                                <table id="methodsubtable">
+                                                    <tr>
+                                                        <th width="150px">Name</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                    <!---->
+                                                        <tr><td style="width:150px;">currentAnchorTime</td>
+<td>
+
+
+<script>
+												$(document).ready(function() {
+													var schemaWrapper = {
+  "name" : "currentAnchorTime",
+  "in" : "query",
+  "required" : false,
+  "type" : "string",
+  "format" : "date-time"
+};
+													var schema = schemaWrapper;
+
+
+
+
+													var view = new JSONSchemaView(schema,0);
+													var result = $('#d2e199_nextEntryByRequest_currentAnchorTime');
+													result.empty();
+													result.append(view.render());
+
+
+
+
+
+												});
+												</script>
+												<div id="d2e199_nextEntryByRequest_currentAnchorTime"></div>
+</td>
+</tr>
+
+                                                </table>
 
                                             <h2>Responses</h2>
 
@@ -24301,7 +24896,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Entry-previousEntryById-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/previous"
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/previous?currentAnchorTime="
 
 
 </code></pre>
@@ -24330,8 +24925,9 @@ public class EntryApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         String entryId = entryId_example; // String | entryId
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.previousEntryById(context, chainId, entryId);
+            AnchoredEntryResponse result = apiInstance.previousEntryById(context, chainId, entryId, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EntryApi#previousEntryById");
@@ -24355,8 +24951,9 @@ public class EntryApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         String entryId = entryId_example; // String | entryId
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.previousEntryById(context, chainId, entryId);
+            AnchoredEntryResponse result = apiInstance.previousEntryById(context, chainId, entryId, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EntryApi#previousEntryById");
@@ -24385,6 +24982,7 @@ Configuration *apiConfig = [Configuration sharedConfig];
 String *context = context_example; // context
 String *chainId = chainId_example; // chainId
 String *entryId = entryId_example; // entryId
+Date *currentAnchorTime = 2013-10-20T19:20:30+01:00; //  (optional)
 
 EntryApi *apiInstance = [[EntryApi alloc] init];
 
@@ -24392,6 +24990,7 @@ EntryApi *apiInstance = [[EntryApi alloc] init];
 [apiInstance previousEntryByIdWith:context
     chainId:chainId
     entryId:entryId
+    currentAnchorTime:currentAnchorTime
               completionHandler: ^(AnchoredEntryResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -24420,6 +25019,9 @@ var chainId = chainId_example; // {String} chainId
 
 var entryId = entryId_example; // {String} entryId
 
+var opts = { 
+  'currentAnchorTime': 2013-10-20T19:20:30+01:00 // {Date} 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -24428,7 +25030,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.previousEntryById(context, chainId, entryId, callback);
+api.previousEntryById(context, chainId, entryId, opts, callback);
 
                                                     </code></pre>
                                                 </div>
@@ -24459,11 +25061,12 @@ namespace Example
             var context = context_example;  // String | context
             var chainId = chainId_example;  // String | chainId
             var entryId = entryId_example;  // String | entryId
+            var currentAnchorTime = 2013-10-20T19:20:30+01:00;  // Date |  (optional) 
 
             try
             {
                 // Get the entry before the supplied entry Id (the previous) in the provided chain
-                AnchoredEntryResponse result = apiInstance.previousEntryById(context, chainId, entryId);
+                AnchoredEntryResponse result = apiInstance.previousEntryById(context, chainId, entryId, currentAnchorTime);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -24490,9 +25093,10 @@ $api_instance = new com.sphereon.sdk.blockchain.easy\Api\EntryApi();
 $context = context_example; // String | context
 $chainId = chainId_example; // String | chainId
 $entryId = entryId_example; // String | entryId
+$currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
 
 try {
-    $result = $api_instance->previousEntryById($context, $chainId, $entryId);
+    $result = $api_instance->previousEntryById($context, $chainId, $entryId, $currentAnchorTime);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EntryApi->previousEntryById: ', $e->getMessage(), PHP_EOL;
@@ -24622,6 +25226,47 @@ try {
 
 
 
+                                                <div class="methodsubtabletitle">Query parameters</div>
+                                                <table id="methodsubtable">
+                                                    <tr>
+                                                        <th width="150px">Name</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                    <!---->
+                                                        <tr><td style="width:150px;">currentAnchorTime</td>
+<td>
+
+
+<script>
+												$(document).ready(function() {
+													var schemaWrapper = {
+  "name" : "currentAnchorTime",
+  "in" : "query",
+  "required" : false,
+  "type" : "string",
+  "format" : "date-time"
+};
+													var schema = schemaWrapper;
+
+
+
+
+													var view = new JSONSchemaView(schema,0);
+													var result = $('#d2e199_previousEntryById_currentAnchorTime');
+													result.empty();
+													result.append(view.render());
+
+
+
+
+
+												});
+												</script>
+												<div id="d2e199_previousEntryById_currentAnchorTime"></div>
+</td>
+</tr>
+
+                                                </table>
 
                                             <h2>Responses</h2>
 
@@ -24935,7 +25580,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Entry-previousEntryByRequest-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/previous"
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/previous?currentAnchorTime="
 
 
 </code></pre>
@@ -24964,8 +25609,9 @@ public class EntryApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         Entry entry = ; // Entry | Retrieve the entry
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.previousEntryByRequest(context, chainId, entry);
+            AnchoredEntryResponse result = apiInstance.previousEntryByRequest(context, chainId, entry, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EntryApi#previousEntryByRequest");
@@ -24989,8 +25635,9 @@ public class EntryApiExample {
         String context = context_example; // String | context
         String chainId = chainId_example; // String | chainId
         Entry entry = ; // Entry | Retrieve the entry
+        Date currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
         try {
-            AnchoredEntryResponse result = apiInstance.previousEntryByRequest(context, chainId, entry);
+            AnchoredEntryResponse result = apiInstance.previousEntryByRequest(context, chainId, entry, currentAnchorTime);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EntryApi#previousEntryByRequest");
@@ -25019,6 +25666,7 @@ Configuration *apiConfig = [Configuration sharedConfig];
 String *context = context_example; // context
 String *chainId = chainId_example; // chainId
 Entry *entry = ; // Retrieve the entry
+Date *currentAnchorTime = 2013-10-20T19:20:30+01:00; //  (optional)
 
 EntryApi *apiInstance = [[EntryApi alloc] init];
 
@@ -25026,6 +25674,7 @@ EntryApi *apiInstance = [[EntryApi alloc] init];
 [apiInstance previousEntryByRequestWith:context
     chainId:chainId
     entry:entry
+    currentAnchorTime:currentAnchorTime
               completionHandler: ^(AnchoredEntryResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -25054,6 +25703,9 @@ var chainId = chainId_example; // {String} chainId
 
 var entry = ; // {Entry} Retrieve the entry
 
+var opts = { 
+  'currentAnchorTime': 2013-10-20T19:20:30+01:00 // {Date} 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -25062,7 +25714,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.previousEntryByRequest(context, chainId, entry, callback);
+api.previousEntryByRequest(context, chainId, entry, opts, callback);
 
                                                     </code></pre>
                                                 </div>
@@ -25093,11 +25745,12 @@ namespace Example
             var context = context_example;  // String | context
             var chainId = chainId_example;  // String | chainId
             var entry = new Entry(); // Entry | Retrieve the entry
+            var currentAnchorTime = 2013-10-20T19:20:30+01:00;  // Date |  (optional) 
 
             try
             {
                 // Get the entry before the supplied entry Id (the previous) in the provided chain
-                AnchoredEntryResponse result = apiInstance.previousEntryByRequest(context, chainId, entry);
+                AnchoredEntryResponse result = apiInstance.previousEntryByRequest(context, chainId, entry, currentAnchorTime);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -25124,9 +25777,10 @@ $api_instance = new com.sphereon.sdk.blockchain.easy\Api\EntryApi();
 $context = context_example; // String | context
 $chainId = chainId_example; // String | chainId
 $entry = ; // Entry | Retrieve the entry
+$currentAnchorTime = 2013-10-20T19:20:30+01:00; // Date | 
 
 try {
-    $result = $api_instance->previousEntryByRequest($context, $chainId, $entry);
+    $result = $api_instance->previousEntryByRequest($context, $chainId, $entry, $currentAnchorTime);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EntryApi->previousEntryByRequest: ', $e->getMessage(), PHP_EOL;
@@ -25276,6 +25930,47 @@ try {
 
                                                 </table>
 
+                                                <div class="methodsubtabletitle">Query parameters</div>
+                                                <table id="methodsubtable">
+                                                    <tr>
+                                                        <th width="150px">Name</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                    <!---->
+                                                        <tr><td style="width:150px;">currentAnchorTime</td>
+<td>
+
+
+<script>
+												$(document).ready(function() {
+													var schemaWrapper = {
+  "name" : "currentAnchorTime",
+  "in" : "query",
+  "required" : false,
+  "type" : "string",
+  "format" : "date-time"
+};
+													var schema = schemaWrapper;
+
+
+
+
+													var view = new JSONSchemaView(schema,0);
+													var result = $('#d2e199_previousEntryByRequest_currentAnchorTime');
+													result.empty();
+													result.append(view.render());
+
+
+
+
+
+												});
+												</script>
+												<div id="d2e199_previousEntryByRequest_currentAnchorTime"></div>
+</td>
+</tr>
+
+                                                </table>
 
                                             <h2>Responses</h2>
 
@@ -27995,7 +28690,7 @@ try {
             </div>
             <div id="generator">
                 <div class="content">
-                    Generated 2017-06-30T16:07:24.038+02:00
+                    Generated 2017-07-03T11:20:14.358+02:00
                 </div>
             </div>
         </div>

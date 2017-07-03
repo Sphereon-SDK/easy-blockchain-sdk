@@ -35,63 +35,13 @@ import io.swagger.annotations.ApiModelProperty;
  * Commited Chain
  */
 @ApiModel(description = "Commited Chain")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-06-30T16:07:46.287+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-03T11:20:12.030+02:00")
 public class CommittedChain {
   @SerializedName("chain")
   private Chain chain = null;
 
-  /**
-   * Gets or Sets dataStructure
-   */
-  public enum DataStructureEnum {
-    @SerializedName("Factom")
-    FACTOM("Factom"),
-    
-    @SerializedName("Multichain")
-    MULTICHAIN("Multichain");
-
-    private String value;
-
-    DataStructureEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  @SerializedName("dataStructure")
-  private DataStructureEnum dataStructure = null;
-
   @SerializedName("id")
   private String id = null;
-
-  /**
-   * Gets or Sets blockchainImplementation
-   */
-  public enum BlockchainImplementationEnum {
-    @SerializedName("Bitcoin")
-    BITCOIN("Bitcoin"),
-    
-    @SerializedName("None")
-    NONE("None");
-
-    private String value;
-
-    BlockchainImplementationEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  @SerializedName("blockchainImplementation")
-  private BlockchainImplementationEnum blockchainImplementation = null;
 
   public CommittedChain chain(Chain chain) {
     this.chain = chain;
@@ -112,30 +62,12 @@ public class CommittedChain {
   }
 
    /**
-   * Get dataStructure
-   * @return dataStructure
-  **/
-  @ApiModelProperty(example = "null", required = true, value = "")
-  public DataStructureEnum getDataStructure() {
-    return dataStructure;
-  }
-
-   /**
    * Chain ID
    * @return id
   **/
   @ApiModelProperty(example = "null", value = "Chain ID")
   public String getId() {
     return id;
-  }
-
-   /**
-   * Get blockchainImplementation
-   * @return blockchainImplementation
-  **/
-  @ApiModelProperty(example = "null", required = true, value = "")
-  public BlockchainImplementationEnum getBlockchainImplementation() {
-    return blockchainImplementation;
   }
 
 
@@ -149,14 +81,12 @@ public class CommittedChain {
     }
     CommittedChain committedChain = (CommittedChain) o;
     return Objects.equals(this.chain, committedChain.chain) &&
-        Objects.equals(this.dataStructure, committedChain.dataStructure) &&
-        Objects.equals(this.id, committedChain.id) &&
-        Objects.equals(this.blockchainImplementation, committedChain.blockchainImplementation);
+        Objects.equals(this.id, committedChain.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(chain, dataStructure, id, blockchainImplementation);
+    return Objects.hash(chain, id);
   }
 
 
@@ -166,9 +96,7 @@ public class CommittedChain {
     sb.append("class CommittedChain {\n");
     
     sb.append("    chain: ").append(toIndentedString(chain)).append("\n");
-    sb.append("    dataStructure: ").append(toIndentedString(dataStructure)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    blockchainImplementation: ").append(toIndentedString(blockchainImplementation)).append("\n");
     sb.append("}");
     return sb.toString();
   }

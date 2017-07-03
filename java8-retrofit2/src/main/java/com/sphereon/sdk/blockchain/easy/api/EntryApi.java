@@ -10,6 +10,7 @@ import okhttp3.RequestBody;
 
 import com.sphereon.sdk.blockchain.easy.model.CommittedEntryResponse;
 import com.sphereon.sdk.blockchain.easy.model.Entry;
+import java.time.OffsetDateTime;
 import com.sphereon.sdk.blockchain.easy.model.ErrorResponse;
 import com.sphereon.sdk.blockchain.easy.model.AnchoredEntryResponse;
 
@@ -25,6 +26,7 @@ public interface EntryApi {
    * @param context context (required)
    * @param chainId chainId (required)
    * @param entry Create a new entry for the specified chain (required)
+   * @param currentAnchorTime  (optional)
    * @return Call&lt;CommittedEntryResponse&gt;
    */
   
@@ -33,7 +35,7 @@ public interface EntryApi {
   })
   @POST("blockchain/easy/0.9.1/{context}/chains/{chainId}/entries")
   Call<CommittedEntryResponse> createEntry(
-    @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Body Entry entry
+    @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Body Entry entry, @retrofit2.http.Query("currentAnchorTime") OffsetDateTime currentAnchorTime
   );
 
   /**
@@ -42,6 +44,7 @@ public interface EntryApi {
    * @param context context (required)
    * @param chainId chainId (required)
    * @param entryId entryId (required)
+   * @param currentAnchorTime  (optional)
    * @return Call&lt;AnchoredEntryResponse&gt;
    */
   
@@ -50,7 +53,7 @@ public interface EntryApi {
   })
   @GET("blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}")
   Call<AnchoredEntryResponse> entryById(
-    @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Path("entryId") String entryId
+    @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Path("entryId") String entryId, @retrofit2.http.Query("currentAnchorTime") OffsetDateTime currentAnchorTime
   );
 
   /**
@@ -59,6 +62,7 @@ public interface EntryApi {
    * @param context context (required)
    * @param chainId chainId (required)
    * @param entry Retrieve the entry (required)
+   * @param currentAnchorTime  (optional)
    * @return Call&lt;AnchoredEntryResponse&gt;
    */
   
@@ -67,11 +71,11 @@ public interface EntryApi {
   })
   @POST("blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry")
   Call<AnchoredEntryResponse> entryByRequest(
-    @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Body Entry entry
+    @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Body Entry entry, @retrofit2.http.Query("currentAnchorTime") OffsetDateTime currentAnchorTime
   );
 
   /**
-   * Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+   * Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
    * 
    * @param context context (required)
    * @param chainId chainId (required)
@@ -87,7 +91,7 @@ public interface EntryApi {
   );
 
   /**
-   * Get the last entry in the provided chain. This is the most recent entry also called the chain head
+   * Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
    * 
    * @param context context (required)
    * @param chainId chainId (required)
@@ -108,6 +112,7 @@ public interface EntryApi {
    * @param context context (required)
    * @param chainId chainId (required)
    * @param entryId entryId (required)
+   * @param currentAnchorTime  (optional)
    * @return Call&lt;AnchoredEntryResponse&gt;
    */
   
@@ -116,7 +121,7 @@ public interface EntryApi {
   })
   @GET("blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/next")
   Call<AnchoredEntryResponse> nextEntryById(
-    @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Path("entryId") String entryId
+    @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Path("entryId") String entryId, @retrofit2.http.Query("currentAnchorTime") OffsetDateTime currentAnchorTime
   );
 
   /**
@@ -125,6 +130,7 @@ public interface EntryApi {
    * @param context context (required)
    * @param chainId chainId (required)
    * @param entry Retrieve the entry (required)
+   * @param currentAnchorTime  (optional)
    * @return Call&lt;AnchoredEntryResponse&gt;
    */
   
@@ -133,7 +139,7 @@ public interface EntryApi {
   })
   @POST("blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/next")
   Call<AnchoredEntryResponse> nextEntryByRequest(
-    @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Body Entry entry
+    @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Body Entry entry, @retrofit2.http.Query("currentAnchorTime") OffsetDateTime currentAnchorTime
   );
 
   /**
@@ -142,6 +148,7 @@ public interface EntryApi {
    * @param context context (required)
    * @param chainId chainId (required)
    * @param entryId entryId (required)
+   * @param currentAnchorTime  (optional)
    * @return Call&lt;AnchoredEntryResponse&gt;
    */
   
@@ -150,7 +157,7 @@ public interface EntryApi {
   })
   @GET("blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/previous")
   Call<AnchoredEntryResponse> previousEntryById(
-    @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Path("entryId") String entryId
+    @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Path("entryId") String entryId, @retrofit2.http.Query("currentAnchorTime") OffsetDateTime currentAnchorTime
   );
 
   /**
@@ -159,6 +166,7 @@ public interface EntryApi {
    * @param context context (required)
    * @param chainId chainId (required)
    * @param entry Retrieve the entry (required)
+   * @param currentAnchorTime  (optional)
    * @return Call&lt;AnchoredEntryResponse&gt;
    */
   
@@ -167,7 +175,7 @@ public interface EntryApi {
   })
   @POST("blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/previous")
   Call<AnchoredEntryResponse> previousEntryByRequest(
-    @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Body Entry entry
+    @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Body Entry entry, @retrofit2.http.Query("currentAnchorTime") OffsetDateTime currentAnchorTime
   );
 
 }

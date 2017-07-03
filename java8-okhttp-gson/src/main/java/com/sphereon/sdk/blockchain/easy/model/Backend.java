@@ -39,7 +39,7 @@ import java.util.List;
  * Backend
  */
 @ApiModel(description = "Backend")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-06-30T16:07:32.641+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-03T11:20:14.142+02:00")
 public class Backend {
   @SerializedName("rpcProviders")
   private List<RpcProvider> rpcProviders = new ArrayList<RpcProvider>();

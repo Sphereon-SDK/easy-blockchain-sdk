@@ -5,7 +5,7 @@
   <artifactId>easy-blockchain-sdk-java8-retrofit2</artifactId>
   <packaging>jar</packaging>
   <name>easy-blockchain-sdk-java8-retrofit2</name>
-  <version>0.9.1</version>
+  <version>0.1.0</version>
   <scm>
     <connection>scm:git:git@github.com:swagger-api/swagger-mustache.git</connection>
     <developerConnection>scm:git:git@github.com:swagger-api/swagger-codegen.git</developerConnection>

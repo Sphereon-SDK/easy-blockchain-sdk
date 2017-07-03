@@ -34,7 +34,7 @@ import io.swagger.annotations.ApiModelProperty;
  * Id response
  */
 @ApiModel(description = "Id response")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-06-30T16:07:32.641+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-03T11:20:14.142+02:00")
 public class IdResponse {
   /**
    * Gets or Sets exists
@@ -66,50 +66,6 @@ public class IdResponse {
 
   @SerializedName("Id")
   private String id = null;
-
-  /**
-   * Gets or Sets dataStructure
-   */
-  public enum DataStructureEnum {
-    @SerializedName("Factom")
-    FACTOM("Factom");
-
-    private String value;
-
-    DataStructureEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  @SerializedName("dataStructure")
-  private DataStructureEnum dataStructure = null;
-
-  /**
-   * Gets or Sets blockchainImplementation
-   */
-  public enum BlockchainImplementationEnum {
-    @SerializedName("Bitcoin")
-    BITCOIN("Bitcoin");
-
-    private String value;
-
-    BlockchainImplementationEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  @SerializedName("blockchainImplementation")
-  private BlockchainImplementationEnum blockchainImplementation = null;
 
   public IdResponse exists(ExistsEnum exists) {
     this.exists = exists;
@@ -147,24 +103,6 @@ public class IdResponse {
     this.id = id;
   }
 
-   /**
-   * Get dataStructure
-   * @return dataStructure
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public DataStructureEnum getDataStructure() {
-    return dataStructure;
-  }
-
-   /**
-   * Get blockchainImplementation
-   * @return blockchainImplementation
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public BlockchainImplementationEnum getBlockchainImplementation() {
-    return blockchainImplementation;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -176,14 +114,12 @@ public class IdResponse {
     }
     IdResponse idResponse = (IdResponse) o;
     return Objects.equals(this.exists, idResponse.exists) &&
-        Objects.equals(this.id, idResponse.id) &&
-        Objects.equals(this.dataStructure, idResponse.dataStructure) &&
-        Objects.equals(this.blockchainImplementation, idResponse.blockchainImplementation);
+        Objects.equals(this.id, idResponse.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(exists, id, dataStructure, blockchainImplementation);
+    return Objects.hash(exists, id);
   }
 
 
@@ -194,8 +130,6 @@ public class IdResponse {
     
     sb.append("    exists: ").append(toIndentedString(exists)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    dataStructure: ").append(toIndentedString(dataStructure)).append("\n");
-    sb.append("    blockchainImplementation: ").append(toIndentedString(blockchainImplementation)).append("\n");
     sb.append("}");
     return sb.toString();
   }

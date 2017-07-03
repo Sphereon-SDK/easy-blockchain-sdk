@@ -77,8 +77,26 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property currentAnchorTime (base name: "currentAnchorTime")', function() {
+      // uncomment below and update the code to test the property currentAnchorTime
+      //var instane = new EasyBlockchainApi.AnchoredEntryResponse();
+      //expect(instance).to.be();
+    });
+
     it('should have the property anchorState (base name: "anchorState")', function() {
       // uncomment below and update the code to test the property anchorState
+      //var instane = new EasyBlockchainApi.AnchoredEntryResponse();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property lastAnchorTime (base name: "lastAnchorTime")', function() {
+      // uncomment below and update the code to test the property lastAnchorTime
+      //var instane = new EasyBlockchainApi.AnchoredEntryResponse();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property firstAnchorTime (base name: "firstAnchorTime")', function() {
+      // uncomment below and update the code to test the property firstAnchorTime
       //var instane = new EasyBlockchainApi.AnchoredEntryResponse();
       //expect(instance).to.be();
     });

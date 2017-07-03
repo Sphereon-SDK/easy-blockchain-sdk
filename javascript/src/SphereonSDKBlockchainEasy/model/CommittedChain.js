@@ -53,16 +53,12 @@
    * Commited Chain
    * @alias module:SphereonSDKBlockchainEasy/model/CommittedChain
    * @class
-   * @param dataStructure {module:SphereonSDKBlockchainEasy/model/CommittedChain.DataStructureEnum} 
-   * @param blockchainImplementation {module:SphereonSDKBlockchainEasy/model/CommittedChain.BlockchainImplementationEnum} 
    */
-  var exports = function(dataStructure, blockchainImplementation) {
+  var exports = function() {
     var _this = this;
 
 
-    _this['dataStructure'] = dataStructure;
 
-    _this['blockchainImplementation'] = blockchainImplementation;
   };
 
   /**
@@ -79,14 +75,8 @@
       if (data.hasOwnProperty('chain')) {
         obj['chain'] = Chain.constructFromObject(data['chain']);
       }
-      if (data.hasOwnProperty('dataStructure')) {
-        obj['dataStructure'] = ApiClient.convertToType(data['dataStructure'], 'String');
-      }
       if (data.hasOwnProperty('id')) {
         obj['id'] = ApiClient.convertToType(data['id'], 'String');
-      }
-      if (data.hasOwnProperty('blockchainImplementation')) {
-        obj['blockchainImplementation'] = ApiClient.convertToType(data['blockchainImplementation'], 'String');
       }
     }
     return obj;
@@ -97,53 +87,11 @@
    */
   exports.prototype['chain'] = undefined;
   /**
-   * @member {module:SphereonSDKBlockchainEasy/model/CommittedChain.DataStructureEnum} dataStructure
-   */
-  exports.prototype['dataStructure'] = undefined;
-  /**
    * Chain ID
    * @member {String} id
    */
   exports.prototype['id'] = undefined;
-  /**
-   * @member {module:SphereonSDKBlockchainEasy/model/CommittedChain.BlockchainImplementationEnum} blockchainImplementation
-   */
-  exports.prototype['blockchainImplementation'] = undefined;
 
-
-  /**
-   * Allowed values for the <code>dataStructure</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.DataStructureEnum = {
-    /**
-     * value: "Factom"
-     * @const
-     */
-    "Factom": "Factom",
-    /**
-     * value: "Multichain"
-     * @const
-     */
-    "Multichain": "Multichain"  };
-
-  /**
-   * Allowed values for the <code>blockchainImplementation</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.BlockchainImplementationEnum = {
-    /**
-     * value: "Bitcoin"
-     * @const
-     */
-    "Bitcoin": "Bitcoin",
-    /**
-     * value: "None"
-     * @const
-     */
-    "None": "None"  };
 
 
   return exports;

@@ -24,7 +24,7 @@ limitations under the License.
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5536C1BE-9F6D-42CB-9600-2583044EC91C}</ProjectGuid>
+    <ProjectGuid>{306F89D5-F205-4009-9B50-FE145E5BD0E2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Sphereon.SDK.Blockchain.Easy</RootNamespace>

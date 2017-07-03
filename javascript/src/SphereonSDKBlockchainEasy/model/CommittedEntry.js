@@ -25,18 +25,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['SphereonSDKBlockchainEasy/ApiClient', 'SphereonSDKBlockchainEasy/model/Entry'], factory);
+    define(['SphereonSDKBlockchainEasy/ApiClient', 'SphereonSDKBlockchainEasy/model/Entry', 'SphereonSDKBlockchainEasy/model/RawBackendStructure'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./Entry'));
+    module.exports = factory(require('../ApiClient'), require('./Entry'), require('./RawBackendStructure'));
   } else {
     // Browser globals (root is window)
     if (!root.EasyBlockchainApi) {
       root.EasyBlockchainApi = {};
     }
-    root.EasyBlockchainApi.CommittedEntry = factory(root.EasyBlockchainApi.ApiClient, root.EasyBlockchainApi.Entry);
+    root.EasyBlockchainApi.CommittedEntry = factory(root.EasyBlockchainApi.ApiClient, root.EasyBlockchainApi.Entry, root.EasyBlockchainApi.RawBackendStructure);
   }
-}(this, function(ApiClient, Entry) {
+}(this, function(ApiClient, Entry, RawBackendStructure) {
   'use strict';
 
 
@@ -53,16 +53,13 @@
    * Commited Entry
    * @alias module:SphereonSDKBlockchainEasy/model/CommittedEntry
    * @class
-   * @param dataStructure {module:SphereonSDKBlockchainEasy/model/CommittedEntry.DataStructureEnum} 
-   * @param blockchainImplementation {module:SphereonSDKBlockchainEasy/model/CommittedEntry.BlockchainImplementationEnum} 
    */
-  var exports = function(dataStructure, blockchainImplementation) {
+  var exports = function() {
     var _this = this;
 
 
 
-    _this['dataStructure'] = dataStructure;
-    _this['blockchainImplementation'] = blockchainImplementation;
+
 
   };
 
@@ -83,11 +80,8 @@
       if (data.hasOwnProperty('chainId')) {
         obj['chainId'] = ApiClient.convertToType(data['chainId'], 'String');
       }
-      if (data.hasOwnProperty('dataStructure')) {
-        obj['dataStructure'] = ApiClient.convertToType(data['dataStructure'], 'String');
-      }
-      if (data.hasOwnProperty('blockchainImplementation')) {
-        obj['blockchainImplementation'] = ApiClient.convertToType(data['blockchainImplementation'], 'String');
+      if (data.hasOwnProperty('rawBackendStructures')) {
+        obj['rawBackendStructures'] = ApiClient.convertToType(data['rawBackendStructures'], [RawBackendStructure]);
       }
       if (data.hasOwnProperty('entryId')) {
         obj['entryId'] = ApiClient.convertToType(data['entryId'], 'String');
@@ -106,43 +100,16 @@
    */
   exports.prototype['chainId'] = undefined;
   /**
-   * @member {module:SphereonSDKBlockchainEasy/model/CommittedEntry.DataStructureEnum} dataStructure
+   * Raw data structures of backend
+   * @member {Array.<module:SphereonSDKBlockchainEasy/model/RawBackendStructure>} rawBackendStructures
    */
-  exports.prototype['dataStructure'] = undefined;
-  /**
-   * @member {module:SphereonSDKBlockchainEasy/model/CommittedEntry.BlockchainImplementationEnum} blockchainImplementation
-   */
-  exports.prototype['blockchainImplementation'] = undefined;
+  exports.prototype['rawBackendStructures'] = undefined;
   /**
    * Entry ID
    * @member {String} entryId
    */
   exports.prototype['entryId'] = undefined;
 
-
-  /**
-   * Allowed values for the <code>dataStructure</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.DataStructureEnum = {
-    /**
-     * value: "Factom"
-     * @const
-     */
-    "Factom": "Factom"  };
-
-  /**
-   * Allowed values for the <code>blockchainImplementation</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.BlockchainImplementationEnum = {
-    /**
-     * value: "Bitcoin"
-     * @const
-     */
-    "Bitcoin": "Bitcoin"  };
 
 
   return exports;

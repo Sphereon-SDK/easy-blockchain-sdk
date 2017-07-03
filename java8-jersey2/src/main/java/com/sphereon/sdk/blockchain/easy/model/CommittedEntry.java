@@ -29,14 +29,17 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.sphereon.sdk.blockchain.easy.model.Entry;
+import com.sphereon.sdk.blockchain.easy.model.RawBackendStructure;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Commited Entry
  */
 @ApiModel(description = "Commited Entry")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-06-30T16:07:37.862+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-03T11:20:12.597+02:00")
 public class CommittedEntry {
   @JsonProperty("entry")
   private Entry entry = null;
@@ -44,67 +47,8 @@ public class CommittedEntry {
   @JsonProperty("chainId")
   private String chainId = null;
 
-  /**
-   * Gets or Sets dataStructure
-   */
-  public enum DataStructureEnum {
-    FACTOM("Factom");
-
-    private String value;
-
-    DataStructureEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static DataStructureEnum fromValue(String text) {
-      for (DataStructureEnum b : DataStructureEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("dataStructure")
-  private DataStructureEnum dataStructure = null;
-
-  /**
-   * Gets or Sets blockchainImplementation
-   */
-  public enum BlockchainImplementationEnum {
-    BITCOIN("Bitcoin");
-
-    private String value;
-
-    BlockchainImplementationEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static BlockchainImplementationEnum fromValue(String text) {
-      for (BlockchainImplementationEnum b : BlockchainImplementationEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("blockchainImplementation")
-  private BlockchainImplementationEnum blockchainImplementation = null;
+  @JsonProperty("rawBackendStructures")
+  private List<RawBackendStructure> rawBackendStructures = new ArrayList<RawBackendStructure>();
 
   @JsonProperty("entryId")
   private String entryId = null;
@@ -136,22 +80,27 @@ public class CommittedEntry {
     return chainId;
   }
 
-   /**
-   * Get dataStructure
-   * @return dataStructure
-  **/
-  @ApiModelProperty(example = "null", required = true, value = "")
-  public DataStructureEnum getDataStructure() {
-    return dataStructure;
+  public CommittedEntry rawBackendStructures(List<RawBackendStructure> rawBackendStructures) {
+    this.rawBackendStructures = rawBackendStructures;
+    return this;
+  }
+
+  public CommittedEntry addRawBackendStructuresItem(RawBackendStructure rawBackendStructuresItem) {
+    this.rawBackendStructures.add(rawBackendStructuresItem);
+    return this;
   }
 
    /**
-   * Get blockchainImplementation
-   * @return blockchainImplementation
+   * Raw data structures of backend
+   * @return rawBackendStructures
   **/
-  @ApiModelProperty(example = "null", required = true, value = "")
-  public BlockchainImplementationEnum getBlockchainImplementation() {
-    return blockchainImplementation;
+  @ApiModelProperty(example = "null", value = "Raw data structures of backend")
+  public List<RawBackendStructure> getRawBackendStructures() {
+    return rawBackendStructures;
+  }
+
+  public void setRawBackendStructures(List<RawBackendStructure> rawBackendStructures) {
+    this.rawBackendStructures = rawBackendStructures;
   }
 
    /**
@@ -175,14 +124,13 @@ public class CommittedEntry {
     CommittedEntry committedEntry = (CommittedEntry) o;
     return Objects.equals(this.entry, committedEntry.entry) &&
         Objects.equals(this.chainId, committedEntry.chainId) &&
-        Objects.equals(this.dataStructure, committedEntry.dataStructure) &&
-        Objects.equals(this.blockchainImplementation, committedEntry.blockchainImplementation) &&
+        Objects.equals(this.rawBackendStructures, committedEntry.rawBackendStructures) &&
         Objects.equals(this.entryId, committedEntry.entryId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entry, chainId, dataStructure, blockchainImplementation, entryId);
+    return Objects.hash(entry, chainId, rawBackendStructures, entryId);
   }
 
 
@@ -193,8 +141,7 @@ public class CommittedEntry {
     
     sb.append("    entry: ").append(toIndentedString(entry)).append("\n");
     sb.append("    chainId: ").append(toIndentedString(chainId)).append("\n");
-    sb.append("    dataStructure: ").append(toIndentedString(dataStructure)).append("\n");
-    sb.append("    blockchainImplementation: ").append(toIndentedString(blockchainImplementation)).append("\n");
+    sb.append("    rawBackendStructures: ").append(toIndentedString(rawBackendStructures)).append("\n");
     sb.append("    entryId: ").append(toIndentedString(entryId)).append("\n");
     sb.append("}");
     return sb.toString();

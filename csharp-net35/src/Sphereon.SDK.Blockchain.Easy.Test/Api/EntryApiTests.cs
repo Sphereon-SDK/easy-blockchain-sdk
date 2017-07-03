@@ -86,7 +86,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Test
             //string context = null;
             //string chainId = null;
             //Entry entry = null;
-            //var response = instance.CreateEntry(context, chainId, entry);
+            //DateTime? currentAnchorTime = null;
+            //var response = instance.CreateEntry(context, chainId, entry, currentAnchorTime);
             //Assert.IsInstanceOf<CommittedEntryResponse> (response, "response is CommittedEntryResponse");
         }
         
@@ -100,7 +101,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Test
             //string context = null;
             //string chainId = null;
             //string entryId = null;
-            //var response = instance.EntryById(context, chainId, entryId);
+            //DateTime? currentAnchorTime = null;
+            //var response = instance.EntryById(context, chainId, entryId, currentAnchorTime);
             //Assert.IsInstanceOf<AnchoredEntryResponse> (response, "response is AnchoredEntryResponse");
         }
         
@@ -114,7 +116,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Test
             //string context = null;
             //string chainId = null;
             //Entry entry = null;
-            //var response = instance.EntryByRequest(context, chainId, entry);
+            //DateTime? currentAnchorTime = null;
+            //var response = instance.EntryByRequest(context, chainId, entry, currentAnchorTime);
             //Assert.IsInstanceOf<AnchoredEntryResponse> (response, "response is AnchoredEntryResponse");
         }
         
@@ -154,7 +157,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Test
             //string context = null;
             //string chainId = null;
             //string entryId = null;
-            //var response = instance.NextEntryById(context, chainId, entryId);
+            //DateTime? currentAnchorTime = null;
+            //var response = instance.NextEntryById(context, chainId, entryId, currentAnchorTime);
             //Assert.IsInstanceOf<AnchoredEntryResponse> (response, "response is AnchoredEntryResponse");
         }
         
@@ -168,7 +172,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Test
             //string context = null;
             //string chainId = null;
             //Entry entry = null;
-            //var response = instance.NextEntryByRequest(context, chainId, entry);
+            //DateTime? currentAnchorTime = null;
+            //var response = instance.NextEntryByRequest(context, chainId, entry, currentAnchorTime);
             //Assert.IsInstanceOf<AnchoredEntryResponse> (response, "response is AnchoredEntryResponse");
         }
         
@@ -182,7 +187,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Test
             //string context = null;
             //string chainId = null;
             //string entryId = null;
-            //var response = instance.PreviousEntryById(context, chainId, entryId);
+            //DateTime? currentAnchorTime = null;
+            //var response = instance.PreviousEntryById(context, chainId, entryId, currentAnchorTime);
             //Assert.IsInstanceOf<AnchoredEntryResponse> (response, "response is AnchoredEntryResponse");
         }
         
@@ -196,7 +202,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Test
             //string context = null;
             //string chainId = null;
             //Entry entry = null;
-            //var response = instance.PreviousEntryByRequest(context, chainId, entry);
+            //DateTime? currentAnchorTime = null;
+            //var response = instance.PreviousEntryByRequest(context, chainId, entry, currentAnchorTime);
             //Assert.IsInstanceOf<AnchoredEntryResponse> (response, "response is AnchoredEntryResponse");
         }
         
