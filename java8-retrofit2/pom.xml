@@ -15,14 +15,6 @@
     <maven>2.2.0</maven>
   </prerequisites>
 
-  <distributionManagement>
-    <repository>
-      <id>sphereon-sdk</id>
-      <url>http://nexus.qa.sphereon.com/nexus/content/repositories/sphereon-sdk</url>
-    </repository>
-  </distributionManagement>
-
-
   <build>
     <plugins>
       <plugin>

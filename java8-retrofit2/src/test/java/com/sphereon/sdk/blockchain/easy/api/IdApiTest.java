@@ -2,7 +2,7 @@ package com.sphereon.sdk.blockchain.easy.api;
 
 import com.sphereon.sdk.blockchain.easy.handler.ApiClient;
 import com.sphereon.sdk.blockchain.easy.model.IdResponse;
-import com.sphereon.sdk.blockchain.easy.model.VndErrors;
+import com.sphereon.sdk.blockchain.easy.model.ErrorResponse;
 import com.sphereon.sdk.blockchain.easy.model.Chain;
 import com.sphereon.sdk.blockchain.easy.model.Entry;
 import org.junit.Before;
@@ -33,8 +33,9 @@ public class IdApiTest {
      */
     @Test
     public void chainIdExistsTest() {
+        String context = null;
         String chainId = null;
-        // IdResponse response = api.chainIdExists(chainId);
+        // IdResponse response = api.chainIdExists(context, chainId);
 
         // TODO: test validations
     }
@@ -46,9 +47,10 @@ public class IdApiTest {
      */
     @Test
     public void determineChainIdTest() {
+        String context = null;
         Chain chain = null;
         Boolean checkExistence = null;
-        // IdResponse response = api.determineChainId(chain, checkExistence);
+        // IdResponse response = api.determineChainId(context, chain, checkExistence);
 
         // TODO: test validations
     }
@@ -60,10 +62,11 @@ public class IdApiTest {
      */
     @Test
     public void determineEntryIdTest() {
+        String context = null;
         String chainId = null;
         Entry entry = null;
         Boolean checkExistence = null;
-        // IdResponse response = api.determineEntryId(chainId, entry, checkExistence);
+        // IdResponse response = api.determineEntryId(context, chainId, entry, checkExistence);
 
         // TODO: test validations
     }
@@ -75,9 +78,10 @@ public class IdApiTest {
      */
     @Test
     public void entryIdExistsTest() {
+        String context = null;
         String chainId = null;
         String entryId = null;
-        // IdResponse response = api.entryIdExists(chainId, entryId);
+        // IdResponse response = api.entryIdExists(context, chainId, entryId);
 
         // TODO: test validations
     }

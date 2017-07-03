@@ -3,7 +3,7 @@ package com.sphereon.sdk.blockchain.easy.api;
 import com.sphereon.sdk.blockchain.easy.handler.ApiClient;
 import com.sphereon.sdk.blockchain.easy.model.CommittedChainResponse;
 import com.sphereon.sdk.blockchain.easy.model.Chain;
-import com.sphereon.sdk.blockchain.easy.model.VndErrors;
+import com.sphereon.sdk.blockchain.easy.model.ErrorResponse;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,8 +32,9 @@ public class ChainApiTest {
      */
     @Test
     public void createChainTest() {
+        String context = null;
         Chain chain = null;
-        // CommittedChainResponse response = api.createChain(chain);
+        // CommittedChainResponse response = api.createChain(context, chain);
 
         // TODO: test validations
     }

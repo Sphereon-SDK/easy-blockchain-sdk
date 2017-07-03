@@ -2,9 +2,9 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.sphereon.sdk</groupId>
-  <artifactId>blockchain-easy-sdk-java8-okhttp-gson</artifactId>
+  <artifactId>blockchain-easy-sdk-java8</artifactId>
   <packaging>jar</packaging>
-  <name>blockchain-easy-sdk-java8-okhttp-gson</name>
+  <name>blockchain-easy-sdk-java8</name>
   <version>0.1.0</version>
   <scm>
     <connection>scm:git:git@github.com:swagger-api/swagger-mustache.git</connection>
@@ -14,13 +14,6 @@
   <prerequisites>
     <maven>2.2.0</maven>
   </prerequisites>
-
-  <distributionManagement>
-    <repository>
-      <id>sphereon-sdk</id>
-      <url>http://nexus.qa.sphereon.com/nexus/content/repositories/sphereon-sdk</url>
-    </repository>
-  </distributionManagement>
 
   <build>
     <plugins>

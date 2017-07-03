@@ -25,7 +25,7 @@
 
 package com.sphereon.sdk.blockchain.easy.handler;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-03T11:09:47.806+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-03T11:20:12.597+02:00")
 public class Configuration {
     private static ApiClient defaultApiClient = new ApiClient();
 
