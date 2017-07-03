@@ -40,61 +40,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
     public partial class CommittedChain :  IEquatable<CommittedChain>
     {
         /// <summary>
-        /// Gets or Sets DataStructure
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum DataStructureEnum
-        {
-            
-            /// <summary>
-            /// Enum Factom for "Factom"
-            /// </summary>
-            [EnumMember(Value = "Factom")]
-            Factom,
-            
-            /// <summary>
-            /// Enum Multichain for "Multichain"
-            /// </summary>
-            [EnumMember(Value = "Multichain")]
-            Multichain
-        }
-
-        /// <summary>
-        /// Gets or Sets BlockchainImplementation
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum BlockchainImplementationEnum
-        {
-            
-            /// <summary>
-            /// Enum Bitcoin for "Bitcoin"
-            /// </summary>
-            [EnumMember(Value = "Bitcoin")]
-            Bitcoin,
-            
-            /// <summary>
-            /// Enum None for "None"
-            /// </summary>
-            [EnumMember(Value = "None")]
-            None
-        }
-
-        /// <summary>
-        /// Gets or Sets DataStructure
-        /// </summary>
-        [DataMember(Name="dataStructure", EmitDefaultValue=false)]
-        public DataStructureEnum? DataStructure { get; set; }
-        /// <summary>
-        /// Gets or Sets BlockchainImplementation
-        /// </summary>
-        [DataMember(Name="blockchainImplementation", EmitDefaultValue=false)]
-        public BlockchainImplementationEnum? BlockchainImplementation { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CommittedChain" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected CommittedChain() { }
-        /// <summary>
         /// Initializes a new instance of the <see cref="CommittedChain" /> class.
         /// </summary>
         /// <param name="Chain">Chain.</param>
@@ -123,9 +68,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             var sb = new StringBuilder();
             sb.Append("class CommittedChain {\n");
             sb.Append("  Chain: ").Append(Chain).Append("\n");
-            sb.Append("  DataStructure: ").Append(DataStructure).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  BlockchainImplementation: ").Append(BlockchainImplementation).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -168,19 +111,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                     this.Chain.Equals(other.Chain)
                 ) && 
                 (
-                    this.DataStructure == other.DataStructure ||
-                    this.DataStructure != null &&
-                    this.DataStructure.Equals(other.DataStructure)
-                ) && 
-                (
                     this.Id == other.Id ||
                     this.Id != null &&
                     this.Id.Equals(other.Id)
-                ) && 
-                (
-                    this.BlockchainImplementation == other.BlockchainImplementation ||
-                    this.BlockchainImplementation != null &&
-                    this.BlockchainImplementation.Equals(other.BlockchainImplementation)
                 );
         }
 
@@ -197,12 +130,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                 // Suitable nullity checks etc, of course :)
                 if (this.Chain != null)
                     hash = hash * 59 + this.Chain.GetHashCode();
-                if (this.DataStructure != null)
-                    hash = hash * 59 + this.DataStructure.GetHashCode();
                 if (this.Id != null)
                     hash = hash * 59 + this.Id.GetHashCode();
-                if (this.BlockchainImplementation != null)
-                    hash = hash * 59 + this.BlockchainImplementation.GetHashCode();
                 return hash;
             }
         }

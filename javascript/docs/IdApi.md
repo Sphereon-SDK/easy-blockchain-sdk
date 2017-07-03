@@ -4,15 +4,15 @@ All URIs are relative to *https://gw.api.cloud.sphereon.com/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**chainIdExists**](IdApi.md#chainIdExists) | **GET** /blockchain/easy/0.1.0/chains/id/{chainId} | Determine whether the Id of a chain exists in the blockchain
-[**determineChainId**](IdApi.md#determineChainId) | **POST** /blockchain/easy/0.1.0/chains/id | Pre determine the Id of a chain request without anchoring it in the blockchain
-[**determineEntryId**](IdApi.md#determineEntryId) | **POST** /blockchain/easy/0.1.0/chains/id/{chainId}/entries | Pre determine the Id of an entry request without anchoring the entry
-[**entryIdExists**](IdApi.md#entryIdExists) | **GET** /blockchain/easy/0.1.0/chains/id/{chainId}/entries/{entryId} | Determine whether the Id of an entry exists in the blockchain
+[**chainIdExists**](IdApi.md#chainIdExists) | **GET** /blockchain/easy/0.9.1/{context}/chains/id/{chainId} | Determine whether the Id of a chain exists in the blockchain
+[**determineChainId**](IdApi.md#determineChainId) | **POST** /blockchain/easy/0.9.1/{context}/chains/id | Pre determine the Id of a chain request without anchoring it in the blockchain
+[**determineEntryId**](IdApi.md#determineEntryId) | **POST** /blockchain/easy/0.9.1/{context}/chains/id/{chainId}/entries | Pre determine the Id of an entry request without anchoring the entry
+[**entryIdExists**](IdApi.md#entryIdExists) | **GET** /blockchain/easy/0.9.1/{context}/chains/id/{chainId}/entries/{entryId} | Determine whether the Id of an entry exists in the blockchain
 
 
 <a name="chainIdExists"></a>
 # **chainIdExists**
-> IdResponse chainIdExists(chainId)
+> IdResponse chainIdExists(context, chainId)
 
 Determine whether the Id of a chain exists in the blockchain
 
@@ -27,6 +27,8 @@ oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.IdApi();
 
+var context = "context_example"; // String | context
+
 var chainId = "chainId_example"; // String | chainId
 
 
@@ -37,13 +39,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.chainIdExists(chainId, callback);
+apiInstance.chainIdExists(context, chainId, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context | 
  **chainId** | **String**| chainId | 
 
 ### Return type
@@ -57,11 +60,11 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="determineChainId"></a>
 # **determineChainId**
-> IdResponse determineChainId(chain, opts)
+> IdResponse determineChainId(context, chain, opts)
 
 Pre determine the Id of a chain request without anchoring it in the blockchain
 
@@ -76,6 +79,8 @@ oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.IdApi();
 
+var context = "context_example"; // String | context
+
 var chain = new EasyBlockchainApi.Chain(); // Chain | Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
 
 var opts = { 
@@ -89,13 +94,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.determineChainId(chain, opts, callback);
+apiInstance.determineChainId(context, chain, opts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context | 
  **chain** | [**Chain**](Chain.md)| Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! | 
  **checkExistence** | **Boolean**| Check whether the id exists | [optional] [default to false]
 
@@ -109,12 +115,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json;charset=UTF-8
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="determineEntryId"></a>
 # **determineEntryId**
-> IdResponse determineEntryId(chainId, entry, opts)
+> IdResponse determineEntryId(context, chainId, entry, opts)
 
 Pre determine the Id of an entry request without anchoring the entry
 
@@ -128,6 +134,8 @@ var oauth2schema = defaultClient.authentications['oauth2schema'];
 oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.IdApi();
+
+var context = "context_example"; // String | context
 
 var chainId = "chainId_example"; // String | chainId
 
@@ -144,13 +152,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.determineEntryId(chainId, entry, opts, callback);
+apiInstance.determineEntryId(context, chainId, entry, opts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context | 
  **chainId** | **String**| chainId | 
  **entry** | [**Entry**](Entry.md)| The entry to determine the hash for on the specified chain | 
  **checkExistence** | **Boolean**| Check whether the id exists | [optional] [default to false]
@@ -165,12 +174,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json;charset=UTF-8
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="entryIdExists"></a>
 # **entryIdExists**
-> IdResponse entryIdExists(chainId, entryId)
+> IdResponse entryIdExists(context, chainId, entryId)
 
 Determine whether the Id of an entry exists in the blockchain
 
@@ -185,6 +194,8 @@ oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.IdApi();
 
+var context = "context_example"; // String | context
+
 var chainId = "chainId_example"; // String | chainId
 
 var entryId = "entryId_example"; // String | entryId
@@ -197,13 +208,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.entryIdExists(chainId, entryId, callback);
+apiInstance.entryIdExists(context, chainId, entryId, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context | 
  **chainId** | **String**| chainId | 
  **entryId** | **String**| entryId | 
 
@@ -218,5 +230,5 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 

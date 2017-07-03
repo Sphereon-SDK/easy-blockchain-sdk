@@ -3,11 +3,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Owner** | **string** |  | [optional] 
+**OwnerType** | **string** |  | [optional] 
 **Password** | **string** |  | [optional] 
+**Access** | [**Access**](Access.md) |  | [optional] 
 **Host** | **string** |  | [optional] 
-**RpcProviderType** | **string** |  | [optional] 
 **Id** | **string** |  | [optional] 
+**Type** | **string** |  | [optional] 
 **Username** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

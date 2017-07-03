@@ -4,20 +4,20 @@ All URIs are relative to *https://gw.api.cloud.sphereon.com/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateEntry**](EntryApi.md#createentry) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries | Create a new entry in the provided chain
-[**EntryById**](EntryApi.md#entrybyid) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
-[**EntryByRequest**](EntryApi.md#entrybyrequest) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
-[**FirstEntry**](EntryApi.md#firstentry) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail
-[**LastEntry**](EntryApi.md#lastentry) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head
-[**NextEntryById**](EntryApi.md#nextentrybyid) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
-[**NextEntryByRequest**](EntryApi.md#nextentrybyrequest) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
-[**PreviousEntryById**](EntryApi.md#previousentrybyid) | **GET** /blockchain/easy/0.1.0/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
-[**PreviousEntryByRequest**](EntryApi.md#previousentrybyrequest) | **POST** /blockchain/easy/0.1.0/chains/{chainId}/entries/entry/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
+[**CreateEntry**](EntryApi.md#createentry) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries | Create a new entry in the provided chain
+[**EntryById**](EntryApi.md#entrybyid) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
+[**EntryByRequest**](EntryApi.md#entrybyrequest) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
+[**FirstEntry**](EntryApi.md#firstentry) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
+[**LastEntry**](EntryApi.md#lastentry) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
+[**NextEntryById**](EntryApi.md#nextentrybyid) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
+[**NextEntryByRequest**](EntryApi.md#nextentrybyrequest) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
+[**PreviousEntryById**](EntryApi.md#previousentrybyid) | **GET** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
+[**PreviousEntryByRequest**](EntryApi.md#previousentrybyrequest) | **POST** /blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
 
 
 <a name="createentry"></a>
 # **CreateEntry**
-> CommittedEntryResponse CreateEntry (string chainId, Entry entry)
+> CommittedEntryResponse CreateEntry (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null)
 
 Create a new entry in the provided chain
 
@@ -40,13 +40,15 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new EntryApi();
+            var context = context_example;  // string | context
             var chainId = chainId_example;  // string | chainId
             var entry = new Entry(); // Entry | Create a new entry for the specified chain
+            var currentAnchorTime = 2013-10-20T19:20:30+01:00;  // DateTime? |  (optional) 
 
             try
             {
                 // Create a new entry in the provided chain
-                CommittedEntryResponse result = apiInstance.CreateEntry(chainId, entry);
+                CommittedEntryResponse result = apiInstance.CreateEntry(context, chainId, entry, currentAnchorTime);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -62,8 +64,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **string**| context | 
  **chainId** | **string**| chainId | 
  **entry** | [**Entry**](Entry.md)| Create a new entry for the specified chain | 
+ **currentAnchorTime** | **DateTime?**|  | [optional] 
 
 ### Return type
 
@@ -75,14 +79,14 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json;charset=UTF-8
+ - **Accept**: application/json;charset=UTF-8
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="entrybyid"></a>
 # **EntryById**
-> AnchoredEntryResponse EntryById (string chainId, string entryId)
+> AnchoredEntryResponse EntryById (string context, string chainId, string entryId, DateTime? currentAnchorTime = null)
 
 Get an existing entry in the provided chain
 
@@ -105,13 +109,15 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new EntryApi();
+            var context = context_example;  // string | context
             var chainId = chainId_example;  // string | chainId
             var entryId = entryId_example;  // string | entryId
+            var currentAnchorTime = 2013-10-20T19:20:30+01:00;  // DateTime? |  (optional) 
 
             try
             {
                 // Get an existing entry in the provided chain
-                AnchoredEntryResponse result = apiInstance.EntryById(chainId, entryId);
+                AnchoredEntryResponse result = apiInstance.EntryById(context, chainId, entryId, currentAnchorTime);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -127,8 +133,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **string**| context | 
  **chainId** | **string**| chainId | 
  **entryId** | **string**| entryId | 
+ **currentAnchorTime** | **DateTime?**|  | [optional] 
 
 ### Return type
 
@@ -141,13 +149,13 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="entrybyrequest"></a>
 # **EntryByRequest**
-> AnchoredEntryResponse EntryByRequest (string chainId, Entry entry)
+> AnchoredEntryResponse EntryByRequest (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null)
 
 Get an existing entry in the provided chain
 
@@ -170,13 +178,15 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new EntryApi();
+            var context = context_example;  // string | context
             var chainId = chainId_example;  // string | chainId
             var entry = new Entry(); // Entry | Retrieve the entry
+            var currentAnchorTime = 2013-10-20T19:20:30+01:00;  // DateTime? |  (optional) 
 
             try
             {
                 // Get an existing entry in the provided chain
-                AnchoredEntryResponse result = apiInstance.EntryByRequest(chainId, entry);
+                AnchoredEntryResponse result = apiInstance.EntryByRequest(context, chainId, entry, currentAnchorTime);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -192,8 +202,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **string**| context | 
  **chainId** | **string**| chainId | 
  **entry** | [**Entry**](Entry.md)| Retrieve the entry | 
+ **currentAnchorTime** | **DateTime?**|  | [optional] 
 
 ### Return type
 
@@ -206,15 +218,15 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="firstentry"></a>
 # **FirstEntry**
-> AnchoredEntryResponse FirstEntry (string chainId)
+> AnchoredEntryResponse FirstEntry (string context, string chainId)
 
-Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
 
 ### Example
 ```csharp
@@ -235,12 +247,13 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new EntryApi();
+            var context = context_example;  // string | context
             var chainId = chainId_example;  // string | chainId
 
             try
             {
-                // Get the first entry in the provided chain. This is the oldest entry also called the chain tail
-                AnchoredEntryResponse result = apiInstance.FirstEntry(chainId);
+                // Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
+                AnchoredEntryResponse result = apiInstance.FirstEntry(context, chainId);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -256,6 +269,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **string**| context | 
  **chainId** | **string**| chainId | 
 
 ### Return type
@@ -269,15 +283,15 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="lastentry"></a>
 # **LastEntry**
-> AnchoredEntryResponse LastEntry (string chainId)
+> AnchoredEntryResponse LastEntry (string context, string chainId)
 
-Get the last entry in the provided chain. This is the most recent entry also called the chain head
+Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
 
 ### Example
 ```csharp
@@ -298,12 +312,13 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new EntryApi();
+            var context = context_example;  // string | context
             var chainId = chainId_example;  // string | chainId
 
             try
             {
-                // Get the last entry in the provided chain. This is the most recent entry also called the chain head
-                AnchoredEntryResponse result = apiInstance.LastEntry(chainId);
+                // Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
+                AnchoredEntryResponse result = apiInstance.LastEntry(context, chainId);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -319,6 +334,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **string**| context | 
  **chainId** | **string**| chainId | 
 
 ### Return type
@@ -332,13 +348,13 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="nextentrybyid"></a>
 # **NextEntryById**
-> AnchoredEntryResponse NextEntryById (string chainId, string entryId)
+> AnchoredEntryResponse NextEntryById (string context, string chainId, string entryId, DateTime? currentAnchorTime = null)
 
 Get the entry after the supplied entry Id (the next) in the provided chain
 
@@ -361,13 +377,15 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new EntryApi();
+            var context = context_example;  // string | context
             var chainId = chainId_example;  // string | chainId
             var entryId = entryId_example;  // string | entryId
+            var currentAnchorTime = 2013-10-20T19:20:30+01:00;  // DateTime? |  (optional) 
 
             try
             {
                 // Get the entry after the supplied entry Id (the next) in the provided chain
-                AnchoredEntryResponse result = apiInstance.NextEntryById(chainId, entryId);
+                AnchoredEntryResponse result = apiInstance.NextEntryById(context, chainId, entryId, currentAnchorTime);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -383,8 +401,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **string**| context | 
  **chainId** | **string**| chainId | 
  **entryId** | **string**| entryId | 
+ **currentAnchorTime** | **DateTime?**|  | [optional] 
 
 ### Return type
 
@@ -397,13 +417,13 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="nextentrybyrequest"></a>
 # **NextEntryByRequest**
-> AnchoredEntryResponse NextEntryByRequest (string chainId, Entry entry)
+> AnchoredEntryResponse NextEntryByRequest (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null)
 
 Get the entry after the supplied entry Id (the next) in the provided chain
 
@@ -426,13 +446,15 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new EntryApi();
+            var context = context_example;  // string | context
             var chainId = chainId_example;  // string | chainId
             var entry = new Entry(); // Entry | Retrieve the entry
+            var currentAnchorTime = 2013-10-20T19:20:30+01:00;  // DateTime? |  (optional) 
 
             try
             {
                 // Get the entry after the supplied entry Id (the next) in the provided chain
-                AnchoredEntryResponse result = apiInstance.NextEntryByRequest(chainId, entry);
+                AnchoredEntryResponse result = apiInstance.NextEntryByRequest(context, chainId, entry, currentAnchorTime);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -448,8 +470,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **string**| context | 
  **chainId** | **string**| chainId | 
  **entry** | [**Entry**](Entry.md)| Retrieve the entry | 
+ **currentAnchorTime** | **DateTime?**|  | [optional] 
 
 ### Return type
 
@@ -462,13 +486,13 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="previousentrybyid"></a>
 # **PreviousEntryById**
-> AnchoredEntryResponse PreviousEntryById (string chainId, string entryId)
+> AnchoredEntryResponse PreviousEntryById (string context, string chainId, string entryId, DateTime? currentAnchorTime = null)
 
 Get the entry before the supplied entry Id (the previous) in the provided chain
 
@@ -491,13 +515,15 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new EntryApi();
+            var context = context_example;  // string | context
             var chainId = chainId_example;  // string | chainId
             var entryId = entryId_example;  // string | entryId
+            var currentAnchorTime = 2013-10-20T19:20:30+01:00;  // DateTime? |  (optional) 
 
             try
             {
                 // Get the entry before the supplied entry Id (the previous) in the provided chain
-                AnchoredEntryResponse result = apiInstance.PreviousEntryById(chainId, entryId);
+                AnchoredEntryResponse result = apiInstance.PreviousEntryById(context, chainId, entryId, currentAnchorTime);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -513,8 +539,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **string**| context | 
  **chainId** | **string**| chainId | 
  **entryId** | **string**| entryId | 
+ **currentAnchorTime** | **DateTime?**|  | [optional] 
 
 ### Return type
 
@@ -527,13 +555,13 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="previousentrybyrequest"></a>
 # **PreviousEntryByRequest**
-> AnchoredEntryResponse PreviousEntryByRequest (string chainId, Entry entry)
+> AnchoredEntryResponse PreviousEntryByRequest (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null)
 
 Get the entry before the supplied entry Id (the previous) in the provided chain
 
@@ -556,13 +584,15 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new EntryApi();
+            var context = context_example;  // string | context
             var chainId = chainId_example;  // string | chainId
             var entry = new Entry(); // Entry | Retrieve the entry
+            var currentAnchorTime = 2013-10-20T19:20:30+01:00;  // DateTime? |  (optional) 
 
             try
             {
                 // Get the entry before the supplied entry Id (the previous) in the provided chain
-                AnchoredEntryResponse result = apiInstance.PreviousEntryByRequest(chainId, entry);
+                AnchoredEntryResponse result = apiInstance.PreviousEntryByRequest(context, chainId, entry, currentAnchorTime);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -578,8 +608,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **string**| context | 
  **chainId** | **string**| chainId | 
  **entry** | [**Entry**](Entry.md)| Retrieve the entry | 
+ **currentAnchorTime** | **DateTime?**|  | [optional] 
 
 ### Return type
 
@@ -592,7 +624,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
