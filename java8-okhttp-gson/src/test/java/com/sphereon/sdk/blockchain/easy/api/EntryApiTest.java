@@ -28,6 +28,7 @@ package com.sphereon.sdk.blockchain.easy.api;
 import com.sphereon.sdk.blockchain.easy.handler.ApiException;
 import com.sphereon.sdk.blockchain.easy.model.CommittedEntryResponse;
 import com.sphereon.sdk.blockchain.easy.model.Entry;
+import java.time.OffsetDateTime;
 import com.sphereon.sdk.blockchain.easy.model.ErrorResponse;
 import com.sphereon.sdk.blockchain.easy.model.AnchoredEntryResponse;
 import org.junit.Test;
@@ -58,7 +59,8 @@ public class EntryApiTest {
         String context = null;
         String chainId = null;
         Entry entry = null;
-        // CommittedEntryResponse response = api.createEntry(context, chainId, entry);
+        OffsetDateTime currentAnchorTime = null;
+        // CommittedEntryResponse response = api.createEntry(context, chainId, entry, currentAnchorTime);
 
         // TODO: test validations
     }
@@ -76,7 +78,8 @@ public class EntryApiTest {
         String context = null;
         String chainId = null;
         String entryId = null;
-        // AnchoredEntryResponse response = api.entryById(context, chainId, entryId);
+        OffsetDateTime currentAnchorTime = null;
+        // AnchoredEntryResponse response = api.entryById(context, chainId, entryId, currentAnchorTime);
 
         // TODO: test validations
     }
@@ -94,13 +97,14 @@ public class EntryApiTest {
         String context = null;
         String chainId = null;
         Entry entry = null;
-        // AnchoredEntryResponse response = api.entryByRequest(context, chainId, entry);
+        OffsetDateTime currentAnchorTime = null;
+        // AnchoredEntryResponse response = api.entryByRequest(context, chainId, entry, currentAnchorTime);
 
         // TODO: test validations
     }
     
     /**
-     * Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+     * Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
      *
      * 
      *
@@ -117,7 +121,7 @@ public class EntryApiTest {
     }
     
     /**
-     * Get the last entry in the provided chain. This is the most recent entry also called the chain head
+     * Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
      *
      * 
      *
@@ -146,7 +150,8 @@ public class EntryApiTest {
         String context = null;
         String chainId = null;
         String entryId = null;
-        // AnchoredEntryResponse response = api.nextEntryById(context, chainId, entryId);
+        OffsetDateTime currentAnchorTime = null;
+        // AnchoredEntryResponse response = api.nextEntryById(context, chainId, entryId, currentAnchorTime);
 
         // TODO: test validations
     }
@@ -164,7 +169,8 @@ public class EntryApiTest {
         String context = null;
         String chainId = null;
         Entry entry = null;
-        // AnchoredEntryResponse response = api.nextEntryByRequest(context, chainId, entry);
+        OffsetDateTime currentAnchorTime = null;
+        // AnchoredEntryResponse response = api.nextEntryByRequest(context, chainId, entry, currentAnchorTime);
 
         // TODO: test validations
     }
@@ -182,7 +188,8 @@ public class EntryApiTest {
         String context = null;
         String chainId = null;
         String entryId = null;
-        // AnchoredEntryResponse response = api.previousEntryById(context, chainId, entryId);
+        OffsetDateTime currentAnchorTime = null;
+        // AnchoredEntryResponse response = api.previousEntryById(context, chainId, entryId, currentAnchorTime);
 
         // TODO: test validations
     }
@@ -200,7 +207,8 @@ public class EntryApiTest {
         String context = null;
         String chainId = null;
         Entry entry = null;
-        // AnchoredEntryResponse response = api.previousEntryByRequest(context, chainId, entry);
+        OffsetDateTime currentAnchorTime = null;
+        // AnchoredEntryResponse response = api.previousEntryByRequest(context, chainId, entry, currentAnchorTime);
 
         // TODO: test validations
     }

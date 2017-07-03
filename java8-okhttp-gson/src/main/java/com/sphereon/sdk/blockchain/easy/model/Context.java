@@ -36,7 +36,7 @@ import java.util.List;
 /**
  * Context
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-06-30T16:07:32.641+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-03T11:30:04.086+02:00")
 public class Context {
   @SerializedName("access")
   private Access access = null;

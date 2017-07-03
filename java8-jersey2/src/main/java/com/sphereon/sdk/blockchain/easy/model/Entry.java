@@ -36,74 +36,10 @@ import io.swagger.annotations.ApiModelProperty;
  * Entry
  */
 @ApiModel(description = "Entry")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-06-30T16:07:37.862+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-03T11:30:07.846+02:00")
 public class Entry {
   @JsonProperty("entryData")
   private EntryData entryData = null;
-
-  /**
-   * Gets or Sets dataStructure
-   */
-  public enum DataStructureEnum {
-    FACTOM("Factom"),
-    
-    MULTICHAIN("Multichain");
-
-    private String value;
-
-    DataStructureEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static DataStructureEnum fromValue(String text) {
-      for (DataStructureEnum b : DataStructureEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("dataStructure")
-  private DataStructureEnum dataStructure = null;
-
-  /**
-   * Gets or Sets blockchainImplementation
-   */
-  public enum BlockchainImplementationEnum {
-    BITCOIN("Bitcoin");
-
-    private String value;
-
-    BlockchainImplementationEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static BlockchainImplementationEnum fromValue(String text) {
-      for (BlockchainImplementationEnum b : BlockchainImplementationEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("blockchainImplementation")
-  private BlockchainImplementationEnum blockchainImplementation = null;
 
   public Entry entryData(EntryData entryData) {
     this.entryData = entryData;
@@ -123,42 +59,6 @@ public class Entry {
     this.entryData = entryData;
   }
 
-  public Entry dataStructure(DataStructureEnum dataStructure) {
-    this.dataStructure = dataStructure;
-    return this;
-  }
-
-   /**
-   * Get dataStructure
-   * @return dataStructure
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public DataStructureEnum getDataStructure() {
-    return dataStructure;
-  }
-
-  public void setDataStructure(DataStructureEnum dataStructure) {
-    this.dataStructure = dataStructure;
-  }
-
-  public Entry blockchainImplementation(BlockchainImplementationEnum blockchainImplementation) {
-    this.blockchainImplementation = blockchainImplementation;
-    return this;
-  }
-
-   /**
-   * Get blockchainImplementation
-   * @return blockchainImplementation
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public BlockchainImplementationEnum getBlockchainImplementation() {
-    return blockchainImplementation;
-  }
-
-  public void setBlockchainImplementation(BlockchainImplementationEnum blockchainImplementation) {
-    this.blockchainImplementation = blockchainImplementation;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -169,14 +69,12 @@ public class Entry {
       return false;
     }
     Entry entry = (Entry) o;
-    return Objects.equals(this.entryData, entry.entryData) &&
-        Objects.equals(this.dataStructure, entry.dataStructure) &&
-        Objects.equals(this.blockchainImplementation, entry.blockchainImplementation);
+    return Objects.equals(this.entryData, entry.entryData);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entryData, dataStructure, blockchainImplementation);
+    return Objects.hash(entryData);
   }
 
 
@@ -186,8 +84,6 @@ public class Entry {
     sb.append("class Entry {\n");
     
     sb.append("    entryData: ").append(toIndentedString(entryData)).append("\n");
-    sb.append("    dataStructure: ").append(toIndentedString(dataStructure)).append("\n");
-    sb.append("    blockchainImplementation: ").append(toIndentedString(blockchainImplementation)).append("\n");
     sb.append("}");
     return sb.toString();
   }

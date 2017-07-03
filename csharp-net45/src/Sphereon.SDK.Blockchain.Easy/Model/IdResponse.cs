@@ -66,48 +66,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         }
 
         /// <summary>
-        /// Gets or Sets DataStructure
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum DataStructureEnum
-        {
-            
-            /// <summary>
-            /// Enum Factom for "Factom"
-            /// </summary>
-            [EnumMember(Value = "Factom")]
-            Factom
-        }
-
-        /// <summary>
-        /// Gets or Sets BlockchainImplementation
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum BlockchainImplementationEnum
-        {
-            
-            /// <summary>
-            /// Enum Bitcoin for "Bitcoin"
-            /// </summary>
-            [EnumMember(Value = "Bitcoin")]
-            Bitcoin
-        }
-
-        /// <summary>
         /// Gets or Sets Exists
         /// </summary>
         [DataMember(Name="exists", EmitDefaultValue=false)]
         public ExistsEnum? Exists { get; set; }
-        /// <summary>
-        /// Gets or Sets DataStructure
-        /// </summary>
-        [DataMember(Name="dataStructure", EmitDefaultValue=false)]
-        public DataStructureEnum? DataStructure { get; set; }
-        /// <summary>
-        /// Gets or Sets BlockchainImplementation
-        /// </summary>
-        [DataMember(Name="blockchainImplementation", EmitDefaultValue=false)]
-        public BlockchainImplementationEnum? BlockchainImplementation { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="IdResponse" /> class.
         /// </summary>
@@ -148,8 +110,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             sb.Append("class IdResponse {\n");
             sb.Append("  Exists: ").Append(Exists).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  DataStructure: ").Append(DataStructure).Append("\n");
-            sb.Append("  BlockchainImplementation: ").Append(BlockchainImplementation).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -195,16 +155,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                     this.Id == other.Id ||
                     this.Id != null &&
                     this.Id.Equals(other.Id)
-                ) && 
-                (
-                    this.DataStructure == other.DataStructure ||
-                    this.DataStructure != null &&
-                    this.DataStructure.Equals(other.DataStructure)
-                ) && 
-                (
-                    this.BlockchainImplementation == other.BlockchainImplementation ||
-                    this.BlockchainImplementation != null &&
-                    this.BlockchainImplementation.Equals(other.BlockchainImplementation)
                 );
         }
 
@@ -223,10 +173,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                     hash = hash * 59 + this.Exists.GetHashCode();
                 if (this.Id != null)
                     hash = hash * 59 + this.Id.GetHashCode();
-                if (this.DataStructure != null)
-                    hash = hash * 59 + this.DataStructure.GetHashCode();
-                if (this.BlockchainImplementation != null)
-                    hash = hash * 59 + this.BlockchainImplementation.GetHashCode();
                 return hash;
             }
         }

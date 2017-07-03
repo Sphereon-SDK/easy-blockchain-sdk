@@ -25,12 +25,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['SphereonSDKBlockchainEasy/ApiClient', 'SphereonSDKBlockchainEasy/model/Access', 'SphereonSDKBlockchainEasy/model/AnchoredEntryResponse', 'SphereonSDKBlockchainEasy/model/Backend', 'SphereonSDKBlockchainEasy/model/Chain', 'SphereonSDKBlockchainEasy/model/CommittedChain', 'SphereonSDKBlockchainEasy/model/CommittedChainResponse', 'SphereonSDKBlockchainEasy/model/CommittedEntry', 'SphereonSDKBlockchainEasy/model/CommittedEntryResponse', 'SphereonSDKBlockchainEasy/model/Context', 'SphereonSDKBlockchainEasy/model/Entry', 'SphereonSDKBlockchainEasy/model/EntryData', 'SphereonSDKBlockchainEasy/model/Error', 'SphereonSDKBlockchainEasy/model/ErrorResponse', 'SphereonSDKBlockchainEasy/model/ExternalId', 'SphereonSDKBlockchainEasy/model/IdResponse', 'SphereonSDKBlockchainEasy/model/RpcProvider', 'SphereonSDKBlockchainEasy/api/AllApi', 'SphereonSDKBlockchainEasy/api/ChainApi', 'SphereonSDKBlockchainEasy/api/ContextApi', 'SphereonSDKBlockchainEasy/api/EntryApi', 'SphereonSDKBlockchainEasy/api/IdApi'], factory);
+    define(['SphereonSDKBlockchainEasy/ApiClient', 'SphereonSDKBlockchainEasy/model/Access', 'SphereonSDKBlockchainEasy/model/AnchoredEntryResponse', 'SphereonSDKBlockchainEasy/model/Backend', 'SphereonSDKBlockchainEasy/model/Chain', 'SphereonSDKBlockchainEasy/model/CommittedChain', 'SphereonSDKBlockchainEasy/model/CommittedChainResponse', 'SphereonSDKBlockchainEasy/model/CommittedEntry', 'SphereonSDKBlockchainEasy/model/CommittedEntryResponse', 'SphereonSDKBlockchainEasy/model/Context', 'SphereonSDKBlockchainEasy/model/Entry', 'SphereonSDKBlockchainEasy/model/EntryData', 'SphereonSDKBlockchainEasy/model/Error', 'SphereonSDKBlockchainEasy/model/ErrorResponse', 'SphereonSDKBlockchainEasy/model/ExternalId', 'SphereonSDKBlockchainEasy/model/IdResponse', 'SphereonSDKBlockchainEasy/model/RawBackendStructure', 'SphereonSDKBlockchainEasy/model/RpcProvider', 'SphereonSDKBlockchainEasy/api/AllApi', 'SphereonSDKBlockchainEasy/api/ChainApi', 'SphereonSDKBlockchainEasy/api/ContextApi', 'SphereonSDKBlockchainEasy/api/EntryApi', 'SphereonSDKBlockchainEasy/api/IdApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/Access'), require('./model/AnchoredEntryResponse'), require('./model/Backend'), require('./model/Chain'), require('./model/CommittedChain'), require('./model/CommittedChainResponse'), require('./model/CommittedEntry'), require('./model/CommittedEntryResponse'), require('./model/Context'), require('./model/Entry'), require('./model/EntryData'), require('./model/Error'), require('./model/ErrorResponse'), require('./model/ExternalId'), require('./model/IdResponse'), require('./model/RpcProvider'), require('./api/AllApi'), require('./api/ChainApi'), require('./api/ContextApi'), require('./api/EntryApi'), require('./api/IdApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/Access'), require('./model/AnchoredEntryResponse'), require('./model/Backend'), require('./model/Chain'), require('./model/CommittedChain'), require('./model/CommittedChainResponse'), require('./model/CommittedEntry'), require('./model/CommittedEntryResponse'), require('./model/Context'), require('./model/Entry'), require('./model/EntryData'), require('./model/Error'), require('./model/ErrorResponse'), require('./model/ExternalId'), require('./model/IdResponse'), require('./model/RawBackendStructure'), require('./model/RpcProvider'), require('./api/AllApi'), require('./api/ChainApi'), require('./api/ContextApi'), require('./api/EntryApi'), require('./api/IdApi'));
   }
-}(function(ApiClient, Access, AnchoredEntryResponse, Backend, Chain, CommittedChain, CommittedChainResponse, CommittedEntry, CommittedEntryResponse, Context, Entry, EntryData, Error, ErrorResponse, ExternalId, IdResponse, RpcProvider, AllApi, ChainApi, ContextApi, EntryApi, IdApi) {
+}(function(ApiClient, Access, AnchoredEntryResponse, Backend, Chain, CommittedChain, CommittedChainResponse, CommittedEntry, CommittedEntryResponse, Context, Entry, EntryData, Error, ErrorResponse, ExternalId, IdResponse, RawBackendStructure, RpcProvider, AllApi, ChainApi, ContextApi, EntryApi, IdApi) {
   'use strict';
 
   /**
@@ -145,6 +145,11 @@
      * @property {module:SphereonSDKBlockchainEasy/model/IdResponse}
      */
     IdResponse: IdResponse,
+    /**
+     * The RawBackendStructure model constructor.
+     * @property {module:SphereonSDKBlockchainEasy/model/RawBackendStructure}
+     */
+    RawBackendStructure: RawBackendStructure,
     /**
      * The RpcProvider model constructor.
      * @property {module:SphereonSDKBlockchainEasy/model/RpcProvider}

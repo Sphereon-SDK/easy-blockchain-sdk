@@ -69,10 +69,13 @@
      * @param {String} context context
      * @param {String} chainId chainId
      * @param {module:SphereonSDKBlockchainEasy/model/Entry} entry Create a new entry for the specified chain
+     * @param {Object} opts Optional parameters
+     * @param {Date} opts.currentAnchorTime 
      * @param {module:SphereonSDKBlockchainEasy/api/EntryApi~createEntryCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:SphereonSDKBlockchainEasy/model/CommittedEntryResponse}
      */
-    this.createEntry = function(context, chainId, entry, callback) {
+    this.createEntry = function(context, chainId, entry, opts, callback) {
+      opts = opts || {};
       var postBody = entry;
 
       // verify the required parameter 'context' is set
@@ -96,6 +99,7 @@
         'chainId': chainId
       };
       var queryParams = {
+        'currentAnchorTime': opts['currentAnchorTime']
       };
       var headerParams = {
       };
@@ -127,10 +131,13 @@
      * @param {String} context context
      * @param {String} chainId chainId
      * @param {String} entryId entryId
+     * @param {Object} opts Optional parameters
+     * @param {Date} opts.currentAnchorTime 
      * @param {module:SphereonSDKBlockchainEasy/api/EntryApi~entryByIdCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:SphereonSDKBlockchainEasy/model/AnchoredEntryResponse}
      */
-    this.entryById = function(context, chainId, entryId, callback) {
+    this.entryById = function(context, chainId, entryId, opts, callback) {
+      opts = opts || {};
       var postBody = null;
 
       // verify the required parameter 'context' is set
@@ -155,6 +162,7 @@
         'entryId': entryId
       };
       var queryParams = {
+        'currentAnchorTime': opts['currentAnchorTime']
       };
       var headerParams = {
       };
@@ -186,10 +194,13 @@
      * @param {String} context context
      * @param {String} chainId chainId
      * @param {module:SphereonSDKBlockchainEasy/model/Entry} entry Retrieve the entry
+     * @param {Object} opts Optional parameters
+     * @param {Date} opts.currentAnchorTime 
      * @param {module:SphereonSDKBlockchainEasy/api/EntryApi~entryByRequestCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:SphereonSDKBlockchainEasy/model/AnchoredEntryResponse}
      */
-    this.entryByRequest = function(context, chainId, entry, callback) {
+    this.entryByRequest = function(context, chainId, entry, opts, callback) {
+      opts = opts || {};
       var postBody = entry;
 
       // verify the required parameter 'context' is set
@@ -213,6 +224,7 @@
         'chainId': chainId
       };
       var queryParams = {
+        'currentAnchorTime': opts['currentAnchorTime']
       };
       var headerParams = {
       };
@@ -240,7 +252,7 @@
      */
 
     /**
-     * Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+     * Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
      * @param {String} context context
      * @param {String} chainId chainId
      * @param {module:SphereonSDKBlockchainEasy/api/EntryApi~firstEntryCallback} callback The callback function, accepting three arguments: error, data, response
@@ -292,7 +304,7 @@
      */
 
     /**
-     * Get the last entry in the provided chain. This is the most recent entry also called the chain head
+     * Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
      * @param {String} context context
      * @param {String} chainId chainId
      * @param {module:SphereonSDKBlockchainEasy/api/EntryApi~lastEntryCallback} callback The callback function, accepting three arguments: error, data, response
@@ -348,10 +360,13 @@
      * @param {String} context context
      * @param {String} chainId chainId
      * @param {String} entryId entryId
+     * @param {Object} opts Optional parameters
+     * @param {Date} opts.currentAnchorTime 
      * @param {module:SphereonSDKBlockchainEasy/api/EntryApi~nextEntryByIdCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:SphereonSDKBlockchainEasy/model/AnchoredEntryResponse}
      */
-    this.nextEntryById = function(context, chainId, entryId, callback) {
+    this.nextEntryById = function(context, chainId, entryId, opts, callback) {
+      opts = opts || {};
       var postBody = null;
 
       // verify the required parameter 'context' is set
@@ -376,6 +391,7 @@
         'entryId': entryId
       };
       var queryParams = {
+        'currentAnchorTime': opts['currentAnchorTime']
       };
       var headerParams = {
       };
@@ -407,10 +423,13 @@
      * @param {String} context context
      * @param {String} chainId chainId
      * @param {module:SphereonSDKBlockchainEasy/model/Entry} entry Retrieve the entry
+     * @param {Object} opts Optional parameters
+     * @param {Date} opts.currentAnchorTime 
      * @param {module:SphereonSDKBlockchainEasy/api/EntryApi~nextEntryByRequestCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:SphereonSDKBlockchainEasy/model/AnchoredEntryResponse}
      */
-    this.nextEntryByRequest = function(context, chainId, entry, callback) {
+    this.nextEntryByRequest = function(context, chainId, entry, opts, callback) {
+      opts = opts || {};
       var postBody = entry;
 
       // verify the required parameter 'context' is set
@@ -434,6 +453,7 @@
         'chainId': chainId
       };
       var queryParams = {
+        'currentAnchorTime': opts['currentAnchorTime']
       };
       var headerParams = {
       };
@@ -465,10 +485,13 @@
      * @param {String} context context
      * @param {String} chainId chainId
      * @param {String} entryId entryId
+     * @param {Object} opts Optional parameters
+     * @param {Date} opts.currentAnchorTime 
      * @param {module:SphereonSDKBlockchainEasy/api/EntryApi~previousEntryByIdCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:SphereonSDKBlockchainEasy/model/AnchoredEntryResponse}
      */
-    this.previousEntryById = function(context, chainId, entryId, callback) {
+    this.previousEntryById = function(context, chainId, entryId, opts, callback) {
+      opts = opts || {};
       var postBody = null;
 
       // verify the required parameter 'context' is set
@@ -493,6 +516,7 @@
         'entryId': entryId
       };
       var queryParams = {
+        'currentAnchorTime': opts['currentAnchorTime']
       };
       var headerParams = {
       };
@@ -524,10 +548,13 @@
      * @param {String} context context
      * @param {String} chainId chainId
      * @param {module:SphereonSDKBlockchainEasy/model/Entry} entry Retrieve the entry
+     * @param {Object} opts Optional parameters
+     * @param {Date} opts.currentAnchorTime 
      * @param {module:SphereonSDKBlockchainEasy/api/EntryApi~previousEntryByRequestCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:SphereonSDKBlockchainEasy/model/AnchoredEntryResponse}
      */
-    this.previousEntryByRequest = function(context, chainId, entry, callback) {
+    this.previousEntryByRequest = function(context, chainId, entry, opts, callback) {
+      opts = opts || {};
       var postBody = entry;
 
       // verify the required parameter 'context' is set
@@ -551,6 +578,7 @@
         'chainId': chainId
       };
       var queryParams = {
+        'currentAnchorTime': opts['currentAnchorTime']
       };
       var headerParams = {
       };

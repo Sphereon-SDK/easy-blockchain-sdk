@@ -71,18 +71,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property dataStructure (base name: "dataStructure")', function() {
-      // uncomment below and update the code to test the property dataStructure
-      //var instane = new EasyBlockchainApi.Entry();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property blockchainImplementation (base name: "blockchainImplementation")', function() {
-      // uncomment below and update the code to test the property blockchainImplementation
-      //var instane = new EasyBlockchainApi.Entry();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));

@@ -93,12 +93,36 @@ namespace Sphereon.SDK.Blockchain.Easy.Test
             // TODO unit test for the property 'AnchorTimes'
         }
         /// <summary>
+        /// Test the property 'CurrentAnchorTime'
+        /// </summary>
+        [Test]
+        public void CurrentAnchorTimeTest()
+        {
+            // TODO unit test for the property 'CurrentAnchorTime'
+        }
+        /// <summary>
         /// Test the property 'AnchorState'
         /// </summary>
         [Test]
         public void AnchorStateTest()
         {
             // TODO unit test for the property 'AnchorState'
+        }
+        /// <summary>
+        /// Test the property 'LastAnchorTime'
+        /// </summary>
+        [Test]
+        public void LastAnchorTimeTest()
+        {
+            // TODO unit test for the property 'LastAnchorTime'
+        }
+        /// <summary>
+        /// Test the property 'FirstAnchorTime'
+        /// </summary>
+        [Test]
+        public void FirstAnchorTimeTest()
+        {
+            // TODO unit test for the property 'FirstAnchorTime'
         }
 
     }

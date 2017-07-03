@@ -61,7 +61,10 @@
 
     _this['anchoredEntry'] = anchoredEntry;
 
+
     _this['anchorState'] = anchorState;
+
+
   };
 
   /**
@@ -81,8 +84,17 @@
       if (data.hasOwnProperty('anchorTimes')) {
         obj['anchorTimes'] = ApiClient.convertToType(data['anchorTimes'], ['Date']);
       }
+      if (data.hasOwnProperty('currentAnchorTime')) {
+        obj['currentAnchorTime'] = ApiClient.convertToType(data['currentAnchorTime'], 'Date');
+      }
       if (data.hasOwnProperty('anchorState')) {
         obj['anchorState'] = ApiClient.convertToType(data['anchorState'], 'String');
+      }
+      if (data.hasOwnProperty('lastAnchorTime')) {
+        obj['lastAnchorTime'] = ApiClient.convertToType(data['lastAnchorTime'], 'Date');
+      }
+      if (data.hasOwnProperty('firstAnchorTime')) {
+        obj['firstAnchorTime'] = ApiClient.convertToType(data['firstAnchorTime'], 'Date');
       }
     }
     return obj;
@@ -93,14 +105,29 @@
    */
   exports.prototype['anchoredEntry'] = undefined;
   /**
-   * The times at which the anchoredEntry was anchored in the blockchain in ISO 8601 format
+   * All the times at which the Entry with the same Id was anchored in the blockchain in ISO 8601 format. The first, current and last Anchor Times will also be in this list
    * @member {Array.<Date>} anchorTimes
    */
   exports.prototype['anchorTimes'] = undefined;
   /**
+   * The current anchor time (this is not necessarely the last anchor time!) of the entry (if any) in the blockchain in ISO 8601 format
+   * @member {Date} currentAnchorTime
+   */
+  exports.prototype['currentAnchorTime'] = undefined;
+  /**
    * @member {module:SphereonSDKBlockchainEasy/model/AnchoredEntryResponse.AnchorStateEnum} anchorState
    */
   exports.prototype['anchorState'] = undefined;
+  /**
+   * The last anchor time of the entry (if any) in the blockchain in ISO 8601 format
+   * @member {Date} lastAnchorTime
+   */
+  exports.prototype['lastAnchorTime'] = undefined;
+  /**
+   * The first anchor time of the entry (if any) in the blockchain in ISO 8601 format
+   * @member {Date} firstAnchorTime
+   */
+  exports.prototype['firstAnchorTime'] = undefined;
 
 
   /**
@@ -123,7 +150,12 @@
      * value: "NOT_FOUND"
      * @const
      */
-    "NOT_FOUND": "NOT_FOUND"  };
+    "NOT_FOUND": "NOT_FOUND",
+    /**
+     * value: "ANCHORED"
+     * @const
+     */
+    "ANCHORED": "ANCHORED"  };
 
 
   return exports;

@@ -46,6 +46,7 @@ import com.sphereon.sdk.blockchain.easy.model.Chain;
 import com.sphereon.sdk.blockchain.easy.model.Context;
 import com.sphereon.sdk.blockchain.easy.model.CommittedEntryResponse;
 import com.sphereon.sdk.blockchain.easy.model.Entry;
+import java.time.OffsetDateTime;
 import com.sphereon.sdk.blockchain.easy.model.AnchoredEntryResponse;
 
 import java.lang.reflect.Type;
@@ -517,7 +518,7 @@ public class AllApi {
         return call;
     }
     /* Build call for createEntry */
-    private com.squareup.okhttp.Call createEntryCall(String context, String chainId, Entry entry, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call createEntryCall(String context, String chainId, Entry entry, OffsetDateTime currentAnchorTime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = entry;
         
         // verify the required parameter 'context' is set
@@ -542,6 +543,8 @@ public class AllApi {
         .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (currentAnchorTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "currentAnchorTime", currentAnchorTime));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -581,11 +584,12 @@ public class AllApi {
      * @param context context (required)
      * @param chainId chainId (required)
      * @param entry Create a new entry for the specified chain (required)
+     * @param currentAnchorTime  (optional)
      * @return CommittedEntryResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public CommittedEntryResponse createEntry(String context, String chainId, Entry entry) throws ApiException {
-        ApiResponse<CommittedEntryResponse> resp = createEntryWithHttpInfo(context, chainId, entry);
+    public CommittedEntryResponse createEntry(String context, String chainId, Entry entry, OffsetDateTime currentAnchorTime) throws ApiException {
+        ApiResponse<CommittedEntryResponse> resp = createEntryWithHttpInfo(context, chainId, entry, currentAnchorTime);
         return resp.getData();
     }
 
@@ -595,11 +599,12 @@ public class AllApi {
      * @param context context (required)
      * @param chainId chainId (required)
      * @param entry Create a new entry for the specified chain (required)
+     * @param currentAnchorTime  (optional)
      * @return ApiResponse&lt;CommittedEntryResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<CommittedEntryResponse> createEntryWithHttpInfo(String context, String chainId, Entry entry) throws ApiException {
-        com.squareup.okhttp.Call call = createEntryCall(context, chainId, entry, null, null);
+    public ApiResponse<CommittedEntryResponse> createEntryWithHttpInfo(String context, String chainId, Entry entry, OffsetDateTime currentAnchorTime) throws ApiException {
+        com.squareup.okhttp.Call call = createEntryCall(context, chainId, entry, currentAnchorTime, null, null);
         Type localVarReturnType = new TypeToken<CommittedEntryResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -610,11 +615,12 @@ public class AllApi {
      * @param context context (required)
      * @param chainId chainId (required)
      * @param entry Create a new entry for the specified chain (required)
+     * @param currentAnchorTime  (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call createEntryAsync(String context, String chainId, Entry entry, final ApiCallback<CommittedEntryResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call createEntryAsync(String context, String chainId, Entry entry, OffsetDateTime currentAnchorTime, final ApiCallback<CommittedEntryResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -635,7 +641,7 @@ public class AllApi {
             };
         }
 
-        com.squareup.okhttp.Call call = createEntryCall(context, chainId, entry, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = createEntryCall(context, chainId, entry, currentAnchorTime, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<CommittedEntryResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -993,7 +999,7 @@ public class AllApi {
         return call;
     }
     /* Build call for entryById */
-    private com.squareup.okhttp.Call entryByIdCall(String context, String chainId, String entryId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call entryByIdCall(String context, String chainId, String entryId, OffsetDateTime currentAnchorTime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // verify the required parameter 'context' is set
@@ -1019,6 +1025,8 @@ public class AllApi {
         .replaceAll("\\{" + "entryId" + "\\}", apiClient.escapeString(entryId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (currentAnchorTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "currentAnchorTime", currentAnchorTime));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1058,11 +1066,12 @@ public class AllApi {
      * @param context context (required)
      * @param chainId chainId (required)
      * @param entryId entryId (required)
+     * @param currentAnchorTime  (optional)
      * @return AnchoredEntryResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AnchoredEntryResponse entryById(String context, String chainId, String entryId) throws ApiException {
-        ApiResponse<AnchoredEntryResponse> resp = entryByIdWithHttpInfo(context, chainId, entryId);
+    public AnchoredEntryResponse entryById(String context, String chainId, String entryId, OffsetDateTime currentAnchorTime) throws ApiException {
+        ApiResponse<AnchoredEntryResponse> resp = entryByIdWithHttpInfo(context, chainId, entryId, currentAnchorTime);
         return resp.getData();
     }
 
@@ -1072,11 +1081,12 @@ public class AllApi {
      * @param context context (required)
      * @param chainId chainId (required)
      * @param entryId entryId (required)
+     * @param currentAnchorTime  (optional)
      * @return ApiResponse&lt;AnchoredEntryResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AnchoredEntryResponse> entryByIdWithHttpInfo(String context, String chainId, String entryId) throws ApiException {
-        com.squareup.okhttp.Call call = entryByIdCall(context, chainId, entryId, null, null);
+    public ApiResponse<AnchoredEntryResponse> entryByIdWithHttpInfo(String context, String chainId, String entryId, OffsetDateTime currentAnchorTime) throws ApiException {
+        com.squareup.okhttp.Call call = entryByIdCall(context, chainId, entryId, currentAnchorTime, null, null);
         Type localVarReturnType = new TypeToken<AnchoredEntryResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1087,11 +1097,12 @@ public class AllApi {
      * @param context context (required)
      * @param chainId chainId (required)
      * @param entryId entryId (required)
+     * @param currentAnchorTime  (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call entryByIdAsync(String context, String chainId, String entryId, final ApiCallback<AnchoredEntryResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call entryByIdAsync(String context, String chainId, String entryId, OffsetDateTime currentAnchorTime, final ApiCallback<AnchoredEntryResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1112,13 +1123,13 @@ public class AllApi {
             };
         }
 
-        com.squareup.okhttp.Call call = entryByIdCall(context, chainId, entryId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = entryByIdCall(context, chainId, entryId, currentAnchorTime, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AnchoredEntryResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for entryByRequest */
-    private com.squareup.okhttp.Call entryByRequestCall(String context, String chainId, Entry entry, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call entryByRequestCall(String context, String chainId, Entry entry, OffsetDateTime currentAnchorTime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = entry;
         
         // verify the required parameter 'context' is set
@@ -1143,6 +1154,8 @@ public class AllApi {
         .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (currentAnchorTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "currentAnchorTime", currentAnchorTime));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1182,11 +1195,12 @@ public class AllApi {
      * @param context context (required)
      * @param chainId chainId (required)
      * @param entry Retrieve the entry (required)
+     * @param currentAnchorTime  (optional)
      * @return AnchoredEntryResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AnchoredEntryResponse entryByRequest(String context, String chainId, Entry entry) throws ApiException {
-        ApiResponse<AnchoredEntryResponse> resp = entryByRequestWithHttpInfo(context, chainId, entry);
+    public AnchoredEntryResponse entryByRequest(String context, String chainId, Entry entry, OffsetDateTime currentAnchorTime) throws ApiException {
+        ApiResponse<AnchoredEntryResponse> resp = entryByRequestWithHttpInfo(context, chainId, entry, currentAnchorTime);
         return resp.getData();
     }
 
@@ -1196,11 +1210,12 @@ public class AllApi {
      * @param context context (required)
      * @param chainId chainId (required)
      * @param entry Retrieve the entry (required)
+     * @param currentAnchorTime  (optional)
      * @return ApiResponse&lt;AnchoredEntryResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AnchoredEntryResponse> entryByRequestWithHttpInfo(String context, String chainId, Entry entry) throws ApiException {
-        com.squareup.okhttp.Call call = entryByRequestCall(context, chainId, entry, null, null);
+    public ApiResponse<AnchoredEntryResponse> entryByRequestWithHttpInfo(String context, String chainId, Entry entry, OffsetDateTime currentAnchorTime) throws ApiException {
+        com.squareup.okhttp.Call call = entryByRequestCall(context, chainId, entry, currentAnchorTime, null, null);
         Type localVarReturnType = new TypeToken<AnchoredEntryResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1211,11 +1226,12 @@ public class AllApi {
      * @param context context (required)
      * @param chainId chainId (required)
      * @param entry Retrieve the entry (required)
+     * @param currentAnchorTime  (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call entryByRequestAsync(String context, String chainId, Entry entry, final ApiCallback<AnchoredEntryResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call entryByRequestAsync(String context, String chainId, Entry entry, OffsetDateTime currentAnchorTime, final ApiCallback<AnchoredEntryResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1236,7 +1252,7 @@ public class AllApi {
             };
         }
 
-        com.squareup.okhttp.Call call = entryByRequestCall(context, chainId, entry, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = entryByRequestCall(context, chainId, entry, currentAnchorTime, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AnchoredEntryResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1533,7 +1549,7 @@ public class AllApi {
     }
 
     /**
-     * Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+     * Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
      * 
      * @param context context (required)
      * @param chainId chainId (required)
@@ -1546,7 +1562,7 @@ public class AllApi {
     }
 
     /**
-     * Get the first entry in the provided chain. This is the oldest entry also called the chain tail
+     * Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
      * 
      * @param context context (required)
      * @param chainId chainId (required)
@@ -1560,7 +1576,7 @@ public class AllApi {
     }
 
     /**
-     * Get the first entry in the provided chain. This is the oldest entry also called the chain tail (asynchronously)
+     * Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times (asynchronously)
      * 
      * @param context context (required)
      * @param chainId chainId (required)
@@ -1868,7 +1884,7 @@ public class AllApi {
     }
 
     /**
-     * Get the last entry in the provided chain. This is the most recent entry also called the chain head
+     * Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
      * 
      * @param context context (required)
      * @param chainId chainId (required)
@@ -1881,7 +1897,7 @@ public class AllApi {
     }
 
     /**
-     * Get the last entry in the provided chain. This is the most recent entry also called the chain head
+     * Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
      * 
      * @param context context (required)
      * @param chainId chainId (required)
@@ -1895,7 +1911,7 @@ public class AllApi {
     }
 
     /**
-     * Get the last entry in the provided chain. This is the most recent entry also called the chain head (asynchronously)
+     * Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times (asynchronously)
      * 
      * @param context context (required)
      * @param chainId chainId (required)
@@ -2028,7 +2044,7 @@ public class AllApi {
         return call;
     }
     /* Build call for nextEntryById */
-    private com.squareup.okhttp.Call nextEntryByIdCall(String context, String chainId, String entryId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call nextEntryByIdCall(String context, String chainId, String entryId, OffsetDateTime currentAnchorTime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // verify the required parameter 'context' is set
@@ -2054,6 +2070,8 @@ public class AllApi {
         .replaceAll("\\{" + "entryId" + "\\}", apiClient.escapeString(entryId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (currentAnchorTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "currentAnchorTime", currentAnchorTime));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2093,11 +2111,12 @@ public class AllApi {
      * @param context context (required)
      * @param chainId chainId (required)
      * @param entryId entryId (required)
+     * @param currentAnchorTime  (optional)
      * @return AnchoredEntryResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AnchoredEntryResponse nextEntryById(String context, String chainId, String entryId) throws ApiException {
-        ApiResponse<AnchoredEntryResponse> resp = nextEntryByIdWithHttpInfo(context, chainId, entryId);
+    public AnchoredEntryResponse nextEntryById(String context, String chainId, String entryId, OffsetDateTime currentAnchorTime) throws ApiException {
+        ApiResponse<AnchoredEntryResponse> resp = nextEntryByIdWithHttpInfo(context, chainId, entryId, currentAnchorTime);
         return resp.getData();
     }
 
@@ -2107,11 +2126,12 @@ public class AllApi {
      * @param context context (required)
      * @param chainId chainId (required)
      * @param entryId entryId (required)
+     * @param currentAnchorTime  (optional)
      * @return ApiResponse&lt;AnchoredEntryResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AnchoredEntryResponse> nextEntryByIdWithHttpInfo(String context, String chainId, String entryId) throws ApiException {
-        com.squareup.okhttp.Call call = nextEntryByIdCall(context, chainId, entryId, null, null);
+    public ApiResponse<AnchoredEntryResponse> nextEntryByIdWithHttpInfo(String context, String chainId, String entryId, OffsetDateTime currentAnchorTime) throws ApiException {
+        com.squareup.okhttp.Call call = nextEntryByIdCall(context, chainId, entryId, currentAnchorTime, null, null);
         Type localVarReturnType = new TypeToken<AnchoredEntryResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2122,11 +2142,12 @@ public class AllApi {
      * @param context context (required)
      * @param chainId chainId (required)
      * @param entryId entryId (required)
+     * @param currentAnchorTime  (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call nextEntryByIdAsync(String context, String chainId, String entryId, final ApiCallback<AnchoredEntryResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call nextEntryByIdAsync(String context, String chainId, String entryId, OffsetDateTime currentAnchorTime, final ApiCallback<AnchoredEntryResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2147,13 +2168,13 @@ public class AllApi {
             };
         }
 
-        com.squareup.okhttp.Call call = nextEntryByIdCall(context, chainId, entryId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = nextEntryByIdCall(context, chainId, entryId, currentAnchorTime, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AnchoredEntryResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for nextEntryByRequest */
-    private com.squareup.okhttp.Call nextEntryByRequestCall(String context, String chainId, Entry entry, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call nextEntryByRequestCall(String context, String chainId, Entry entry, OffsetDateTime currentAnchorTime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = entry;
         
         // verify the required parameter 'context' is set
@@ -2178,6 +2199,8 @@ public class AllApi {
         .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (currentAnchorTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "currentAnchorTime", currentAnchorTime));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2217,11 +2240,12 @@ public class AllApi {
      * @param context context (required)
      * @param chainId chainId (required)
      * @param entry Retrieve the entry (required)
+     * @param currentAnchorTime  (optional)
      * @return AnchoredEntryResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AnchoredEntryResponse nextEntryByRequest(String context, String chainId, Entry entry) throws ApiException {
-        ApiResponse<AnchoredEntryResponse> resp = nextEntryByRequestWithHttpInfo(context, chainId, entry);
+    public AnchoredEntryResponse nextEntryByRequest(String context, String chainId, Entry entry, OffsetDateTime currentAnchorTime) throws ApiException {
+        ApiResponse<AnchoredEntryResponse> resp = nextEntryByRequestWithHttpInfo(context, chainId, entry, currentAnchorTime);
         return resp.getData();
     }
 
@@ -2231,11 +2255,12 @@ public class AllApi {
      * @param context context (required)
      * @param chainId chainId (required)
      * @param entry Retrieve the entry (required)
+     * @param currentAnchorTime  (optional)
      * @return ApiResponse&lt;AnchoredEntryResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AnchoredEntryResponse> nextEntryByRequestWithHttpInfo(String context, String chainId, Entry entry) throws ApiException {
-        com.squareup.okhttp.Call call = nextEntryByRequestCall(context, chainId, entry, null, null);
+    public ApiResponse<AnchoredEntryResponse> nextEntryByRequestWithHttpInfo(String context, String chainId, Entry entry, OffsetDateTime currentAnchorTime) throws ApiException {
+        com.squareup.okhttp.Call call = nextEntryByRequestCall(context, chainId, entry, currentAnchorTime, null, null);
         Type localVarReturnType = new TypeToken<AnchoredEntryResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2246,11 +2271,12 @@ public class AllApi {
      * @param context context (required)
      * @param chainId chainId (required)
      * @param entry Retrieve the entry (required)
+     * @param currentAnchorTime  (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call nextEntryByRequestAsync(String context, String chainId, Entry entry, final ApiCallback<AnchoredEntryResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call nextEntryByRequestAsync(String context, String chainId, Entry entry, OffsetDateTime currentAnchorTime, final ApiCallback<AnchoredEntryResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2271,13 +2297,13 @@ public class AllApi {
             };
         }
 
-        com.squareup.okhttp.Call call = nextEntryByRequestCall(context, chainId, entry, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = nextEntryByRequestCall(context, chainId, entry, currentAnchorTime, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AnchoredEntryResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for previousEntryById */
-    private com.squareup.okhttp.Call previousEntryByIdCall(String context, String chainId, String entryId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call previousEntryByIdCall(String context, String chainId, String entryId, OffsetDateTime currentAnchorTime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // verify the required parameter 'context' is set
@@ -2303,6 +2329,8 @@ public class AllApi {
         .replaceAll("\\{" + "entryId" + "\\}", apiClient.escapeString(entryId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (currentAnchorTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "currentAnchorTime", currentAnchorTime));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2342,11 +2370,12 @@ public class AllApi {
      * @param context context (required)
      * @param chainId chainId (required)
      * @param entryId entryId (required)
+     * @param currentAnchorTime  (optional)
      * @return AnchoredEntryResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AnchoredEntryResponse previousEntryById(String context, String chainId, String entryId) throws ApiException {
-        ApiResponse<AnchoredEntryResponse> resp = previousEntryByIdWithHttpInfo(context, chainId, entryId);
+    public AnchoredEntryResponse previousEntryById(String context, String chainId, String entryId, OffsetDateTime currentAnchorTime) throws ApiException {
+        ApiResponse<AnchoredEntryResponse> resp = previousEntryByIdWithHttpInfo(context, chainId, entryId, currentAnchorTime);
         return resp.getData();
     }
 
@@ -2356,11 +2385,12 @@ public class AllApi {
      * @param context context (required)
      * @param chainId chainId (required)
      * @param entryId entryId (required)
+     * @param currentAnchorTime  (optional)
      * @return ApiResponse&lt;AnchoredEntryResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AnchoredEntryResponse> previousEntryByIdWithHttpInfo(String context, String chainId, String entryId) throws ApiException {
-        com.squareup.okhttp.Call call = previousEntryByIdCall(context, chainId, entryId, null, null);
+    public ApiResponse<AnchoredEntryResponse> previousEntryByIdWithHttpInfo(String context, String chainId, String entryId, OffsetDateTime currentAnchorTime) throws ApiException {
+        com.squareup.okhttp.Call call = previousEntryByIdCall(context, chainId, entryId, currentAnchorTime, null, null);
         Type localVarReturnType = new TypeToken<AnchoredEntryResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2371,11 +2401,12 @@ public class AllApi {
      * @param context context (required)
      * @param chainId chainId (required)
      * @param entryId entryId (required)
+     * @param currentAnchorTime  (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call previousEntryByIdAsync(String context, String chainId, String entryId, final ApiCallback<AnchoredEntryResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call previousEntryByIdAsync(String context, String chainId, String entryId, OffsetDateTime currentAnchorTime, final ApiCallback<AnchoredEntryResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2396,13 +2427,13 @@ public class AllApi {
             };
         }
 
-        com.squareup.okhttp.Call call = previousEntryByIdCall(context, chainId, entryId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = previousEntryByIdCall(context, chainId, entryId, currentAnchorTime, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AnchoredEntryResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for previousEntryByRequest */
-    private com.squareup.okhttp.Call previousEntryByRequestCall(String context, String chainId, Entry entry, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call previousEntryByRequestCall(String context, String chainId, Entry entry, OffsetDateTime currentAnchorTime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = entry;
         
         // verify the required parameter 'context' is set
@@ -2427,6 +2458,8 @@ public class AllApi {
         .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (currentAnchorTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "currentAnchorTime", currentAnchorTime));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2466,11 +2499,12 @@ public class AllApi {
      * @param context context (required)
      * @param chainId chainId (required)
      * @param entry Retrieve the entry (required)
+     * @param currentAnchorTime  (optional)
      * @return AnchoredEntryResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AnchoredEntryResponse previousEntryByRequest(String context, String chainId, Entry entry) throws ApiException {
-        ApiResponse<AnchoredEntryResponse> resp = previousEntryByRequestWithHttpInfo(context, chainId, entry);
+    public AnchoredEntryResponse previousEntryByRequest(String context, String chainId, Entry entry, OffsetDateTime currentAnchorTime) throws ApiException {
+        ApiResponse<AnchoredEntryResponse> resp = previousEntryByRequestWithHttpInfo(context, chainId, entry, currentAnchorTime);
         return resp.getData();
     }
 
@@ -2480,11 +2514,12 @@ public class AllApi {
      * @param context context (required)
      * @param chainId chainId (required)
      * @param entry Retrieve the entry (required)
+     * @param currentAnchorTime  (optional)
      * @return ApiResponse&lt;AnchoredEntryResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AnchoredEntryResponse> previousEntryByRequestWithHttpInfo(String context, String chainId, Entry entry) throws ApiException {
-        com.squareup.okhttp.Call call = previousEntryByRequestCall(context, chainId, entry, null, null);
+    public ApiResponse<AnchoredEntryResponse> previousEntryByRequestWithHttpInfo(String context, String chainId, Entry entry, OffsetDateTime currentAnchorTime) throws ApiException {
+        com.squareup.okhttp.Call call = previousEntryByRequestCall(context, chainId, entry, currentAnchorTime, null, null);
         Type localVarReturnType = new TypeToken<AnchoredEntryResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2495,11 +2530,12 @@ public class AllApi {
      * @param context context (required)
      * @param chainId chainId (required)
      * @param entry Retrieve the entry (required)
+     * @param currentAnchorTime  (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call previousEntryByRequestAsync(String context, String chainId, Entry entry, final ApiCallback<AnchoredEntryResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call previousEntryByRequestAsync(String context, String chainId, Entry entry, OffsetDateTime currentAnchorTime, final ApiCallback<AnchoredEntryResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2520,7 +2556,7 @@ public class AllApi {
             };
         }
 
-        com.squareup.okhttp.Call call = previousEntryByRequestCall(context, chainId, entry, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = previousEntryByRequestCall(context, chainId, entry, currentAnchorTime, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AnchoredEntryResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

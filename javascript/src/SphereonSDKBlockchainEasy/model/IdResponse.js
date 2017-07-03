@@ -60,8 +60,6 @@
 
     _this['exists'] = exists;
 
-
-
   };
 
   /**
@@ -81,12 +79,6 @@
       if (data.hasOwnProperty('Id')) {
         obj['Id'] = ApiClient.convertToType(data['Id'], 'String');
       }
-      if (data.hasOwnProperty('dataStructure')) {
-        obj['dataStructure'] = ApiClient.convertToType(data['dataStructure'], 'String');
-      }
-      if (data.hasOwnProperty('blockchainImplementation')) {
-        obj['blockchainImplementation'] = ApiClient.convertToType(data['blockchainImplementation'], 'String');
-      }
     }
     return obj;
   }
@@ -100,14 +92,6 @@
    * @member {String} Id
    */
   exports.prototype['Id'] = undefined;
-  /**
-   * @member {module:SphereonSDKBlockchainEasy/model/IdResponse.DataStructureEnum} dataStructure
-   */
-  exports.prototype['dataStructure'] = undefined;
-  /**
-   * @member {module:SphereonSDKBlockchainEasy/model/IdResponse.BlockchainImplementationEnum} blockchainImplementation
-   */
-  exports.prototype['blockchainImplementation'] = undefined;
 
 
   /**
@@ -131,30 +115,6 @@
      * @const
      */
     "Unknown": "Unknown"  };
-
-  /**
-   * Allowed values for the <code>dataStructure</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.DataStructureEnum = {
-    /**
-     * value: "Factom"
-     * @const
-     */
-    "Factom": "Factom"  };
-
-  /**
-   * Allowed values for the <code>blockchainImplementation</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.BlockchainImplementationEnum = {
-    /**
-     * value: "Bitcoin"
-     * @const
-     */
-    "Bitcoin": "Bitcoin"  };
 
 
   return exports;

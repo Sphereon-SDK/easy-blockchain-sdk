@@ -84,22 +84,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Test
         {
             // TODO unit test for the property 'EntryData'
         }
-        /// <summary>
-        /// Test the property 'DataStructure'
-        /// </summary>
-        [Test]
-        public void DataStructureTest()
-        {
-            // TODO unit test for the property 'DataStructure'
-        }
-        /// <summary>
-        /// Test the property 'BlockchainImplementation'
-        /// </summary>
-        [Test]
-        public void BlockchainImplementationTest()
-        {
-            // TODO unit test for the property 'BlockchainImplementation'
-        }
 
     }
 
