@@ -39,7 +39,7 @@ import java.util.List;
  * Anchored Entry response
  */
 @ApiModel(description = "Anchored Entry response")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-03T11:20:12.597+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-03T11:30:07.846+02:00")
 public class AnchoredEntryResponse {
   @JsonProperty("anchoredEntry")
   private CommittedEntry anchoredEntry = null;

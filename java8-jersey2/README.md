@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.sphereon.sdk</groupId>
     <artifactId>blockchain-easy-sdk-java8-jersey2</artifactId>
-    <version>0.1.0</version>
+    <version>0.9.1</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.sphereon.sdk:blockchain-easy-sdk-java8-jersey2:0.1.0"
+compile "com.sphereon.sdk:blockchain-easy-sdk-java8-jersey2:0.9.1"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/blockchain-easy-sdk-java8-jersey2-0.1.0.jar
+* target/blockchain-easy-sdk-java8-jersey2-0.9.1.jar
 * target/lib/*.jar
 
 ## Getting Started

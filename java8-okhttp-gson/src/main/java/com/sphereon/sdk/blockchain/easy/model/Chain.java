@@ -35,7 +35,7 @@ import io.swagger.annotations.ApiModelProperty;
  * Chain
  */
 @ApiModel(description = "Chain")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-03T11:20:14.142+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-03T11:30:04.086+02:00")
 public class Chain {
   @SerializedName("firstEntry")
   private Entry firstEntry = null;

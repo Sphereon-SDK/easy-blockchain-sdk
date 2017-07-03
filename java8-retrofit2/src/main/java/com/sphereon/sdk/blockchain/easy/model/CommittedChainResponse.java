@@ -36,7 +36,7 @@ import java.time.OffsetDateTime;
  * Committed Chain response
  */
 @ApiModel(description = "Committed Chain response")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-03T11:20:12.030+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-03T11:30:07.124+02:00")
 public class CommittedChainResponse {
   @SerializedName("chain")
   private CommittedChain chain = null;
