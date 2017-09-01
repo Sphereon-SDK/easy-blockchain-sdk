@@ -788,7 +788,7 @@ margin-bottom: 20px;
     },
     "implementation" : {
       "type" : "string",
-      "enum" : [ "Bitcoin", "None" ]
+      "enum" : [ "Bitcoin", "None", "Ethereum" ]
     },
     "start" : {
       "type" : "string",
@@ -800,7 +800,7 @@ margin-bottom: 20px;
     },
     "dataStructure" : {
       "type" : "string",
-      "enum" : [ "Factom", "Multichain" ]
+      "enum" : [ "Factom", "Multichain", "Ethereum" ]
     },
     "id" : {
       "type" : "string",
@@ -1026,6 +1026,12 @@ margin-bottom: 20px;
     "access" : {
       "$ref" : "#/definitions/Access"
     },
+    "resourceFiles" : {
+      "type" : "object",
+      "additionalProperties" : {
+        "type" : "string"
+      }
+    },
     "host" : {
       "type" : "string"
     },
@@ -1210,7 +1216,7 @@ margin-bottom: 20px;
                 <div id="api-_">
                     <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
 
-                        <div class="app-desc">Version: 0.9.1</div>
+                        <div class="app-desc">Version: 0.9</div>
 
 
                     <hr>
@@ -1246,7 +1252,7 @@ margin-bottom: 20px;
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/id/{chainId}</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/id/{chainId}</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -1285,7 +1291,7 @@ margin-bottom: 20px;
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-chainIdExists-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/id/{chainId}"
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/id/{chainId}"
 
 
 </code></pre>
@@ -1763,7 +1769,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9.1/backends</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/backends</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -1802,7 +1808,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-createBackend-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/backends"
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/backends"
 
 
 </code></pre>
@@ -2407,7 +2413,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -2446,7 +2452,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-createChain-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains"
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains"
 
 
 </code></pre>
@@ -3023,7 +3029,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9.1/</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -3062,7 +3068,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-createContext-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/"
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/"
 
 
 </code></pre>
@@ -3667,7 +3673,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -3706,7 +3712,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-createEntry-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries?currentAnchorTime="
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/{chainId}/entries?currentAnchorTime="
 
 
 </code></pre>
@@ -4535,7 +4541,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/blockchain/easy/0.9.1/backends/{backendId}</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/blockchain/easy/0.9/backends/{backendId}</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -4574,7 +4580,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-deleteBackend-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">delete</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/backends/{backendId}"
+curl -X <span style="text-transform: uppercase;">delete</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/backends/{backendId}"
 
 
 </code></pre>
@@ -5157,7 +5163,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/id</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/id</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -5196,7 +5202,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-determineChainId-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/id?checkExistence="
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/id?checkExistence="
 
 
 </code></pre>
@@ -5746,7 +5752,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/id/{chainId}/entries</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/id/{chainId}/entries</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -5785,7 +5791,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-determineEntryId-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/id/{chainId}/entries?checkExistence="
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/id/{chainId}/entries?checkExistence="
 
 
 </code></pre>
@@ -6457,7 +6463,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -6496,7 +6502,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-entryById-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}?currentAnchorTime="
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}?currentAnchorTime="
 
 
 </code></pre>
@@ -7147,7 +7153,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -7186,7 +7192,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-entryByRequest-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry?currentAnchorTime="
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry?currentAnchorTime="
 
 
 </code></pre>
@@ -7857,7 +7863,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/id/{chainId}/entries/{entryId}</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/id/{chainId}/entries/{entryId}</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -7896,7 +7902,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-entryIdExists-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/id/{chainId}/entries/{entryId}"
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/id/{chainId}/entries/{entryId}"
 
 
 </code></pre>
@@ -8496,7 +8502,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9.1/backends/{backendId}/find</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/backends/{backendId}/find</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -8535,7 +8541,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-findBackends-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/backends/{backendId}/find?includePublic="
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/backends/{backendId}/find?includePublic="
 
 
 </code></pre>
@@ -9183,7 +9189,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/first</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/first</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -9222,7 +9228,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-firstEntry-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/first"
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/{chainId}/entries/first"
 
 
 </code></pre>
@@ -9779,7 +9785,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9.1/backends/{backendId}</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/backends/{backendId}</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -9818,7 +9824,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-getBackend-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/backends/{backendId}?includePublic="
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/backends/{backendId}?includePublic="
 
 
 </code></pre>
@@ -10463,7 +10469,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9.1/{context}</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -10502,7 +10508,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-getContext-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}"
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}"
 
 
 </code></pre>
@@ -11016,7 +11022,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/last</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/last</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -11055,7 +11061,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-lastEntry-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/last"
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/{chainId}/entries/last"
 
 
 </code></pre>
@@ -11612,7 +11618,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9.1/backends</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/backends</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -11651,7 +11657,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-listBackends-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/backends"
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/backends"
 
 
 </code></pre>
@@ -12197,7 +12203,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/next</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/next</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -12236,7 +12242,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-nextEntryById-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/next?currentAnchorTime="
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/next?currentAnchorTime="
 
 
 </code></pre>
@@ -12887,7 +12893,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/next</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/next</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -12926,7 +12932,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-nextEntryByRequest-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/next?currentAnchorTime="
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/next?currentAnchorTime="
 
 
 </code></pre>
@@ -13597,7 +13603,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/previous</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/previous</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -13636,7 +13642,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-previousEntryById-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/previous?currentAnchorTime="
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/previous?currentAnchorTime="
 
 
 </code></pre>
@@ -14287,7 +14293,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/previous</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/previous</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -14326,7 +14332,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-All-previousEntryByRequest-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/previous?currentAnchorTime="
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/previous?currentAnchorTime="
 
 
 </code></pre>
@@ -15001,7 +15007,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -15040,7 +15046,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Chain-createChain-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains"
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains"
 
 
 </code></pre>
@@ -15618,7 +15624,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9.1/backends</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/backends</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -15657,7 +15663,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Context-createBackend-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/backends"
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/backends"
 
 
 </code></pre>
@@ -16261,7 +16267,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9.1/</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -16300,7 +16306,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Context-createContext-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/"
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/"
 
 
 </code></pre>
@@ -16904,7 +16910,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/blockchain/easy/0.9.1/backends/{backendId}</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/blockchain/easy/0.9/backends/{backendId}</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -16943,7 +16949,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Context-deleteBackend-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">delete</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/backends/{backendId}"
+curl -X <span style="text-transform: uppercase;">delete</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/backends/{backendId}"
 
 
 </code></pre>
@@ -17525,7 +17531,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9.1/backends/{backendId}/find</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/backends/{backendId}/find</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -17564,7 +17570,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Context-findBackends-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/backends/{backendId}/find?includePublic="
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/backends/{backendId}/find?includePublic="
 
 
 </code></pre>
@@ -18210,7 +18216,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9.1/backends/{backendId}</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/backends/{backendId}</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -18249,7 +18255,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Context-getBackend-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/backends/{backendId}?includePublic="
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/backends/{backendId}?includePublic="
 
 
 </code></pre>
@@ -18892,7 +18898,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9.1/{context}</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -18931,7 +18937,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Context-getContext-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}"
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}"
 
 
 </code></pre>
@@ -19444,7 +19450,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9.1/backends</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/backends</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -19483,7 +19489,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Context-listBackends-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/backends"
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/backends"
 
 
 </code></pre>
@@ -20033,7 +20039,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -20072,7 +20078,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Entry-createEntry-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries?currentAnchorTime="
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/{chainId}/entries?currentAnchorTime="
 
 
 </code></pre>
@@ -20895,7 +20901,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -20934,7 +20940,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Entry-entryById-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}?currentAnchorTime="
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}?currentAnchorTime="
 
 
 </code></pre>
@@ -21579,7 +21585,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -21618,7 +21624,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Entry-entryByRequest-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry?currentAnchorTime="
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry?currentAnchorTime="
 
 
 </code></pre>
@@ -22283,7 +22289,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/first</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/first</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -22322,7 +22328,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Entry-firstEntry-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/first"
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/{chainId}/entries/first"
 
 
 </code></pre>
@@ -22876,7 +22882,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/last</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/last</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -22915,7 +22921,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Entry-lastEntry-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/last"
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/{chainId}/entries/last"
 
 
 </code></pre>
@@ -23469,7 +23475,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/next</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/next</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -23508,7 +23514,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Entry-nextEntryById-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/next?currentAnchorTime="
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/next?currentAnchorTime="
 
 
 </code></pre>
@@ -24153,7 +24159,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/next</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/next</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -24192,7 +24198,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Entry-nextEntryByRequest-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/next?currentAnchorTime="
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/next?currentAnchorTime="
 
 
 </code></pre>
@@ -24857,7 +24863,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/previous</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/previous</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -24896,7 +24902,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Entry-previousEntryById-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/previous?currentAnchorTime="
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/previous?currentAnchorTime="
 
 
 </code></pre>
@@ -25541,7 +25547,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/previous</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/previous</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -25580,7 +25586,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Entry-previousEntryByRequest-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/previous?currentAnchorTime="
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/previous?currentAnchorTime="
 
 
 </code></pre>
@@ -26249,7 +26255,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/id/{chainId}</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/id/{chainId}</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -26288,7 +26294,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Id-chainIdExists-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/id/{chainId}"
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/id/{chainId}"
 
 
 </code></pre>
@@ -26763,7 +26769,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/id</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/id</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -26802,7 +26808,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Id-determineChainId-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/id?checkExistence="
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/id?checkExistence="
 
 
 </code></pre>
@@ -27348,7 +27354,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/id/{chainId}/entries</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/id/{chainId}/entries</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -27387,7 +27393,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Id-determineEntryId-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/id/{chainId}/entries?checkExistence="
+curl -X <span style="text-transform: uppercase;">post</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/id/{chainId}/entries?checkExistence="
 
 
 </code></pre>
@@ -28053,7 +28059,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9.1/{context}/chains/id/{chainId}/entries/{entryId}</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/id/{chainId}/entries/{entryId}</span></code></pre>
 
                                             <p>
                                                 <h3>Usage and SDK Samples</h3>
@@ -28092,7 +28098,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Id-entryIdExists-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9.1/{context}/chains/id/{chainId}/entries/{entryId}"
+curl -X <span style="text-transform: uppercase;">get</span> -H "apiKey: [[apiKey]]" -H "apiSecret: [[apiSecret]]" "https://gw.api.cloud.sphereon.com//blockchain/easy/0.9/{context}/chains/id/{chainId}/entries/{entryId}"
 
 
 </code></pre>
@@ -28690,7 +28696,7 @@ try {
             </div>
             <div id="generator">
                 <div class="content">
-                    Generated 2017-07-03T11:30:06.656+02:00
+                    Generated 2017-09-01T12:23:12.357+02:00
                 </div>
             </div>
         </div>

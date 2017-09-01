@@ -28,7 +28,7 @@ public interface ContextApi {
   @Headers({
   	"Content-Type:application/json;charset&#x3D;UTF-8" 
   })
-  @POST("blockchain/easy/0.9.1/backends")
+  @POST("blockchain/easy/0.9/backends")
   Call<Backend> createBackend(
     @retrofit2.http.Body Backend backend
   );
@@ -43,7 +43,7 @@ public interface ContextApi {
   @Headers({
   	"Content-Type:application/json;charset&#x3D;UTF-8" 
   })
-  @POST("blockchain/easy/0.9.1/")
+  @POST("blockchain/easy/0.9/")
   Call<Context> createContext(
     @retrofit2.http.Body Context context
   );
@@ -58,7 +58,7 @@ public interface ContextApi {
   @Headers({
   	"Content-Type:application/json" 
   })
-  @DELETE("blockchain/easy/0.9.1/backends/{backendId}")
+  @DELETE("blockchain/easy/0.9/backends/{backendId}")
   Call<Void> deleteBackend(
     @retrofit2.http.Path("backendId") String backendId
   );
@@ -74,7 +74,7 @@ public interface ContextApi {
   @Headers({
   	"Content-Type:application/json" 
   })
-  @GET("blockchain/easy/0.9.1/backends/{backendId}/find")
+  @GET("blockchain/easy/0.9/backends/{backendId}/find")
   Call<List<Backend>> findBackends(
     @retrofit2.http.Path("backendId") String backendId, @retrofit2.http.Query("includePublic") Boolean includePublic
   );
@@ -90,7 +90,7 @@ public interface ContextApi {
   @Headers({
   	"Content-Type:application/json" 
   })
-  @GET("blockchain/easy/0.9.1/backends/{backendId}")
+  @GET("blockchain/easy/0.9/backends/{backendId}")
   Call<Backend> getBackend(
     @retrofit2.http.Path("backendId") String backendId, @retrofit2.http.Query("includePublic") Boolean includePublic
   );
@@ -105,7 +105,7 @@ public interface ContextApi {
   @Headers({
   	"Content-Type:application/json" 
   })
-  @GET("blockchain/easy/0.9.1/{context}")
+  @GET("blockchain/easy/0.9/{context}")
   Call<Context> getContext(
     @retrofit2.http.Path("context") String context
   );
@@ -119,7 +119,7 @@ public interface ContextApi {
   @Headers({
   	"Content-Type:application/json" 
   })
-  @GET("blockchain/easy/0.9.1/backends")
+  @GET("blockchain/easy/0.9/backends")
   Call<List<Backend>> listBackends();
     
 

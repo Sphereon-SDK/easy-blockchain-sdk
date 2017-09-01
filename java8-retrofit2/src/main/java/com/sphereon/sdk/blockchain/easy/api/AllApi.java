@@ -36,7 +36,7 @@ public interface AllApi {
   @Headers({
   	"Content-Type:application/json" 
   })
-  @GET("blockchain/easy/0.9.1/{context}/chains/id/{chainId}")
+  @GET("blockchain/easy/0.9/{context}/chains/id/{chainId}")
   Call<IdResponse> chainIdExists(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId
   );
@@ -51,7 +51,7 @@ public interface AllApi {
   @Headers({
   	"Content-Type:application/json;charset&#x3D;UTF-8" 
   })
-  @POST("blockchain/easy/0.9.1/backends")
+  @POST("blockchain/easy/0.9/backends")
   Call<Backend> createBackend(
     @retrofit2.http.Body Backend backend
   );
@@ -67,7 +67,7 @@ public interface AllApi {
   @Headers({
   	"Content-Type:application/json;charset&#x3D;UTF-8" 
   })
-  @POST("blockchain/easy/0.9.1/{context}/chains")
+  @POST("blockchain/easy/0.9/{context}/chains")
   Call<CommittedChainResponse> createChain(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Body Chain chain
   );
@@ -82,7 +82,7 @@ public interface AllApi {
   @Headers({
   	"Content-Type:application/json;charset&#x3D;UTF-8" 
   })
-  @POST("blockchain/easy/0.9.1/")
+  @POST("blockchain/easy/0.9/")
   Call<Context> createContext(
     @retrofit2.http.Body Context context
   );
@@ -100,7 +100,7 @@ public interface AllApi {
   @Headers({
   	"Content-Type:application/json;charset&#x3D;UTF-8" 
   })
-  @POST("blockchain/easy/0.9.1/{context}/chains/{chainId}/entries")
+  @POST("blockchain/easy/0.9/{context}/chains/{chainId}/entries")
   Call<CommittedEntryResponse> createEntry(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Body Entry entry, @retrofit2.http.Query("currentAnchorTime") OffsetDateTime currentAnchorTime
   );
@@ -115,7 +115,7 @@ public interface AllApi {
   @Headers({
   	"Content-Type:application/json" 
   })
-  @DELETE("blockchain/easy/0.9.1/backends/{backendId}")
+  @DELETE("blockchain/easy/0.9/backends/{backendId}")
   Call<Void> deleteBackend(
     @retrofit2.http.Path("backendId") String backendId
   );
@@ -132,7 +132,7 @@ public interface AllApi {
   @Headers({
   	"Content-Type:application/json;charset&#x3D;UTF-8" 
   })
-  @POST("blockchain/easy/0.9.1/{context}/chains/id")
+  @POST("blockchain/easy/0.9/{context}/chains/id")
   Call<IdResponse> determineChainId(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Body Chain chain, @retrofit2.http.Query("checkExistence") Boolean checkExistence
   );
@@ -150,7 +150,7 @@ public interface AllApi {
   @Headers({
   	"Content-Type:application/json;charset&#x3D;UTF-8" 
   })
-  @POST("blockchain/easy/0.9.1/{context}/chains/id/{chainId}/entries")
+  @POST("blockchain/easy/0.9/{context}/chains/id/{chainId}/entries")
   Call<IdResponse> determineEntryId(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Body Entry entry, @retrofit2.http.Query("checkExistence") Boolean checkExistence
   );
@@ -168,7 +168,7 @@ public interface AllApi {
   @Headers({
   	"Content-Type:application/json" 
   })
-  @GET("blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}")
+  @GET("blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}")
   Call<AnchoredEntryResponse> entryById(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Path("entryId") String entryId, @retrofit2.http.Query("currentAnchorTime") OffsetDateTime currentAnchorTime
   );
@@ -186,7 +186,7 @@ public interface AllApi {
   @Headers({
   	"Content-Type:application/json" 
   })
-  @POST("blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry")
+  @POST("blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry")
   Call<AnchoredEntryResponse> entryByRequest(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Body Entry entry, @retrofit2.http.Query("currentAnchorTime") OffsetDateTime currentAnchorTime
   );
@@ -203,7 +203,7 @@ public interface AllApi {
   @Headers({
   	"Content-Type:application/json" 
   })
-  @GET("blockchain/easy/0.9.1/{context}/chains/id/{chainId}/entries/{entryId}")
+  @GET("blockchain/easy/0.9/{context}/chains/id/{chainId}/entries/{entryId}")
   Call<IdResponse> entryIdExists(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Path("entryId") String entryId
   );
@@ -219,7 +219,7 @@ public interface AllApi {
   @Headers({
   	"Content-Type:application/json" 
   })
-  @GET("blockchain/easy/0.9.1/backends/{backendId}/find")
+  @GET("blockchain/easy/0.9/backends/{backendId}/find")
   Call<List<Backend>> findBackends(
     @retrofit2.http.Path("backendId") String backendId, @retrofit2.http.Query("includePublic") Boolean includePublic
   );
@@ -235,7 +235,7 @@ public interface AllApi {
   @Headers({
   	"Content-Type:application/json" 
   })
-  @GET("blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/first")
+  @GET("blockchain/easy/0.9/{context}/chains/{chainId}/entries/first")
   Call<AnchoredEntryResponse> firstEntry(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId
   );
@@ -251,7 +251,7 @@ public interface AllApi {
   @Headers({
   	"Content-Type:application/json" 
   })
-  @GET("blockchain/easy/0.9.1/backends/{backendId}")
+  @GET("blockchain/easy/0.9/backends/{backendId}")
   Call<Backend> getBackend(
     @retrofit2.http.Path("backendId") String backendId, @retrofit2.http.Query("includePublic") Boolean includePublic
   );
@@ -266,7 +266,7 @@ public interface AllApi {
   @Headers({
   	"Content-Type:application/json" 
   })
-  @GET("blockchain/easy/0.9.1/{context}")
+  @GET("blockchain/easy/0.9/{context}")
   Call<Context> getContext(
     @retrofit2.http.Path("context") String context
   );
@@ -282,7 +282,7 @@ public interface AllApi {
   @Headers({
   	"Content-Type:application/json" 
   })
-  @GET("blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/last")
+  @GET("blockchain/easy/0.9/{context}/chains/{chainId}/entries/last")
   Call<AnchoredEntryResponse> lastEntry(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId
   );
@@ -296,7 +296,7 @@ public interface AllApi {
   @Headers({
   	"Content-Type:application/json" 
   })
-  @GET("blockchain/easy/0.9.1/backends")
+  @GET("blockchain/easy/0.9/backends")
   Call<List<Backend>> listBackends();
     
 
@@ -313,7 +313,7 @@ public interface AllApi {
   @Headers({
   	"Content-Type:application/json" 
   })
-  @GET("blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/next")
+  @GET("blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/next")
   Call<AnchoredEntryResponse> nextEntryById(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Path("entryId") String entryId, @retrofit2.http.Query("currentAnchorTime") OffsetDateTime currentAnchorTime
   );
@@ -331,7 +331,7 @@ public interface AllApi {
   @Headers({
   	"Content-Type:application/json" 
   })
-  @POST("blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/next")
+  @POST("blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/next")
   Call<AnchoredEntryResponse> nextEntryByRequest(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Body Entry entry, @retrofit2.http.Query("currentAnchorTime") OffsetDateTime currentAnchorTime
   );
@@ -349,7 +349,7 @@ public interface AllApi {
   @Headers({
   	"Content-Type:application/json" 
   })
-  @GET("blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/{entryId}/previous")
+  @GET("blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/previous")
   Call<AnchoredEntryResponse> previousEntryById(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Path("entryId") String entryId, @retrofit2.http.Query("currentAnchorTime") OffsetDateTime currentAnchorTime
   );
@@ -367,7 +367,7 @@ public interface AllApi {
   @Headers({
   	"Content-Type:application/json" 
   })
-  @POST("blockchain/easy/0.9.1/{context}/chains/{chainId}/entries/entry/previous")
+  @POST("blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/previous")
   Call<AnchoredEntryResponse> previousEntryByRequest(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Body Entry entry, @retrofit2.http.Query("currentAnchorTime") OffsetDateTime currentAnchorTime
   );

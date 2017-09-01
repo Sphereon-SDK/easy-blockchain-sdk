@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-07-03T11:30:07.846+02:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-09-01T12:23:28.324+02:00")
 public class ChainApi {
   private ApiClient apiClient;
 
@@ -58,7 +58,7 @@ public class ChainApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9.1/{context}/chains".replaceAll("\\{format\\}","json")
+    String localVarPath = "/blockchain/easy/0.9/{context}/chains".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()));
 
     // query params

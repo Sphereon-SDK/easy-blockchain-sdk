@@ -29,7 +29,7 @@ public interface ChainApi {
   @Headers({
   	"Content-Type:application/json;charset&#x3D;UTF-8" 
   })
-  @POST("blockchain/easy/0.9.1/{context}/chains")
+  @POST("blockchain/easy/0.9/{context}/chains")
   Call<CommittedChainResponse> createChain(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Body Chain chain
   );

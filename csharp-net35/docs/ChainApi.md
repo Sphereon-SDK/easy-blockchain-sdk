@@ -4,7 +4,7 @@ All URIs are relative to *https://gw.api.cloud.sphereon.com/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateChain**](ChainApi.md#createchain) | **POST** /blockchain/easy/0.9.1/{context}/chains | Create a new chain
+[**CreateChain**](ChainApi.md#createchain) | **POST** /blockchain/easy/0.9/{context}/chains | Create a new chain
 
 
 <a name="createchain"></a>
