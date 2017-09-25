@@ -4,75 +4,45 @@
     <groupId>com.sphereon.sdk</groupId>
     <artifactId>easy-blockchain-sdk-generator</artifactId>
     <packaging>jar</packaging>
-    <version>0.1.0</version>
+    <version>0.9</version>
     <name>Easy Blockchain API SDK Generator</name>
 
-
     <properties>
-        <swagger-annotations-version>1.5.9</swagger-annotations-version>
-
-        <swagger-core-version>1.5.9</swagger-core-version>
-        <!--  <okhttp-version>2.7.5</okhttp-version>
-
-          <gson-version>2.6.2</gson-version>-->
-        <!--<jodatime-version>2.9.3</jodatime-version>-->
-        <maven-plugin-version>1.0.0</maven-plugin-version>
-        <junit-version>4.12</junit-version>
-        <api-version>0.1.0</api-version>
-
-
+		<project-base-name>easy-blockchain-sdk</project-base-name>
+        <company-name>Sphereon BV</company-name>
         <sdk-package>com.sphereon.sdk.blockchain.easy</sdk-package>
         <sdk-package-javascript>SphereonSDKBlockchainEasy</sdk-package-javascript>
         <sdk-package-csharp>Sphereon.SDK.Blockchain.Easy</sdk-package-csharp>
+
+        <swagger-coden-maven-plugin.version>2.2.3</swagger-coden-maven-plugin.version>
+        <swagger-coden-verbose>false</swagger-coden-verbose>
+		<project.encoding>UTF-8</project.encoding>
     </properties>
 
-    <distributionManagement>
-        <repository>
-            <id>sphereon-sdk</id>
-            <url>http://nexus.qa.sphereon.com/nexus/content/repositories/sphereon-sdk</url>
-        </repository>
-    </distributionManagement>
-
     <profiles>
-
         <profile>
             <id>html-docs</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <build>
                 <plugins>
-                    <!-- activate the plugin -->
                     <plugin>
                         <groupId>io.swagger</groupId>
                         <artifactId>swagger-codegen-maven-plugin</artifactId>
-                        <version>2.2.1</version>
-
+                        <version>${swagger-coden-maven-plugin.version}</version>
                         <executions>
-
                             <execution>
                                 <goals>
                                     <goal>generate</goal>
                                 </goals>
                                 <configuration>
-                                    <!-- specify the swagger yaml -->
-                                    <inputSpec>swagger.json</inputSpec>
-                                    <!--<inputSpec>https://store.sphereon.com/store/api-docs/admin/PDF/${api-version}</inputSpec>-->
-
-
-                                    <!-- target to generate -->
+                                    <inputSpec>swagger.sdk.json</inputSpec>
                                     <language>html2</language>
-
-                                    <!-- pass any necessary config options -->
                                     <configOptions>
                                         <dateLibrary>java8</dateLibrary>
                                     </configOptions>
-
-                                    <verbose>true</verbose>
-
+                                    <verbose>${swagger-coden-verbose}</verbose>
                                     <output>${project.basedir}/html-docs</output>
                                     <groupId>com.sphereon.sdk</groupId>
-                                    <artifactId>blockchain-easy-sdk-html-docs</artifactId>
+                                    <artifactId>${project-base-name}-html-docs</artifactId>
                                     <artifactVersion>${project.version}</artifactVersion>
                                     <addCompileSourceRoot>true</addCompileSourceRoot>
                                     <apiPackage>api</apiPackage>
@@ -88,63 +58,28 @@
 
         <profile>
             <id>java8-okhttp-gson</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <okhttp-version>2.7.5</okhttp-version>
-                <gson-version>2.6.2</gson-version>
-            </properties>
             <build>
                 <plugins>
                     <plugin>
                         <groupId>io.swagger</groupId>
                         <artifactId>swagger-codegen-maven-plugin</artifactId>
-                        <version>2.2.2-SNAPSHOT</version>
-
-                        <dependencies>
-
-                            <dependency>
-                                <groupId>com.squareup.okhttp</groupId>
-                                <artifactId>okhttp</artifactId>
-                                <version>${okhttp-version}</version>
-                            </dependency>
-                            <dependency>
-                                <groupId>com.squareup.okhttp</groupId>
-                                <artifactId>logging-interceptor</artifactId>
-                                <version>${okhttp-version}</version>
-                            </dependency>
-
-
-                            <dependency>
-                                <groupId>com.google.code.gson</groupId>
-                                <artifactId>gson</artifactId>
-                                <version>${gson-version}</version>
-                            </dependency>
-
-                        </dependencies>
+                        <version>${swagger-coden-maven-plugin.version}</version>
                         <executions>
-
                             <execution>
                                 <goals>
                                     <goal>generate</goal>
                                 </goals>
                                 <configuration>
-                                    <inputSpec>swagger.json</inputSpec>
-
-
+                                    <inputSpec>swagger.sdk.json</inputSpec>
                                     <language>java</language>
-
                                     <configOptions>
                                         <dateLibrary>java8</dateLibrary>
                                     </configOptions>
-
                                     <library>okhttp-gson</library>
-                                    <verbose>true</verbose>
-
+                                    <verbose>${swagger-coden-verbose}</verbose>
                                     <output>${project.basedir}/java8-okhttp-gson</output>
                                     <groupId>com.sphereon.sdk</groupId>
-                                    <artifactId>blockchain-easy-sdk-java8</artifactId>
+                                    <artifactId>${project-base-name}-java8-okhttp-gson</artifactId>
                                     <artifactVersion>${project.version}</artifactVersion>
                                     <addCompileSourceRoot>true</addCompileSourceRoot>
                                     <apiPackage>${sdk-package}.api</apiPackage>
@@ -160,91 +95,28 @@
 
         <profile>
             <id>java8-jersey2</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <jersey-version>2.22.2</jersey-version>
-                <jackson-version>2.7.5</jackson-version>
-            </properties>
             <build>
-
                 <plugins>
-                    <!-- activate the plugin -->
                     <plugin>
                         <groupId>io.swagger</groupId>
                         <artifactId>swagger-codegen-maven-plugin</artifactId>
-                        <version>2.2.2-SNAPSHOT</version>
-
-                        <dependencies>
-                            <!-- HTTP client: jersey-client -->
-                            <dependency>
-                                <groupId>org.glassfish.jersey.core</groupId>
-                                <artifactId>jersey-client</artifactId>
-                                <version>${jersey-version}</version>
-                            </dependency>
-                            <dependency>
-                                <groupId>org.glassfish.jersey.media</groupId>
-                                <artifactId>jersey-media-multipart</artifactId>
-                                <version>${jersey-version}</version>
-                            </dependency>
-                            <dependency>
-                                <groupId>org.glassfish.jersey.media</groupId>
-                                <artifactId>jersey-media-json-jackson</artifactId>
-                                <version>${jersey-version}</version>
-                            </dependency>
-
-                            <!-- JSON processing: jackson -->
-                            <dependency>
-                                <groupId>com.fasterxml.jackson.core</groupId>
-                                <artifactId>jackson-core</artifactId>
-                                <version>${jackson-version}</version>
-                            </dependency>
-                            <dependency>
-                                <groupId>com.fasterxml.jackson.core</groupId>
-                                <artifactId>jackson-annotations</artifactId>
-                                <version>${jackson-version}</version>
-                            </dependency>
-                            <dependency>
-                                <groupId>com.fasterxml.jackson.core</groupId>
-                                <artifactId>jackson-databind</artifactId>
-                                <version>${jackson-version}</version>
-                            </dependency>
-                            <dependency>
-                                <groupId>com.fasterxml.jackson.datatype</groupId>
-                                <artifactId>jackson-datatype-jsr310</artifactId>
-                                <version>${jackson-version}</version>
-                            </dependency>
-                        </dependencies>
+                        <version>${swagger-coden-maven-plugin.version}</version>
                         <executions>
-
-
                             <execution>
                                 <goals>
                                     <goal>generate</goal>
                                 </goals>
-
                                 <configuration>
-                                    <!-- specify the swagger yaml -->
-                                    <inputSpec>swagger.json</inputSpec>
-                                    <!--<inputSpec>https://store.sphereon.com/store/api-docs/admin/PDF/${api-version}</inputSpec>-->
-
-
-                                    <!-- target to generate -->
+                                    <inputSpec>swagger.sdk.json</inputSpec>
                                     <language>java</language>
-
-                                    <!-- pass any necessary config options -->
                                     <configOptions>
                                         <dateLibrary>java8</dateLibrary>
                                     </configOptions>
-
-                                    <!-- override the default library to jersey2 -->
                                     <library>jersey2</library>
-                                    <verbose>true</verbose>
-
+                                    <verbose>${swagger-coden-verbose}</verbose>
                                     <output>${project.basedir}/java8-jersey2</output>
                                     <groupId>com.sphereon.sdk</groupId>
-                                    <artifactId>blockchain-easy-sdk-java8-jersey2</artifactId>
+                                    <artifactId>${project-base-name}-java8-jersey2</artifactId>
                                     <artifactVersion>${project.version}</artifactVersion>
                                     <addCompileSourceRoot>true</addCompileSourceRoot>
                                     <apiPackage>${sdk-package}.api</apiPackage>
@@ -261,70 +133,28 @@
 
         <profile>
             <id>java8-retrofit2</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <oltu-version>1.0.1</oltu-version>
-                <retrofit-version>2.1.0</retrofit-version>
-            </properties>
             <build>
                 <plugins>
-                    <!-- activate the plugin -->
                     <plugin>
                         <groupId>io.swagger</groupId>
                         <artifactId>swagger-codegen-maven-plugin</artifactId>
-                        <version>2.2.2-SNAPSHOT</version>
-
-                        <dependencies>
-                            <dependency>
-                                <groupId>com.squareup.retrofit2</groupId>
-                                <artifactId>converter-gson</artifactId>
-                                <version>${retrofit-version}</version>
-                            </dependency>
-                            <dependency>
-                                <groupId>com.squareup.retrofit2</groupId>
-                                <artifactId>retrofit</artifactId>
-                                <version>${retrofit-version}</version>
-                            </dependency>
-                            <dependency>
-                                <groupId>com.squareup.retrofit2</groupId>
-                                <artifactId>converter-scalars</artifactId>
-                                <version>${retrofit-version}</version>
-                            </dependency>
-                            <dependency>
-                                <groupId>org.apache.oltu.oauth2</groupId>
-                                <artifactId>org.apache.oltu.oauth2.client</artifactId>
-                                <version>${oltu-version}</version>
-                            </dependency>
-                        </dependencies>
+                        <version>${swagger-coden-maven-plugin.version}</version>
                         <executions>
-
                             <execution>
                                 <goals>
                                     <goal>generate</goal>
                                 </goals>
                                 <configuration>
-                                    <!-- specify the swagger yaml -->
-                                    <inputSpec>swagger.json</inputSpec>
-                                    <!--<inputSpec>https://store.sphereon.com/store/api-docs/admin/PDF/${api-version}</inputSpec>-->
-
-
-                                    <!-- target to generate -->
+                                    <inputSpec>swagger.sdk.json</inputSpec>
                                     <language>java</language>
-
-                                    <!-- pass any necessary config options -->
                                     <configOptions>
                                         <dateLibrary>java8</dateLibrary>
                                     </configOptions>
-
-                                    <!-- override the default library to jersey2 -->
                                     <library>retrofit2</library>
-                                    <verbose>true</verbose>
-
+                                    <verbose>${swagger-coden-verbose}</verbose>
                                     <output>${project.basedir}/java8-retrofit2</output>
                                     <groupId>com.sphereon.sdk</groupId>
-                                    <artifactId>easy-blockchain-sdk-java8-retrofit2</artifactId>
+                                    <artifactId>${project-base-name}-java8-retrofit2</artifactId>
                                     <artifactVersion>${project.version}</artifactVersion>
                                     <addCompileSourceRoot>true</addCompileSourceRoot>
                                     <apiPackage>${sdk-package}.api</apiPackage>
@@ -338,168 +168,29 @@
             </build>
         </profile>
 
-
-        <profile>
-            <id>csharp-net45</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <build>
-                <plugins>
-                    <!-- activate the plugin -->
-                    <plugin>
-                        <groupId>io.swagger</groupId>
-                        <artifactId>swagger-codegen-maven-plugin</artifactId>
-                        <version>2.2.1</version>
-
-                        <executions>
-
-                            <execution>
-                                <goals>
-                                    <goal>generate</goal>
-                                </goals>
-                                <configuration>
-                                    <!-- specify the swagger yaml -->
-                                    <inputSpec>swagger.json</inputSpec>
-                                    <!--<inputSpec>https://store.sphereon.com/store/api-docs/admin/PDF/${api-version}</inputSpec>-->
-
-                                    <!-- target to generate -->
-                                    <language>csharp</language>
-
-                                    <!-- pass any necessary config options -->
-                                    <configOptions>
-
-                                        <packageCompany>Sphereon BV</packageCompany>
-                                        <apiPackage>${sdk-package-csharp}.Api</apiPackage>
-                                        <modelPackage>${sdk-package-csharp}.Model</modelPackage>
-                                        <invokerPackage>${sdk-package-csharp}.Handler</invokerPackage>
-                                        <packageName>${sdk-package-csharp}</packageName>
-
-
-                                    </configOptions>
-
-                                    <configurationFile>src/main/resources/config/csharp-net45.json</configurationFile>
-                                    <!-- override the default library to jersey2 -->
-                                    <!-- <library>okhttp-gson</library>
-                                    -->
-                                    <verbose>true</verbose>
-
-                                    <output>${project.basedir}/csharp-net45</output>
-                                    <groupId>com.sphereon.sdk</groupId>
-                                    <artifactId>blockchain-easy-sdk-csharp-net45</artifactId>
-                                    <artifactVersion>${project.version}</artifactVersion>
-                                    <addCompileSourceRoot>true</addCompileSourceRoot>
-
-                                    <apiPackage>Api</apiPackage>
-                                    <modelPackage>Model</modelPackage>
-                                    <invokerPackage>Handler</invokerPackage>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-<profile>
-			<id>csharp-net35</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<build>
-				<plugins>
-					<!-- activate the plugin -->
-					<plugin>
-						<groupId>io.swagger</groupId>
-						<artifactId>swagger-codegen-maven-plugin</artifactId>
-						<version>2.2.1</version>
-
-						<executions>
-
-							<execution>
-								<goals>
-									<goal>generate</goal>
-								</goals>
-								<configuration>
-									<!-- specify the swagger yaml -->
-									<inputSpec>swagger.json</inputSpec>
-									<!--<inputSpec>https://store.sphereon.com/store/api-docs/admin/PDF/${api-version}</inputSpec>-->
-
-									<!-- target to generate -->
-									<language>csharp</language>
-
-									<!-- pass any necessary config options -->
-									<configOptions>
-
-										<packageCompany>Sphereon BV</packageCompany>
-										<apiPackage>${sdk-package-csharp}.Api</apiPackage>
-										<modelPackage>${sdk-package-csharp}.Model</modelPackage>
-										<invokerPackage>${sdk-package-csharp}.Handler</invokerPackage>
-										<packageName>${sdk-package-csharp}</packageName>
-										<targetFramework>v3.5</targetFramework>
-									</configOptions>
-
-									<configurationFile>src/main/resources/config/csharp-net35.json</configurationFile>
-									<!-- override the default library to jersey2 -->
-									<!-- <library>okhttp-gson</library>
-                                    -->
-									<verbose>true</verbose>
-
-									<output>${project.basedir}/csharp-net35</output>
-									<groupId>com.sphereon.sdk</groupId>
-									<artifactId>blockchain-easy-sdk-csharp-net35</artifactId>
-									<artifactVersion>${project.version}</artifactVersion>
-									<addCompileSourceRoot>true</addCompileSourceRoot>
-
-									<apiPackage>Api</apiPackage>
-									<modelPackage>Model</modelPackage>
-									<invokerPackage>Handler</invokerPackage>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>		
-		
         <profile>
             <id>javascript</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <build>
                 <plugins>
-                    <!-- activate the plugin -->
                     <plugin>
                         <groupId>io.swagger</groupId>
                         <artifactId>swagger-codegen-maven-plugin</artifactId>
-                        <version>2.2.1</version>
-
+                        <version>${swagger-coden-maven-plugin.version}</version>
                         <executions>
-
                             <execution>
                                 <goals>
                                     <goal>generate</goal>
                                 </goals>
                                 <configuration>
-                                    <!-- specify the swagger yaml -->
-                                    <inputSpec>swagger.json</inputSpec>
-                                    <!--<inputSpec>https://store.sphereon.com/store/api-docs/admin/PDF/${api-version}</inputSpec>-->
-
-
-                                    <!-- target to generate -->
+                                    <inputSpec>swagger.sdk.json</inputSpec>
                                     <language>javascript</language>
-
-                                    <!-- pass any necessary config options -->
                                     <configOptions>
                                         <dateLibrary>java8</dateLibrary>
                                     </configOptions>
-
-                                    <verbose>true</verbose>
-
+                                    <verbose>${swagger-coden-verbose}</verbose>
                                     <output>${project.basedir}/javascript</output>
                                     <groupId>com.sphereon.sdk</groupId>
-                                    <artifactId>blockchain-easy-sdk-javascript</artifactId>
+                                    <artifactId>${project-base-name}-javascript</artifactId>
                                     <artifactVersion>${project.version}</artifactVersion>
                                     <addCompileSourceRoot>true</addCompileSourceRoot>
                                     <apiPackage>api</apiPackage>
@@ -512,29 +203,114 @@
                 </plugins>
             </build>
         </profile>
+
+        <profile>
+            <id>csharp-net45</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.swagger</groupId>
+                        <artifactId>swagger-codegen-maven-plugin</artifactId>
+                        <version>${swagger-coden-maven-plugin.version}</version>
+
+                        <executions>
+
+                            <execution>
+                                <goals>
+                                    <goal>generate</goal>
+                                </goals>
+                                <configuration>
+                                    <inputSpec>swagger.sdk.json</inputSpec>
+                                    <language>csharp</language>
+                                    <configOptions>
+                                        <packageCompany>${company-name}</packageCompany>
+                                        <apiPackage>${sdk-package-csharp}.Api</apiPackage>
+                                        <modelPackage>${sdk-package-csharp}.Model</modelPackage>
+                                        <invokerPackage>${sdk-package-csharp}.Handler</invokerPackage>
+                                        <packageName>${sdk-package-csharp}</packageName>
+                                    </configOptions>
+                                    <configurationFile>src/main/resources/config/csharp-net45.json</configurationFile>
+                                    <verbose>${swagger-coden-verbose}</verbose>
+                                    <output>${project.basedir}/csharp-net45</output>
+                                    <groupId>com.sphereon.sdk</groupId>
+                                    <artifactId>${project-base-name}-csharp-net45</artifactId>
+                                    <artifactVersion>${project.version}</artifactVersion>
+                                    <addCompileSourceRoot>true</addCompileSourceRoot>
+                                    <apiPackage>Api</apiPackage>
+                                    <modelPackage>Model</modelPackage>
+                                    <invokerPackage>Handler</invokerPackage>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>csharp-net35</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.swagger</groupId>
+                        <artifactId>swagger-codegen-maven-plugin</artifactId>
+                        <version>${swagger-coden-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>generate</goal>
+                                </goals>
+                                <configuration>
+                                    <inputSpec>swagger.sdk.json</inputSpec>
+                                    <language>csharp</language>
+                                    <configOptions>
+                                        <packageCompany>${company-name}</packageCompany>
+                                        <apiPackage>${sdk-package-csharp}.Api</apiPackage>
+                                        <modelPackage>${sdk-package-csharp}.Model</modelPackage>
+                                        <invokerPackage>${sdk-package-csharp}.Handler</invokerPackage>
+                                        <packageName>${sdk-package-csharp}</packageName>
+                                        <targetFramework>v3.5</targetFramework>
+                                    </configOptions>
+                                    <configurationFile>src/main/resources/config/csharp-net35.json</configurationFile>
+                                    <verbose>${swagger-coden-verbose}</verbose>
+                                    <output>${project.basedir}/csharp-net35</output>
+                                    <groupId>com.sphereon.sdk</groupId>
+                                    <artifactId>${project-base-name}-csharp-net35</artifactId>
+                                    <artifactVersion>${project.version}</artifactVersion>
+                                    <addCompileSourceRoot>true</addCompileSourceRoot>
+                                    <apiPackage>Api</apiPackage>
+                                    <modelPackage>Model</modelPackage>
+                                    <invokerPackage>Handler</invokerPackage>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
-    <dependencies>
-        <!-- dependencies are needed for the client being generated -->
-        <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-annotations</artifactId>
-            <version>${swagger-annotations-version}</version>
-        </dependency>
-
-        <!-- Base64 encoding that works in both JVM and Android -->
-        <dependency>
-            <groupId>com.brsanthu</groupId>
-            <artifactId>migbase64</artifactId>
-            <version>2.2</version>
-        </dependency>
-        <!-- test dependencies -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit-version}</version>
-            <!--            <scope>test</scope>-->
-        </dependency>
-
-
-    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>default-compile</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>default-install</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

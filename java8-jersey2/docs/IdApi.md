@@ -1,18 +1,18 @@
 # IdApi
 
-All URIs are relative to *https://gw.api.cloud.sphereon.com/*
+All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.9*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**chainIdExists**](IdApi.md#chainIdExists) | **GET** /blockchain/easy/0.1.0/chains/id/{chainId} | Determine whether the Id of a chain exists in the blockchain
-[**determineChainId**](IdApi.md#determineChainId) | **POST** /blockchain/easy/0.1.0/chains/id | Pre determine the Id of a chain request without anchoring it in the blockchain
-[**determineEntryId**](IdApi.md#determineEntryId) | **POST** /blockchain/easy/0.1.0/chains/id/{chainId}/entries | Pre determine the Id of an entry request without anchoring the entry
-[**entryIdExists**](IdApi.md#entryIdExists) | **GET** /blockchain/easy/0.1.0/chains/id/{chainId}/entries/{entryId} | Determine whether the Id of an entry exists in the blockchain
+[**chainIdExists**](IdApi.md#chainIdExists) | **GET** /{context}/chains/id/{chainId} | Determine whether the Id of a chain exists in the blockchain
+[**determineChainId**](IdApi.md#determineChainId) | **POST** /{context}/chains/id | Pre determine the Id of a chain request without anchoring it in the blockchain
+[**determineEntryId**](IdApi.md#determineEntryId) | **POST** /{context}/chains/id/{chainId}/entries | Pre determine the Id of an entry request without anchoring the entry
+[**entryIdExists**](IdApi.md#entryIdExists) | **GET** /{context}/chains/id/{chainId}/entries/{entryId} | Determine whether the Id of an entry exists in the blockchain
 
 
 <a name="chainIdExists"></a>
 # **chainIdExists**
-> IdResponse chainIdExists(chainId)
+> IdResponse chainIdExists(context, chainId)
 
 Determine whether the Id of a chain exists in the blockchain
 
@@ -32,9 +32,10 @@ OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
 oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 IdApi apiInstance = new IdApi();
+String context = "context_example"; // String | context
 String chainId = "chainId_example"; // String | chainId
 try {
-    IdResponse result = apiInstance.chainIdExists(chainId);
+    IdResponse result = apiInstance.chainIdExists(context, chainId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdApi#chainIdExists");
@@ -46,6 +47,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context |
  **chainId** | **String**| chainId |
 
 ### Return type
@@ -59,11 +61,11 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="determineChainId"></a>
 # **determineChainId**
-> IdResponse determineChainId(chain, checkExistence)
+> IdResponse determineChainId(context, chain, checkExistence)
 
 Pre determine the Id of a chain request without anchoring it in the blockchain
 
@@ -83,10 +85,11 @@ OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
 oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 IdApi apiInstance = new IdApi();
+String context = "context_example"; // String | context
 Chain chain = new Chain(); // Chain | Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
 Boolean checkExistence = false; // Boolean | Check whether the id exists
 try {
-    IdResponse result = apiInstance.determineChainId(chain, checkExistence);
+    IdResponse result = apiInstance.determineChainId(context, chain, checkExistence);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdApi#determineChainId");
@@ -98,6 +101,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context |
  **chain** | [**Chain**](Chain.md)| Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! |
  **checkExistence** | **Boolean**| Check whether the id exists | [optional] [default to false]
 
@@ -111,12 +115,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json;charset=UTF-8
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="determineEntryId"></a>
 # **determineEntryId**
-> IdResponse determineEntryId(chainId, entry, checkExistence)
+> IdResponse determineEntryId(context, chainId, entry, checkExistence)
 
 Pre determine the Id of an entry request without anchoring the entry
 
@@ -136,11 +140,12 @@ OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
 oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 IdApi apiInstance = new IdApi();
+String context = "context_example"; // String | context
 String chainId = "chainId_example"; // String | chainId
 Entry entry = new Entry(); // Entry | The entry to determine the hash for on the specified chain
 Boolean checkExistence = false; // Boolean | Check whether the id exists
 try {
-    IdResponse result = apiInstance.determineEntryId(chainId, entry, checkExistence);
+    IdResponse result = apiInstance.determineEntryId(context, chainId, entry, checkExistence);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdApi#determineEntryId");
@@ -152,6 +157,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context |
  **chainId** | **String**| chainId |
  **entry** | [**Entry**](Entry.md)| The entry to determine the hash for on the specified chain |
  **checkExistence** | **Boolean**| Check whether the id exists | [optional] [default to false]
@@ -166,12 +172,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json;charset=UTF-8
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="entryIdExists"></a>
 # **entryIdExists**
-> IdResponse entryIdExists(chainId, entryId)
+> IdResponse entryIdExists(context, chainId, entryId)
 
 Determine whether the Id of an entry exists in the blockchain
 
@@ -191,10 +197,11 @@ OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
 oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 IdApi apiInstance = new IdApi();
+String context = "context_example"; // String | context
 String chainId = "chainId_example"; // String | chainId
 String entryId = "entryId_example"; // String | entryId
 try {
-    IdResponse result = apiInstance.entryIdExists(chainId, entryId);
+    IdResponse result = apiInstance.entryIdExists(context, chainId, entryId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdApi#entryIdExists");
@@ -206,6 +213,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context |
  **chainId** | **String**| chainId |
  **entryId** | **String**| entryId |
 
@@ -220,5 +228,5 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
