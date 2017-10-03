@@ -18,7 +18,7 @@ import com.sphereon.sdk.blockchain.easy.handler.Pair;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-09-25T14:31:23.418+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-09-27T14:00:47.342+02:00")
 public class ApiKeyAuth implements Authentication {
   private final String location;
   private final String paramName;

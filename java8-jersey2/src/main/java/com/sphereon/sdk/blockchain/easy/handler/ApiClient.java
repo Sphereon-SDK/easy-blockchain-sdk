@@ -49,10 +49,10 @@ import com.sphereon.sdk.blockchain.easy.handler.auth.HttpBasicAuth;
 import com.sphereon.sdk.blockchain.easy.handler.auth.ApiKeyAuth;
 import com.sphereon.sdk.blockchain.easy.handler.auth.OAuth;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-09-25T14:31:27.575+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-09-27T14:00:51.221+02:00")
 public class ApiClient {
   private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
-  private String basePath = "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9";
+  private String basePath = "https://gw.api.cloud.sphereon.com";
   private boolean debugging = false;
   private int connectionTimeout = 0;
 

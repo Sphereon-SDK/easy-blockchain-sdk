@@ -26,15 +26,8 @@
 package com.sphereon.sdk.blockchain.easy.api;
 
 import com.sphereon.sdk.blockchain.easy.handler.ApiException;
-import com.sphereon.sdk.blockchain.easy.model.CommittedChainResponse;
 import com.sphereon.sdk.blockchain.easy.model.Chain;
-import com.sphereon.sdk.blockchain.easy.model.VndErrors;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * API tests for ChainApi
@@ -43,14 +36,11 @@ public class ChainApiTest {
 
     private final ChainApi api = new ChainApi();
 
-    
+
     /**
      * Create a new chain
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createChainTest() throws ApiException {
@@ -59,5 +49,5 @@ public class ChainApiTest {
 
         // TODO: test validations
     }
-    
+
 }

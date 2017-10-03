@@ -781,7 +781,7 @@ margin-bottom: 20px;
     },
     "implementation" : {
       "type" : "string",
-      "enum" : [ "Bitcoin", "None", "Ethereum" ]
+      "enum" : [ "Bitcoin", "None" ]
     },
     "start" : {
       "type" : "string",
@@ -793,7 +793,7 @@ margin-bottom: 20px;
     },
     "dataStructure" : {
       "type" : "string",
-      "enum" : [ "Factom", "Multichain", "Ethereum" ]
+      "enum" : [ "Factom", "Multichain" ]
     },
     "id" : {
       "type" : "string",
@@ -1021,12 +1021,6 @@ margin-bottom: 20px;
     "access" : {
       "$ref" : "#/definitions/Access"
     },
-    "resourceFiles" : {
-      "type" : "object",
-      "additionalProperties" : {
-        "type" : "string"
-      }
-    },
     "host" : {
       "type" : "string"
     },
@@ -1232,7 +1226,7 @@ margin-bottom: 20px;
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/{context}/chains/id/{chainId}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/id/{chainId}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -1627,7 +1621,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/backends</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/backends</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -2088,7 +2082,7 @@ $(document).ready(function() {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/{context}/chains</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -2546,7 +2540,7 @@ $(document).ready(function() {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -3007,7 +3001,7 @@ $(document).ready(function() {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/{context}/chains/{chainId}/entries</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -3622,7 +3616,7 @@ $(document).ready(function() {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/backends/{backendId}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/blockchain/easy/0.9/backends/{backendId}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -4026,7 +4020,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/{context}/chains/id</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/id</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -4479,7 +4473,7 @@ $(document).ready(function() {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/{context}/chains/id/{chainId}/entries</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/id/{chainId}/entries</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -5008,7 +5002,7 @@ $(document).ready(function() {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/{context}/chains/{chainId}/entries/{entryId}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -5517,7 +5511,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/{context}/chains/{chainId}/entries/entry</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -6046,7 +6040,7 @@ $(document).ready(function() {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/{context}/chains/id/{chainId}/entries/{entryId}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/id/{chainId}/entries/{entryId}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -6517,7 +6511,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/backends/{backendId}/find</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/backends/{backendId}/find</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -7006,7 +7000,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/{context}/chains/{chainId}/entries/first</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/first</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -7444,7 +7438,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/backends/{backendId}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/backends/{backendId}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -7930,7 +7924,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/{context}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -8335,7 +8329,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/{context}/chains/{chainId}/entries/last</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/last</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -8773,7 +8767,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/backends</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/backends</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -9184,7 +9178,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/{context}/chains/{chainId}/entries/{entryId}/next</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/next</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -9693,7 +9687,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/{context}/chains/{chainId}/entries/entry/next</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/next</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -10222,7 +10216,7 @@ $(document).ready(function() {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/{context}/chains/{chainId}/entries/{entryId}/previous</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/previous</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -10731,7 +10725,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/{context}/chains/{chainId}/entries/entry/previous</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/previous</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -11263,7 +11257,7 @@ $(document).ready(function() {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/{context}/chains</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -11723,7 +11717,7 @@ $(document).ready(function() {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/backends</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/backends</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -12183,7 +12177,7 @@ $(document).ready(function() {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -12643,7 +12637,7 @@ $(document).ready(function() {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/backends/{backendId}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/blockchain/easy/0.9/backends/{backendId}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -13047,7 +13041,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/backends/{backendId}/find</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/backends/{backendId}/find</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -13536,7 +13530,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/backends/{backendId}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/backends/{backendId}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -14022,7 +14016,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/{context}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -14427,7 +14421,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/backends</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/backends</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -14841,7 +14835,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/{context}/chains/{chainId}/entries</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -15455,7 +15449,7 @@ $(document).ready(function() {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/{context}/chains/{chainId}/entries/{entryId}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -15964,7 +15958,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/{context}/chains/{chainId}/entries/entry</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -16492,7 +16486,7 @@ $(document).ready(function() {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/{context}/chains/{chainId}/entries/first</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/first</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -16930,7 +16924,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/{context}/chains/{chainId}/entries/last</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/last</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -17368,7 +17362,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/{context}/chains/{chainId}/entries/{entryId}/next</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/next</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -17877,7 +17871,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/{context}/chains/{chainId}/entries/entry/next</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/next</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -18405,7 +18399,7 @@ $(document).ready(function() {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/{context}/chains/{chainId}/entries/{entryId}/previous</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/previous</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -18914,7 +18908,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/{context}/chains/{chainId}/entries/entry/previous</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/previous</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -19445,7 +19439,7 @@ $(document).ready(function() {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/{context}/chains/id/{chainId}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/id/{chainId}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -19840,7 +19834,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/{context}/chains/id</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/id</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -20292,7 +20286,7 @@ $(document).ready(function() {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/{context}/chains/id/{chainId}/entries</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/id/{chainId}/entries</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -20820,7 +20814,7 @@ $(document).ready(function() {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/{context}/chains/id/{chainId}/entries/{entryId}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/blockchain/easy/0.9/{context}/chains/id/{chainId}/entries/{entryId}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -21293,7 +21287,7 @@ except ApiException as e:
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2017-09-25T14:31:19.074+02:00
+              Generated 2017-09-27T14:00:43.247+02:00
             </div>
           </div>
       </div>

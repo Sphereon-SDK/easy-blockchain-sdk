@@ -48,17 +48,17 @@ namespace Sphereon.SDK.Blockchain.Easy.Client
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
-        /// with default configuration and base path (https://gw.api.cloud.sphereon.com/blockchain/easy/0.9).
+        /// with default configuration and base path (https://gw.api.cloud.sphereon.com).
         /// </summary>
         public ApiClient()
         {
             Configuration = Configuration.Default;
-            RestClient = new RestClient("https://gw.api.cloud.sphereon.com/blockchain/easy/0.9");
+            RestClient = new RestClient("https://gw.api.cloud.sphereon.com");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
-        /// with default base path (https://gw.api.cloud.sphereon.com/blockchain/easy/0.9).
+        /// with default base path (https://gw.api.cloud.sphereon.com).
         /// </summary>
         /// <param name="config">An instance of Configuration.</param>
         public ApiClient(Configuration config = null)
@@ -68,7 +68,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Client
             else
                 Configuration = config;
 
-            RestClient = new RestClient("https://gw.api.cloud.sphereon.com/blockchain/easy/0.9");
+            RestClient = new RestClient("https://gw.api.cloud.sphereon.com");
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Client
         /// with default configuration.
         /// </summary>
         /// <param name="basePath">The base path.</param>
-        public ApiClient(String basePath = "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9")
+        public ApiClient(String basePath = "https://gw.api.cloud.sphereon.com")
         {
            if (String.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");

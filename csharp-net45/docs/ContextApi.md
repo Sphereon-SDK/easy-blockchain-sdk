@@ -1,16 +1,16 @@
 # Sphereon.SDK.Blockchain.Easy.Api.ContextApi
 
-All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.9*
+All URIs are relative to *https://gw.api.cloud.sphereon.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateBackend**](ContextApi.md#createbackend) | **POST** /backends | Create a new backend
-[**CreateContext**](ContextApi.md#createcontext) | **POST** / | Create a new context
-[**DeleteBackend**](ContextApi.md#deletebackend) | **DELETE** /backends/{backendId} | Delete backend by id (not by ledgername)
-[**FindBackends**](ContextApi.md#findbackends) | **GET** /backends/{backendId}/find | Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
-[**GetBackend**](ContextApi.md#getbackend) | **GET** /backends/{backendId} | Get existing backend by id (not by ledgername). Optionally including public backend of others
-[**GetContext**](ContextApi.md#getcontext) | **GET** /{context} | Get an existing context
-[**ListBackends**](ContextApi.md#listbackends) | **GET** /backends | List existing backends.
+[**CreateBackend**](ContextApi.md#createbackend) | **POST** /blockchain/easy/0.9/backends | Create a new backend
+[**CreateContext**](ContextApi.md#createcontext) | **POST** /blockchain/easy/0.9/ | Create a new context
+[**DeleteBackend**](ContextApi.md#deletebackend) | **DELETE** /blockchain/easy/0.9/backends/{backendId} | Delete backend by id (not by ledgername)
+[**FindBackends**](ContextApi.md#findbackends) | **GET** /blockchain/easy/0.9/backends/{backendId}/find | Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
+[**GetBackend**](ContextApi.md#getbackend) | **GET** /blockchain/easy/0.9/backends/{backendId} | Get existing backend by id (not by ledgername). Optionally including public backend of others
+[**GetContext**](ContextApi.md#getcontext) | **GET** /blockchain/easy/0.9/{context} | Get an existing context
+[**ListBackends**](ContextApi.md#listbackends) | **GET** /blockchain/easy/0.9/backends | List existing backends.
 
 
 <a name="createbackend"></a>

@@ -56,7 +56,6 @@
 
 
 
-
   };
 
   /**
@@ -78,9 +77,6 @@
       }
       if (data.hasOwnProperty('access')) {
         obj['access'] = Access.constructFromObject(data['access']);
-      }
-      if (data.hasOwnProperty('resourceFiles')) {
-        obj['resourceFiles'] = ApiClient.convertToType(data['resourceFiles'], {'String': 'String'});
       }
       if (data.hasOwnProperty('host')) {
         obj['host'] = ApiClient.convertToType(data['host'], 'String');
@@ -110,10 +106,6 @@
    * @member {module:SphereonSDKBlockchainEasy/model/Access} access
    */
   exports.prototype['access'] = undefined;
-  /**
-   * @member {Object.<String, String>} resourceFiles
-   */
-  exports.prototype['resourceFiles'] = undefined;
   /**
    * @member {String} host
    */

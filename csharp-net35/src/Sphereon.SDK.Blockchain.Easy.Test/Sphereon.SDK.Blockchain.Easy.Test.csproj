@@ -75,7 +75,7 @@ Contact: dev@sphereon.com
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
       <ProjectReference Include="..\Sphereon.SDK.Blockchain.Easy\Sphereon.SDK.Blockchain.Easy.csproj">
-          <Project>{8E02739A-E054-4562-8BFF-78864F9A9C09}</Project>
+          <Project>{A549437D-ECE1-4C33-9FEF-5008C14FBBC4}</Project>
           <Name>Sphereon.SDK.Blockchain.Easy</Name>
       </ProjectReference>
   </ItemGroup>

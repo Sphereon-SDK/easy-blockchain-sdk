@@ -26,16 +26,9 @@
 package com.sphereon.sdk.blockchain.easy.api;
 
 import com.sphereon.sdk.blockchain.easy.handler.ApiException;
-import com.sphereon.sdk.blockchain.easy.model.IdResponse;
-import com.sphereon.sdk.blockchain.easy.model.VndErrors;
 import com.sphereon.sdk.blockchain.easy.model.Chain;
 import com.sphereon.sdk.blockchain.easy.model.Entry;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * API tests for IdApi
@@ -44,14 +37,11 @@ public class IdApiTest {
 
     private final IdApi api = new IdApi();
 
-    
+
     /**
      * Determine whether the Id of a chain exists in the blockchain
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void chainIdExistsTest() throws ApiException {
@@ -60,14 +50,12 @@ public class IdApiTest {
 
         // TODO: test validations
     }
-    
+
+
     /**
      * Pre determine the Id of a chain request without anchoring it in the blockchain
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void determineChainIdTest() throws ApiException {
@@ -77,14 +65,12 @@ public class IdApiTest {
 
         // TODO: test validations
     }
-    
+
+
     /**
      * Pre determine the Id of an entry request without anchoring the entry
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void determineEntryIdTest() throws ApiException {
@@ -95,14 +81,12 @@ public class IdApiTest {
 
         // TODO: test validations
     }
-    
+
+
     /**
      * Determine whether the Id of an entry exists in the blockchain
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void entryIdExistsTest() throws ApiException {
@@ -112,5 +96,4 @@ public class IdApiTest {
 
         // TODO: test validations
     }
-    
 }

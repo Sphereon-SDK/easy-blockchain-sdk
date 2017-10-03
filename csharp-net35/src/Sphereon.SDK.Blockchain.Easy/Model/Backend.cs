@@ -47,13 +47,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             /// Enum None for "None"
             /// </summary>
             [EnumMember(Value = "None")]
-            None,
-            
-            /// <summary>
-            /// Enum Ethereum for "Ethereum"
-            /// </summary>
-            [EnumMember(Value = "Ethereum")]
-            Ethereum
+            None
         }
 
         /// <summary>
@@ -73,13 +67,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             /// Enum Multichain for "Multichain"
             /// </summary>
             [EnumMember(Value = "Multichain")]
-            Multichain,
-            
-            /// <summary>
-            /// Enum Ethereum for "Ethereum"
-            /// </summary>
-            [EnumMember(Value = "Ethereum")]
-            Ethereum
+            Multichain
         }
 
         /// <summary>

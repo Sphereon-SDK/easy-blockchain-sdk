@@ -13,32 +13,25 @@
 
 package com.sphereon.sdk.blockchain.easy.handler;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.google.gson.TypeAdapter;
+import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 import java.io.IOException;
 import java.io.StringReader;
 import java.lang.reflect.Type;
-import java.util.Date;
-
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
+import java.util.Base64;
+import java.util.Date;
 
 public class JSON {
     private ApiClient apiClient;
     private Gson gson;
+
 
     /**
      * JSON constructor.
@@ -48,11 +41,13 @@ public class JSON {
     public JSON(ApiClient apiClient) {
         this.apiClient = apiClient;
         gson = new GsonBuilder()
-            .registerTypeAdapter(Date.class, new DateAdapter(apiClient))
-            .registerTypeAdapter(OffsetDateTime.class, new OffsetDateTimeTypeAdapter())
-            .registerTypeAdapter(LocalDate.class, new LocalDateTypeAdapter())
-            .create();
+                .registerTypeAdapter(Date.class, new DateAdapter(apiClient))
+                .registerTypeAdapter(OffsetDateTime.class, new OffsetDateTimeTypeAdapter())
+                .registerTypeAdapter(LocalDate.class, new LocalDateTypeAdapter())
+                .registerTypeAdapter(byte[].class, new Base64Adapter())
+                .create();
     }
+
 
     /**
      * Get Gson.
@@ -63,6 +58,7 @@ public class JSON {
         return gson;
     }
 
+
     /**
      * Set Gson.
      *
@@ -71,6 +67,7 @@ public class JSON {
     public void setGson(Gson gson) {
         this.gson = gson;
     }
+
 
     /**
      * Serialize the given Java object into JSON string.
@@ -82,11 +79,12 @@ public class JSON {
         return gson.toJson(obj);
     }
 
+
     /**
      * Deserialize the given JSON string to Java object.
      *
-     * @param <T> Type
-     * @param body The JSON string
+     * @param <T>        Type
+     * @param body       The JSON string
      * @param returnType The type to deserialize into
      * @return The deserialized Java object
      */
@@ -105,17 +103,31 @@ public class JSON {
             // Fallback processing when failed to parse JSON form response body:
             //   return the response body string directly for the String return type;
             //   parse response body into date or datetime for the Date return type.
-            if (returnType.equals(String.class))
+            if (returnType.equals(String.class)) {
                 return (T) body;
-            else if (returnType.equals(Date.class))
+            } else if (returnType.equals(Date.class)) {
                 return (T) apiClient.parseDateOrDatetime(body);
-            else throw(e);
+            } else {
+                throw (e);
+            }
         }
+    }
+
+
+}
+
+class Base64Adapter implements JsonDeserializer<byte[]> {
+
+    @Override
+    public byte[] deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+        return Base64.getDecoder().decode(jsonElement.getAsString());
     }
 }
 
+
 class DateAdapter implements JsonSerializer<Date>, JsonDeserializer<Date> {
     private final ApiClient apiClient;
+
 
     /**
      * Constructor for DateAdapter
@@ -127,12 +139,13 @@ class DateAdapter implements JsonSerializer<Date>, JsonDeserializer<Date> {
         this.apiClient = apiClient;
     }
 
+
     /**
      * Serialize
      *
-     * @param src Date
+     * @param src       Date
      * @param typeOfSrc Type
-     * @param context Json Serialization Context
+     * @param context   Json Serialization Context
      * @return Json Element
      */
     @Override
@@ -144,11 +157,12 @@ class DateAdapter implements JsonSerializer<Date>, JsonDeserializer<Date> {
         }
     }
 
+
     /**
      * Deserialize
      *
-     * @param json Json element
-     * @param date Type
+     * @param json    Json element
+     * @param date    Type
      * @param context Json Serialization Context
      * @return Date
      * @throws JsonParseException if fail to parse
@@ -171,6 +185,7 @@ class OffsetDateTimeTypeAdapter extends TypeAdapter<OffsetDateTime> {
 
     private final DateTimeFormatter formatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
 
+
     @Override
     public void write(JsonWriter out, OffsetDateTime date) throws IOException {
         if (date == null) {
@@ -179,6 +194,7 @@ class OffsetDateTimeTypeAdapter extends TypeAdapter<OffsetDateTime> {
             out.value(formatter.format(date));
         }
     }
+
 
     @Override
     public OffsetDateTime read(JsonReader in) throws IOException {
@@ -189,7 +205,10 @@ class OffsetDateTimeTypeAdapter extends TypeAdapter<OffsetDateTime> {
             default:
                 String date = in.nextString();
                 if (date.endsWith("+0000")) {
-                    date = date.substring(0, date.length()-5) + "Z";
+                    date = date.substring(0, date.length() - 5) + "Z";
+                } else if (date.endsWith(".000000000")) {
+                    double epochTime = Double.parseDouble(date) * 1000;
+                    return Instant.ofEpochMilli((long) epochTime).atOffset(ZoneOffset.UTC);
                 }
 
                 return OffsetDateTime.parse(date, formatter);
@@ -204,6 +223,7 @@ class LocalDateTypeAdapter extends TypeAdapter<LocalDate> {
 
     private final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 
+
     @Override
     public void write(JsonWriter out, LocalDate date) throws IOException {
         if (date == null) {
@@ -212,6 +232,7 @@ class LocalDateTypeAdapter extends TypeAdapter<LocalDate> {
             out.value(formatter.format(date));
         }
     }
+
 
     @Override
     public LocalDate read(JsonReader in) throws IOException {

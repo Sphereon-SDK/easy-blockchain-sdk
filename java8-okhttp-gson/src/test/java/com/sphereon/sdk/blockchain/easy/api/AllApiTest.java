@@ -26,19 +26,9 @@
 package com.sphereon.sdk.blockchain.easy.api;
 
 import com.sphereon.sdk.blockchain.easy.handler.ApiException;
-import com.sphereon.sdk.blockchain.easy.model.IdResponse;
-import com.sphereon.sdk.blockchain.easy.model.VndErrors;
-import com.sphereon.sdk.blockchain.easy.model.CommittedChainResponse;
 import com.sphereon.sdk.blockchain.easy.model.Chain;
-import com.sphereon.sdk.blockchain.easy.model.CommittedEntryResponse;
 import com.sphereon.sdk.blockchain.easy.model.Entry;
-import com.sphereon.sdk.blockchain.easy.model.AnchoredEntryResponse;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * API tests for AllApi
@@ -47,14 +37,11 @@ public class AllApiTest {
 
     private final AllApi api = new AllApi();
 
-    
+
     /**
      * Determine whether the Id of a chain exists in the blockchain
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void chainIdExistsTest() throws ApiException {
@@ -63,14 +50,12 @@ public class AllApiTest {
 
         // TODO: test validations
     }
-    
+
+
     /**
      * Create a new chain
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createChainTest() throws ApiException {
@@ -79,14 +64,12 @@ public class AllApiTest {
 
         // TODO: test validations
     }
-    
+
+
     /**
      * Create a new entry in the provided chain
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createEntryTest() throws ApiException {
@@ -96,14 +79,12 @@ public class AllApiTest {
 
         // TODO: test validations
     }
-    
+
+
     /**
      * Pre determine the Id of a chain request without anchoring it in the blockchain
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void determineChainIdTest() throws ApiException {
@@ -113,14 +94,12 @@ public class AllApiTest {
 
         // TODO: test validations
     }
-    
+
+
     /**
      * Pre determine the Id of an entry request without anchoring the entry
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void determineEntryIdTest() throws ApiException {
@@ -131,14 +110,12 @@ public class AllApiTest {
 
         // TODO: test validations
     }
-    
+
+
     /**
      * Get an existing entry in the provided chain
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void entryByIdTest() throws ApiException {
@@ -148,14 +125,12 @@ public class AllApiTest {
 
         // TODO: test validations
     }
-    
+
+
     /**
      * Get an existing entry in the provided chain
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void entryByRequestTest() throws ApiException {
@@ -165,14 +140,12 @@ public class AllApiTest {
 
         // TODO: test validations
     }
-    
+
+
     /**
      * Determine whether the Id of an entry exists in the blockchain
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void entryIdExistsTest() throws ApiException {
@@ -182,14 +155,12 @@ public class AllApiTest {
 
         // TODO: test validations
     }
-    
+
+
     /**
      * Get the first entry in the provided chain. This is the oldest entry also called the chain tail
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void firstEntryTest() throws ApiException {
@@ -198,14 +169,12 @@ public class AllApiTest {
 
         // TODO: test validations
     }
-    
+
+
     /**
      * Get the last entry in the provided chain. This is the most recent entry also called the chain head
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void lastEntryTest() throws ApiException {
@@ -214,14 +183,12 @@ public class AllApiTest {
 
         // TODO: test validations
     }
-    
+
+
     /**
      * Get the entry after the supplied entry Id (the next) in the provided chain
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void nextEntryByIdTest() throws ApiException {
@@ -231,14 +198,12 @@ public class AllApiTest {
 
         // TODO: test validations
     }
-    
+
+
     /**
      * Get the entry after the supplied entry Id (the next) in the provided chain
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void nextEntryByRequestTest() throws ApiException {
@@ -248,14 +213,12 @@ public class AllApiTest {
 
         // TODO: test validations
     }
-    
+
+
     /**
      * Get the entry before the supplied entry Id (the previous) in the provided chain
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void previousEntryByIdTest() throws ApiException {
@@ -265,14 +228,12 @@ public class AllApiTest {
 
         // TODO: test validations
     }
-    
+
+
     /**
      * Get the entry before the supplied entry Id (the previous) in the provided chain
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void previousEntryByRequestTest() throws ApiException {
@@ -282,5 +243,5 @@ public class AllApiTest {
 
         // TODO: test validations
     }
-    
+
 }

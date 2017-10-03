@@ -155,12 +155,7 @@
      * value: "None"
      * @const
      */
-    "None": "None",
-    /**
-     * value: "Ethereum"
-     * @const
-     */
-    "Ethereum": "Ethereum"  };
+    "None": "None"  };
 
   /**
    * Allowed values for the <code>dataStructure</code> property.
@@ -177,12 +172,7 @@
      * value: "Multichain"
      * @const
      */
-    "Multichain": "Multichain",
-    /**
-     * value: "Ethereum"
-     * @const
-     */
-    "Ethereum": "Ethereum"  };
+    "Multichain": "Multichain"  };
 
 
   return exports;

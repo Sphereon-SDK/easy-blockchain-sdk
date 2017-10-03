@@ -73,7 +73,7 @@ public class EntryApi {
         Object localVarPostBody = entry;
         
         // create path and map variables
-        String localVarPath = "/{context}/chains/{chainId}/entries"
+        String localVarPath = "/blockchain/easy/0.9/{context}/chains/{chainId}/entries"
             .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
             .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 
@@ -224,7 +224,7 @@ public class EntryApi {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/{context}/chains/{chainId}/entries/{entryId}"
+        String localVarPath = "/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}"
             .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
             .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()))
             .replaceAll("\\{" + "entryId" + "\\}", apiClient.escapeString(entryId.toString()));
@@ -376,7 +376,7 @@ public class EntryApi {
         Object localVarPostBody = entry;
         
         // create path and map variables
-        String localVarPath = "/{context}/chains/{chainId}/entries/entry"
+        String localVarPath = "/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry"
             .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
             .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 
@@ -525,7 +525,7 @@ public class EntryApi {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/{context}/chains/{chainId}/entries/first"
+        String localVarPath = "/blockchain/easy/0.9/{context}/chains/{chainId}/entries/first"
             .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
             .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 
@@ -661,7 +661,7 @@ public class EntryApi {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/{context}/chains/{chainId}/entries/last"
+        String localVarPath = "/blockchain/easy/0.9/{context}/chains/{chainId}/entries/last"
             .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
             .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 
@@ -799,7 +799,7 @@ public class EntryApi {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/{context}/chains/{chainId}/entries/{entryId}/next"
+        String localVarPath = "/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/next"
             .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
             .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()))
             .replaceAll("\\{" + "entryId" + "\\}", apiClient.escapeString(entryId.toString()));
@@ -951,7 +951,7 @@ public class EntryApi {
         Object localVarPostBody = entry;
         
         // create path and map variables
-        String localVarPath = "/{context}/chains/{chainId}/entries/entry/next"
+        String localVarPath = "/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/next"
             .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
             .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 
@@ -1102,7 +1102,7 @@ public class EntryApi {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/{context}/chains/{chainId}/entries/{entryId}/previous"
+        String localVarPath = "/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/previous"
             .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
             .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()))
             .replaceAll("\\{" + "entryId" + "\\}", apiClient.escapeString(entryId.toString()));
@@ -1254,7 +1254,7 @@ public class EntryApi {
         Object localVarPostBody = entry;
         
         // create path and map variables
-        String localVarPath = "/{context}/chains/{chainId}/entries/entry/previous"
+        String localVarPath = "/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/previous"
             .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
             .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 

@@ -29,7 +29,7 @@ public interface ContextApi {
   @Headers({
     "Content-Type:application/json;charset&#x3D;UTF-8"
   })
-  @POST("backends")
+  @POST("blockchain/easy/0.9/backends")
   Call<Backend> createBackend(
     @retrofit2.http.Body Backend backend
   );
@@ -43,7 +43,7 @@ public interface ContextApi {
   @Headers({
     "Content-Type:application/json;charset&#x3D;UTF-8"
   })
-  @POST("")
+  @POST("blockchain/easy/0.9/")
   Call<Context> createContext(
     @retrofit2.http.Body Context context
   );
@@ -57,7 +57,7 @@ public interface ContextApi {
   @Headers({
     "Content-Type:application/json"
   })
-  @DELETE("backends/{backendId}")
+  @DELETE("blockchain/easy/0.9/backends/{backendId}")
   Call<Void> deleteBackend(
     @retrofit2.http.Path("backendId") String backendId
   );
@@ -72,7 +72,7 @@ public interface ContextApi {
   @Headers({
     "Content-Type:application/json"
   })
-  @GET("backends/{backendId}/find")
+  @GET("blockchain/easy/0.9/backends/{backendId}/find")
   Call<List<Backend>> findBackends(
     @retrofit2.http.Path("backendId") String backendId, @retrofit2.http.Query("includePublic") Boolean includePublic
   );
@@ -87,7 +87,7 @@ public interface ContextApi {
   @Headers({
     "Content-Type:application/json"
   })
-  @GET("backends/{backendId}")
+  @GET("blockchain/easy/0.9/backends/{backendId}")
   Call<Backend> getBackend(
     @retrofit2.http.Path("backendId") String backendId, @retrofit2.http.Query("includePublic") Boolean includePublic
   );
@@ -101,7 +101,7 @@ public interface ContextApi {
   @Headers({
     "Content-Type:application/json"
   })
-  @GET("{context}")
+  @GET("blockchain/easy/0.9/{context}")
   Call<Context> getContext(
     @retrofit2.http.Path("context") String context
   );
@@ -114,7 +114,7 @@ public interface ContextApi {
   @Headers({
     "Content-Type:application/json"
   })
-  @GET("backends")
+  @GET("blockchain/easy/0.9/backends")
   Call<List<Backend>> listBackends();
     
 
