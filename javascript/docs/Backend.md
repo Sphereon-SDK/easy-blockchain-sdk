@@ -22,6 +22,8 @@ Name | Type | Description | Notes
 
 * `None` (value: `"None"`)
 
+* `Ethereum` (value: `"Ethereum"`)
+
 
 
 
@@ -32,6 +34,8 @@ Name | Type | Description | Notes
 * `Factom` (value: `"Factom"`)
 
 * `Multichain` (value: `"Multichain"`)
+
+* `Ethereum` (value: `"Ethereum"`)
 
 
 

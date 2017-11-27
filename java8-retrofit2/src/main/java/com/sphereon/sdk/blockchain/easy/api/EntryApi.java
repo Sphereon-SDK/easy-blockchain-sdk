@@ -34,7 +34,7 @@ public interface EntryApi {
   @Headers({
     "Content-Type:application/json;charset&#x3D;UTF-8"
   })
-  @POST("blockchain/easy/0.9/{context}/chains/{chainId}/entries")
+  @POST("{context}/chains/{chainId}/entries")
   Call<CommittedEntryResponse> createEntry(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Body Entry entry, @retrofit2.http.Query("currentAnchorTime") OffsetDateTime currentAnchorTime
   );
@@ -51,7 +51,7 @@ public interface EntryApi {
   @Headers({
     "Content-Type:application/json"
   })
-  @GET("blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}")
+  @GET("{context}/chains/{chainId}/entries/{entryId}")
   Call<AnchoredEntryResponse> entryById(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Path("entryId") String entryId, @retrofit2.http.Query("currentAnchorTime") OffsetDateTime currentAnchorTime
   );
@@ -68,7 +68,7 @@ public interface EntryApi {
   @Headers({
     "Content-Type:application/json"
   })
-  @POST("blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry")
+  @POST("{context}/chains/{chainId}/entries/entry")
   Call<AnchoredEntryResponse> entryByRequest(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Body Entry entry, @retrofit2.http.Query("currentAnchorTime") OffsetDateTime currentAnchorTime
   );
@@ -83,7 +83,7 @@ public interface EntryApi {
   @Headers({
     "Content-Type:application/json"
   })
-  @GET("blockchain/easy/0.9/{context}/chains/{chainId}/entries/first")
+  @GET("{context}/chains/{chainId}/entries/first")
   Call<AnchoredEntryResponse> firstEntry(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId
   );
@@ -98,7 +98,7 @@ public interface EntryApi {
   @Headers({
     "Content-Type:application/json"
   })
-  @GET("blockchain/easy/0.9/{context}/chains/{chainId}/entries/last")
+  @GET("{context}/chains/{chainId}/entries/last")
   Call<AnchoredEntryResponse> lastEntry(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId
   );
@@ -115,7 +115,7 @@ public interface EntryApi {
   @Headers({
     "Content-Type:application/json"
   })
-  @GET("blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/next")
+  @GET("{context}/chains/{chainId}/entries/{entryId}/next")
   Call<AnchoredEntryResponse> nextEntryById(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Path("entryId") String entryId, @retrofit2.http.Query("currentAnchorTime") OffsetDateTime currentAnchorTime
   );
@@ -132,7 +132,7 @@ public interface EntryApi {
   @Headers({
     "Content-Type:application/json"
   })
-  @POST("blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/next")
+  @POST("{context}/chains/{chainId}/entries/entry/next")
   Call<AnchoredEntryResponse> nextEntryByRequest(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Body Entry entry, @retrofit2.http.Query("currentAnchorTime") OffsetDateTime currentAnchorTime
   );
@@ -149,7 +149,7 @@ public interface EntryApi {
   @Headers({
     "Content-Type:application/json"
   })
-  @GET("blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/previous")
+  @GET("{context}/chains/{chainId}/entries/{entryId}/previous")
   Call<AnchoredEntryResponse> previousEntryById(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Path("entryId") String entryId, @retrofit2.http.Query("currentAnchorTime") OffsetDateTime currentAnchorTime
   );
@@ -166,7 +166,7 @@ public interface EntryApi {
   @Headers({
     "Content-Type:application/json"
   })
-  @POST("blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/previous")
+  @POST("{context}/chains/{chainId}/entries/entry/previous")
   Call<AnchoredEntryResponse> previousEntryByRequest(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Body Entry entry, @retrofit2.http.Query("currentAnchorTime") OffsetDateTime currentAnchorTime
   );

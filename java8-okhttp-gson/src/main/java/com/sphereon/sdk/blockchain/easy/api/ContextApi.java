@@ -68,7 +68,7 @@ public class ContextApi {
         Object localVarPostBody = backend;
         
         // create path and map variables
-        String localVarPath = "/blockchain/easy/0.9/backends";
+        String localVarPath = "/backends";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -193,7 +193,7 @@ public class ContextApi {
         Object localVarPostBody = context;
         
         // create path and map variables
-        String localVarPath = "/blockchain/easy/0.9/";
+        String localVarPath = "/";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -318,7 +318,7 @@ public class ContextApi {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/blockchain/easy/0.9/backends/{backendId}"
+        String localVarPath = "/backends/{backendId}"
             .replaceAll("\\{" + "backendId" + "\\}", apiClient.escapeString(backendId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -441,7 +441,7 @@ public class ContextApi {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/blockchain/easy/0.9/backends/{backendId}/find"
+        String localVarPath = "/backends/{backendId}/find"
             .replaceAll("\\{" + "backendId" + "\\}", apiClient.escapeString(backendId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -573,7 +573,7 @@ public class ContextApi {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/blockchain/easy/0.9/backends/{backendId}"
+        String localVarPath = "/backends/{backendId}"
             .replaceAll("\\{" + "backendId" + "\\}", apiClient.escapeString(backendId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -704,7 +704,7 @@ public class ContextApi {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/blockchain/easy/0.9/{context}"
+        String localVarPath = "/{context}"
             .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -829,7 +829,7 @@ public class ContextApi {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/blockchain/easy/0.9/backends";
+        String localVarPath = "/backends";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 

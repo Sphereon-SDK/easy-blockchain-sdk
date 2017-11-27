@@ -27,7 +27,7 @@ import java.io.IOException;
  * External ID - metadata field
  */
 @ApiModel(description = "External ID - metadata field")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-09-27T14:00:55.227+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-27T12:46:52.885+01:00")
 public class ExternalId {
   @SerializedName("value")
   private byte[] value = null;

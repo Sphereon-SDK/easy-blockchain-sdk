@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * Access
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-09-27T14:00:51.221+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-27T12:46:49.139+01:00")
 public class Access {
   /**
    * Gets or Sets modes

@@ -213,7 +213,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (chain == null)
                 throw new ApiException(400, "Missing required parameter 'chain' when calling ChainApi->CreateChain");
 
-            var localVarPath = "/blockchain/easy/0.9/{context}/chains";
+            var localVarPath = "/{context}/chains";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -300,7 +300,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (chain == null)
                 throw new ApiException(400, "Missing required parameter 'chain' when calling ChainApi->CreateChain");
 
-            var localVarPath = "/blockchain/easy/0.9/{context}/chains";
+            var localVarPath = "/{context}/chains";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);

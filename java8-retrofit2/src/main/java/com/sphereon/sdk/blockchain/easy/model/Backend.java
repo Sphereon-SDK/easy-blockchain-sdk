@@ -32,7 +32,7 @@ import java.util.List;
  * Backend
  */
 @ApiModel(description = "Backend")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-09-27T14:00:55.227+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-27T12:46:52.885+01:00")
 public class Backend {
   @SerializedName("rpcProviders")
   private List<RpcProvider> rpcProviders = null;
@@ -50,7 +50,9 @@ public class Backend {
   public enum ImplementationEnum {
     BITCOIN("Bitcoin"),
     
-    NONE("None");
+    NONE("None"),
+    
+    ETHEREUM("Ethereum");
 
     private String value;
 
@@ -106,7 +108,9 @@ public class Backend {
   public enum DataStructureEnum {
     FACTOM("Factom"),
     
-    MULTICHAIN("Multichain");
+    MULTICHAIN("Multichain"),
+    
+    ETHEREUM("Ethereum");
 
     private String value;
 

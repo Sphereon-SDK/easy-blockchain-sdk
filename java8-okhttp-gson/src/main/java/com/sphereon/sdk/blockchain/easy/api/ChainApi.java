@@ -69,7 +69,7 @@ public class ChainApi {
         Object localVarPostBody = chain;
         
         // create path and map variables
-        String localVarPath = "/blockchain/easy/0.9/{context}/chains"
+        String localVarPath = "/{context}/chains"
             .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

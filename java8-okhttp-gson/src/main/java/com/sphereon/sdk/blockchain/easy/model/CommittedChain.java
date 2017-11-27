@@ -28,7 +28,7 @@ import java.io.IOException;
  * Commited Chain
  */
 @ApiModel(description = "Commited Chain")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-09-27T14:00:47.342+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-27T12:46:45.242+01:00")
 public class CommittedChain {
   @SerializedName("chain")
   private Chain chain = null;

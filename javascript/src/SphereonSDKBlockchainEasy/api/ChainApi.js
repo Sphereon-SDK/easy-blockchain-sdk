@@ -93,7 +93,7 @@
       var returnType = CommittedChainResponse;
 
       return this.apiClient.callApi(
-        '/blockchain/easy/0.9/{context}/chains', 'POST',
+        '/{context}/chains', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

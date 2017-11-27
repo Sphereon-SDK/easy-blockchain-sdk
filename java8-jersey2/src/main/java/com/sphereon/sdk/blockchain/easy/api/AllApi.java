@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-09-27T14:00:51.221+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-27T12:46:49.139+01:00")
 public class AllApi {
   private ApiClient apiClient;
 
@@ -65,7 +65,7 @@ public class AllApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/{context}/chains/id/{chainId}"
+    String localVarPath = "/{context}/chains/id/{chainId}"
       .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
       .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 
@@ -108,7 +108,7 @@ public class AllApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/backends";
+    String localVarPath = "/backends";
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -155,7 +155,7 @@ public class AllApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/{context}/chains"
+    String localVarPath = "/{context}/chains"
       .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()));
 
     // query params
@@ -197,7 +197,7 @@ public class AllApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/";
+    String localVarPath = "/";
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -251,7 +251,7 @@ public class AllApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/{context}/chains/{chainId}/entries"
+    String localVarPath = "/{context}/chains/{chainId}/entries"
       .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
       .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 
@@ -294,7 +294,7 @@ public class AllApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/backends/{backendId}"
+    String localVarPath = "/backends/{backendId}"
       .replaceAll("\\{" + "backendId" + "\\}", apiClient.escapeString(backendId.toString()));
 
     // query params
@@ -343,7 +343,7 @@ public class AllApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/{context}/chains/id"
+    String localVarPath = "/{context}/chains/id"
       .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()));
 
     // query params
@@ -399,7 +399,7 @@ public class AllApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/{context}/chains/id/{chainId}/entries"
+    String localVarPath = "/{context}/chains/id/{chainId}/entries"
       .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
       .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 
@@ -456,7 +456,7 @@ public class AllApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}"
+    String localVarPath = "/{context}/chains/{chainId}/entries/{entryId}"
       .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
       .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()))
       .replaceAll("\\{" + "entryId" + "\\}", apiClient.escapeString(entryId.toString()));
@@ -514,7 +514,7 @@ public class AllApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry"
+    String localVarPath = "/{context}/chains/{chainId}/entries/entry"
       .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
       .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 
@@ -570,7 +570,7 @@ public class AllApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/{context}/chains/id/{chainId}/entries/{entryId}"
+    String localVarPath = "/{context}/chains/id/{chainId}/entries/{entryId}"
       .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
       .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()))
       .replaceAll("\\{" + "entryId" + "\\}", apiClient.escapeString(entryId.toString()));
@@ -615,7 +615,7 @@ public class AllApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/backends/{backendId}/find"
+    String localVarPath = "/backends/{backendId}/find"
       .replaceAll("\\{" + "backendId" + "\\}", apiClient.escapeString(backendId.toString()));
 
     // query params
@@ -664,7 +664,7 @@ public class AllApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/{context}/chains/{chainId}/entries/first"
+    String localVarPath = "/{context}/chains/{chainId}/entries/first"
       .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
       .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 
@@ -708,7 +708,7 @@ public class AllApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/backends/{backendId}"
+    String localVarPath = "/backends/{backendId}"
       .replaceAll("\\{" + "backendId" + "\\}", apiClient.escapeString(backendId.toString()));
 
     // query params
@@ -751,7 +751,7 @@ public class AllApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/{context}"
+    String localVarPath = "/{context}"
       .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()));
 
     // query params
@@ -799,7 +799,7 @@ public class AllApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/{context}/chains/{chainId}/entries/last"
+    String localVarPath = "/{context}/chains/{chainId}/entries/last"
       .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
       .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 
@@ -836,7 +836,7 @@ public class AllApi {
     Object localVarPostBody = null;
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/backends";
+    String localVarPath = "/backends";
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -890,7 +890,7 @@ public class AllApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/next"
+    String localVarPath = "/{context}/chains/{chainId}/entries/{entryId}/next"
       .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
       .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()))
       .replaceAll("\\{" + "entryId" + "\\}", apiClient.escapeString(entryId.toString()));
@@ -948,7 +948,7 @@ public class AllApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/next"
+    String localVarPath = "/{context}/chains/{chainId}/entries/entry/next"
       .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
       .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 
@@ -1005,7 +1005,7 @@ public class AllApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/previous"
+    String localVarPath = "/{context}/chains/{chainId}/entries/{entryId}/previous"
       .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
       .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()))
       .replaceAll("\\{" + "entryId" + "\\}", apiClient.escapeString(entryId.toString()));
@@ -1063,7 +1063,7 @@ public class AllApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/previous"
+    String localVarPath = "/{context}/chains/{chainId}/entries/entry/previous"
       .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
       .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 

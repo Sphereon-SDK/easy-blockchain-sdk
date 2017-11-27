@@ -70,7 +70,7 @@ public class IdApi {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/blockchain/easy/0.9/{context}/chains/id/{chainId}"
+        String localVarPath = "/{context}/chains/id/{chainId}"
             .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
             .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 
@@ -207,7 +207,7 @@ public class IdApi {
         Object localVarPostBody = chain;
         
         // create path and map variables
-        String localVarPath = "/blockchain/easy/0.9/{context}/chains/id"
+        String localVarPath = "/{context}/chains/id"
             .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -349,7 +349,7 @@ public class IdApi {
         Object localVarPostBody = entry;
         
         // create path and map variables
-        String localVarPath = "/blockchain/easy/0.9/{context}/chains/id/{chainId}/entries"
+        String localVarPath = "/{context}/chains/id/{chainId}/entries"
             .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
             .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 
@@ -499,7 +499,7 @@ public class IdApi {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/blockchain/easy/0.9/{context}/chains/id/{chainId}/entries/{entryId}"
+        String localVarPath = "/{context}/chains/id/{chainId}/entries/{entryId}"
             .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
             .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()))
             .replaceAll("\\{" + "entryId" + "\\}", apiClient.escapeString(entryId.toString()));

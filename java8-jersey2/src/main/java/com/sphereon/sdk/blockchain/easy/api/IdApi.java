@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-09-27T14:00:51.221+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-27T12:46:49.139+01:00")
 public class IdApi {
   private ApiClient apiClient;
 
@@ -59,7 +59,7 @@ public class IdApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/{context}/chains/id/{chainId}"
+    String localVarPath = "/{context}/chains/id/{chainId}"
       .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
       .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 
@@ -109,7 +109,7 @@ public class IdApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/{context}/chains/id"
+    String localVarPath = "/{context}/chains/id"
       .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()));
 
     // query params
@@ -165,7 +165,7 @@ public class IdApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/{context}/chains/id/{chainId}/entries"
+    String localVarPath = "/{context}/chains/id/{chainId}/entries"
       .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
       .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()));
 
@@ -221,7 +221,7 @@ public class IdApi {
     }
     
     // create path and map variables
-    String localVarPath = "/blockchain/easy/0.9/{context}/chains/id/{chainId}/entries/{entryId}"
+    String localVarPath = "/{context}/chains/id/{chainId}/entries/{entryId}"
       .replaceAll("\\{" + "context" + "\\}", apiClient.escapeString(context.toString()))
       .replaceAll("\\{" + "chainId" + "\\}", apiClient.escapeString(chainId.toString()))
       .replaceAll("\\{" + "entryId" + "\\}", apiClient.escapeString(entryId.toString()));

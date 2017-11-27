@@ -112,7 +112,7 @@ public class ApiClient {
      */
     public static final String LENIENT_DATETIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
 
-    private String basePath = "https://gw.api.cloud.sphereon.com";
+    private String basePath = "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9";
     private boolean lenientOnJson = false;
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
@@ -180,7 +180,7 @@ public class ApiClient {
     /**
      * Set base path
      *
-     * @param basePath Base path of the URL (e.g https://gw.api.cloud.sphereon.com
+     * @param basePath Base path of the URL (e.g https://gw.api.cloud.sphereon.com/blockchain/easy/0.9
      * @return An instance of OkHttpClient
      */
     public ApiClient setBasePath(String basePath) {

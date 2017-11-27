@@ -31,7 +31,7 @@ public interface IdApi {
   @Headers({
     "Content-Type:application/json"
   })
-  @GET("blockchain/easy/0.9/{context}/chains/id/{chainId}")
+  @GET("{context}/chains/id/{chainId}")
   Call<IdResponse> chainIdExists(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId
   );
@@ -47,7 +47,7 @@ public interface IdApi {
   @Headers({
     "Content-Type:application/json;charset&#x3D;UTF-8"
   })
-  @POST("blockchain/easy/0.9/{context}/chains/id")
+  @POST("{context}/chains/id")
   Call<IdResponse> determineChainId(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Body Chain chain, @retrofit2.http.Query("checkExistence") Boolean checkExistence
   );
@@ -64,7 +64,7 @@ public interface IdApi {
   @Headers({
     "Content-Type:application/json;charset&#x3D;UTF-8"
   })
-  @POST("blockchain/easy/0.9/{context}/chains/id/{chainId}/entries")
+  @POST("{context}/chains/id/{chainId}/entries")
   Call<IdResponse> determineEntryId(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Body Entry entry, @retrofit2.http.Query("checkExistence") Boolean checkExistence
   );
@@ -80,7 +80,7 @@ public interface IdApi {
   @Headers({
     "Content-Type:application/json"
   })
-  @GET("blockchain/easy/0.9/{context}/chains/id/{chainId}/entries/{entryId}")
+  @GET("{context}/chains/id/{chainId}/entries/{entryId}")
   Call<IdResponse> entryIdExists(
     @retrofit2.http.Path("context") String context, @retrofit2.http.Path("chainId") String chainId, @retrofit2.http.Path("entryId") String entryId
   );

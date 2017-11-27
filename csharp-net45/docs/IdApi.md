@@ -1,13 +1,13 @@
 # Sphereon.SDK.Blockchain.Easy.Api.IdApi
 
-All URIs are relative to *https://gw.api.cloud.sphereon.com*
+All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.9*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ChainIdExists**](IdApi.md#chainidexists) | **GET** /blockchain/easy/0.9/{context}/chains/id/{chainId} | Determine whether the Id of a chain exists in the blockchain
-[**DetermineChainId**](IdApi.md#determinechainid) | **POST** /blockchain/easy/0.9/{context}/chains/id | Pre determine the Id of a chain request without anchoring it in the blockchain
-[**DetermineEntryId**](IdApi.md#determineentryid) | **POST** /blockchain/easy/0.9/{context}/chains/id/{chainId}/entries | Pre determine the Id of an entry request without anchoring the entry
-[**EntryIdExists**](IdApi.md#entryidexists) | **GET** /blockchain/easy/0.9/{context}/chains/id/{chainId}/entries/{entryId} | Determine whether the Id of an entry exists in the blockchain
+[**ChainIdExists**](IdApi.md#chainidexists) | **GET** /{context}/chains/id/{chainId} | Determine whether the Id of a chain exists in the blockchain
+[**DetermineChainId**](IdApi.md#determinechainid) | **POST** /{context}/chains/id | Pre determine the Id of a chain request without anchoring it in the blockchain
+[**DetermineEntryId**](IdApi.md#determineentryid) | **POST** /{context}/chains/id/{chainId}/entries | Pre determine the Id of an entry request without anchoring the entry
+[**EntryIdExists**](IdApi.md#entryidexists) | **GET** /{context}/chains/id/{chainId}/entries/{entryId} | Determine whether the Id of an entry exists in the blockchain
 
 
 <a name="chainidexists"></a>

@@ -86,7 +86,7 @@
       var returnType = Backend;
 
       return this.apiClient.callApi(
-        '/blockchain/easy/0.9/backends', 'POST',
+        '/backends', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -130,7 +130,7 @@
       var returnType = Context;
 
       return this.apiClient.callApi(
-        '/blockchain/easy/0.9/', 'POST',
+        '/', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -174,7 +174,7 @@
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/blockchain/easy/0.9/backends/{backendId}', 'DELETE',
+        '/backends/{backendId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -223,7 +223,7 @@
       var returnType = [Backend];
 
       return this.apiClient.callApi(
-        '/blockchain/easy/0.9/backends/{backendId}/find', 'GET',
+        '/backends/{backendId}/find', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -272,7 +272,7 @@
       var returnType = Backend;
 
       return this.apiClient.callApi(
-        '/blockchain/easy/0.9/backends/{backendId}', 'GET',
+        '/backends/{backendId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -317,7 +317,7 @@
       var returnType = Context;
 
       return this.apiClient.callApi(
-        '/blockchain/easy/0.9/{context}', 'GET',
+        '/{context}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -355,7 +355,7 @@
       var returnType = [Backend];
 
       return this.apiClient.callApi(
-        '/blockchain/easy/0.9/backends', 'GET',
+        '/backends', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

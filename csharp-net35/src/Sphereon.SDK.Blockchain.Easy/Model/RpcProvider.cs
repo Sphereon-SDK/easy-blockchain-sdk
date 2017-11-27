@@ -86,15 +86,17 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         /// <param name="OwnerType">OwnerType.</param>
         /// <param name="Password">Password.</param>
         /// <param name="Access">Access.</param>
+        /// <param name="ResourceFiles">ResourceFiles.</param>
         /// <param name="Host">Host.</param>
         /// <param name="Id">Id.</param>
         /// <param name="Type">Type.</param>
         /// <param name="Username">Username.</param>
-        public RpcProvider(OwnerTypeEnum? OwnerType = default(OwnerTypeEnum?), string Password = default(string), Access Access = default(Access), string Host = default(string), string Id = default(string), TypeEnum? Type = default(TypeEnum?), string Username = default(string))
+        public RpcProvider(OwnerTypeEnum? OwnerType = default(OwnerTypeEnum?), string Password = default(string), Access Access = default(Access), Dictionary<string, string> ResourceFiles = default(Dictionary<string, string>), string Host = default(string), string Id = default(string), TypeEnum? Type = default(TypeEnum?), string Username = default(string))
         {
             this.OwnerType = OwnerType;
             this.Password = Password;
             this.Access = Access;
+            this.ResourceFiles = ResourceFiles;
             this.Host = Host;
             this.Id = Id;
             this.Type = Type;
@@ -113,6 +115,12 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         /// </summary>
         [DataMember(Name="access", EmitDefaultValue=false)]
         public Access Access { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ResourceFiles
+        /// </summary>
+        [DataMember(Name="resourceFiles", EmitDefaultValue=false)]
+        public Dictionary<string, string> ResourceFiles { get; set; }
 
         /// <summary>
         /// Gets or Sets Host
@@ -144,6 +152,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             sb.Append("  OwnerType: ").Append(OwnerType).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Access: ").Append(Access).Append("\n");
+            sb.Append("  ResourceFiles: ").Append(ResourceFiles).Append("\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
@@ -200,6 +209,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                     this.Access.Equals(other.Access)
                 ) && 
                 (
+                    this.ResourceFiles == other.ResourceFiles ||
+                    this.ResourceFiles != null &&
+                    this.ResourceFiles.SequenceEqual(other.ResourceFiles)
+                ) && 
+                (
                     this.Host == other.Host ||
                     this.Host != null &&
                     this.Host.Equals(other.Host)
@@ -238,6 +252,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                     hash = hash * 59 + this.Password.GetHashCode();
                 if (this.Access != null)
                     hash = hash * 59 + this.Access.GetHashCode();
+                if (this.ResourceFiles != null)
+                    hash = hash * 59 + this.ResourceFiles.GetHashCode();
                 if (this.Host != null)
                     hash = hash * 59 + this.Host.GetHashCode();
                 if (this.Id != null)

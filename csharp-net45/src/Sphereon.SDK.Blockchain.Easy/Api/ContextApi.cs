@@ -460,7 +460,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (backend == null)
                 throw new ApiException(400, "Missing required parameter 'backend' when calling ContextApi->CreateBackend");
 
-            var localVarPath = "/blockchain/easy/0.9/backends";
+            var localVarPath = "/backends";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -541,7 +541,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (backend == null)
                 throw new ApiException(400, "Missing required parameter 'backend' when calling ContextApi->CreateBackend");
 
-            var localVarPath = "/blockchain/easy/0.9/backends";
+            var localVarPath = "/backends";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -621,7 +621,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (context == null)
                 throw new ApiException(400, "Missing required parameter 'context' when calling ContextApi->CreateContext");
 
-            var localVarPath = "/blockchain/easy/0.9/";
+            var localVarPath = "/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -702,7 +702,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (context == null)
                 throw new ApiException(400, "Missing required parameter 'context' when calling ContextApi->CreateContext");
 
-            var localVarPath = "/blockchain/easy/0.9/";
+            var localVarPath = "/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -781,7 +781,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (backendId == null)
                 throw new ApiException(400, "Missing required parameter 'backendId' when calling ContextApi->DeleteBackend");
 
-            var localVarPath = "/blockchain/easy/0.9/backends/{backendId}";
+            var localVarPath = "/backends/{backendId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -854,7 +854,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (backendId == null)
                 throw new ApiException(400, "Missing required parameter 'backendId' when calling ContextApi->DeleteBackend");
 
-            var localVarPath = "/blockchain/easy/0.9/backends/{backendId}";
+            var localVarPath = "/backends/{backendId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -929,7 +929,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (backendId == null)
                 throw new ApiException(400, "Missing required parameter 'backendId' when calling ContextApi->FindBackends");
 
-            var localVarPath = "/blockchain/easy/0.9/backends/{backendId}/find";
+            var localVarPath = "/backends/{backendId}/find";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1006,7 +1006,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (backendId == null)
                 throw new ApiException(400, "Missing required parameter 'backendId' when calling ContextApi->FindBackends");
 
-            var localVarPath = "/blockchain/easy/0.9/backends/{backendId}/find";
+            var localVarPath = "/backends/{backendId}/find";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1082,7 +1082,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (backendId == null)
                 throw new ApiException(400, "Missing required parameter 'backendId' when calling ContextApi->GetBackend");
 
-            var localVarPath = "/blockchain/easy/0.9/backends/{backendId}";
+            var localVarPath = "/backends/{backendId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1159,7 +1159,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (backendId == null)
                 throw new ApiException(400, "Missing required parameter 'backendId' when calling ContextApi->GetBackend");
 
-            var localVarPath = "/blockchain/easy/0.9/backends/{backendId}";
+            var localVarPath = "/backends/{backendId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1233,7 +1233,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (context == null)
                 throw new ApiException(400, "Missing required parameter 'context' when calling ContextApi->GetContext");
 
-            var localVarPath = "/blockchain/easy/0.9/{context}";
+            var localVarPath = "/{context}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1307,7 +1307,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (context == null)
                 throw new ApiException(400, "Missing required parameter 'context' when calling ContextApi->GetContext");
 
-            var localVarPath = "/blockchain/easy/0.9/{context}";
+            var localVarPath = "/{context}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1375,7 +1375,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         public ApiResponse< List<Backend> > ListBackendsWithHttpInfo ()
         {
 
-            var localVarPath = "/blockchain/easy/0.9/backends";
+            var localVarPath = "/backends";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1443,7 +1443,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         public async System.Threading.Tasks.Task<ApiResponse<List<Backend>>> ListBackendsAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "/blockchain/easy/0.9/backends";
+            var localVarPath = "/backends";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);

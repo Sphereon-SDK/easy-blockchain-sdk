@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **ownerType** | **String** |  | [optional] 
 **password** | **String** |  | [optional] 
 **access** | [**Access**](Access.md) |  | [optional] 
+**resourceFiles** | **{String: String}** |  | [optional] 
 **host** | **String** |  | [optional] 
 **id** | **String** |  | [optional] 
 **type** | **String** |  | [optional] 

@@ -1,18 +1,18 @@
 # EntryApi
 
-All URIs are relative to *https://gw.api.cloud.sphereon.com*
+All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.9*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createEntry**](EntryApi.md#createEntry) | **POST** /blockchain/easy/0.9/{context}/chains/{chainId}/entries | Create a new entry in the provided chain
-[**entryById**](EntryApi.md#entryById) | **GET** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
-[**entryByRequest**](EntryApi.md#entryByRequest) | **POST** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
-[**firstEntry**](EntryApi.md#firstEntry) | **GET** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
-[**lastEntry**](EntryApi.md#lastEntry) | **GET** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
-[**nextEntryById**](EntryApi.md#nextEntryById) | **GET** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
-[**nextEntryByRequest**](EntryApi.md#nextEntryByRequest) | **POST** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
-[**previousEntryById**](EntryApi.md#previousEntryById) | **GET** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
-[**previousEntryByRequest**](EntryApi.md#previousEntryByRequest) | **POST** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
+[**createEntry**](EntryApi.md#createEntry) | **POST** /{context}/chains/{chainId}/entries | Create a new entry in the provided chain
+[**entryById**](EntryApi.md#entryById) | **GET** /{context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
+[**entryByRequest**](EntryApi.md#entryByRequest) | **POST** /{context}/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
+[**firstEntry**](EntryApi.md#firstEntry) | **GET** /{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
+[**lastEntry**](EntryApi.md#lastEntry) | **GET** /{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
+[**nextEntryById**](EntryApi.md#nextEntryById) | **GET** /{context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
+[**nextEntryByRequest**](EntryApi.md#nextEntryByRequest) | **POST** /{context}/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
+[**previousEntryById**](EntryApi.md#previousEntryById) | **GET** /{context}/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
+[**previousEntryByRequest**](EntryApi.md#previousEntryByRequest) | **POST** /{context}/chains/{chainId}/entries/entry/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
 
 
 <a name="createEntry"></a>

@@ -23,12 +23,15 @@ import com.sphereon.sdk.blockchain.easy.model.Access;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * RpcProvider
  */
 @ApiModel(description = "RpcProvider")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-09-27T14:00:55.227+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-27T12:46:52.885+01:00")
 public class RpcProvider {
   /**
    * Gets or Sets ownerType
@@ -85,6 +88,9 @@ public class RpcProvider {
 
   @SerializedName("access")
   private Access access = null;
+
+  @SerializedName("resourceFiles")
+  private Map<String, String> resourceFiles = null;
 
   @SerializedName("host")
   private String host = null;
@@ -199,6 +205,32 @@ public class RpcProvider {
     this.access = access;
   }
 
+  public RpcProvider resourceFiles(Map<String, String> resourceFiles) {
+    this.resourceFiles = resourceFiles;
+    return this;
+  }
+
+  public RpcProvider putResourceFilesItem(String key, String resourceFilesItem) {
+    if (this.resourceFiles == null) {
+      this.resourceFiles = new HashMap<String, String>();
+    }
+    this.resourceFiles.put(key, resourceFilesItem);
+    return this;
+  }
+
+   /**
+   * Get resourceFiles
+   * @return resourceFiles
+  **/
+  @ApiModelProperty(value = "")
+  public Map<String, String> getResourceFiles() {
+    return resourceFiles;
+  }
+
+  public void setResourceFiles(Map<String, String> resourceFiles) {
+    this.resourceFiles = resourceFiles;
+  }
+
   public RpcProvider host(String host) {
     this.host = host;
     return this;
@@ -284,6 +316,7 @@ public class RpcProvider {
     return Objects.equals(this.ownerType, rpcProvider.ownerType) &&
         Objects.equals(this.password, rpcProvider.password) &&
         Objects.equals(this.access, rpcProvider.access) &&
+        Objects.equals(this.resourceFiles, rpcProvider.resourceFiles) &&
         Objects.equals(this.host, rpcProvider.host) &&
         Objects.equals(this.id, rpcProvider.id) &&
         Objects.equals(this.type, rpcProvider.type) &&
@@ -292,7 +325,7 @@ public class RpcProvider {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ownerType, password, access, host, id, type, username);
+    return Objects.hash(ownerType, password, access, resourceFiles, host, id, type, username);
   }
 
 
@@ -304,6 +337,7 @@ public class RpcProvider {
     sb.append("    ownerType: ").append(toIndentedString(ownerType)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    access: ").append(toIndentedString(access)).append("\n");
+    sb.append("    resourceFiles: ").append(toIndentedString(resourceFiles)).append("\n");
     sb.append("    host: ").append(toIndentedString(host)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");

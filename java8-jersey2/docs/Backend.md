@@ -21,6 +21,7 @@ Name | Value
 ---- | -----
 BITCOIN | &quot;Bitcoin&quot;
 NONE | &quot;None&quot;
+ETHEREUM | &quot;Ethereum&quot;
 
 
 <a name="DataStructureEnum"></a>
@@ -29,6 +30,7 @@ Name | Value
 ---- | -----
 FACTOM | &quot;Factom&quot;
 MULTICHAIN | &quot;Multichain&quot;
+ETHEREUM | &quot;Ethereum&quot;
 
 
 

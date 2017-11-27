@@ -104,7 +104,7 @@
       var returnType = CommittedEntryResponse;
 
       return this.apiClient.callApi(
-        '/blockchain/easy/0.9/{context}/chains/{chainId}/entries', 'POST',
+        '/{context}/chains/{chainId}/entries', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -167,7 +167,7 @@
       var returnType = AnchoredEntryResponse;
 
       return this.apiClient.callApi(
-        '/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}', 'GET',
+        '/{context}/chains/{chainId}/entries/{entryId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -229,7 +229,7 @@
       var returnType = AnchoredEntryResponse;
 
       return this.apiClient.callApi(
-        '/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry', 'POST',
+        '/{context}/chains/{chainId}/entries/entry', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -281,7 +281,7 @@
       var returnType = AnchoredEntryResponse;
 
       return this.apiClient.callApi(
-        '/blockchain/easy/0.9/{context}/chains/{chainId}/entries/first', 'GET',
+        '/{context}/chains/{chainId}/entries/first', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -333,7 +333,7 @@
       var returnType = AnchoredEntryResponse;
 
       return this.apiClient.callApi(
-        '/blockchain/easy/0.9/{context}/chains/{chainId}/entries/last', 'GET',
+        '/{context}/chains/{chainId}/entries/last', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -396,7 +396,7 @@
       var returnType = AnchoredEntryResponse;
 
       return this.apiClient.callApi(
-        '/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/next', 'GET',
+        '/{context}/chains/{chainId}/entries/{entryId}/next', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -458,7 +458,7 @@
       var returnType = AnchoredEntryResponse;
 
       return this.apiClient.callApi(
-        '/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/next', 'POST',
+        '/{context}/chains/{chainId}/entries/entry/next', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -521,7 +521,7 @@
       var returnType = AnchoredEntryResponse;
 
       return this.apiClient.callApi(
-        '/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/previous', 'GET',
+        '/{context}/chains/{chainId}/entries/{entryId}/previous', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -583,7 +583,7 @@
       var returnType = AnchoredEntryResponse;
 
       return this.apiClient.callApi(
-        '/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/previous', 'POST',
+        '/{context}/chains/{chainId}/entries/entry/previous', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

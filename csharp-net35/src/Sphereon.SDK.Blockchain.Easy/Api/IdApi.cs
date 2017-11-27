@@ -265,7 +265,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (chainId == null)
                 throw new ApiException(400, "Missing required parameter 'chainId' when calling IdApi->ChainIdExists");
 
-            var localVarPath = "/blockchain/easy/0.9/{context}/chains/id/{chainId}";
+            var localVarPath = "/{context}/chains/id/{chainId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -346,7 +346,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (chain == null)
                 throw new ApiException(400, "Missing required parameter 'chain' when calling IdApi->DetermineChainId");
 
-            var localVarPath = "/blockchain/easy/0.9/{context}/chains/id";
+            var localVarPath = "/{context}/chains/id";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -440,7 +440,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (entry == null)
                 throw new ApiException(400, "Missing required parameter 'entry' when calling IdApi->DetermineEntryId");
 
-            var localVarPath = "/blockchain/easy/0.9/{context}/chains/id/{chainId}/entries";
+            var localVarPath = "/{context}/chains/id/{chainId}/entries";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -533,7 +533,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (entryId == null)
                 throw new ApiException(400, "Missing required parameter 'entryId' when calling IdApi->EntryIdExists");
 
-            var localVarPath = "/blockchain/easy/0.9/{context}/chains/id/{chainId}/entries/{entryId}";
+            var localVarPath = "/{context}/chains/id/{chainId}/entries/{entryId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);

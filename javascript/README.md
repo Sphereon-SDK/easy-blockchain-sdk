@@ -122,52 +122,52 @@ api.chainIdExists(context, chainId, callback);
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://gw.api.cloud.sphereon.com*
+All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.9*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*EasyBlockchainApi.AllApi* | [**chainIdExists**](docs/AllApi.md#chainIdExists) | **GET** /blockchain/easy/0.9/{context}/chains/id/{chainId} | Determine whether the Id of a chain exists in the blockchain
-*EasyBlockchainApi.AllApi* | [**createBackend**](docs/AllApi.md#createBackend) | **POST** /blockchain/easy/0.9/backends | Create a new backend
-*EasyBlockchainApi.AllApi* | [**createChain**](docs/AllApi.md#createChain) | **POST** /blockchain/easy/0.9/{context}/chains | Create a new chain
-*EasyBlockchainApi.AllApi* | [**createContext**](docs/AllApi.md#createContext) | **POST** /blockchain/easy/0.9/ | Create a new context
-*EasyBlockchainApi.AllApi* | [**createEntry**](docs/AllApi.md#createEntry) | **POST** /blockchain/easy/0.9/{context}/chains/{chainId}/entries | Create a new entry in the provided chain
-*EasyBlockchainApi.AllApi* | [**deleteBackend**](docs/AllApi.md#deleteBackend) | **DELETE** /blockchain/easy/0.9/backends/{backendId} | Delete backend by id (not by ledgername)
-*EasyBlockchainApi.AllApi* | [**determineChainId**](docs/AllApi.md#determineChainId) | **POST** /blockchain/easy/0.9/{context}/chains/id | Pre determine the Id of a chain request without anchoring it in the blockchain
-*EasyBlockchainApi.AllApi* | [**determineEntryId**](docs/AllApi.md#determineEntryId) | **POST** /blockchain/easy/0.9/{context}/chains/id/{chainId}/entries | Pre determine the Id of an entry request without anchoring the entry
-*EasyBlockchainApi.AllApi* | [**entryById**](docs/AllApi.md#entryById) | **GET** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
-*EasyBlockchainApi.AllApi* | [**entryByRequest**](docs/AllApi.md#entryByRequest) | **POST** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
-*EasyBlockchainApi.AllApi* | [**entryIdExists**](docs/AllApi.md#entryIdExists) | **GET** /blockchain/easy/0.9/{context}/chains/id/{chainId}/entries/{entryId} | Determine whether the Id of an entry exists in the blockchain
-*EasyBlockchainApi.AllApi* | [**findBackends**](docs/AllApi.md#findBackends) | **GET** /blockchain/easy/0.9/backends/{backendId}/find | Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
-*EasyBlockchainApi.AllApi* | [**firstEntry**](docs/AllApi.md#firstEntry) | **GET** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
-*EasyBlockchainApi.AllApi* | [**getBackend**](docs/AllApi.md#getBackend) | **GET** /blockchain/easy/0.9/backends/{backendId} | Get existing backend by id (not by ledgername). Optionally including public backend of others
-*EasyBlockchainApi.AllApi* | [**getContext**](docs/AllApi.md#getContext) | **GET** /blockchain/easy/0.9/{context} | Get an existing context
-*EasyBlockchainApi.AllApi* | [**lastEntry**](docs/AllApi.md#lastEntry) | **GET** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
-*EasyBlockchainApi.AllApi* | [**listBackends**](docs/AllApi.md#listBackends) | **GET** /blockchain/easy/0.9/backends | List existing backends.
-*EasyBlockchainApi.AllApi* | [**nextEntryById**](docs/AllApi.md#nextEntryById) | **GET** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
-*EasyBlockchainApi.AllApi* | [**nextEntryByRequest**](docs/AllApi.md#nextEntryByRequest) | **POST** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
-*EasyBlockchainApi.AllApi* | [**previousEntryById**](docs/AllApi.md#previousEntryById) | **GET** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
-*EasyBlockchainApi.AllApi* | [**previousEntryByRequest**](docs/AllApi.md#previousEntryByRequest) | **POST** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
-*EasyBlockchainApi.ChainApi* | [**createChain**](docs/ChainApi.md#createChain) | **POST** /blockchain/easy/0.9/{context}/chains | Create a new chain
-*EasyBlockchainApi.ContextApi* | [**createBackend**](docs/ContextApi.md#createBackend) | **POST** /blockchain/easy/0.9/backends | Create a new backend
-*EasyBlockchainApi.ContextApi* | [**createContext**](docs/ContextApi.md#createContext) | **POST** /blockchain/easy/0.9/ | Create a new context
-*EasyBlockchainApi.ContextApi* | [**deleteBackend**](docs/ContextApi.md#deleteBackend) | **DELETE** /blockchain/easy/0.9/backends/{backendId} | Delete backend by id (not by ledgername)
-*EasyBlockchainApi.ContextApi* | [**findBackends**](docs/ContextApi.md#findBackends) | **GET** /blockchain/easy/0.9/backends/{backendId}/find | Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
-*EasyBlockchainApi.ContextApi* | [**getBackend**](docs/ContextApi.md#getBackend) | **GET** /blockchain/easy/0.9/backends/{backendId} | Get existing backend by id (not by ledgername). Optionally including public backend of others
-*EasyBlockchainApi.ContextApi* | [**getContext**](docs/ContextApi.md#getContext) | **GET** /blockchain/easy/0.9/{context} | Get an existing context
-*EasyBlockchainApi.ContextApi* | [**listBackends**](docs/ContextApi.md#listBackends) | **GET** /blockchain/easy/0.9/backends | List existing backends.
-*EasyBlockchainApi.EntryApi* | [**createEntry**](docs/EntryApi.md#createEntry) | **POST** /blockchain/easy/0.9/{context}/chains/{chainId}/entries | Create a new entry in the provided chain
-*EasyBlockchainApi.EntryApi* | [**entryById**](docs/EntryApi.md#entryById) | **GET** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
-*EasyBlockchainApi.EntryApi* | [**entryByRequest**](docs/EntryApi.md#entryByRequest) | **POST** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
-*EasyBlockchainApi.EntryApi* | [**firstEntry**](docs/EntryApi.md#firstEntry) | **GET** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
-*EasyBlockchainApi.EntryApi* | [**lastEntry**](docs/EntryApi.md#lastEntry) | **GET** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
-*EasyBlockchainApi.EntryApi* | [**nextEntryById**](docs/EntryApi.md#nextEntryById) | **GET** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
-*EasyBlockchainApi.EntryApi* | [**nextEntryByRequest**](docs/EntryApi.md#nextEntryByRequest) | **POST** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
-*EasyBlockchainApi.EntryApi* | [**previousEntryById**](docs/EntryApi.md#previousEntryById) | **GET** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
-*EasyBlockchainApi.EntryApi* | [**previousEntryByRequest**](docs/EntryApi.md#previousEntryByRequest) | **POST** /blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
-*EasyBlockchainApi.IdApi* | [**chainIdExists**](docs/IdApi.md#chainIdExists) | **GET** /blockchain/easy/0.9/{context}/chains/id/{chainId} | Determine whether the Id of a chain exists in the blockchain
-*EasyBlockchainApi.IdApi* | [**determineChainId**](docs/IdApi.md#determineChainId) | **POST** /blockchain/easy/0.9/{context}/chains/id | Pre determine the Id of a chain request without anchoring it in the blockchain
-*EasyBlockchainApi.IdApi* | [**determineEntryId**](docs/IdApi.md#determineEntryId) | **POST** /blockchain/easy/0.9/{context}/chains/id/{chainId}/entries | Pre determine the Id of an entry request without anchoring the entry
-*EasyBlockchainApi.IdApi* | [**entryIdExists**](docs/IdApi.md#entryIdExists) | **GET** /blockchain/easy/0.9/{context}/chains/id/{chainId}/entries/{entryId} | Determine whether the Id of an entry exists in the blockchain
+*EasyBlockchainApi.AllApi* | [**chainIdExists**](docs/AllApi.md#chainIdExists) | **GET** /{context}/chains/id/{chainId} | Determine whether the Id of a chain exists in the blockchain
+*EasyBlockchainApi.AllApi* | [**createBackend**](docs/AllApi.md#createBackend) | **POST** /backends | Create a new backend
+*EasyBlockchainApi.AllApi* | [**createChain**](docs/AllApi.md#createChain) | **POST** /{context}/chains | Create a new chain
+*EasyBlockchainApi.AllApi* | [**createContext**](docs/AllApi.md#createContext) | **POST** / | Create a new context
+*EasyBlockchainApi.AllApi* | [**createEntry**](docs/AllApi.md#createEntry) | **POST** /{context}/chains/{chainId}/entries | Create a new entry in the provided chain
+*EasyBlockchainApi.AllApi* | [**deleteBackend**](docs/AllApi.md#deleteBackend) | **DELETE** /backends/{backendId} | Delete backend by id (not by ledgername)
+*EasyBlockchainApi.AllApi* | [**determineChainId**](docs/AllApi.md#determineChainId) | **POST** /{context}/chains/id | Pre determine the Id of a chain request without anchoring it in the blockchain
+*EasyBlockchainApi.AllApi* | [**determineEntryId**](docs/AllApi.md#determineEntryId) | **POST** /{context}/chains/id/{chainId}/entries | Pre determine the Id of an entry request without anchoring the entry
+*EasyBlockchainApi.AllApi* | [**entryById**](docs/AllApi.md#entryById) | **GET** /{context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
+*EasyBlockchainApi.AllApi* | [**entryByRequest**](docs/AllApi.md#entryByRequest) | **POST** /{context}/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
+*EasyBlockchainApi.AllApi* | [**entryIdExists**](docs/AllApi.md#entryIdExists) | **GET** /{context}/chains/id/{chainId}/entries/{entryId} | Determine whether the Id of an entry exists in the blockchain
+*EasyBlockchainApi.AllApi* | [**findBackends**](docs/AllApi.md#findBackends) | **GET** /backends/{backendId}/find | Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
+*EasyBlockchainApi.AllApi* | [**firstEntry**](docs/AllApi.md#firstEntry) | **GET** /{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
+*EasyBlockchainApi.AllApi* | [**getBackend**](docs/AllApi.md#getBackend) | **GET** /backends/{backendId} | Get existing backend by id (not by ledgername). Optionally including public backend of others
+*EasyBlockchainApi.AllApi* | [**getContext**](docs/AllApi.md#getContext) | **GET** /{context} | Get an existing context
+*EasyBlockchainApi.AllApi* | [**lastEntry**](docs/AllApi.md#lastEntry) | **GET** /{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
+*EasyBlockchainApi.AllApi* | [**listBackends**](docs/AllApi.md#listBackends) | **GET** /backends | List existing backends.
+*EasyBlockchainApi.AllApi* | [**nextEntryById**](docs/AllApi.md#nextEntryById) | **GET** /{context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
+*EasyBlockchainApi.AllApi* | [**nextEntryByRequest**](docs/AllApi.md#nextEntryByRequest) | **POST** /{context}/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
+*EasyBlockchainApi.AllApi* | [**previousEntryById**](docs/AllApi.md#previousEntryById) | **GET** /{context}/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
+*EasyBlockchainApi.AllApi* | [**previousEntryByRequest**](docs/AllApi.md#previousEntryByRequest) | **POST** /{context}/chains/{chainId}/entries/entry/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
+*EasyBlockchainApi.ChainApi* | [**createChain**](docs/ChainApi.md#createChain) | **POST** /{context}/chains | Create a new chain
+*EasyBlockchainApi.ContextApi* | [**createBackend**](docs/ContextApi.md#createBackend) | **POST** /backends | Create a new backend
+*EasyBlockchainApi.ContextApi* | [**createContext**](docs/ContextApi.md#createContext) | **POST** / | Create a new context
+*EasyBlockchainApi.ContextApi* | [**deleteBackend**](docs/ContextApi.md#deleteBackend) | **DELETE** /backends/{backendId} | Delete backend by id (not by ledgername)
+*EasyBlockchainApi.ContextApi* | [**findBackends**](docs/ContextApi.md#findBackends) | **GET** /backends/{backendId}/find | Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
+*EasyBlockchainApi.ContextApi* | [**getBackend**](docs/ContextApi.md#getBackend) | **GET** /backends/{backendId} | Get existing backend by id (not by ledgername). Optionally including public backend of others
+*EasyBlockchainApi.ContextApi* | [**getContext**](docs/ContextApi.md#getContext) | **GET** /{context} | Get an existing context
+*EasyBlockchainApi.ContextApi* | [**listBackends**](docs/ContextApi.md#listBackends) | **GET** /backends | List existing backends.
+*EasyBlockchainApi.EntryApi* | [**createEntry**](docs/EntryApi.md#createEntry) | **POST** /{context}/chains/{chainId}/entries | Create a new entry in the provided chain
+*EasyBlockchainApi.EntryApi* | [**entryById**](docs/EntryApi.md#entryById) | **GET** /{context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
+*EasyBlockchainApi.EntryApi* | [**entryByRequest**](docs/EntryApi.md#entryByRequest) | **POST** /{context}/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
+*EasyBlockchainApi.EntryApi* | [**firstEntry**](docs/EntryApi.md#firstEntry) | **GET** /{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
+*EasyBlockchainApi.EntryApi* | [**lastEntry**](docs/EntryApi.md#lastEntry) | **GET** /{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
+*EasyBlockchainApi.EntryApi* | [**nextEntryById**](docs/EntryApi.md#nextEntryById) | **GET** /{context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
+*EasyBlockchainApi.EntryApi* | [**nextEntryByRequest**](docs/EntryApi.md#nextEntryByRequest) | **POST** /{context}/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
+*EasyBlockchainApi.EntryApi* | [**previousEntryById**](docs/EntryApi.md#previousEntryById) | **GET** /{context}/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
+*EasyBlockchainApi.EntryApi* | [**previousEntryByRequest**](docs/EntryApi.md#previousEntryByRequest) | **POST** /{context}/chains/{chainId}/entries/entry/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
+*EasyBlockchainApi.IdApi* | [**chainIdExists**](docs/IdApi.md#chainIdExists) | **GET** /{context}/chains/id/{chainId} | Determine whether the Id of a chain exists in the blockchain
+*EasyBlockchainApi.IdApi* | [**determineChainId**](docs/IdApi.md#determineChainId) | **POST** /{context}/chains/id | Pre determine the Id of a chain request without anchoring it in the blockchain
+*EasyBlockchainApi.IdApi* | [**determineEntryId**](docs/IdApi.md#determineEntryId) | **POST** /{context}/chains/id/{chainId}/entries | Pre determine the Id of an entry request without anchoring the entry
+*EasyBlockchainApi.IdApi* | [**entryIdExists**](docs/IdApi.md#entryIdExists) | **GET** /{context}/chains/id/{chainId}/entries/{entryId} | Determine whether the Id of an entry exists in the blockchain
 
 
 ## Documentation for Models

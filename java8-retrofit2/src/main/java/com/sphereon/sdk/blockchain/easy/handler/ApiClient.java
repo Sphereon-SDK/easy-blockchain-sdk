@@ -113,7 +113,7 @@ public class ApiClient {
 
     okBuilder = new OkHttpClient.Builder();
 
-    String baseUrl = "https://gw.api.cloud.sphereon.com";
+    String baseUrl = "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9";
     if(!baseUrl.endsWith("/"))
       baseUrl = baseUrl + "/";
 

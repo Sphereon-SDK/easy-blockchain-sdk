@@ -47,9 +47,9 @@
     /**
      * The base URL against which to resolve every API call's (relative) path.
      * @type {String}
-     * @default https://gw.api.cloud.sphereon.com
+     * @default https://gw.api.cloud.sphereon.com/blockchain/easy/0.9
      */
-    this.basePath = 'https://gw.api.cloud.sphereon.com'.replace(/\/+$/, '');
+    this.basePath = 'https://gw.api.cloud.sphereon.com/blockchain/easy/0.9'.replace(/\/+$/, '');
 
     /**
      * The authentication methods to be included for all API calls.
