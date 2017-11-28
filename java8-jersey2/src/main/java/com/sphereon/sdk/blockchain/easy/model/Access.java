@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * Access
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-27T12:46:49.139+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-28T12:30:16.700+01:00")
 public class Access {
   /**
    * Gets or Sets modes
@@ -67,9 +67,6 @@ public class Access {
   @JsonProperty("modes")
   private List<ModesEnum> modes = null;
 
-  @JsonProperty("public")
-  private Boolean _public = null;
-
   @JsonProperty("blackList")
   private List<String> blackList = null;
 
@@ -100,24 +97,6 @@ public class Access {
 
   public void setModes(List<ModesEnum> modes) {
     this.modes = modes;
-  }
-
-  public Access _public(Boolean _public) {
-    this._public = _public;
-    return this;
-  }
-
-   /**
-   * Get _public
-   * @return _public
-  **/
-  @ApiModelProperty(value = "")
-  public Boolean getPublic() {
-    return _public;
-  }
-
-  public void setPublic(Boolean _public) {
-    this._public = _public;
   }
 
   public Access blackList(List<String> blackList) {
@@ -183,14 +162,13 @@ public class Access {
     }
     Access access = (Access) o;
     return Objects.equals(this.modes, access.modes) &&
-        Objects.equals(this._public, access._public) &&
         Objects.equals(this.blackList, access.blackList) &&
         Objects.equals(this.whiteList, access.whiteList);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(modes, _public, blackList, whiteList);
+    return Objects.hash(modes, blackList, whiteList);
   }
 
 
@@ -200,7 +178,6 @@ public class Access {
     sb.append("class Access {\n");
     
     sb.append("    modes: ").append(toIndentedString(modes)).append("\n");
-    sb.append("    _public: ").append(toIndentedString(_public)).append("\n");
     sb.append("    blackList: ").append(toIndentedString(blackList)).append("\n");
     sb.append("    whiteList: ").append(toIndentedString(whiteList)).append("\n");
     sb.append("}");

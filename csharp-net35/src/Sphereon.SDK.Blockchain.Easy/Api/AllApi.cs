@@ -168,7 +168,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
-        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
+        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!</param>
         /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
         /// <returns>IdResponse</returns>
         IdResponse DetermineChainId (string context, Chain chain, bool? checkExistence = null);
@@ -181,7 +181,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
-        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
+        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!</param>
         /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
         /// <returns>ApiResponse of IdResponse</returns>
         ApiResponse<IdResponse> DetermineChainIdWithHttpInfo (string context, Chain chain, bool? checkExistence = null);
@@ -1140,7 +1140,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
-        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
+        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!</param>
         /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
         /// <returns>IdResponse</returns>
         public IdResponse DetermineChainId (string context, Chain chain, bool? checkExistence = null)
@@ -1154,7 +1154,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
-        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
+        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!</param>
         /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
         /// <returns>ApiResponse of IdResponse</returns>
         public ApiResponse< IdResponse > DetermineChainIdWithHttpInfo (string context, Chain chain, bool? checkExistence = null)

@@ -81,7 +81,7 @@ var apiInstance = new EasyBlockchainApi.IdApi();
 
 var context = "context_example"; // String | context
 
-var chain = new EasyBlockchainApi.Chain(); // Chain | Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
+var chain = new EasyBlockchainApi.Chain(); // Chain | Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
 
 var opts = { 
   'checkExistence': false // Boolean | Check whether the id exists
@@ -102,7 +102,7 @@ apiInstance.determineChainId(context, chain, opts, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **context** | **String**| context | 
- **chain** | [**Chain**](Chain.md)| Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! | 
+ **chain** | [**Chain**](Chain.md)| Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network! | 
  **checkExistence** | **Boolean**| Check whether the id exists | [optional] [default to false]
 
 ### Return type

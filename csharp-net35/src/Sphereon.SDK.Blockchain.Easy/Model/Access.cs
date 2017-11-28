@@ -66,23 +66,15 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         /// Initializes a new instance of the <see cref="Access" /> class.
         /// </summary>
         /// <param name="Modes">Modes.</param>
-        /// <param name="_Public">_Public.</param>
         /// <param name="BlackList">BlackList.</param>
         /// <param name="WhiteList">WhiteList.</param>
-        public Access(List<ModesEnum> Modes = default(List<ModesEnum>), bool? _Public = default(bool?), List<string> BlackList = default(List<string>), List<string> WhiteList = default(List<string>))
+        public Access(List<ModesEnum> Modes = default(List<ModesEnum>), List<string> BlackList = default(List<string>), List<string> WhiteList = default(List<string>))
         {
             this.Modes = Modes;
-            this._Public = _Public;
             this.BlackList = BlackList;
             this.WhiteList = WhiteList;
         }
         
-
-        /// <summary>
-        /// Gets or Sets _Public
-        /// </summary>
-        [DataMember(Name="public", EmitDefaultValue=false)]
-        public bool? _Public { get; set; }
 
         /// <summary>
         /// Gets or Sets BlackList
@@ -105,7 +97,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             var sb = new StringBuilder();
             sb.Append("class Access {\n");
             sb.Append("  Modes: ").Append(Modes).Append("\n");
-            sb.Append("  _Public: ").Append(_Public).Append("\n");
             sb.Append("  BlackList: ").Append(BlackList).Append("\n");
             sb.Append("  WhiteList: ").Append(WhiteList).Append("\n");
             sb.Append("}\n");
@@ -150,11 +141,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                     this.Modes.SequenceEqual(other.Modes)
                 ) && 
                 (
-                    this._Public == other._Public ||
-                    this._Public != null &&
-                    this._Public.Equals(other._Public)
-                ) && 
-                (
                     this.BlackList == other.BlackList ||
                     this.BlackList != null &&
                     this.BlackList.SequenceEqual(other.BlackList)
@@ -179,8 +165,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                 // Suitable nullity checks etc, of course :)
                 if (this.Modes != null)
                     hash = hash * 59 + this.Modes.GetHashCode();
-                if (this._Public != null)
-                    hash = hash * 59 + this._Public.GetHashCode();
                 if (this.BlackList != null)
                     hash = hash * 59 + this.BlackList.GetHashCode();
                 if (this.WhiteList != null)

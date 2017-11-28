@@ -30,7 +30,7 @@ import java.util.List;
  * Entry Data
  */
 @ApiModel(description = "Entry Data")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-27T12:46:52.885+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-28T12:30:20.374+01:00")
 public class EntryData {
   @SerializedName("externalIds")
   private List<ExternalId> externalIds = null;

@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-27T12:46:49.139+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-28T12:30:16.700+01:00")
 public class AllApi {
   private ApiClient apiClient;
 
@@ -324,7 +324,7 @@ public class AllApi {
    * Pre determine the Id of a chain request without anchoring it in the blockchain
    * 
    * @param context context (required)
-   * @param chain Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! (required)
+   * @param chain Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network! (required)
    * @param checkExistence Check whether the id exists (optional, default to false)
    * @return IdResponse
    * @throws ApiException if fails to make API call

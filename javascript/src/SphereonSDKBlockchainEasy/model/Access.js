@@ -51,7 +51,6 @@
 
 
 
-
   };
 
   /**
@@ -68,9 +67,6 @@
       if (data.hasOwnProperty('modes')) {
         obj['modes'] = ApiClient.convertToType(data['modes'], ['String']);
       }
-      if (data.hasOwnProperty('public')) {
-        obj['public'] = ApiClient.convertToType(data['public'], 'Boolean');
-      }
       if (data.hasOwnProperty('blackList')) {
         obj['blackList'] = ApiClient.convertToType(data['blackList'], ['String']);
       }
@@ -85,10 +81,6 @@
    * @member {Array.<module:SphereonSDKBlockchainEasy/model/Access.ModesEnum>} modes
    */
   exports.prototype['modes'] = undefined;
-  /**
-   * @member {Boolean} public
-   */
-  exports.prototype['public'] = undefined;
   /**
    * @member {Array.<String>} blackList
    */

@@ -31,7 +31,7 @@ import java.util.List;
  * Commited Entry
  */
 @ApiModel(description = "Commited Entry")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-27T12:46:45.242+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-28T12:30:12.265+01:00")
 public class CommittedEntry {
   @SerializedName("entry")
   private Entry entry = null;

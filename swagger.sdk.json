@@ -485,7 +485,7 @@
           "schema": {"$ref": "#/definitions/Chain"},
           "in": "body",
           "name": "chain",
-          "description": "Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!",
+          "description": "Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!",
           "required": true
         },
         {
@@ -1117,7 +1117,6 @@
             ]
           }
         },
-        "public": {"type": "boolean"},
         "blackList": {
           "type": "array",
           "items": {"type": "string"}

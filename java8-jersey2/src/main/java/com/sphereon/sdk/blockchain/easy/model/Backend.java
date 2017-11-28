@@ -29,7 +29,7 @@ import java.util.List;
  * Backend
  */
 @ApiModel(description = "Backend")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-27T12:46:49.139+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-28T12:30:16.700+01:00")
 public class Backend {
   @JsonProperty("rpcProviders")
   private List<RpcProvider> rpcProviders = null;

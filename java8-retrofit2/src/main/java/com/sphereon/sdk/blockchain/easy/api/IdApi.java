@@ -40,7 +40,7 @@ public interface IdApi {
    * Pre determine the Id of a chain request without anchoring it in the blockchain
    * 
    * @param context context (required)
-   * @param chain Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! (required)
+   * @param chain Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network! (required)
    * @param checkExistence Check whether the id exists (optional, default to false)
    * @return Call&lt;IdResponse&gt;
    */

@@ -196,7 +196,7 @@ public class IdApi {
     /**
      * Build call for determineChainId
      * @param context context (required)
-     * @param chain Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! (required)
+     * @param chain Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network! (required)
      * @param checkExistence Check whether the id exists (optional, default to false)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -273,7 +273,7 @@ public class IdApi {
      * Pre determine the Id of a chain request without anchoring it in the blockchain
      * 
      * @param context context (required)
-     * @param chain Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! (required)
+     * @param chain Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network! (required)
      * @param checkExistence Check whether the id exists (optional, default to false)
      * @return IdResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -287,7 +287,7 @@ public class IdApi {
      * Pre determine the Id of a chain request without anchoring it in the blockchain
      * 
      * @param context context (required)
-     * @param chain Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! (required)
+     * @param chain Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network! (required)
      * @param checkExistence Check whether the id exists (optional, default to false)
      * @return ApiResponse&lt;IdResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -302,7 +302,7 @@ public class IdApi {
      * Pre determine the Id of a chain request without anchoring it in the blockchain (asynchronously)
      * 
      * @param context context (required)
-     * @param chain Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! (required)
+     * @param chain Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network! (required)
      * @param checkExistence Check whether the id exists (optional, default to false)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call

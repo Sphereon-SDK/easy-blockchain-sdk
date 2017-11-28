@@ -111,7 +111,7 @@
     /**
      * Pre determine the Id of a chain request without anchoring it in the blockchain
      * @param {String} context context
-     * @param {module:SphereonSDKBlockchainEasy/model/Chain} chain Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
+     * @param {module:SphereonSDKBlockchainEasy/model/Chain} chain Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.checkExistence Check whether the id exists (default to false)
      * @param {module:SphereonSDKBlockchainEasy/api/IdApi~determineChainIdCallback} callback The callback function, accepting three arguments: error, data, response
