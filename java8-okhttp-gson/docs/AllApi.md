@@ -1,6 +1,6 @@
 # AllApi
 
-All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.9*
+All URIs are relative to *https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -365,7 +365,7 @@ oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 AllApi apiInstance = new AllApi();
 String context = "context_example"; // String | context
-Chain chain = new Chain(); // Chain | Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
+Chain chain = new Chain(); // Chain | Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
 Boolean checkExistence = false; // Boolean | Check whether the id exists
 try {
     IdResponse result = apiInstance.determineChainId(context, chain, checkExistence);
@@ -381,7 +381,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **context** | **String**| context |
- **chain** | [**Chain**](Chain.md)| Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network! |
+ **chain** | [**Chain**](Chain.md)| Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! |
  **checkExistence** | **Boolean**| Check whether the id exists | [optional] [default to false]
 
 ### Return type

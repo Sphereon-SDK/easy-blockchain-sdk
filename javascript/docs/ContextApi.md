@@ -1,6 +1,6 @@
 # EasyBlockchainApi.ContextApi
 
-All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.9*
+All URIs are relative to *https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

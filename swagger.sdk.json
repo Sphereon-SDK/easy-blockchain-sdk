@@ -1,5 +1,5 @@
 {
-  "basePath": "/blockchain/easy/0.9",
+  "basePath": "/blockchain/easy/0.10",
   "paths": {
     "/{context}/chains/id/{chainId}": {"get": {
       "summary": "Determine whether the Id of a chain exists in the blockchain",
@@ -485,7 +485,7 @@
           "schema": {"$ref": "#/definitions/Chain"},
           "in": "body",
           "name": "chain",
-          "description": "Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!",
+          "description": "Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!",
           "required": true
         },
         {
@@ -972,7 +972,7 @@
       "consumes": ["application/json"]
     }}
   },
-  "host": "gw.api.cloud.sphereon.com",
+  "host": "gw-dev.api.cloud.sphereon.com",
   "schemes": ["https"],
   "securityDefinitions": {"oauth2schema": {
     "tokenUrl": "https://gw.api.cloud.sphereon.com/token",
@@ -1117,6 +1117,7 @@
             ]
           }
         },
+        "public": {"type": "boolean"},
         "blackList": {
           "type": "array",
           "items": {"type": "string"}
@@ -1315,7 +1316,7 @@
     "description": "<b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom or Multichain. The latter also allows for a private blockchain. In the future other solutions will be made available<\/b>\r\n\r\nThe flow is generally as follows:\r\n1. Make sure a context is available using the / POST endpoint. Normally you only need one context. This is the place where backend providers and blockchain implementations are being specified.\r\n2. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is a relative expensive operation.\r\n3. Store entries on the chain from step 2. The entries will contain the content and metadata you want to store forever on the specified chain.\r\n4. Retrieve an existing entry from the chain to verify or retrieve data\r\n\r\n\r\n<b>Interactive testing: <\/b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store<\/a>",
     "termsOfService": "https://sphereon.com",
     "title": "Easy Blockchain API",
-    "version": "0.9"
+    "version": "0.10"
   },
   "tags": [
     {

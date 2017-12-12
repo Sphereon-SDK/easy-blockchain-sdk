@@ -705,6 +705,9 @@ margin-bottom: 20px;
         "enum" : [ "NONE", "READ", "WRITE" ]
       }
     },
+    "public" : {
+      "type" : "boolean"
+    },
     "blackList" : {
       "type" : "array",
       "items" : {
@@ -1200,7 +1203,7 @@ margin-bottom: 20px;
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 0.9</div>
+              <div class="app-desc">Version: 0.10</div>
             <hr>
             <div><p><b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom or Multichain. The latter also allows for a private blockchain. In the future other solutions will be made available</b></p>
 <p>The flow is generally as follows:</p>
@@ -1249,7 +1252,7 @@ margin-bottom: 20px;
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-All-chainIdExists-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/id/{chainId}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/id/{chainId}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-All-chainIdExists-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -1644,7 +1647,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-All-createBackend-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/backends"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/backends"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-All-createBackend-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -2105,7 +2108,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-All-createChain-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-All-createChain-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -2563,7 +2566,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-All-createContext-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-All-createContext-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -3024,7 +3027,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-All-createEntry-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/{chainId}/entries?currentAnchorTime="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/{chainId}/entries?currentAnchorTime="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-All-createEntry-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -3639,7 +3642,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-All-deleteBackend-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/backends/{backendId}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/backends/{backendId}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-All-deleteBackend-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -4043,7 +4046,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-All-determineChainId-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/id?checkExistence="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/id?checkExistence="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-All-determineChainId-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -4065,7 +4068,7 @@ public class AllApiExample {
 
         AllApi apiInstance = new AllApi();
         String context = context_example; // String | context
-        Chain chain = ; // Chain | Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
+        Chain chain = ; // Chain | Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
         Boolean checkExistence = true; // Boolean | Check whether the id exists
         try {
             IdResponse result = apiInstance.determineChainId(context, chain, checkExistence);
@@ -4086,7 +4089,7 @@ public class AllApiExample {
     public static void main(String[] args) {
         AllApi apiInstance = new AllApi();
         String context = context_example; // String | context
-        Chain chain = ; // Chain | Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
+        Chain chain = ; // Chain | Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
         Boolean checkExistence = true; // Boolean | Check whether the id exists
         try {
             IdResponse result = apiInstance.determineChainId(context, chain, checkExistence);
@@ -4109,7 +4112,7 @@ public class AllApiExample {
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 String *context = context_example; // context
-Chain *chain = ; // Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
+Chain *chain = ; // Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
 Boolean *checkExistence = true; // Check whether the id exists (optional) (default to false)
 
 AllApi *apiInstance = [[AllApi alloc] init];
@@ -4141,7 +4144,7 @@ var api = new EasyBlockchainApi.AllApi()
 
 var context = context_example; // {String} context
 
-var chain = ; // {Chain} Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
+var chain = ; // {Chain} Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
 
 var opts = { 
   'checkExistence': true // {Boolean} Check whether the id exists
@@ -4180,7 +4183,7 @@ namespace Example
 
             var apiInstance = new AllApi();
             var context = context_example;  // String | context
-            var chain = new Chain(); // Chain | Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
+            var chain = new Chain(); // Chain | Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
             var checkExistence = true;  // Boolean | Check whether the id exists (optional)  (default to false)
 
             try
@@ -4208,7 +4211,7 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_AC
 
 $api_instance = new Swagger\Client\Api\AllApi();
 $context = context_example; // String | context
-$chain = ; // Chain | Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
+$chain = ; // Chain | Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
 $checkExistence = true; // Boolean | Check whether the id exists
 
 try {
@@ -4230,7 +4233,7 @@ $WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 my $api_instance = WWW::SwaggerClient::AllApi->new();
 my $context = context_example; # String | context
-my $chain = WWW::SwaggerClient::Object::Chain->new(); # Chain | Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
+my $chain = WWW::SwaggerClient::Object::Chain->new(); # Chain | Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
 my $checkExistence = true; # Boolean | Check whether the id exists
 
 eval { 
@@ -4255,7 +4258,7 @@ swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = swagger_client.AllApi()
 context = context_example # String | context
-chain =  # Chain | Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
+chain =  # Chain | Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
 checkExistence = true # Boolean | Check whether the id exists (optional) (default to false)
 
 try: 
@@ -4316,7 +4319,7 @@ $(document).ready(function() {
   var schemaWrapper = {
   "in" : "body",
   "name" : "chain",
-  "description" : "Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!",
+  "description" : "Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!",
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/Chain"
@@ -4496,7 +4499,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-All-determineEntryId-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/id/{chainId}/entries?checkExistence="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/id/{chainId}/entries?checkExistence="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-All-determineEntryId-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -5025,7 +5028,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-All-entryById-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}?currentAnchorTime="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/{chainId}/entries/{entryId}?currentAnchorTime="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-All-entryById-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -5534,7 +5537,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-All-entryByRequest-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry?currentAnchorTime="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/{chainId}/entries/entry?currentAnchorTime="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-All-entryByRequest-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -6063,7 +6066,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-All-entryIdExists-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/id/{chainId}/entries/{entryId}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/id/{chainId}/entries/{entryId}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-All-entryIdExists-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -6534,7 +6537,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-All-findBackends-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/backends/{backendId}/find?includePublic="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/backends/{backendId}/find?includePublic="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-All-findBackends-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -7023,7 +7026,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-All-firstEntry-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/{chainId}/entries/first"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/{chainId}/entries/first"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-All-firstEntry-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -7461,7 +7464,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-All-getBackend-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/backends/{backendId}?includePublic="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/backends/{backendId}?includePublic="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-All-getBackend-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -7947,7 +7950,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-All-getContext-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-All-getContext-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -8352,7 +8355,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-All-lastEntry-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/{chainId}/entries/last"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/{chainId}/entries/last"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-All-lastEntry-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -8790,7 +8793,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-All-listBackends-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/backends"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/backends"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-All-listBackends-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -9201,7 +9204,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-All-nextEntryById-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/next?currentAnchorTime="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/{chainId}/entries/{entryId}/next?currentAnchorTime="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-All-nextEntryById-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -9710,7 +9713,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-All-nextEntryByRequest-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/next?currentAnchorTime="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/{chainId}/entries/entry/next?currentAnchorTime="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-All-nextEntryByRequest-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -10239,7 +10242,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-All-previousEntryById-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/previous?currentAnchorTime="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/{chainId}/entries/{entryId}/previous?currentAnchorTime="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-All-previousEntryById-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -10748,7 +10751,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-All-previousEntryByRequest-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/previous?currentAnchorTime="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/{chainId}/entries/entry/previous?currentAnchorTime="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-All-previousEntryByRequest-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -11280,7 +11283,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Chain-createChain-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Chain-createChain-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -11740,7 +11743,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Context-createBackend-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/backends"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/backends"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Context-createBackend-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -12200,7 +12203,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Context-createContext-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Context-createContext-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -12660,7 +12663,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Context-deleteBackend-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/backends/{backendId}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/backends/{backendId}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Context-deleteBackend-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -13064,7 +13067,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Context-findBackends-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/backends/{backendId}/find?includePublic="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/backends/{backendId}/find?includePublic="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Context-findBackends-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -13553,7 +13556,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Context-getBackend-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/backends/{backendId}?includePublic="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/backends/{backendId}?includePublic="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Context-getBackend-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -14039,7 +14042,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Context-getContext-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Context-getContext-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -14444,7 +14447,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Context-listBackends-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/backends"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/backends"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Context-listBackends-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -14858,7 +14861,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Entry-createEntry-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/{chainId}/entries?currentAnchorTime="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/{chainId}/entries?currentAnchorTime="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Entry-createEntry-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -15472,7 +15475,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Entry-entryById-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}?currentAnchorTime="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/{chainId}/entries/{entryId}?currentAnchorTime="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Entry-entryById-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -15981,7 +15984,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Entry-entryByRequest-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry?currentAnchorTime="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/{chainId}/entries/entry?currentAnchorTime="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Entry-entryByRequest-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -16509,7 +16512,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Entry-firstEntry-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/{chainId}/entries/first"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/{chainId}/entries/first"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Entry-firstEntry-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -16947,7 +16950,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Entry-lastEntry-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/{chainId}/entries/last"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/{chainId}/entries/last"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Entry-lastEntry-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -17385,7 +17388,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Entry-nextEntryById-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/next?currentAnchorTime="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/{chainId}/entries/{entryId}/next?currentAnchorTime="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Entry-nextEntryById-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -17894,7 +17897,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Entry-nextEntryByRequest-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/next?currentAnchorTime="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/{chainId}/entries/entry/next?currentAnchorTime="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Entry-nextEntryByRequest-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -18422,7 +18425,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Entry-previousEntryById-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/{chainId}/entries/{entryId}/previous?currentAnchorTime="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/{chainId}/entries/{entryId}/previous?currentAnchorTime="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Entry-previousEntryById-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -18931,7 +18934,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Entry-previousEntryByRequest-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/{chainId}/entries/entry/previous?currentAnchorTime="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/{chainId}/entries/entry/previous?currentAnchorTime="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Entry-previousEntryByRequest-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -19462,7 +19465,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Id-chainIdExists-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/id/{chainId}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/id/{chainId}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Id-chainIdExists-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -19857,7 +19860,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Id-determineChainId-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/id?checkExistence="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/id?checkExistence="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Id-determineChainId-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -19879,7 +19882,7 @@ public class IdApiExample {
 
         IdApi apiInstance = new IdApi();
         String context = context_example; // String | context
-        Chain chain = ; // Chain | Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
+        Chain chain = ; // Chain | Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
         Boolean checkExistence = true; // Boolean | Check whether the id exists
         try {
             IdResponse result = apiInstance.determineChainId(context, chain, checkExistence);
@@ -19900,7 +19903,7 @@ public class IdApiExample {
     public static void main(String[] args) {
         IdApi apiInstance = new IdApi();
         String context = context_example; // String | context
-        Chain chain = ; // Chain | Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
+        Chain chain = ; // Chain | Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
         Boolean checkExistence = true; // Boolean | Check whether the id exists
         try {
             IdResponse result = apiInstance.determineChainId(context, chain, checkExistence);
@@ -19923,7 +19926,7 @@ public class IdApiExample {
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 String *context = context_example; // context
-Chain *chain = ; // Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
+Chain *chain = ; // Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
 Boolean *checkExistence = true; // Check whether the id exists (optional) (default to false)
 
 IdApi *apiInstance = [[IdApi alloc] init];
@@ -19955,7 +19958,7 @@ var api = new EasyBlockchainApi.IdApi()
 
 var context = context_example; // {String} context
 
-var chain = ; // {Chain} Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
+var chain = ; // {Chain} Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
 
 var opts = { 
   'checkExistence': true // {Boolean} Check whether the id exists
@@ -19994,7 +19997,7 @@ namespace Example
 
             var apiInstance = new IdApi();
             var context = context_example;  // String | context
-            var chain = new Chain(); // Chain | Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
+            var chain = new Chain(); // Chain | Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
             var checkExistence = true;  // Boolean | Check whether the id exists (optional)  (default to false)
 
             try
@@ -20022,7 +20025,7 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_AC
 
 $api_instance = new Swagger\Client\Api\IdApi();
 $context = context_example; // String | context
-$chain = ; // Chain | Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
+$chain = ; // Chain | Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
 $checkExistence = true; // Boolean | Check whether the id exists
 
 try {
@@ -20044,7 +20047,7 @@ $WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 my $api_instance = WWW::SwaggerClient::IdApi->new();
 my $context = context_example; # String | context
-my $chain = WWW::SwaggerClient::Object::Chain->new(); # Chain | Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
+my $chain = WWW::SwaggerClient::Object::Chain->new(); # Chain | Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
 my $checkExistence = true; # Boolean | Check whether the id exists
 
 eval { 
@@ -20069,7 +20072,7 @@ swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = swagger_client.IdApi()
 context = context_example # String | context
-chain =  # Chain | Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
+chain =  # Chain | Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
 checkExistence = true # Boolean | Check whether the id exists (optional) (default to false)
 
 try: 
@@ -20130,7 +20133,7 @@ $(document).ready(function() {
   var schemaWrapper = {
   "in" : "body",
   "name" : "chain",
-  "description" : "Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!",
+  "description" : "Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!",
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/Chain"
@@ -20309,7 +20312,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Id-determineEntryId-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/id/{chainId}/entries?checkExistence="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/id/{chainId}/entries?checkExistence="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Id-determineEntryId-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -20837,7 +20840,7 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Id-entryIdExists-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw.api.cloud.sphereon.com/blockchain/easy/0.9/{context}/chains/id/{chainId}/entries/{entryId}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10/{context}/chains/id/{chainId}/entries/{entryId}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Id-entryIdExists-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.sphereon.sdk.blockchain.easy.*;
@@ -21290,7 +21293,7 @@ except ApiException as e:
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2017-11-28T12:30:08.220+01:00
+              Generated 2017-12-11T21:47:51.811+01:00
             </div>
           </div>
       </div>

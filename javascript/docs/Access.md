@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **modes** | **[String]** |  | [optional] 
+**_public** | **Boolean** |  | [optional] 
 **blackList** | **[String]** |  | [optional] 
 **whiteList** | **[String]** |  | [optional] 
 

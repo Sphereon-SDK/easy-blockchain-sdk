@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Modes** | **List&lt;string&gt;** |  | [optional] 
+**_Public** | **bool?** |  | [optional] 
 **BlackList** | **List&lt;string&gt;** |  | [optional] 
 **WhiteList** | **List&lt;string&gt;** |  | [optional] 
 
