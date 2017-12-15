@@ -225,6 +225,9 @@
                                 <configuration>
                                     <inputSpec>swagger.sdk.json</inputSpec>
                                     <language>csharp</language>
+									<templateDirectory>
+										${basedir}/src/main/mustacheTemplates/csharp
+									</templateDirectory>
                                     <configOptions>
                                         <packageCompany>${company-name}</packageCompany>
                                         <apiPackage>${sdk-package-csharp}.Api</apiPackage>
