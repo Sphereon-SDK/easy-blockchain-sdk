@@ -2,7 +2,7 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 
 group = 'com.sphereon.sdk'
-version = '0.9'
+version = '0.10.0-SNAPSHOT'
 
 buildscript {
     repositories {
@@ -95,8 +95,12 @@ if(hasProperty('target') && target == 'android') {
 
 dependencies {
     compile 'io.swagger:swagger-annotations:1.5.15'
-    compile 'com.squareup.okhttp:okhttp:2.7.5'
+    compile ('com.squareup.okhttp:okhttp:2.7.5') {
+        exclude group: 'com.squareup.okio'
+    }
+    compile 'com.squareup.okio:okio:1.13.0'
     compile 'com.squareup.okhttp:logging-interceptor:2.7.5'
     compile 'com.google.code.gson:gson:2.8.1'
+    compile 'io.gsonfire:gson-fire:1.8.0'
     testCompile 'junit:junit:4.12'
 }

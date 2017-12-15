@@ -1,8 +1,8 @@
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 
-group = 'com.sphereon.sdk'
-version = '0.10.0-SNAPSHOT'
+group = '{{groupId}}'
+version = '{{artifactVersion}}'
 
 buildscript {
     repositories {
@@ -32,8 +32,14 @@ if(hasProperty('target') && target == 'android') {
             targetSdkVersion 25
         }
         compileOptions {
+            {{#java8}}
             sourceCompatibility JavaVersion.VERSION_1_8
             targetCompatibility JavaVersion.VERSION_1_8
+            {{/java8}}
+            {{^java8}}
+            sourceCompatibility JavaVersion.VERSION_1_7
+            targetCompatibility JavaVersion.VERSION_1_7
+            {{/java8}}
         }
 
         // Rename the aar correctly
@@ -78,12 +84,12 @@ if(hasProperty('target') && target == 'android') {
     apply plugin: 'java'
     apply plugin: 'maven'
 
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_{{^java8}}1_7{{/java8}}{{#java8}}1_8{{/java8}}
+    targetCompatibility = JavaVersion.VERSION_{{^java8}}1_7{{/java8}}{{#java8}}1_8{{/java8}}
 
     install {
         repositories.mavenInstaller {
-            pom.artifactId = 'easy-blockchain-sdk-java8-retrofit2'
+            pom.artifactId = '{{artifactId}}'
         }
     }
 
@@ -93,19 +99,18 @@ if(hasProperty('target') && target == 'android') {
     }
 }
 
-ext {
-    oltu_version = "1.0.1"
-    retrofit_version = "2.3.0"
-    swagger_annotations_version = "1.5.15"
-    junit_version = "4.12"
-}
-
 dependencies {
-    compile "com.squareup.retrofit2:retrofit:$retrofit_version"
-    compile "com.squareup.retrofit2:converter-scalars:$retrofit_version"
-    compile "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    compile "io.swagger:swagger-annotations:$swagger_annotations_version"
-    compile "org.apache.oltu.oauth2:org.apache.oltu.oauth2.client:$oltu_version"
-
-    testCompile "junit:junit:$junit_version"
+    compile 'io.swagger:swagger-annotations:1.5.15'
+    compile 'com.squareup.okhttp:okhttp:2.7.5'
+    compile 'com.squareup.okio:okio:1.13.0'
+    compile 'com.squareup.okhttp:logging-interceptor:2.7.5'
+    compile 'com.google.code.gson:gson:2.8.1'
+    compile 'io.gsonfire:gson-fire:1.8.0'
+    {{#joda}}
+    compile 'joda-time:joda-time:2.9.9'
+    {{/joda}}
+    {{#threetenbp}}
+    compile 'org.threeten:threetenbp:1.3.5'
+    {{/threetenbp}}
+    testCompile 'junit:junit:4.12'
 }
