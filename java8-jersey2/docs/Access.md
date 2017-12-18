@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **modes** | [**List&lt;ModesEnum&gt;**](#List&lt;ModesEnum&gt;) |  |  [optional]
-**_public** | **Boolean** |  |  [optional]
 **blackList** | **List&lt;String&gt;** |  |  [optional]
 **whiteList** | **List&lt;String&gt;** |  |  [optional]
 

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **ownerType** | **String** |  | [optional] 
 **password** | **String** |  | [optional] 
 **access** | [**Access**](Access.md) |  | [optional] 
+**ledgerName** | **String** |  | [optional] 
 **resourceFiles** | **{String: String}** |  | [optional] 
 **host** | **String** |  | [optional] 
 **id** | **String** |  | [optional] 

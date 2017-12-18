@@ -1,7 +1,7 @@
 /* 
  * Easy Blockchain API
  *
- * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom or Multichain. The latter also allows for a private blockchain. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a context is available using the / POST endpoint. Normally you only need one context. This is the place where backend providers and blockchain implementations are being specified.  2. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is a relative expensive operation.  3. Store entries on the chain from step 2. The entries will contain the content and metadata you want to store forever on the specified chain.  4. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
+ * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of FACTOM or Multichain. The latter also allows for a private blockchain. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a context is available using the / POST endpoint. Normally you only need one context. This is the place where backend providers and blockchain implementations are being specified.  2. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is a relative expensive operation.  3. Store entries on the chain from step 2. The entries will contain the content and metadata you want to store forever on the specified chain.  4. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
  *
  * OpenAPI spec version: 0.10
  * Contact: dev@sphereon.com
@@ -48,17 +48,17 @@ namespace Sphereon.SDK.Blockchain.Easy.Client
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
-        /// with default configuration and base path (https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10).
+        /// with default configuration and base path (https://gw.api.cloud.sphereon.com).
         /// </summary>
         public ApiClient()
         {
             Configuration = Configuration.Default;
-            RestClient = new RestClient("https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10");
+            RestClient = new RestClient("https://gw.api.cloud.sphereon.com");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
-        /// with default base path (https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10).
+        /// with default base path (https://gw.api.cloud.sphereon.com).
         /// </summary>
         /// <param name="config">An instance of Configuration.</param>
         public ApiClient(Configuration config = null)
@@ -68,7 +68,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Client
             else
                 Configuration = config;
 
-            RestClient = new RestClient("https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10");
+            RestClient = new RestClient("https://gw.api.cloud.sphereon.com");
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Client
         /// with default configuration.
         /// </summary>
         /// <param name="basePath">The base path.</param>
-        public ApiClient(String basePath = "https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10")
+        public ApiClient(String basePath = "https://gw.api.cloud.sphereon.com")
         {
            if (String.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");

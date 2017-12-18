@@ -79,11 +79,11 @@
 			<HintPath Condition="Exists('..\..\packages')">..\..\packages\Newtonsoft.Json.10.0.3\lib\{{targetFrameworkNuget}}\Newtonsoft.Json.dll</HintPath>
 			<HintPath Condition="Exists('{{binRelativePath}}')">{{binRelativePath}}\Newtonsoft.Json.10.0.3\lib\{{targetFrameworkNuget}}\Newtonsoft.Json.dll</HintPath>
 		</Reference>
-		<Reference Include="RestSharp">
-			<HintPath Condition="Exists('$(SolutionDir)\packages')">$(SolutionDir)\packages\RestSharp.105.1.0\lib\{{targetFrameworkNuget}}\RestSharp.dll</HintPath>
-			<HintPath Condition="Exists('..\packages')">..\packages\RestSharp.105.1.0\lib\{{targetFrameworkNuget}}\RestSharp.dll</HintPath>
-			<HintPath Condition="Exists('..\..\packages')">..\..\packages\RestSharp.105.1.0\lib\{{targetFrameworkNuget}}\RestSharp.dll</HintPath>
-			<HintPath Condition="Exists('{{binRelativePath}}')">{{binRelativePath}}\RestSharp.105.1.0\lib\{{targetFrameworkNuget}}\RestSharp.dll</HintPath>
+		<Reference Include="RestSharpSigned">
+			<HintPath Condition="Exists('$(SolutionDir)\packages')">$(SolutionDir)\packages\RestSharpSigned.105.1.0\lib\{{targetFrameworkNuget}}\RestSharp.dll</HintPath>
+			<HintPath Condition="Exists('..\packages')">..\packages\RestSharpSigned.105.1.0\lib\{{targetFrameworkNuget}}\RestSharp.dll</HintPath>
+			<HintPath Condition="Exists('..\..\packages')">..\..\packages\RestSharpSigned.105.1.0\lib\{{targetFrameworkNuget}}\RestSharp.dll</HintPath>
+			<HintPath Condition="Exists('{{binRelativePath}}')">{{binRelativePath}}\RestSharpSigned.105.1.0\lib\{{targetFrameworkNuget}}\RestSharp.dll</HintPath>
 		</Reference>
     {{#generatePropertyChanged}}
 		<Reference Include="PropertyChanged">

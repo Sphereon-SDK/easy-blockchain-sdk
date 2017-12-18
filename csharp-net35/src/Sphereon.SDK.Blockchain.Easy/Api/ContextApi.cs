@@ -1,7 +1,7 @@
 /* 
  * Easy Blockchain API
  *
- * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom or Multichain. The latter also allows for a private blockchain. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a context is available using the / POST endpoint. Normally you only need one context. This is the place where backend providers and blockchain implementations are being specified.  2. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is a relative expensive operation.  3. Store entries on the chain from step 2. The entries will contain the content and metadata you want to store forever on the specified chain.  4. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
+ * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of FACTOM or Multichain. The latter also allows for a private blockchain. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a context is available using the / POST endpoint. Normally you only need one context. This is the place where backend providers and blockchain implementations are being specified.  2. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is a relative expensive operation.  3. Store entries on the chain from step 2. The entries will contain the content and metadata you want to store forever on the specified chain.  4. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
  *
  * OpenAPI spec version: 0.10
  * Contact: dev@sphereon.com
@@ -25,31 +25,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Create a new backend
+        /// Create context
         /// </summary>
         /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="backend">backend</param>
-        /// <returns>Backend</returns>
-        Backend CreateBackend (Backend backend);
-
-        /// <summary>
-        /// Create a new backend
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="backend">backend</param>
-        /// <returns>ApiResponse of Backend</returns>
-        ApiResponse<Backend> CreateBackendWithHttpInfo (Backend backend);
-        /// <summary>
         /// Create a new context
-        /// </summary>
-        /// <remarks>
-        /// 
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -57,87 +36,41 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         Context CreateContext (Context context);
 
         /// <summary>
-        /// Create a new context
+        /// Create context
         /// </summary>
         /// <remarks>
-        /// 
+        /// Create a new context
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
         /// <returns>ApiResponse of Context</returns>
         ApiResponse<Context> CreateContextWithHttpInfo (Context context);
         /// <summary>
-        /// Delete backend by id (not by ledgername)
+        /// Delete context
         /// </summary>
         /// <remarks>
-        /// 
+        /// Delete an existing context
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="backendId">backendId</param>
-        /// <returns></returns>
-        void DeleteBackend (string backendId);
+        /// <param name="context">context</param>
+        /// <returns>Context</returns>
+        Context DeleteContext (string context);
 
         /// <summary>
-        /// Delete backend by id (not by ledgername)
+        /// Delete context
         /// </summary>
         /// <remarks>
-        /// 
+        /// Delete an existing context
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="backendId">backendId</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteBackendWithHttpInfo (string backendId);
+        /// <param name="context">context</param>
+        /// <returns>ApiResponse of Context</returns>
+        ApiResponse<Context> DeleteContextWithHttpInfo (string context);
         /// <summary>
-        /// Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
+        /// Get context
         /// </summary>
         /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="backendId">backendId</param>
-        /// <param name="includePublic">includePublic (optional, default to false)</param>
-        /// <returns>List&lt;Backend&gt;</returns>
-        List<Backend> FindBackends (string backendId, bool? includePublic = null);
-
-        /// <summary>
-        /// Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="backendId">backendId</param>
-        /// <param name="includePublic">includePublic (optional, default to false)</param>
-        /// <returns>ApiResponse of List&lt;Backend&gt;</returns>
-        ApiResponse<List<Backend>> FindBackendsWithHttpInfo (string backendId, bool? includePublic = null);
-        /// <summary>
-        /// Get existing backend by id (not by ledgername). Optionally including public backend of others
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="backendId">backendId</param>
-        /// <param name="includePublic">includePublic (optional, default to false)</param>
-        /// <returns>Backend</returns>
-        Backend GetBackend (string backendId, bool? includePublic = null);
-
-        /// <summary>
-        /// Get existing backend by id (not by ledgername). Optionally including public backend of others
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="backendId">backendId</param>
-        /// <param name="includePublic">includePublic (optional, default to false)</param>
-        /// <returns>ApiResponse of Backend</returns>
-        ApiResponse<Backend> GetBackendWithHttpInfo (string backendId, bool? includePublic = null);
-        /// <summary>
         /// Get an existing context
-        /// </summary>
-        /// <remarks>
-        /// 
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -145,34 +78,15 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         Context GetContext (string context);
 
         /// <summary>
-        /// Get an existing context
+        /// Get context
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get an existing context
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
         /// <returns>ApiResponse of Context</returns>
         ApiResponse<Context> GetContextWithHttpInfo (string context);
-        /// <summary>
-        /// List existing backends.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;Backend&gt;</returns>
-        List<Backend> ListBackends ();
-
-        /// <summary>
-        /// List existing backends.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;Backend&gt;</returns>
-        ApiResponse<List<Backend>> ListBackendsWithHttpInfo ();
         #endregion Synchronous Operations
     }
 
@@ -286,87 +200,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new backend 
-        /// </summary>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="backend">backend</param>
-        /// <returns>Backend</returns>
-        public Backend CreateBackend (Backend backend)
-        {
-             ApiResponse<Backend> localVarResponse = CreateBackendWithHttpInfo(backend);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Create a new backend 
-        /// </summary>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="backend">backend</param>
-        /// <returns>ApiResponse of Backend</returns>
-        public ApiResponse< Backend > CreateBackendWithHttpInfo (Backend backend)
-        {
-            // verify the required parameter 'backend' is set
-            if (backend == null)
-                throw new ApiException(400, "Missing required parameter 'backend' when calling ContextApi->CreateBackend");
-
-            var localVarPath = "/backends";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=UTF-8"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=UTF-8"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (backend != null && backend.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(backend); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = backend; // byte array
-            }
-
-            // authentication (oauth2schema) required
-            // oauth required
-            if (!String.IsNullOrEmpty(Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("CreateBackend", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Backend>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Backend) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Backend)));
-        }
-
-        /// <summary>
-        /// Create a new context 
+        /// Create context Create a new context
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -378,7 +212,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new context 
+        /// Create context Create a new context
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -389,7 +223,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (context == null)
                 throw new ApiException(400, "Missing required parameter 'context' when calling ContextApi->CreateContext");
 
-            var localVarPath = "/";
+            var localVarPath = "/blockchain/easy/0.10/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -446,29 +280,30 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Delete backend by id (not by ledgername) 
+        /// Delete context Delete an existing context
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="backendId">backendId</param>
-        /// <returns></returns>
-        public void DeleteBackend (string backendId)
+        /// <param name="context">context</param>
+        /// <returns>Context</returns>
+        public Context DeleteContext (string context)
         {
-             DeleteBackendWithHttpInfo(backendId);
+             ApiResponse<Context> localVarResponse = DeleteContextWithHttpInfo(context);
+             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Delete backend by id (not by ledgername) 
+        /// Delete context Delete an existing context
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="backendId">backendId</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteBackendWithHttpInfo (string backendId)
+        /// <param name="context">context</param>
+        /// <returns>ApiResponse of Context</returns>
+        public ApiResponse< Context > DeleteContextWithHttpInfo (string context)
         {
-            // verify the required parameter 'backendId' is set
-            if (backendId == null)
-                throw new ApiException(400, "Missing required parameter 'backendId' when calling ContextApi->DeleteBackend");
+            // verify the required parameter 'context' is set
+            if (context == null)
+                throw new ApiException(400, "Missing required parameter 'context' when calling ContextApi->DeleteContext");
 
-            var localVarPath = "/backends/{backendId}";
+            var localVarPath = "/blockchain/easy/0.10/{context}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -484,13 +319,13 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "*/*"
+                "application/json;charset=UTF-8"
             };
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (backendId != null) localVarPathParams.Add("backendId", Configuration.ApiClient.ParameterToString(backendId)); // path parameter
+            if (context != null) localVarPathParams.Add("context", Configuration.ApiClient.ParameterToString(context)); // path parameter
 
             // authentication (oauth2schema) required
             // oauth required
@@ -508,169 +343,17 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("DeleteBackend", localVarResponse);
+                Exception exception = ExceptionFactory("DeleteContext", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Context>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (Context) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Context)));
         }
 
         /// <summary>
-        /// Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others 
-        /// </summary>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="backendId">backendId</param>
-        /// <param name="includePublic">includePublic (optional, default to false)</param>
-        /// <returns>List&lt;Backend&gt;</returns>
-        public List<Backend> FindBackends (string backendId, bool? includePublic = null)
-        {
-             ApiResponse<List<Backend>> localVarResponse = FindBackendsWithHttpInfo(backendId, includePublic);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others 
-        /// </summary>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="backendId">backendId</param>
-        /// <param name="includePublic">includePublic (optional, default to false)</param>
-        /// <returns>ApiResponse of List&lt;Backend&gt;</returns>
-        public ApiResponse< List<Backend> > FindBackendsWithHttpInfo (string backendId, bool? includePublic = null)
-        {
-            // verify the required parameter 'backendId' is set
-            if (backendId == null)
-                throw new ApiException(400, "Missing required parameter 'backendId' when calling ContextApi->FindBackends");
-
-            var localVarPath = "/backends/{backendId}/find";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=UTF-8"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (backendId != null) localVarPathParams.Add("backendId", Configuration.ApiClient.ParameterToString(backendId)); // path parameter
-            if (includePublic != null) localVarQueryParams.Add("includePublic", Configuration.ApiClient.ParameterToString(includePublic)); // query parameter
-
-            // authentication (oauth2schema) required
-            // oauth required
-            if (!String.IsNullOrEmpty(Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("FindBackends", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<List<Backend>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<Backend>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Backend>)));
-        }
-
-        /// <summary>
-        /// Get existing backend by id (not by ledgername). Optionally including public backend of others 
-        /// </summary>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="backendId">backendId</param>
-        /// <param name="includePublic">includePublic (optional, default to false)</param>
-        /// <returns>Backend</returns>
-        public Backend GetBackend (string backendId, bool? includePublic = null)
-        {
-             ApiResponse<Backend> localVarResponse = GetBackendWithHttpInfo(backendId, includePublic);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Get existing backend by id (not by ledgername). Optionally including public backend of others 
-        /// </summary>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="backendId">backendId</param>
-        /// <param name="includePublic">includePublic (optional, default to false)</param>
-        /// <returns>ApiResponse of Backend</returns>
-        public ApiResponse< Backend > GetBackendWithHttpInfo (string backendId, bool? includePublic = null)
-        {
-            // verify the required parameter 'backendId' is set
-            if (backendId == null)
-                throw new ApiException(400, "Missing required parameter 'backendId' when calling ContextApi->GetBackend");
-
-            var localVarPath = "/backends/{backendId}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=UTF-8"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (backendId != null) localVarPathParams.Add("backendId", Configuration.ApiClient.ParameterToString(backendId)); // path parameter
-            if (includePublic != null) localVarQueryParams.Add("includePublic", Configuration.ApiClient.ParameterToString(includePublic)); // query parameter
-
-            // authentication (oauth2schema) required
-            // oauth required
-            if (!String.IsNullOrEmpty(Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("GetBackend", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Backend>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Backend) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Backend)));
-        }
-
-        /// <summary>
-        /// Get an existing context 
+        /// Get context Get an existing context
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -682,7 +365,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get an existing context 
+        /// Get context Get an existing context
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -693,7 +376,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (context == null)
                 throw new ApiException(400, "Missing required parameter 'context' when calling ContextApi->GetContext");
 
-            var localVarPath = "/{context}";
+            var localVarPath = "/blockchain/easy/0.10/{context}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -740,73 +423,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             return new ApiResponse<Context>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (Context) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Context)));
-        }
-
-        /// <summary>
-        /// List existing backends. 
-        /// </summary>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;Backend&gt;</returns>
-        public List<Backend> ListBackends ()
-        {
-             ApiResponse<List<Backend>> localVarResponse = ListBackendsWithHttpInfo();
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// List existing backends. 
-        /// </summary>
-        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;Backend&gt;</returns>
-        public ApiResponse< List<Backend> > ListBackendsWithHttpInfo ()
-        {
-
-            var localVarPath = "/backends";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=UTF-8"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-
-            // authentication (oauth2schema) required
-            // oauth required
-            if (!String.IsNullOrEmpty(Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ListBackends", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<List<Backend>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<Backend>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Backend>)));
         }
 
     }

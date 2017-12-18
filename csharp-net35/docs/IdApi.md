@@ -1,18 +1,20 @@
 # Sphereon.SDK.Blockchain.Easy.Api.IdApi
 
-All URIs are relative to *https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10*
+All URIs are relative to *https://gw.api.cloud.sphereon.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ChainIdExists**](IdApi.md#chainidexists) | **GET** /{context}/chains/id/{chainId} | Determine whether the Id of a chain exists in the blockchain
-[**DetermineChainId**](IdApi.md#determinechainid) | **POST** /{context}/chains/id | Pre determine the Id of a chain request without anchoring it in the blockchain
-[**DetermineEntryId**](IdApi.md#determineentryid) | **POST** /{context}/chains/id/{chainId}/entries | Pre determine the Id of an entry request without anchoring the entry
-[**EntryIdExists**](IdApi.md#entryidexists) | **GET** /{context}/chains/id/{chainId}/entries/{entryId} | Determine whether the Id of an entry exists in the blockchain
+[**ChainIdExists**](IdApi.md#chainidexists) | **GET** /blockchain/easy/0.10/{context}/chains/id/{chainId} | Determine chain id exists
+[**DetermineChainId**](IdApi.md#determinechainid) | **POST** /blockchain/easy/0.10/{context}/chains/id | Predetermine id of chain
+[**DetermineEntryId**](IdApi.md#determineentryid) | **POST** /blockchain/easy/0.10/{context}/chains/id/{chainId}/entries | Predetermine id of an entry
+[**EntryIdExists**](IdApi.md#entryidexists) | **GET** /blockchain/easy/0.10/{context}/chains/id/{chainId}/entries/{entryId} | Determine entry id exists
 
 
 <a name="chainidexists"></a>
 # **ChainIdExists**
 > IdResponse ChainIdExists (string context, string chainId)
+
+Determine chain id exists
 
 Determine whether the Id of a chain exists in the blockchain
 
@@ -39,7 +41,7 @@ namespace Example
 
             try
             {
-                // Determine whether the Id of a chain exists in the blockchain
+                // Determine chain id exists
                 IdResponse result = apiInstance.ChainIdExists(context, chainId);
                 Debug.WriteLine(result);
             }
@@ -78,6 +80,8 @@ Name | Type | Description  | Notes
 # **DetermineChainId**
 > IdResponse DetermineChainId (string context, Chain chain, bool? checkExistence = null)
 
+Predetermine id of chain
+
 Pre determine the Id of a chain request without anchoring it in the blockchain
 
 ### Example
@@ -99,12 +103,12 @@ namespace Example
 
             var apiInstance = new IdApi();
             var context = context_example;  // string | context
-            var chain = new Chain(); // Chain | Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
+            var chain = new Chain(); // Chain | Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
             var checkExistence = true;  // bool? | Check whether the id exists (optional)  (default to false)
 
             try
             {
-                // Pre determine the Id of a chain request without anchoring it in the blockchain
+                // Predetermine id of chain
                 IdResponse result = apiInstance.DetermineChainId(context, chain, checkExistence);
                 Debug.WriteLine(result);
             }
@@ -122,7 +126,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **context** | **string**| context | 
- **chain** | [**Chain**](Chain.md)| Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! | 
+ **chain** | [**Chain**](Chain.md)| Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network! | 
  **checkExistence** | **bool?**| Check whether the id exists | [optional] [default to false]
 
 ### Return type
@@ -143,6 +147,8 @@ Name | Type | Description  | Notes
 <a name="determineentryid"></a>
 # **DetermineEntryId**
 > IdResponse DetermineEntryId (string context, string chainId, Entry entry, bool? checkExistence = null)
+
+Predetermine id of an entry
 
 Pre determine the Id of an entry request without anchoring the entry
 
@@ -171,7 +177,7 @@ namespace Example
 
             try
             {
-                // Pre determine the Id of an entry request without anchoring the entry
+                // Predetermine id of an entry
                 IdResponse result = apiInstance.DetermineEntryId(context, chainId, entry, checkExistence);
                 Debug.WriteLine(result);
             }
@@ -212,6 +218,8 @@ Name | Type | Description  | Notes
 # **EntryIdExists**
 > IdResponse EntryIdExists (string context, string chainId, string entryId)
 
+Determine entry id exists
+
 Determine whether the Id of an entry exists in the blockchain
 
 ### Example
@@ -238,7 +246,7 @@ namespace Example
 
             try
             {
-                // Determine whether the Id of an entry exists in the blockchain
+                // Determine entry id exists
                 IdResponse result = apiInstance.EntryIdExists(context, chainId, entryId);
                 Debug.WriteLine(result);
             }

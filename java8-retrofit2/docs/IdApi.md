@@ -1,18 +1,20 @@
 # IdApi
 
-All URIs are relative to *https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10*
+All URIs are relative to *https://gw.api.cloud.sphereon.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**chainIdExists**](IdApi.md#chainIdExists) | **GET** {context}/chains/id/{chainId} | Determine whether the Id of a chain exists in the blockchain
-[**determineChainId**](IdApi.md#determineChainId) | **POST** {context}/chains/id | Pre determine the Id of a chain request without anchoring it in the blockchain
-[**determineEntryId**](IdApi.md#determineEntryId) | **POST** {context}/chains/id/{chainId}/entries | Pre determine the Id of an entry request without anchoring the entry
-[**entryIdExists**](IdApi.md#entryIdExists) | **GET** {context}/chains/id/{chainId}/entries/{entryId} | Determine whether the Id of an entry exists in the blockchain
+[**chainIdExists**](IdApi.md#chainIdExists) | **GET** blockchain/easy/0.10/{context}/chains/id/{chainId} | Determine chain id exists
+[**determineChainId**](IdApi.md#determineChainId) | **POST** blockchain/easy/0.10/{context}/chains/id | Predetermine id of chain
+[**determineEntryId**](IdApi.md#determineEntryId) | **POST** blockchain/easy/0.10/{context}/chains/id/{chainId}/entries | Predetermine id of an entry
+[**entryIdExists**](IdApi.md#entryIdExists) | **GET** blockchain/easy/0.10/{context}/chains/id/{chainId}/entries/{entryId} | Determine entry id exists
 
 
 <a name="chainIdExists"></a>
 # **chainIdExists**
 > IdResponse chainIdExists(context, chainId)
+
+Determine chain id exists
 
 Determine whether the Id of a chain exists in the blockchain
 
@@ -67,6 +69,8 @@ Name | Type | Description  | Notes
 # **determineChainId**
 > IdResponse determineChainId(context, chain, checkExistence)
 
+Predetermine id of chain
+
 Pre determine the Id of a chain request without anchoring it in the blockchain
 
 ### Example
@@ -86,7 +90,7 @@ oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 IdApi apiInstance = new IdApi();
 String context = "context_example"; // String | context
-Chain chain = new Chain(); // Chain | Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
+Chain chain = new Chain(); // Chain | Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
 Boolean checkExistence = false; // Boolean | Check whether the id exists
 try {
     IdResponse result = apiInstance.determineChainId(context, chain, checkExistence);
@@ -102,7 +106,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **context** | **String**| context |
- **chain** | [**Chain**](Chain.md)| Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! |
+ **chain** | [**Chain**](Chain.md)| Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network! |
  **checkExistence** | **Boolean**| Check whether the id exists | [optional] [default to false]
 
 ### Return type
@@ -121,6 +125,8 @@ Name | Type | Description  | Notes
 <a name="determineEntryId"></a>
 # **determineEntryId**
 > IdResponse determineEntryId(context, chainId, entry, checkExistence)
+
+Predetermine id of an entry
 
 Pre determine the Id of an entry request without anchoring the entry
 
@@ -178,6 +184,8 @@ Name | Type | Description  | Notes
 <a name="entryIdExists"></a>
 # **entryIdExists**
 > IdResponse entryIdExists(context, chainId, entryId)
+
+Determine entry id exists
 
 Determine whether the Id of an entry exists in the blockchain
 

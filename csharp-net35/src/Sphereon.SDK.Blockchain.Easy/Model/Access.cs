@@ -1,7 +1,7 @@
 /* 
  * Easy Blockchain API
  *
- * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom or Multichain. The latter also allows for a private blockchain. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a context is available using the / POST endpoint. Normally you only need one context. This is the place where backend providers and blockchain implementations are being specified.  2. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is a relative expensive operation.  3. Store entries on the chain from step 2. The entries will contain the content and metadata you want to store forever on the specified chain.  4. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
+ * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of FACTOM or Multichain. The latter also allows for a private blockchain. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a context is available using the / POST endpoint. Normally you only need one context. This is the place where backend providers and blockchain implementations are being specified.  2. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is a relative expensive operation.  3. Store entries on the chain from step 2. The entries will contain the content and metadata you want to store forever on the specified chain.  4. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
  *
  * OpenAPI spec version: 0.10
  * Contact: dev@sphereon.com
@@ -66,23 +66,15 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         /// Initializes a new instance of the <see cref="Access" /> class.
         /// </summary>
         /// <param name="Modes">Modes.</param>
-        /// <param name="_Public">_Public.</param>
         /// <param name="BlackList">BlackList.</param>
         /// <param name="WhiteList">WhiteList.</param>
-        public Access(List<ModesEnum> Modes = default(List<ModesEnum>), bool? _Public = default(bool?), List<string> BlackList = default(List<string>), List<string> WhiteList = default(List<string>))
+        public Access(List<ModesEnum> Modes = default(List<ModesEnum>), List<string> BlackList = default(List<string>), List<string> WhiteList = default(List<string>))
         {
             this.Modes = Modes;
-            this._Public = _Public;
             this.BlackList = BlackList;
             this.WhiteList = WhiteList;
         }
         
-
-        /// <summary>
-        /// Gets or Sets _Public
-        /// </summary>
-        [DataMember(Name="public", EmitDefaultValue=false)]
-        public bool? _Public { get; set; }
 
         /// <summary>
         /// Gets or Sets BlackList
@@ -105,7 +97,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             var sb = new StringBuilder();
             sb.Append("class Access {\n");
             sb.Append("  Modes: ").Append(Modes).Append("\n");
-            sb.Append("  _Public: ").Append(_Public).Append("\n");
             sb.Append("  BlackList: ").Append(BlackList).Append("\n");
             sb.Append("  WhiteList: ").Append(WhiteList).Append("\n");
             sb.Append("}\n");
@@ -150,11 +141,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                     this.Modes.SequenceEqual(other.Modes)
                 ) && 
                 (
-                    this._Public == other._Public ||
-                    this._Public != null &&
-                    this._Public.Equals(other._Public)
-                ) && 
-                (
                     this.BlackList == other.BlackList ||
                     this.BlackList != null &&
                     this.BlackList.SequenceEqual(other.BlackList)
@@ -179,8 +165,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                 // Suitable nullity checks etc, of course :)
                 if (this.Modes != null)
                     hash = hash * 59 + this.Modes.GetHashCode();
-                if (this._Public != null)
-                    hash = hash * 59 + this._Public.GetHashCode();
                 if (this.BlackList != null)
                     hash = hash * 59 + this.BlackList.GetHashCode();
                 if (this.WhiteList != null)

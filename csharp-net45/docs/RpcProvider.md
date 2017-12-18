@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **OwnerType** | **string** |  | [optional] 
 **Password** | **string** |  | [optional] 
 **Access** | [**Access**](Access.md) |  | [optional] 
+**LedgerName** | **string** |  | [optional] 
 **ResourceFiles** | **Dictionary&lt;string, string&gt;** |  | [optional] 
 **Host** | **string** |  | [optional] 
 **Id** | **string** |  | [optional] 

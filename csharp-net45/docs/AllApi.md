@@ -1,35 +1,38 @@
 # Sphereon.SDK.Blockchain.Easy.Api.AllApi
 
-All URIs are relative to *https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10*
+All URIs are relative to *https://gw.api.cloud.sphereon.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ChainIdExists**](AllApi.md#chainidexists) | **GET** /{context}/chains/id/{chainId} | Determine whether the Id of a chain exists in the blockchain
-[**CreateBackend**](AllApi.md#createbackend) | **POST** /backends | Create a new backend
-[**CreateChain**](AllApi.md#createchain) | **POST** /{context}/chains | Create a new chain
-[**CreateContext**](AllApi.md#createcontext) | **POST** / | Create a new context
-[**CreateEntry**](AllApi.md#createentry) | **POST** /{context}/chains/{chainId}/entries | Create a new entry in the provided chain
-[**DeleteBackend**](AllApi.md#deletebackend) | **DELETE** /backends/{backendId} | Delete backend by id (not by ledgername)
-[**DetermineChainId**](AllApi.md#determinechainid) | **POST** /{context}/chains/id | Pre determine the Id of a chain request without anchoring it in the blockchain
-[**DetermineEntryId**](AllApi.md#determineentryid) | **POST** /{context}/chains/id/{chainId}/entries | Pre determine the Id of an entry request without anchoring the entry
-[**EntryById**](AllApi.md#entrybyid) | **GET** /{context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
-[**EntryByRequest**](AllApi.md#entrybyrequest) | **POST** /{context}/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
-[**EntryIdExists**](AllApi.md#entryidexists) | **GET** /{context}/chains/id/{chainId}/entries/{entryId} | Determine whether the Id of an entry exists in the blockchain
-[**FindBackends**](AllApi.md#findbackends) | **GET** /backends/{backendId}/find | Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
-[**FirstEntry**](AllApi.md#firstentry) | **GET** /{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
-[**GetBackend**](AllApi.md#getbackend) | **GET** /backends/{backendId} | Get existing backend by id (not by ledgername). Optionally including public backend of others
-[**GetContext**](AllApi.md#getcontext) | **GET** /{context} | Get an existing context
-[**LastEntry**](AllApi.md#lastentry) | **GET** /{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
-[**ListBackends**](AllApi.md#listbackends) | **GET** /backends | List existing backends.
-[**NextEntryById**](AllApi.md#nextentrybyid) | **GET** /{context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
-[**NextEntryByRequest**](AllApi.md#nextentrybyrequest) | **POST** /{context}/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
-[**PreviousEntryById**](AllApi.md#previousentrybyid) | **GET** /{context}/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
-[**PreviousEntryByRequest**](AllApi.md#previousentrybyrequest) | **POST** /{context}/chains/{chainId}/entries/entry/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
+[**ChainIdExists**](AllApi.md#chainidexists) | **GET** /blockchain/easy/0.10/{context}/chains/id/{chainId} | Determine chain id exists
+[**CreateBackend**](AllApi.md#createbackend) | **POST** /blockchain/easy/0.10/backends | Create a new backend
+[**CreateChain**](AllApi.md#createchain) | **POST** /blockchain/easy/0.10/{context}/chains | Create a new chain
+[**CreateContext**](AllApi.md#createcontext) | **POST** /blockchain/easy/0.10/ | Create context
+[**CreateEntry**](AllApi.md#createentry) | **POST** /blockchain/easy/0.10/{context}/chains/{chainId}/entries | Create a new entry in the provided chain
+[**DeleteBackend**](AllApi.md#deletebackend) | **DELETE** /blockchain/easy/0.10/backends/{backendId} | Delete a backend
+[**DeleteContext**](AllApi.md#deletecontext) | **DELETE** /blockchain/easy/0.10/{context} | Delete context
+[**DetermineChainId**](AllApi.md#determinechainid) | **POST** /blockchain/easy/0.10/{context}/chains/id | Predetermine id of chain
+[**DetermineEntryId**](AllApi.md#determineentryid) | **POST** /blockchain/easy/0.10/{context}/chains/id/{chainId}/entries | Predetermine id of an entry
+[**EntryById**](AllApi.md#entrybyid) | **GET** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
+[**EntryByRequest**](AllApi.md#entrybyrequest) | **POST** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
+[**EntryIdExists**](AllApi.md#entryidexists) | **GET** /blockchain/easy/0.10/{context}/chains/id/{chainId}/entries/{entryId} | Determine entry id exists
+[**FindBackends**](AllApi.md#findbackends) | **GET** /blockchain/easy/0.10/backends/{backendId}/find | Find backends
+[**FirstEntry**](AllApi.md#firstentry) | **GET** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain
+[**GetBackend**](AllApi.md#getbackend) | **GET** /blockchain/easy/0.10/backends/{backendId} | Get backend
+[**GetContext**](AllApi.md#getcontext) | **GET** /blockchain/easy/0.10/{context} | Get context
+[**LastEntry**](AllApi.md#lastentry) | **GET** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain.
+[**ListBackends**](AllApi.md#listbackends) | **GET** /blockchain/easy/0.10/backends | List backends
+[**NextEntryById**](AllApi.md#nextentrybyid) | **GET** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
+[**NextEntryByRequest**](AllApi.md#nextentrybyrequest) | **POST** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
+[**PreviousEntryById**](AllApi.md#previousentrybyid) | **GET** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
+[**PreviousEntryByRequest**](AllApi.md#previousentrybyrequest) | **POST** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/entry/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
 
 
 <a name="chainidexists"></a>
 # **ChainIdExists**
 > IdResponse ChainIdExists (string context, string chainId)
+
+Determine chain id exists
 
 Determine whether the Id of a chain exists in the blockchain
 
@@ -56,7 +59,7 @@ namespace Example
 
             try
             {
-                // Determine whether the Id of a chain exists in the blockchain
+                // Determine chain id exists
                 IdResponse result = apiInstance.ChainIdExists(context, chainId);
                 Debug.WriteLine(result);
             }
@@ -94,6 +97,8 @@ Name | Type | Description  | Notes
 <a name="createbackend"></a>
 # **CreateBackend**
 > Backend CreateBackend (Backend backend)
+
+Create a new backend
 
 Create a new backend
 
@@ -159,6 +164,8 @@ Name | Type | Description  | Notes
 
 Create a new chain
 
+Create a new chain
+
 ### Example
 ```csharp
 using System;
@@ -221,6 +228,8 @@ Name | Type | Description  | Notes
 # **CreateContext**
 > Context CreateContext (Context context)
 
+Create context
+
 Create a new context
 
 ### Example
@@ -245,7 +254,7 @@ namespace Example
 
             try
             {
-                // Create a new context
+                // Create context
                 Context result = apiInstance.CreateContext(context);
                 Debug.WriteLine(result);
             }
@@ -282,6 +291,8 @@ Name | Type | Description  | Notes
 <a name="createentry"></a>
 # **CreateEntry**
 > CommittedEntryResponse CreateEntry (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null)
+
+Create a new entry in the provided chain
 
 Create a new entry in the provided chain
 
@@ -349,7 +360,9 @@ Name | Type | Description  | Notes
 
 <a name="deletebackend"></a>
 # **DeleteBackend**
-> void DeleteBackend (string backendId)
+> Backend DeleteBackend (string backendId)
+
+Delete a backend
 
 Delete backend by id (not by ledgername)
 
@@ -375,8 +388,9 @@ namespace Example
 
             try
             {
-                // Delete backend by id (not by ledgername)
-                apiInstance.DeleteBackend(backendId);
+                // Delete a backend
+                Backend result = apiInstance.DeleteBackend(backendId);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -395,7 +409,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**Backend**](Backend.md)
 
 ### Authorization
 
@@ -408,9 +422,75 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="deletecontext"></a>
+# **DeleteContext**
+> Context DeleteContext (string context)
+
+Delete context
+
+Delete an existing context
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Sphereon.SDK.Blockchain.Easy.Api;
+using Sphereon.SDK.Blockchain.Easy.Client;
+using Sphereon.SDK.Blockchain.Easy.Model;
+
+namespace Example
+{
+    public class DeleteContextExample
+    {
+        public void main()
+        {
+            // Configure OAuth2 access token for authorization: oauth2schema
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new AllApi();
+            var context = context_example;  // string | context
+
+            try
+            {
+                // Delete context
+                Context result = apiInstance.DeleteContext(context);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling AllApi.DeleteContext: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **context** | **string**| context | 
+
+### Return type
+
+[**Context**](Context.md)
+
+### Authorization
+
+[oauth2schema](../README.md#oauth2schema)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json;charset=UTF-8
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="determinechainid"></a>
 # **DetermineChainId**
 > IdResponse DetermineChainId (string context, Chain chain, bool? checkExistence = null)
+
+Predetermine id of chain
 
 Pre determine the Id of a chain request without anchoring it in the blockchain
 
@@ -433,12 +513,12 @@ namespace Example
 
             var apiInstance = new AllApi();
             var context = context_example;  // string | context
-            var chain = new Chain(); // Chain | Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
+            var chain = new Chain(); // Chain | Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
             var checkExistence = true;  // bool? | Check whether the id exists (optional)  (default to false)
 
             try
             {
-                // Pre determine the Id of a chain request without anchoring it in the blockchain
+                // Predetermine id of chain
                 IdResponse result = apiInstance.DetermineChainId(context, chain, checkExistence);
                 Debug.WriteLine(result);
             }
@@ -456,7 +536,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **context** | **string**| context | 
- **chain** | [**Chain**](Chain.md)| Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! | 
+ **chain** | [**Chain**](Chain.md)| Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network! | 
  **checkExistence** | **bool?**| Check whether the id exists | [optional] [default to false]
 
 ### Return type
@@ -477,6 +557,8 @@ Name | Type | Description  | Notes
 <a name="determineentryid"></a>
 # **DetermineEntryId**
 > IdResponse DetermineEntryId (string context, string chainId, Entry entry, bool? checkExistence = null)
+
+Predetermine id of an entry
 
 Pre determine the Id of an entry request without anchoring the entry
 
@@ -505,7 +587,7 @@ namespace Example
 
             try
             {
-                // Pre determine the Id of an entry request without anchoring the entry
+                // Predetermine id of an entry
                 IdResponse result = apiInstance.DetermineEntryId(context, chainId, entry, checkExistence);
                 Debug.WriteLine(result);
             }
@@ -545,6 +627,8 @@ Name | Type | Description  | Notes
 <a name="entrybyid"></a>
 # **EntryById**
 > AnchoredEntryResponse EntryById (string context, string chainId, string entryId, DateTime? currentAnchorTime = null)
+
+Get an existing entry in the provided chain
 
 Get an existing entry in the provided chain
 
@@ -616,6 +700,8 @@ Name | Type | Description  | Notes
 
 Get an existing entry in the provided chain
 
+Get an existing entry in the provided chain
+
 ### Example
 ```csharp
 using System;
@@ -682,6 +768,8 @@ Name | Type | Description  | Notes
 # **EntryIdExists**
 > IdResponse EntryIdExists (string context, string chainId, string entryId)
 
+Determine entry id exists
+
 Determine whether the Id of an entry exists in the blockchain
 
 ### Example
@@ -708,7 +796,7 @@ namespace Example
 
             try
             {
-                // Determine whether the Id of an entry exists in the blockchain
+                // Determine entry id exists
                 IdResponse result = apiInstance.EntryIdExists(context, chainId, entryId);
                 Debug.WriteLine(result);
             }
@@ -748,6 +836,8 @@ Name | Type | Description  | Notes
 # **FindBackends**
 > List<Backend> FindBackends (string backendId, bool? includePublic = null)
 
+Find backends
+
 Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
 
 ### Example
@@ -773,7 +863,7 @@ namespace Example
 
             try
             {
-                // Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
+                // Find backends
                 List&lt;Backend&gt; result = apiInstance.FindBackends(backendId, includePublic);
                 Debug.WriteLine(result);
             }
@@ -812,6 +902,8 @@ Name | Type | Description  | Notes
 # **FirstEntry**
 > AnchoredEntryResponse FirstEntry (string context, string chainId)
 
+Get the first entry in the provided chain
+
 Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
 
 ### Example
@@ -837,7 +929,7 @@ namespace Example
 
             try
             {
-                // Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
+                // Get the first entry in the provided chain
                 AnchoredEntryResponse result = apiInstance.FirstEntry(context, chainId);
                 Debug.WriteLine(result);
             }
@@ -876,6 +968,8 @@ Name | Type | Description  | Notes
 # **GetBackend**
 > Backend GetBackend (string backendId, bool? includePublic = null)
 
+Get backend
+
 Get existing backend by id (not by ledgername). Optionally including public backend of others
 
 ### Example
@@ -901,7 +995,7 @@ namespace Example
 
             try
             {
-                // Get existing backend by id (not by ledgername). Optionally including public backend of others
+                // Get backend
                 Backend result = apiInstance.GetBackend(backendId, includePublic);
                 Debug.WriteLine(result);
             }
@@ -940,6 +1034,8 @@ Name | Type | Description  | Notes
 # **GetContext**
 > Context GetContext (string context)
 
+Get context
+
 Get an existing context
 
 ### Example
@@ -964,7 +1060,7 @@ namespace Example
 
             try
             {
-                // Get an existing context
+                // Get context
                 Context result = apiInstance.GetContext(context);
                 Debug.WriteLine(result);
             }
@@ -1002,6 +1098,8 @@ Name | Type | Description  | Notes
 # **LastEntry**
 > AnchoredEntryResponse LastEntry (string context, string chainId)
 
+Get the last entry in the provided chain.
+
 Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
 
 ### Example
@@ -1027,7 +1125,7 @@ namespace Example
 
             try
             {
-                // Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
+                // Get the last entry in the provided chain.
                 AnchoredEntryResponse result = apiInstance.LastEntry(context, chainId);
                 Debug.WriteLine(result);
             }
@@ -1066,6 +1164,8 @@ Name | Type | Description  | Notes
 # **ListBackends**
 > List<Backend> ListBackends ()
 
+List backends
+
 List existing backends.
 
 ### Example
@@ -1089,7 +1189,7 @@ namespace Example
 
             try
             {
-                // List existing backends.
+                // List backends
                 List&lt;Backend&gt; result = apiInstance.ListBackends();
                 Debug.WriteLine(result);
             }
@@ -1123,6 +1223,8 @@ This endpoint does not need any parameter.
 <a name="nextentrybyid"></a>
 # **NextEntryById**
 > AnchoredEntryResponse NextEntryById (string context, string chainId, string entryId, DateTime? currentAnchorTime = null)
+
+Get the entry after the supplied entry Id (the next) in the provided chain
 
 Get the entry after the supplied entry Id (the next) in the provided chain
 
@@ -1194,6 +1296,8 @@ Name | Type | Description  | Notes
 
 Get the entry after the supplied entry Id (the next) in the provided chain
 
+Get the entry after the supplied entry Id (the next) in the provided chain
+
 ### Example
 ```csharp
 using System;
@@ -1262,6 +1366,8 @@ Name | Type | Description  | Notes
 
 Get the entry before the supplied entry Id (the previous) in the provided chain
 
+Get the entry before the supplied entry Id (the previous) in the provided chain
+
 ### Example
 ```csharp
 using System;
@@ -1327,6 +1433,8 @@ Name | Type | Description  | Notes
 <a name="previousentrybyrequest"></a>
 # **PreviousEntryByRequest**
 > AnchoredEntryResponse PreviousEntryByRequest (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null)
+
+Get the entry before the supplied entry Id (the previous) in the provided chain
 
 Get the entry before the supplied entry Id (the previous) in the provided chain
 

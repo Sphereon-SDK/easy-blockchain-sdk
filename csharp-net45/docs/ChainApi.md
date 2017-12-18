@@ -1,15 +1,17 @@
 # Sphereon.SDK.Blockchain.Easy.Api.ChainApi
 
-All URIs are relative to *https://gw-dev.api.cloud.sphereon.com/blockchain/easy/0.10*
+All URIs are relative to *https://gw.api.cloud.sphereon.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateChain**](ChainApi.md#createchain) | **POST** /{context}/chains | Create a new chain
+[**CreateChain**](ChainApi.md#createchain) | **POST** /blockchain/easy/0.10/{context}/chains | Create a new chain
 
 
 <a name="createchain"></a>
 # **CreateChain**
 > CommittedChainResponse CreateChain (string context, Chain chain)
+
+Create a new chain
 
 Create a new chain
 

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ownerType** | [**OwnerTypeEnum**](#OwnerTypeEnum) |  |  [optional]
 **password** | **String** |  |  [optional]
 **access** | [**Access**](Access.md) |  |  [optional]
+**ledgerName** | **String** |  |  [optional]
 **resourceFiles** | **Map&lt;String, String&gt;** |  |  [optional]
 **host** | **String** |  |  [optional]
 **id** | **String** |  |  [optional]

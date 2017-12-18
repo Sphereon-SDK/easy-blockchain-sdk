@@ -1,7 +1,7 @@
 /* 
  * Easy Blockchain API
  *
- * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom or Multichain. The latter also allows for a private blockchain. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a context is available using the / POST endpoint. Normally you only need one context. This is the place where backend providers and blockchain implementations are being specified.  2. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is a relative expensive operation.  3. Store entries on the chain from step 2. The entries will contain the content and metadata you want to store forever on the specified chain.  4. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
+ * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of FACTOM or Multichain. The latter also allows for a private blockchain. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a context is available using the / POST endpoint. Normally you only need one context. This is the place where backend providers and blockchain implementations are being specified.  2. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is a relative expensive operation.  3. Store entries on the chain from step 2. The entries will contain the content and metadata you want to store forever on the specified chain.  4. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
  *
  * OpenAPI spec version: 0.10
  * Contact: dev@sphereon.com
@@ -25,10 +25,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Determine whether the Id of a chain exists in the blockchain
+        /// Determine chain id exists
         /// </summary>
         /// <remarks>
-        /// 
+        /// Determine whether the Id of a chain exists in the blockchain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -37,10 +37,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         IdResponse ChainIdExists (string context, string chainId);
 
         /// <summary>
-        /// Determine whether the Id of a chain exists in the blockchain
+        /// Determine chain id exists
         /// </summary>
         /// <remarks>
-        /// 
+        /// Determine whether the Id of a chain exists in the blockchain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -51,7 +51,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Create a new backend
         /// </summary>
         /// <remarks>
-        /// 
+        /// Create a new backend
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backend">backend</param>
@@ -62,7 +62,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Create a new backend
         /// </summary>
         /// <remarks>
-        /// 
+        /// Create a new backend
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backend">backend</param>
@@ -72,7 +72,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Create a new chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Create a new chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -84,7 +84,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Create a new chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Create a new chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -92,10 +92,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>ApiResponse of CommittedChainResponse</returns>
         ApiResponse<CommittedChainResponse> CreateChainWithHttpInfo (string context, Chain chain);
         /// <summary>
-        /// Create a new context
+        /// Create context
         /// </summary>
         /// <remarks>
-        /// 
+        /// Create a new context
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -103,10 +103,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         Context CreateContext (Context context);
 
         /// <summary>
-        /// Create a new context
+        /// Create context
         /// </summary>
         /// <remarks>
-        /// 
+        /// Create a new context
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -116,7 +116,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Create a new entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Create a new entry in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -130,7 +130,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Create a new entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Create a new entry in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -140,56 +140,77 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>ApiResponse of CommittedEntryResponse</returns>
         ApiResponse<CommittedEntryResponse> CreateEntryWithHttpInfo (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null);
         /// <summary>
-        /// Delete backend by id (not by ledgername)
+        /// Delete a backend
         /// </summary>
         /// <remarks>
-        /// 
+        /// Delete backend by id (not by ledgername)
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
-        /// <returns></returns>
-        void DeleteBackend (string backendId);
+        /// <returns>Backend</returns>
+        Backend DeleteBackend (string backendId);
 
         /// <summary>
-        /// Delete backend by id (not by ledgername)
+        /// Delete a backend
         /// </summary>
         /// <remarks>
-        /// 
+        /// Delete backend by id (not by ledgername)
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteBackendWithHttpInfo (string backendId);
+        /// <returns>ApiResponse of Backend</returns>
+        ApiResponse<Backend> DeleteBackendWithHttpInfo (string backendId);
         /// <summary>
-        /// Pre determine the Id of a chain request without anchoring it in the blockchain
+        /// Delete context
         /// </summary>
         /// <remarks>
-        /// 
+        /// Delete an existing context
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
-        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
+        /// <returns>Context</returns>
+        Context DeleteContext (string context);
+
+        /// <summary>
+        /// Delete context
+        /// </summary>
+        /// <remarks>
+        /// Delete an existing context
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="context">context</param>
+        /// <returns>ApiResponse of Context</returns>
+        ApiResponse<Context> DeleteContextWithHttpInfo (string context);
+        /// <summary>
+        /// Predetermine id of chain
+        /// </summary>
+        /// <remarks>
+        /// Pre determine the Id of a chain request without anchoring it in the blockchain
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="context">context</param>
+        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!</param>
         /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
         /// <returns>IdResponse</returns>
         IdResponse DetermineChainId (string context, Chain chain, bool? checkExistence = null);
 
         /// <summary>
-        /// Pre determine the Id of a chain request without anchoring it in the blockchain
+        /// Predetermine id of chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Pre determine the Id of a chain request without anchoring it in the blockchain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
-        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
+        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!</param>
         /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
         /// <returns>ApiResponse of IdResponse</returns>
         ApiResponse<IdResponse> DetermineChainIdWithHttpInfo (string context, Chain chain, bool? checkExistence = null);
         /// <summary>
-        /// Pre determine the Id of an entry request without anchoring the entry
+        /// Predetermine id of an entry
         /// </summary>
         /// <remarks>
-        /// 
+        /// Pre determine the Id of an entry request without anchoring the entry
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -200,10 +221,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         IdResponse DetermineEntryId (string context, string chainId, Entry entry, bool? checkExistence = null);
 
         /// <summary>
-        /// Pre determine the Id of an entry request without anchoring the entry
+        /// Predetermine id of an entry
         /// </summary>
         /// <remarks>
-        /// 
+        /// Pre determine the Id of an entry request without anchoring the entry
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -216,7 +237,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get an existing entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get an existing entry in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -230,7 +251,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get an existing entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get an existing entry in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -243,7 +264,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get an existing entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get an existing entry in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -257,7 +278,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get an existing entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get an existing entry in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -267,10 +288,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
         ApiResponse<AnchoredEntryResponse> EntryByRequestWithHttpInfo (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null);
         /// <summary>
-        /// Determine whether the Id of an entry exists in the blockchain
+        /// Determine entry id exists
         /// </summary>
         /// <remarks>
-        /// 
+        /// Determine whether the Id of an entry exists in the blockchain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -280,10 +301,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         IdResponse EntryIdExists (string context, string chainId, string entryId);
 
         /// <summary>
-        /// Determine whether the Id of an entry exists in the blockchain
+        /// Determine entry id exists
         /// </summary>
         /// <remarks>
-        /// 
+        /// Determine whether the Id of an entry exists in the blockchain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -292,10 +313,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>ApiResponse of IdResponse</returns>
         ApiResponse<IdResponse> EntryIdExistsWithHttpInfo (string context, string chainId, string entryId);
         /// <summary>
-        /// Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
+        /// Find backends
         /// </summary>
         /// <remarks>
-        /// 
+        /// Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
@@ -304,10 +325,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         List<Backend> FindBackends (string backendId, bool? includePublic = null);
 
         /// <summary>
-        /// Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
+        /// Find backends
         /// </summary>
         /// <remarks>
-        /// 
+        /// Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
@@ -315,10 +336,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>ApiResponse of List&lt;Backend&gt;</returns>
         ApiResponse<List<Backend>> FindBackendsWithHttpInfo (string backendId, bool? includePublic = null);
         /// <summary>
-        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
+        /// Get the first entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -327,10 +348,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         AnchoredEntryResponse FirstEntry (string context, string chainId);
 
         /// <summary>
-        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
+        /// Get the first entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -338,10 +359,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
         ApiResponse<AnchoredEntryResponse> FirstEntryWithHttpInfo (string context, string chainId);
         /// <summary>
-        /// Get existing backend by id (not by ledgername). Optionally including public backend of others
+        /// Get backend
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get existing backend by id (not by ledgername). Optionally including public backend of others
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
@@ -350,10 +371,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         Backend GetBackend (string backendId, bool? includePublic = null);
 
         /// <summary>
-        /// Get existing backend by id (not by ledgername). Optionally including public backend of others
+        /// Get backend
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get existing backend by id (not by ledgername). Optionally including public backend of others
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
@@ -361,10 +382,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>ApiResponse of Backend</returns>
         ApiResponse<Backend> GetBackendWithHttpInfo (string backendId, bool? includePublic = null);
         /// <summary>
-        /// Get an existing context
+        /// Get context
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get an existing context
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -372,20 +393,20 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         Context GetContext (string context);
 
         /// <summary>
-        /// Get an existing context
+        /// Get context
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get an existing context
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
         /// <returns>ApiResponse of Context</returns>
         ApiResponse<Context> GetContextWithHttpInfo (string context);
         /// <summary>
-        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
+        /// Get the last entry in the provided chain.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -394,10 +415,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         AnchoredEntryResponse LastEntry (string context, string chainId);
 
         /// <summary>
-        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
+        /// Get the last entry in the provided chain.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -405,20 +426,20 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
         ApiResponse<AnchoredEntryResponse> LastEntryWithHttpInfo (string context, string chainId);
         /// <summary>
-        /// List existing backends.
+        /// List backends
         /// </summary>
         /// <remarks>
-        /// 
+        /// List existing backends.
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;Backend&gt;</returns>
         List<Backend> ListBackends ();
 
         /// <summary>
-        /// List existing backends.
+        /// List backends
         /// </summary>
         /// <remarks>
-        /// 
+        /// List existing backends.
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;Backend&gt;</returns>
@@ -427,7 +448,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -441,7 +462,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -454,7 +475,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -468,7 +489,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -481,7 +502,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -495,7 +516,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -508,7 +529,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -522,7 +543,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -534,10 +555,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Determine whether the Id of a chain exists in the blockchain
+        /// Determine chain id exists
         /// </summary>
         /// <remarks>
-        /// 
+        /// Determine whether the Id of a chain exists in the blockchain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -546,10 +567,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         System.Threading.Tasks.Task<IdResponse> ChainIdExistsAsync (string context, string chainId);
 
         /// <summary>
-        /// Determine whether the Id of a chain exists in the blockchain
+        /// Determine chain id exists
         /// </summary>
         /// <remarks>
-        /// 
+        /// Determine whether the Id of a chain exists in the blockchain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -560,7 +581,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Create a new backend
         /// </summary>
         /// <remarks>
-        /// 
+        /// Create a new backend
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backend">backend</param>
@@ -571,7 +592,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Create a new backend
         /// </summary>
         /// <remarks>
-        /// 
+        /// Create a new backend
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backend">backend</param>
@@ -581,7 +602,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Create a new chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Create a new chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -593,7 +614,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Create a new chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Create a new chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -601,10 +622,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>Task of ApiResponse (CommittedChainResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CommittedChainResponse>> CreateChainAsyncWithHttpInfo (string context, Chain chain);
         /// <summary>
-        /// Create a new context
+        /// Create context
         /// </summary>
         /// <remarks>
-        /// 
+        /// Create a new context
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -612,10 +633,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         System.Threading.Tasks.Task<Context> CreateContextAsync (Context context);
 
         /// <summary>
-        /// Create a new context
+        /// Create context
         /// </summary>
         /// <remarks>
-        /// 
+        /// Create a new context
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -625,7 +646,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Create a new entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Create a new entry in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -639,7 +660,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Create a new entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Create a new entry in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -649,56 +670,77 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>Task of ApiResponse (CommittedEntryResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CommittedEntryResponse>> CreateEntryAsyncWithHttpInfo (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null);
         /// <summary>
-        /// Delete backend by id (not by ledgername)
+        /// Delete a backend
         /// </summary>
         /// <remarks>
-        /// 
+        /// Delete backend by id (not by ledgername)
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteBackendAsync (string backendId);
+        /// <returns>Task of Backend</returns>
+        System.Threading.Tasks.Task<Backend> DeleteBackendAsync (string backendId);
 
         /// <summary>
-        /// Delete backend by id (not by ledgername)
+        /// Delete a backend
         /// </summary>
         /// <remarks>
-        /// 
+        /// Delete backend by id (not by ledgername)
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteBackendAsyncWithHttpInfo (string backendId);
+        /// <returns>Task of ApiResponse (Backend)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Backend>> DeleteBackendAsyncWithHttpInfo (string backendId);
         /// <summary>
-        /// Pre determine the Id of a chain request without anchoring it in the blockchain
+        /// Delete context
         /// </summary>
         /// <remarks>
-        /// 
+        /// Delete an existing context
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
-        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
+        /// <returns>Task of Context</returns>
+        System.Threading.Tasks.Task<Context> DeleteContextAsync (string context);
+
+        /// <summary>
+        /// Delete context
+        /// </summary>
+        /// <remarks>
+        /// Delete an existing context
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="context">context</param>
+        /// <returns>Task of ApiResponse (Context)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Context>> DeleteContextAsyncWithHttpInfo (string context);
+        /// <summary>
+        /// Predetermine id of chain
+        /// </summary>
+        /// <remarks>
+        /// Pre determine the Id of a chain request without anchoring it in the blockchain
+        /// </remarks>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="context">context</param>
+        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!</param>
         /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
         /// <returns>Task of IdResponse</returns>
         System.Threading.Tasks.Task<IdResponse> DetermineChainIdAsync (string context, Chain chain, bool? checkExistence = null);
 
         /// <summary>
-        /// Pre determine the Id of a chain request without anchoring it in the blockchain
+        /// Predetermine id of chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Pre determine the Id of a chain request without anchoring it in the blockchain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
-        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
+        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!</param>
         /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
         /// <returns>Task of ApiResponse (IdResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<IdResponse>> DetermineChainIdAsyncWithHttpInfo (string context, Chain chain, bool? checkExistence = null);
         /// <summary>
-        /// Pre determine the Id of an entry request without anchoring the entry
+        /// Predetermine id of an entry
         /// </summary>
         /// <remarks>
-        /// 
+        /// Pre determine the Id of an entry request without anchoring the entry
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -709,10 +751,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         System.Threading.Tasks.Task<IdResponse> DetermineEntryIdAsync (string context, string chainId, Entry entry, bool? checkExistence = null);
 
         /// <summary>
-        /// Pre determine the Id of an entry request without anchoring the entry
+        /// Predetermine id of an entry
         /// </summary>
         /// <remarks>
-        /// 
+        /// Pre determine the Id of an entry request without anchoring the entry
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -725,7 +767,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get an existing entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get an existing entry in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -739,7 +781,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get an existing entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get an existing entry in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -752,7 +794,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get an existing entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get an existing entry in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -766,7 +808,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get an existing entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get an existing entry in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -776,10 +818,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>Task of ApiResponse (AnchoredEntryResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<AnchoredEntryResponse>> EntryByRequestAsyncWithHttpInfo (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null);
         /// <summary>
-        /// Determine whether the Id of an entry exists in the blockchain
+        /// Determine entry id exists
         /// </summary>
         /// <remarks>
-        /// 
+        /// Determine whether the Id of an entry exists in the blockchain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -789,10 +831,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         System.Threading.Tasks.Task<IdResponse> EntryIdExistsAsync (string context, string chainId, string entryId);
 
         /// <summary>
-        /// Determine whether the Id of an entry exists in the blockchain
+        /// Determine entry id exists
         /// </summary>
         /// <remarks>
-        /// 
+        /// Determine whether the Id of an entry exists in the blockchain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -801,10 +843,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>Task of ApiResponse (IdResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<IdResponse>> EntryIdExistsAsyncWithHttpInfo (string context, string chainId, string entryId);
         /// <summary>
-        /// Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
+        /// Find backends
         /// </summary>
         /// <remarks>
-        /// 
+        /// Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
@@ -813,10 +855,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         System.Threading.Tasks.Task<List<Backend>> FindBackendsAsync (string backendId, bool? includePublic = null);
 
         /// <summary>
-        /// Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
+        /// Find backends
         /// </summary>
         /// <remarks>
-        /// 
+        /// Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
@@ -824,10 +866,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>Task of ApiResponse (List&lt;Backend&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<Backend>>> FindBackendsAsyncWithHttpInfo (string backendId, bool? includePublic = null);
         /// <summary>
-        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
+        /// Get the first entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -836,10 +878,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         System.Threading.Tasks.Task<AnchoredEntryResponse> FirstEntryAsync (string context, string chainId);
 
         /// <summary>
-        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
+        /// Get the first entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -847,10 +889,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>Task of ApiResponse (AnchoredEntryResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<AnchoredEntryResponse>> FirstEntryAsyncWithHttpInfo (string context, string chainId);
         /// <summary>
-        /// Get existing backend by id (not by ledgername). Optionally including public backend of others
+        /// Get backend
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get existing backend by id (not by ledgername). Optionally including public backend of others
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
@@ -859,10 +901,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         System.Threading.Tasks.Task<Backend> GetBackendAsync (string backendId, bool? includePublic = null);
 
         /// <summary>
-        /// Get existing backend by id (not by ledgername). Optionally including public backend of others
+        /// Get backend
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get existing backend by id (not by ledgername). Optionally including public backend of others
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
@@ -870,10 +912,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>Task of ApiResponse (Backend)</returns>
         System.Threading.Tasks.Task<ApiResponse<Backend>> GetBackendAsyncWithHttpInfo (string backendId, bool? includePublic = null);
         /// <summary>
-        /// Get an existing context
+        /// Get context
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get an existing context
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -881,20 +923,20 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         System.Threading.Tasks.Task<Context> GetContextAsync (string context);
 
         /// <summary>
-        /// Get an existing context
+        /// Get context
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get an existing context
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
         /// <returns>Task of ApiResponse (Context)</returns>
         System.Threading.Tasks.Task<ApiResponse<Context>> GetContextAsyncWithHttpInfo (string context);
         /// <summary>
-        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
+        /// Get the last entry in the provided chain.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -903,10 +945,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         System.Threading.Tasks.Task<AnchoredEntryResponse> LastEntryAsync (string context, string chainId);
 
         /// <summary>
-        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
+        /// Get the last entry in the provided chain.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -914,20 +956,20 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>Task of ApiResponse (AnchoredEntryResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<AnchoredEntryResponse>> LastEntryAsyncWithHttpInfo (string context, string chainId);
         /// <summary>
-        /// List existing backends.
+        /// List backends
         /// </summary>
         /// <remarks>
-        /// 
+        /// List existing backends.
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;Backend&gt;</returns>
         System.Threading.Tasks.Task<List<Backend>> ListBackendsAsync ();
 
         /// <summary>
-        /// List existing backends.
+        /// List backends
         /// </summary>
         /// <remarks>
-        /// 
+        /// List existing backends.
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;Backend&gt;)</returns>
@@ -936,7 +978,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -950,7 +992,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -963,7 +1005,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -977,7 +1019,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -990,7 +1032,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1004,7 +1046,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1017,7 +1059,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1031,7 +1073,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1153,7 +1195,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Determine whether the Id of a chain exists in the blockchain 
+        /// Determine chain id exists Determine whether the Id of a chain exists in the blockchain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1166,7 +1208,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Determine whether the Id of a chain exists in the blockchain 
+        /// Determine chain id exists Determine whether the Id of a chain exists in the blockchain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1181,7 +1223,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (chainId == null)
                 throw new ApiException(400, "Missing required parameter 'chainId' when calling AllApi->ChainIdExists");
 
-            var localVarPath = "/{context}/chains/id/{chainId}";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/id/{chainId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1232,7 +1274,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Determine whether the Id of a chain exists in the blockchain 
+        /// Determine chain id exists Determine whether the Id of a chain exists in the blockchain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1246,7 +1288,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Determine whether the Id of a chain exists in the blockchain 
+        /// Determine chain id exists Determine whether the Id of a chain exists in the blockchain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1261,7 +1303,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (chainId == null)
                 throw new ApiException(400, "Missing required parameter 'chainId' when calling AllApi->ChainIdExists");
 
-            var localVarPath = "/{context}/chains/id/{chainId}";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/id/{chainId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1312,7 +1354,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new backend 
+        /// Create a new backend Create a new backend
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backend">backend</param>
@@ -1324,7 +1366,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new backend 
+        /// Create a new backend Create a new backend
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backend">backend</param>
@@ -1335,7 +1377,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (backend == null)
                 throw new ApiException(400, "Missing required parameter 'backend' when calling AllApi->CreateBackend");
 
-            var localVarPath = "/backends";
+            var localVarPath = "/blockchain/easy/0.10/backends";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1392,7 +1434,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new backend 
+        /// Create a new backend Create a new backend
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backend">backend</param>
@@ -1405,7 +1447,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new backend 
+        /// Create a new backend Create a new backend
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backend">backend</param>
@@ -1416,7 +1458,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (backend == null)
                 throw new ApiException(400, "Missing required parameter 'backend' when calling AllApi->CreateBackend");
 
-            var localVarPath = "/backends";
+            var localVarPath = "/blockchain/easy/0.10/backends";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1473,7 +1515,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new chain 
+        /// Create a new chain Create a new chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1486,7 +1528,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new chain 
+        /// Create a new chain Create a new chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1501,7 +1543,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (chain == null)
                 throw new ApiException(400, "Missing required parameter 'chain' when calling AllApi->CreateChain");
 
-            var localVarPath = "/{context}/chains";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1559,7 +1601,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new chain 
+        /// Create a new chain Create a new chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1573,7 +1615,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new chain 
+        /// Create a new chain Create a new chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1588,7 +1630,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (chain == null)
                 throw new ApiException(400, "Missing required parameter 'chain' when calling AllApi->CreateChain");
 
-            var localVarPath = "/{context}/chains";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1646,7 +1688,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new context 
+        /// Create context Create a new context
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1658,7 +1700,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new context 
+        /// Create context Create a new context
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1669,7 +1711,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (context == null)
                 throw new ApiException(400, "Missing required parameter 'context' when calling AllApi->CreateContext");
 
-            var localVarPath = "/";
+            var localVarPath = "/blockchain/easy/0.10/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1726,7 +1768,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new context 
+        /// Create context Create a new context
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1739,7 +1781,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new context 
+        /// Create context Create a new context
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1750,7 +1792,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (context == null)
                 throw new ApiException(400, "Missing required parameter 'context' when calling AllApi->CreateContext");
 
-            var localVarPath = "/";
+            var localVarPath = "/blockchain/easy/0.10/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1807,7 +1849,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new entry in the provided chain 
+        /// Create a new entry in the provided chain Create a new entry in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1822,7 +1864,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new entry in the provided chain 
+        /// Create a new entry in the provided chain Create a new entry in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1842,7 +1884,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (entry == null)
                 throw new ApiException(400, "Missing required parameter 'entry' when calling AllApi->CreateEntry");
 
-            var localVarPath = "/{context}/chains/{chainId}/entries";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/{chainId}/entries";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1902,7 +1944,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new entry in the provided chain 
+        /// Create a new entry in the provided chain Create a new entry in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1918,7 +1960,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new entry in the provided chain 
+        /// Create a new entry in the provided chain Create a new entry in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1938,7 +1980,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (entry == null)
                 throw new ApiException(400, "Missing required parameter 'entry' when calling AllApi->CreateEntry");
 
-            var localVarPath = "/{context}/chains/{chainId}/entries";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/{chainId}/entries";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1998,29 +2040,30 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Delete backend by id (not by ledgername) 
+        /// Delete a backend Delete backend by id (not by ledgername)
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
-        /// <returns></returns>
-        public void DeleteBackend (string backendId)
+        /// <returns>Backend</returns>
+        public Backend DeleteBackend (string backendId)
         {
-             DeleteBackendWithHttpInfo(backendId);
+             ApiResponse<Backend> localVarResponse = DeleteBackendWithHttpInfo(backendId);
+             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Delete backend by id (not by ledgername) 
+        /// Delete a backend Delete backend by id (not by ledgername)
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteBackendWithHttpInfo (string backendId)
+        /// <returns>ApiResponse of Backend</returns>
+        public ApiResponse< Backend > DeleteBackendWithHttpInfo (string backendId)
         {
             // verify the required parameter 'backendId' is set
             if (backendId == null)
                 throw new ApiException(400, "Missing required parameter 'backendId' when calling AllApi->DeleteBackend");
 
-            var localVarPath = "/backends/{backendId}";
+            var localVarPath = "/blockchain/easy/0.10/backends/{backendId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2064,36 +2107,37 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Backend>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (Backend) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Backend)));
         }
 
         /// <summary>
-        /// Delete backend by id (not by ledgername) 
+        /// Delete a backend Delete backend by id (not by ledgername)
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteBackendAsync (string backendId)
+        /// <returns>Task of Backend</returns>
+        public async System.Threading.Tasks.Task<Backend> DeleteBackendAsync (string backendId)
         {
-             await DeleteBackendAsyncWithHttpInfo(backendId);
+             ApiResponse<Backend> localVarResponse = await DeleteBackendAsyncWithHttpInfo(backendId);
+             return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Delete backend by id (not by ledgername) 
+        /// Delete a backend Delete backend by id (not by ledgername)
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteBackendAsyncWithHttpInfo (string backendId)
+        /// <returns>Task of ApiResponse (Backend)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Backend>> DeleteBackendAsyncWithHttpInfo (string backendId)
         {
             // verify the required parameter 'backendId' is set
             if (backendId == null)
                 throw new ApiException(400, "Missing required parameter 'backendId' when calling AllApi->DeleteBackend");
 
-            var localVarPath = "/backends/{backendId}";
+            var localVarPath = "/blockchain/easy/0.10/backends/{backendId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2137,17 +2181,164 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Backend>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (Backend) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Backend)));
         }
 
         /// <summary>
-        /// Pre determine the Id of a chain request without anchoring it in the blockchain 
+        /// Delete context Delete an existing context
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
-        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
+        /// <returns>Context</returns>
+        public Context DeleteContext (string context)
+        {
+             ApiResponse<Context> localVarResponse = DeleteContextWithHttpInfo(context);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Delete context Delete an existing context
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="context">context</param>
+        /// <returns>ApiResponse of Context</returns>
+        public ApiResponse< Context > DeleteContextWithHttpInfo (string context)
+        {
+            // verify the required parameter 'context' is set
+            if (context == null)
+                throw new ApiException(400, "Missing required parameter 'context' when calling AllApi->DeleteContext");
+
+            var localVarPath = "/blockchain/easy/0.10/{context}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=UTF-8"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (context != null) localVarPathParams.Add("context", Configuration.ApiClient.ParameterToString(context)); // path parameter
+
+            // authentication (oauth2schema) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteContext", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Context>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Context) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Context)));
+        }
+
+        /// <summary>
+        /// Delete context Delete an existing context
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="context">context</param>
+        /// <returns>Task of Context</returns>
+        public async System.Threading.Tasks.Task<Context> DeleteContextAsync (string context)
+        {
+             ApiResponse<Context> localVarResponse = await DeleteContextAsyncWithHttpInfo(context);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Delete context Delete an existing context
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="context">context</param>
+        /// <returns>Task of ApiResponse (Context)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Context>> DeleteContextAsyncWithHttpInfo (string context)
+        {
+            // verify the required parameter 'context' is set
+            if (context == null)
+                throw new ApiException(400, "Missing required parameter 'context' when calling AllApi->DeleteContext");
+
+            var localVarPath = "/blockchain/easy/0.10/{context}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=UTF-8"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (context != null) localVarPathParams.Add("context", Configuration.ApiClient.ParameterToString(context)); // path parameter
+
+            // authentication (oauth2schema) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteContext", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Context>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Context) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Context)));
+        }
+
+        /// <summary>
+        /// Predetermine id of chain Pre determine the Id of a chain request without anchoring it in the blockchain
+        /// </summary>
+        /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="context">context</param>
+        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!</param>
         /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
         /// <returns>IdResponse</returns>
         public IdResponse DetermineChainId (string context, Chain chain, bool? checkExistence = null)
@@ -2157,11 +2348,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Pre determine the Id of a chain request without anchoring it in the blockchain 
+        /// Predetermine id of chain Pre determine the Id of a chain request without anchoring it in the blockchain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
-        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
+        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!</param>
         /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
         /// <returns>ApiResponse of IdResponse</returns>
         public ApiResponse< IdResponse > DetermineChainIdWithHttpInfo (string context, Chain chain, bool? checkExistence = null)
@@ -2173,7 +2364,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (chain == null)
                 throw new ApiException(400, "Missing required parameter 'chain' when calling AllApi->DetermineChainId");
 
-            var localVarPath = "/{context}/chains/id";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/id";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2232,11 +2423,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Pre determine the Id of a chain request without anchoring it in the blockchain 
+        /// Predetermine id of chain Pre determine the Id of a chain request without anchoring it in the blockchain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
-        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
+        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!</param>
         /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
         /// <returns>Task of IdResponse</returns>
         public async System.Threading.Tasks.Task<IdResponse> DetermineChainIdAsync (string context, Chain chain, bool? checkExistence = null)
@@ -2247,11 +2438,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Pre determine the Id of a chain request without anchoring it in the blockchain 
+        /// Predetermine id of chain Pre determine the Id of a chain request without anchoring it in the blockchain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
-        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!</param>
+        /// <param name="chain">Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!</param>
         /// <param name="checkExistence">Check whether the id exists (optional, default to false)</param>
         /// <returns>Task of ApiResponse (IdResponse)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<IdResponse>> DetermineChainIdAsyncWithHttpInfo (string context, Chain chain, bool? checkExistence = null)
@@ -2263,7 +2454,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (chain == null)
                 throw new ApiException(400, "Missing required parameter 'chain' when calling AllApi->DetermineChainId");
 
-            var localVarPath = "/{context}/chains/id";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/id";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2322,7 +2513,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Pre determine the Id of an entry request without anchoring the entry 
+        /// Predetermine id of an entry Pre determine the Id of an entry request without anchoring the entry
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -2337,7 +2528,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Pre determine the Id of an entry request without anchoring the entry 
+        /// Predetermine id of an entry Pre determine the Id of an entry request without anchoring the entry
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -2357,7 +2548,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (entry == null)
                 throw new ApiException(400, "Missing required parameter 'entry' when calling AllApi->DetermineEntryId");
 
-            var localVarPath = "/{context}/chains/id/{chainId}/entries";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/id/{chainId}/entries";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2417,7 +2608,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Pre determine the Id of an entry request without anchoring the entry 
+        /// Predetermine id of an entry Pre determine the Id of an entry request without anchoring the entry
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -2433,7 +2624,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Pre determine the Id of an entry request without anchoring the entry 
+        /// Predetermine id of an entry Pre determine the Id of an entry request without anchoring the entry
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -2453,7 +2644,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (entry == null)
                 throw new ApiException(400, "Missing required parameter 'entry' when calling AllApi->DetermineEntryId");
 
-            var localVarPath = "/{context}/chains/id/{chainId}/entries";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/id/{chainId}/entries";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2513,7 +2704,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get an existing entry in the provided chain 
+        /// Get an existing entry in the provided chain Get an existing entry in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -2528,7 +2719,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get an existing entry in the provided chain 
+        /// Get an existing entry in the provided chain Get an existing entry in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -2548,7 +2739,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (entryId == null)
                 throw new ApiException(400, "Missing required parameter 'entryId' when calling AllApi->EntryById");
 
-            var localVarPath = "/{context}/chains/{chainId}/entries/{entryId}";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/{chainId}/entries/{entryId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2601,7 +2792,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get an existing entry in the provided chain 
+        /// Get an existing entry in the provided chain Get an existing entry in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -2617,7 +2808,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get an existing entry in the provided chain 
+        /// Get an existing entry in the provided chain Get an existing entry in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -2637,7 +2828,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (entryId == null)
                 throw new ApiException(400, "Missing required parameter 'entryId' when calling AllApi->EntryById");
 
-            var localVarPath = "/{context}/chains/{chainId}/entries/{entryId}";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/{chainId}/entries/{entryId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2690,7 +2881,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get an existing entry in the provided chain 
+        /// Get an existing entry in the provided chain Get an existing entry in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -2705,7 +2896,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get an existing entry in the provided chain 
+        /// Get an existing entry in the provided chain Get an existing entry in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -2725,7 +2916,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (entry == null)
                 throw new ApiException(400, "Missing required parameter 'entry' when calling AllApi->EntryByRequest");
 
-            var localVarPath = "/{context}/chains/{chainId}/entries/entry";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/{chainId}/entries/entry";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2785,7 +2976,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get an existing entry in the provided chain 
+        /// Get an existing entry in the provided chain Get an existing entry in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -2801,7 +2992,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get an existing entry in the provided chain 
+        /// Get an existing entry in the provided chain Get an existing entry in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -2821,7 +3012,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (entry == null)
                 throw new ApiException(400, "Missing required parameter 'entry' when calling AllApi->EntryByRequest");
 
-            var localVarPath = "/{context}/chains/{chainId}/entries/entry";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/{chainId}/entries/entry";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2881,7 +3072,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Determine whether the Id of an entry exists in the blockchain 
+        /// Determine entry id exists Determine whether the Id of an entry exists in the blockchain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -2895,7 +3086,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Determine whether the Id of an entry exists in the blockchain 
+        /// Determine entry id exists Determine whether the Id of an entry exists in the blockchain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -2914,7 +3105,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (entryId == null)
                 throw new ApiException(400, "Missing required parameter 'entryId' when calling AllApi->EntryIdExists");
 
-            var localVarPath = "/{context}/chains/id/{chainId}/entries/{entryId}";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/id/{chainId}/entries/{entryId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2966,7 +3157,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Determine whether the Id of an entry exists in the blockchain 
+        /// Determine entry id exists Determine whether the Id of an entry exists in the blockchain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -2981,7 +3172,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Determine whether the Id of an entry exists in the blockchain 
+        /// Determine entry id exists Determine whether the Id of an entry exists in the blockchain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -3000,7 +3191,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (entryId == null)
                 throw new ApiException(400, "Missing required parameter 'entryId' when calling AllApi->EntryIdExists");
 
-            var localVarPath = "/{context}/chains/id/{chainId}/entries/{entryId}";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/id/{chainId}/entries/{entryId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3052,7 +3243,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others 
+        /// Find backends Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
@@ -3065,7 +3256,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others 
+        /// Find backends Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
@@ -3077,7 +3268,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (backendId == null)
                 throw new ApiException(400, "Missing required parameter 'backendId' when calling AllApi->FindBackends");
 
-            var localVarPath = "/backends/{backendId}/find";
+            var localVarPath = "/blockchain/easy/0.10/backends/{backendId}/find";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3128,7 +3319,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others 
+        /// Find backends Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
@@ -3142,7 +3333,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others 
+        /// Find backends Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
@@ -3154,7 +3345,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (backendId == null)
                 throw new ApiException(400, "Missing required parameter 'backendId' when calling AllApi->FindBackends");
 
-            var localVarPath = "/backends/{backendId}/find";
+            var localVarPath = "/blockchain/easy/0.10/backends/{backendId}/find";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3205,7 +3396,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times 
+        /// Get the first entry in the provided chain Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -3218,7 +3409,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times 
+        /// Get the first entry in the provided chain Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -3233,7 +3424,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (chainId == null)
                 throw new ApiException(400, "Missing required parameter 'chainId' when calling AllApi->FirstEntry");
 
-            var localVarPath = "/{context}/chains/{chainId}/entries/first";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/{chainId}/entries/first";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3284,7 +3475,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times 
+        /// Get the first entry in the provided chain Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -3298,7 +3489,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times 
+        /// Get the first entry in the provided chain Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -3313,7 +3504,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (chainId == null)
                 throw new ApiException(400, "Missing required parameter 'chainId' when calling AllApi->FirstEntry");
 
-            var localVarPath = "/{context}/chains/{chainId}/entries/first";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/{chainId}/entries/first";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3364,7 +3555,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get existing backend by id (not by ledgername). Optionally including public backend of others 
+        /// Get backend Get existing backend by id (not by ledgername). Optionally including public backend of others
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
@@ -3377,7 +3568,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get existing backend by id (not by ledgername). Optionally including public backend of others 
+        /// Get backend Get existing backend by id (not by ledgername). Optionally including public backend of others
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
@@ -3389,7 +3580,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (backendId == null)
                 throw new ApiException(400, "Missing required parameter 'backendId' when calling AllApi->GetBackend");
 
-            var localVarPath = "/backends/{backendId}";
+            var localVarPath = "/blockchain/easy/0.10/backends/{backendId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3440,7 +3631,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get existing backend by id (not by ledgername). Optionally including public backend of others 
+        /// Get backend Get existing backend by id (not by ledgername). Optionally including public backend of others
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
@@ -3454,7 +3645,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get existing backend by id (not by ledgername). Optionally including public backend of others 
+        /// Get backend Get existing backend by id (not by ledgername). Optionally including public backend of others
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="backendId">backendId</param>
@@ -3466,7 +3657,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (backendId == null)
                 throw new ApiException(400, "Missing required parameter 'backendId' when calling AllApi->GetBackend");
 
-            var localVarPath = "/backends/{backendId}";
+            var localVarPath = "/blockchain/easy/0.10/backends/{backendId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3517,7 +3708,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get an existing context 
+        /// Get context Get an existing context
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -3529,7 +3720,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get an existing context 
+        /// Get context Get an existing context
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -3540,7 +3731,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (context == null)
                 throw new ApiException(400, "Missing required parameter 'context' when calling AllApi->GetContext");
 
-            var localVarPath = "/{context}";
+            var localVarPath = "/blockchain/easy/0.10/{context}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3590,7 +3781,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get an existing context 
+        /// Get context Get an existing context
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -3603,7 +3794,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get an existing context 
+        /// Get context Get an existing context
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -3614,7 +3805,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (context == null)
                 throw new ApiException(400, "Missing required parameter 'context' when calling AllApi->GetContext");
 
-            var localVarPath = "/{context}";
+            var localVarPath = "/blockchain/easy/0.10/{context}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3664,7 +3855,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times 
+        /// Get the last entry in the provided chain. Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -3677,7 +3868,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times 
+        /// Get the last entry in the provided chain. Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -3692,7 +3883,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (chainId == null)
                 throw new ApiException(400, "Missing required parameter 'chainId' when calling AllApi->LastEntry");
 
-            var localVarPath = "/{context}/chains/{chainId}/entries/last";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/{chainId}/entries/last";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3743,7 +3934,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times 
+        /// Get the last entry in the provided chain. Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -3757,7 +3948,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times 
+        /// Get the last entry in the provided chain. Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -3772,7 +3963,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (chainId == null)
                 throw new ApiException(400, "Missing required parameter 'chainId' when calling AllApi->LastEntry");
 
-            var localVarPath = "/{context}/chains/{chainId}/entries/last";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/{chainId}/entries/last";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3823,7 +4014,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// List existing backends. 
+        /// List backends List existing backends.
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;Backend&gt;</returns>
@@ -3834,14 +4025,14 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// List existing backends. 
+        /// List backends List existing backends.
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;Backend&gt;</returns>
         public ApiResponse< List<Backend> > ListBackendsWithHttpInfo ()
         {
 
-            var localVarPath = "/backends";
+            var localVarPath = "/blockchain/easy/0.10/backends";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3890,7 +4081,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// List existing backends. 
+        /// List backends List existing backends.
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;Backend&gt;</returns>
@@ -3902,14 +4093,14 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// List existing backends. 
+        /// List backends List existing backends.
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;Backend&gt;)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<List<Backend>>> ListBackendsAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "/backends";
+            var localVarPath = "/blockchain/easy/0.10/backends";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3958,7 +4149,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry after the supplied entry Id (the next) in the provided chain 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -3973,7 +4164,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry after the supplied entry Id (the next) in the provided chain 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -3993,7 +4184,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (entryId == null)
                 throw new ApiException(400, "Missing required parameter 'entryId' when calling AllApi->NextEntryById");
 
-            var localVarPath = "/{context}/chains/{chainId}/entries/{entryId}/next";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/{chainId}/entries/{entryId}/next";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -4046,7 +4237,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry after the supplied entry Id (the next) in the provided chain 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -4062,7 +4253,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry after the supplied entry Id (the next) in the provided chain 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -4082,7 +4273,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (entryId == null)
                 throw new ApiException(400, "Missing required parameter 'entryId' when calling AllApi->NextEntryById");
 
-            var localVarPath = "/{context}/chains/{chainId}/entries/{entryId}/next";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/{chainId}/entries/{entryId}/next";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -4135,7 +4326,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry after the supplied entry Id (the next) in the provided chain 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -4150,7 +4341,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry after the supplied entry Id (the next) in the provided chain 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -4170,7 +4361,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (entry == null)
                 throw new ApiException(400, "Missing required parameter 'entry' when calling AllApi->NextEntryByRequest");
 
-            var localVarPath = "/{context}/chains/{chainId}/entries/entry/next";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/{chainId}/entries/entry/next";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -4230,7 +4421,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry after the supplied entry Id (the next) in the provided chain 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -4246,7 +4437,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry after the supplied entry Id (the next) in the provided chain 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -4266,7 +4457,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (entry == null)
                 throw new ApiException(400, "Missing required parameter 'entry' when calling AllApi->NextEntryByRequest");
 
-            var localVarPath = "/{context}/chains/{chainId}/entries/entry/next";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/{chainId}/entries/entry/next";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -4326,7 +4517,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry before the supplied entry Id (the previous) in the provided chain 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -4341,7 +4532,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry before the supplied entry Id (the previous) in the provided chain 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -4361,7 +4552,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (entryId == null)
                 throw new ApiException(400, "Missing required parameter 'entryId' when calling AllApi->PreviousEntryById");
 
-            var localVarPath = "/{context}/chains/{chainId}/entries/{entryId}/previous";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/{chainId}/entries/{entryId}/previous";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -4414,7 +4605,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry before the supplied entry Id (the previous) in the provided chain 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -4430,7 +4621,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry before the supplied entry Id (the previous) in the provided chain 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -4450,7 +4641,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (entryId == null)
                 throw new ApiException(400, "Missing required parameter 'entryId' when calling AllApi->PreviousEntryById");
 
-            var localVarPath = "/{context}/chains/{chainId}/entries/{entryId}/previous";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/{chainId}/entries/{entryId}/previous";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -4503,7 +4694,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry before the supplied entry Id (the previous) in the provided chain 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -4518,7 +4709,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry before the supplied entry Id (the previous) in the provided chain 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -4538,7 +4729,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (entry == null)
                 throw new ApiException(400, "Missing required parameter 'entry' when calling AllApi->PreviousEntryByRequest");
 
-            var localVarPath = "/{context}/chains/{chainId}/entries/entry/previous";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/{chainId}/entries/entry/previous";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -4598,7 +4789,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry before the supplied entry Id (the previous) in the provided chain 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -4614,7 +4805,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry before the supplied entry Id (the previous) in the provided chain 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -4634,7 +4825,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
             if (entry == null)
                 throw new ApiException(400, "Missing required parameter 'entry' when calling AllApi->PreviousEntryByRequest");
 
-            var localVarPath = "/{context}/chains/{chainId}/entries/entry/previous";
+            var localVarPath = "/blockchain/easy/0.10/{context}/chains/{chainId}/entries/entry/previous";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);

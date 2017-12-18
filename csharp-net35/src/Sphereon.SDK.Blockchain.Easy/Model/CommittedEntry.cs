@@ -1,7 +1,7 @@
 /* 
  * Easy Blockchain API
  *
- * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom or Multichain. The latter also allows for a private blockchain. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a context is available using the / POST endpoint. Normally you only need one context. This is the place where backend providers and blockchain implementations are being specified.  2. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is a relative expensive operation.  3. Store entries on the chain from step 2. The entries will contain the content and metadata you want to store forever on the specified chain.  4. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
+ * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of FACTOM or Multichain. The latter also allows for a private blockchain. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a context is available using the / POST endpoint. Normally you only need one context. This is the place where backend providers and blockchain implementations are being specified.  2. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is a relative expensive operation.  3. Store entries on the chain from step 2. The entries will contain the content and metadata you want to store forever on the specified chain.  4. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
  *
  * OpenAPI spec version: 0.10
  * Contact: dev@sphereon.com
@@ -25,7 +25,7 @@ using SwaggerDateConverter = Sphereon.SDK.Blockchain.Easy.Client.SwaggerDateConv
 namespace Sphereon.SDK.Blockchain.Easy.Model
 {
     /// <summary>
-    /// Commited Entry
+    /// Committed Entry
     /// </summary>
     [DataContract]
     public partial class CommittedEntry :  IEquatable<CommittedEntry>
@@ -34,11 +34,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         /// Initializes a new instance of the <see cref="CommittedEntry" /> class.
         /// </summary>
         /// <param name="Entry">Entry.</param>
-        /// <param name="RawBackendStructures">Raw data structures of backend.</param>
-        public CommittedEntry(Entry Entry = default(Entry), List<RawBackendStructure> RawBackendStructures = default(List<RawBackendStructure>))
+        public CommittedEntry(Entry Entry = default(Entry))
         {
             this.Entry = Entry;
-            this.RawBackendStructures = RawBackendStructures;
         }
         
         /// <summary>
@@ -58,8 +56,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         /// Raw data structures of backend
         /// </summary>
         /// <value>Raw data structures of backend</value>
-        [DataMember(Name="rawBackendStructures", EmitDefaultValue=false)]
-        public List<RawBackendStructure> RawBackendStructures { get; set; }
+        [DataMember(Name="rawBackendStructure", EmitDefaultValue=false)]
+        public string RawBackendStructure { get; private set; }
 
         /// <summary>
         /// Entry ID
@@ -78,7 +76,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             sb.Append("class CommittedEntry {\n");
             sb.Append("  Entry: ").Append(Entry).Append("\n");
             sb.Append("  ChainId: ").Append(ChainId).Append("\n");
-            sb.Append("  RawBackendStructures: ").Append(RawBackendStructures).Append("\n");
+            sb.Append("  RawBackendStructure: ").Append(RawBackendStructure).Append("\n");
             sb.Append("  EntryId: ").Append(EntryId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -127,9 +125,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                     this.ChainId.Equals(other.ChainId)
                 ) && 
                 (
-                    this.RawBackendStructures == other.RawBackendStructures ||
-                    this.RawBackendStructures != null &&
-                    this.RawBackendStructures.SequenceEqual(other.RawBackendStructures)
+                    this.RawBackendStructure == other.RawBackendStructure ||
+                    this.RawBackendStructure != null &&
+                    this.RawBackendStructure.Equals(other.RawBackendStructure)
                 ) && 
                 (
                     this.EntryId == other.EntryId ||
@@ -153,8 +151,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                     hash = hash * 59 + this.Entry.GetHashCode();
                 if (this.ChainId != null)
                     hash = hash * 59 + this.ChainId.GetHashCode();
-                if (this.RawBackendStructures != null)
-                    hash = hash * 59 + this.RawBackendStructures.GetHashCode();
+                if (this.RawBackendStructure != null)
+                    hash = hash * 59 + this.RawBackendStructure.GetHashCode();
                 if (this.EntryId != null)
                     hash = hash * 59 + this.EntryId.GetHashCode();
                 return hash;
