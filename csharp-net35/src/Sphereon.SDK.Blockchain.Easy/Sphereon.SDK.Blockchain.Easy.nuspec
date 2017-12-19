@@ -20,7 +20,7 @@
         <!-- The description can be used in package manager UI. Note that the
              nuget.org gallery uses information you add in the portal. -->
         <description>A library generated from a Swagger doc</description>
-        <copyright>https://sphereon.com</copyright>
+        <copyright>https://docs.sphereon.com/api/easy-blockchain/0.10/html</copyright>
         <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
 
         <!-- Dependencies are automatically installed when the package is installed -->

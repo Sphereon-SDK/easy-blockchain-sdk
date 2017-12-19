@@ -1,7 +1,7 @@
 /* 
  * Easy Blockchain API
  *
- * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom or Multichain. The latter also allows for a private blockchain. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a context is available using the / POST endpoint. Normally you only need one context. This is the place where backend providers and blockchain implementations are being specified.  2. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is a relative expensive operation.  3. Store entries on the chain from step 2. The entries will contain the content and metadata you want to store forever on the specified chain.  4. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
+ * The Easy Blockchain API is an easy to use API to store related entries within chains. Currently it stores entries using a Factom, Ethereum or Multichain blockchain.   For full API documentation please visit: https://docs.sphereon.com/api/easy-blockchain/0.10/html   Interactive testing: A web based test console is available in the Sphereon API store at: https://store.sphereon.com
  *
  * OpenAPI spec version: 0.10
  * Contact: dev@sphereon.com
@@ -28,7 +28,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Create a new entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Create a new entry in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -42,7 +42,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Create a new entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Create a new entry in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -55,7 +55,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get an existing entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get an existing entry in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -69,7 +69,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get an existing entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get an existing entry in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -82,7 +82,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get an existing entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get an existing entry in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -96,7 +96,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get an existing entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get an existing entry in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -106,10 +106,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
         ApiResponse<AnchoredEntryResponse> EntryByRequestWithHttpInfo (string context, string chainId, Entry entry, DateTime? currentAnchorTime = null);
         /// <summary>
-        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
+        /// Get the first entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -118,10 +118,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         AnchoredEntryResponse FirstEntry (string context, string chainId);
 
         /// <summary>
-        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
+        /// Get the first entry in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -129,10 +129,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// <returns>ApiResponse of AnchoredEntryResponse</returns>
         ApiResponse<AnchoredEntryResponse> FirstEntryWithHttpInfo (string context, string chainId);
         /// <summary>
-        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
+        /// Get the last entry in the provided chain.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -141,10 +141,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         AnchoredEntryResponse LastEntry (string context, string chainId);
 
         /// <summary>
-        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
+        /// Get the last entry in the provided chain.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -155,7 +155,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -169,7 +169,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -182,7 +182,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -196,7 +196,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -209,7 +209,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -223,7 +223,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -236,7 +236,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -250,7 +250,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <remarks>
-        /// 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </remarks>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -372,7 +372,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new entry in the provided chain 
+        /// Create a new entry in the provided chain Create a new entry in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -387,7 +387,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Create a new entry in the provided chain 
+        /// Create a new entry in the provided chain Create a new entry in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -467,7 +467,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get an existing entry in the provided chain 
+        /// Get an existing entry in the provided chain Get an existing entry in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -482,7 +482,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get an existing entry in the provided chain 
+        /// Get an existing entry in the provided chain Get an existing entry in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -555,7 +555,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get an existing entry in the provided chain 
+        /// Get an existing entry in the provided chain Get an existing entry in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -570,7 +570,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get an existing entry in the provided chain 
+        /// Get an existing entry in the provided chain Get an existing entry in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -650,7 +650,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times 
+        /// Get the first entry in the provided chain Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -663,7 +663,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times 
+        /// Get the first entry in the provided chain Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -729,7 +729,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times 
+        /// Get the last entry in the provided chain. Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -742,7 +742,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times 
+        /// Get the last entry in the provided chain. Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -808,7 +808,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry after the supplied entry Id (the next) in the provided chain 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -823,7 +823,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry after the supplied entry Id (the next) in the provided chain 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -896,7 +896,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry after the supplied entry Id (the next) in the provided chain 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -911,7 +911,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry after the supplied entry Id (the next) in the provided chain 
+        /// Get the entry after the supplied entry Id (the next) in the provided chain Get the entry after the supplied entry Id (the next) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -991,7 +991,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry before the supplied entry Id (the previous) in the provided chain 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1006,7 +1006,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry before the supplied entry Id (the previous) in the provided chain 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1079,7 +1079,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry before the supplied entry Id (the previous) in the provided chain 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>
@@ -1094,7 +1094,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Api
         }
 
         /// <summary>
-        /// Get the entry before the supplied entry Id (the previous) in the provided chain 
+        /// Get the entry before the supplied entry Id (the previous) in the provided chain Get the entry before the supplied entry Id (the previous) in the provided chain
         /// </summary>
         /// <exception cref="Sphereon.SDK.Blockchain.Easy.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="context">context</param>

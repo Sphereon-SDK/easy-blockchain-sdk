@@ -13,6 +13,7 @@
         <sdk-package>com.sphereon.sdk.blockchain.easy</sdk-package>
         <sdk-package-javascript>SphereonSDKBlockchainEasy</sdk-package-javascript>
         <sdk-package-csharp>Sphereon.SDK.Blockchain.Easy</sdk-package-csharp>
+		<sdk-package-version>0.10.0</sdk-package-version>
 
         <swagger-coden-maven-plugin.version>2.2.3</swagger-coden-maven-plugin.version>
         <swagger-coden-verbose>false</swagger-coden-verbose>
@@ -233,7 +234,8 @@
                                         <apiPackage>${sdk-package-csharp}.Api</apiPackage>
                                         <modelPackage>${sdk-package-csharp}.Model</modelPackage>
                                         <invokerPackage>${sdk-package-csharp}.Handler</invokerPackage>
-                                        <packageName>${sdk-package-csharp}</packageName>
+										<packageName>${sdk-package-csharp}</packageName>
+										<packageVersion>${sdk-package-version}</packageVersion>
                                     </configOptions>
                                     <configurationFile>src/main/resources/config/csharp-net45.json</configurationFile>
                                     <verbose>${swagger-coden-verbose}</verbose>
@@ -275,6 +277,7 @@
                                         <modelPackage>${sdk-package-csharp}.Model</modelPackage>
                                         <invokerPackage>${sdk-package-csharp}.Handler</invokerPackage>
                                         <packageName>${sdk-package-csharp}</packageName>
+										<packageVersion>${sdk-package-version}</packageVersion>
                                         <targetFramework>v3.5</targetFramework>
                                     </configOptions>
                                     <configurationFile>src/main/resources/config/csharp-net35.json</configurationFile>

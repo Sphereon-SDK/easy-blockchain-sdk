@@ -2,9 +2,10 @@
   "basePath": "/blockchain/easy/0.10",
   "paths": {
     "/{context}/chains/id/{chainId}": {"get": {
-      "summary": "Determine whether the Id of a chain exists in the blockchain",
+      "summary": "Determine chain id exists",
       "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
+      "description": "Determine whether the Id of a chain exists in the blockchain",
       "operationId": "chainIdExists",
       "responses": {
         "200": {
@@ -42,6 +43,7 @@
       "summary": "Create a new chain",
       "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
+      "description": "Create a new chain",
       "operationId": "createChain",
       "responses": {
         "200": {
@@ -83,6 +85,7 @@
       "summary": "Get the entry before the supplied entry Id (the previous) in the provided chain",
       "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
+      "description": "Get the entry before the supplied entry Id (the previous) in the provided chain",
       "operationId": "previousEntryByRequest",
       "responses": {
         "200": {
@@ -138,6 +141,7 @@
       "summary": "Get the entry before the supplied entry Id (the previous) in the provided chain",
       "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
+      "description": "Get the entry before the supplied entry Id (the previous) in the provided chain",
       "operationId": "previousEntryById",
       "responses": {
         "200": {
@@ -193,6 +197,7 @@
       "summary": "Get an existing entry in the provided chain",
       "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
+      "description": "Get an existing entry in the provided chain",
       "operationId": "entryById",
       "responses": {
         "200": {
@@ -248,21 +253,18 @@
       "summary": "Create a new entry in the provided chain",
       "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
+      "description": "Create a new entry in the provided chain",
       "operationId": "createEntry",
       "responses": {
         "200": {
           "schema": {"$ref": "#/definitions/CommittedEntryResponse"},
-          "description": "OK"
+          "description": "Entry already exists"
         },
         "400": {
           "schema": {"$ref": "#/definitions/ErrorResponse"},
           "description": "Invalid entry request"
         },
         "202": {
-          "schema": {"$ref": "#/definitions/CommittedEntryResponse"},
-          "description": "Entry already exists"
-        },
-        "204": {
           "schema": {"$ref": "#/definitions/CommittedEntryResponse"},
           "description": "Entry creation request received"
         },
@@ -312,12 +314,9 @@
         "summary": "Create a new backend",
         "security": [{"oauth2schema": ["global"]}],
         "produces": ["application/json;charset=UTF-8"],
+        "description": "Create a new backend",
         "operationId": "createBackend",
         "responses": {
-          "200": {
-            "schema": {"$ref": "#/definitions/Backend"},
-            "description": "OK"
-          },
           "400": {
             "schema": {"$ref": "#/definitions/ErrorResponse"},
             "description": "Invalid backend request"
@@ -339,15 +338,16 @@
           "required": true
         }],
         "tags": [
-          "Context",
+          "Backend",
           "All"
         ],
         "consumes": ["application/json;charset=UTF-8"]
       },
       "get": {
-        "summary": "List existing backends.",
+        "summary": "List backends",
         "security": [{"oauth2schema": ["global"]}],
         "produces": ["application/json;charset=UTF-8"],
+        "description": "List existing backends.",
         "operationId": "listBackends",
         "responses": {
           "200": {
@@ -371,7 +371,7 @@
           }
         },
         "tags": [
-          "Context",
+          "Backend",
           "All"
         ],
         "consumes": ["application/json"]
@@ -379,9 +379,10 @@
     },
     "/backends/{backendId}": {
       "get": {
-        "summary": "Get existing backend by id (not by ledgername). Optionally including public backend of others",
+        "summary": "Get backend",
         "security": [{"oauth2schema": ["global"]}],
         "produces": ["application/json;charset=UTF-8"],
+        "description": "Get existing backend by id (not by ledgername). Optionally including public backend of others",
         "operationId": "getBackend",
         "responses": {
           "200": {
@@ -419,18 +420,22 @@
           }
         ],
         "tags": [
-          "Context",
+          "Backend",
           "All"
         ],
         "consumes": ["application/json"]
       },
       "delete": {
-        "summary": "Delete backend by id (not by ledgername)",
+        "summary": "Delete a backend",
         "security": [{"oauth2schema": ["global"]}],
         "produces": ["*/*"],
+        "description": "Delete backend by id (not by ledgername)",
         "operationId": "deleteBackend",
         "responses": {
-          "200": {"description": "Backend deleted"},
+          "200": {
+            "schema": {"$ref": "#/definitions/Backend"},
+            "description": "Backend deleted"
+          },
           "400": {
             "schema": {"$ref": "#/definitions/ErrorResponse"},
             "description": "Invalid backend request"
@@ -452,16 +457,17 @@
           "required": true
         }],
         "tags": [
-          "Context",
+          "Backend",
           "All"
         ],
         "consumes": ["application/json"]
       }
     },
     "/{context}/chains/id": {"post": {
-      "summary": "Pre determine the Id of a chain request without anchoring it in the blockchain",
+      "summary": "Predetermine id of chain",
       "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
+      "description": "Pre determine the Id of a chain request without anchoring it in the blockchain",
       "operationId": "determineChainId",
       "responses": {
         "200": {
@@ -485,7 +491,7 @@
           "schema": {"$ref": "#/definitions/Chain"},
           "in": "body",
           "name": "chain",
-          "description": "Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!",
+          "description": "Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!",
           "required": true
         },
         {
@@ -504,9 +510,10 @@
       "consumes": ["application/json;charset=UTF-8"]
     }},
     "/": {"post": {
-      "summary": "Create a new context",
+      "summary": "Create context",
       "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
+      "description": "Create a new context",
       "operationId": "createContext",
       "responses": {
         "200": {
@@ -540,9 +547,10 @@
       "consumes": ["application/json;charset=UTF-8"]
     }},
     "/{context}/chains/id/{chainId}/entries": {"post": {
-      "summary": "Pre determine the Id of an entry request without anchoring the entry",
+      "summary": "Predetermine id of an entry",
       "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
+      "description": "Pre determine the Id of an entry request without anchoring the entry",
       "operationId": "determineEntryId",
       "responses": {
         "200": {
@@ -596,9 +604,10 @@
       "consumes": ["application/json;charset=UTF-8"]
     }},
     "/{context}/chains/id/{chainId}/entries/{entryId}": {"get": {
-      "summary": "Determine whether the Id of an entry exists in the blockchain",
+      "summary": "Determine entry id exists",
       "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
+      "description": "Determine whether the Id of an entry exists in the blockchain",
       "operationId": "entryIdExists",
       "responses": {
         "200": {
@@ -643,42 +652,79 @@
       ],
       "consumes": ["application/json"]
     }},
-    "/{context}": {"get": {
-      "summary": "Get an existing context",
-      "security": [{"oauth2schema": ["global"]}],
-      "produces": ["application/json;charset=UTF-8"],
-      "operationId": "getContext",
-      "responses": {
-        "200": {
-          "schema": {"$ref": "#/definitions/Context"},
-          "description": "Context"
+    "/{context}": {
+      "get": {
+        "summary": "Get context",
+        "security": [{"oauth2schema": ["global"]}],
+        "produces": ["application/json;charset=UTF-8"],
+        "description": "Get an existing context",
+        "operationId": "getContext",
+        "responses": {
+          "200": {
+            "schema": {"$ref": "#/definitions/Context"},
+            "description": "Context"
+          },
+          "400": {
+            "schema": {"$ref": "#/definitions/ErrorResponse"},
+            "description": "Invalid context request"
+          },
+          "404": {
+            "schema": {"$ref": "#/definitions/ErrorResponse"},
+            "description": "Context not found"
+          }
         },
-        "400": {
-          "schema": {"$ref": "#/definitions/ErrorResponse"},
-          "description": "Invalid context request"
-        },
-        "404": {
-          "schema": {"$ref": "#/definitions/ErrorResponse"},
-          "description": "Context not found"
-        }
+        "parameters": [{
+          "in": "path",
+          "name": "context",
+          "description": "context",
+          "type": "string",
+          "required": true
+        }],
+        "tags": [
+          "Context",
+          "All"
+        ],
+        "consumes": ["application/json"]
       },
-      "parameters": [{
-        "in": "path",
-        "name": "context",
-        "description": "context",
-        "type": "string",
-        "required": true
-      }],
-      "tags": [
-        "Context",
-        "All"
-      ],
-      "consumes": ["application/json"]
-    }},
+      "delete": {
+        "summary": "Delete context",
+        "security": [{"oauth2schema": ["global"]}],
+        "produces": ["application/json;charset=UTF-8"],
+        "description": "Delete an existing context",
+        "operationId": "deleteContext",
+        "responses": {
+          "200": {
+            "schema": {"$ref": "#/definitions/Context"},
+            "description": "The deleted context"
+          },
+          "400": {
+            "schema": {"$ref": "#/definitions/ErrorResponse"},
+            "description": "Invalid context request"
+          },
+          "404": {
+            "schema": {"$ref": "#/definitions/ErrorResponse"},
+            "description": "Context not found"
+          }
+        },
+        "parameters": [{
+          "in": "path",
+          "name": "context",
+          "description": "context",
+          "type": "string",
+          "required": true
+        }],
+        "tags": [
+          "Context",
+          "All"
+        ],
+        "consumes": ["application/json"]
+      }
+    },
     "/{context}/chains/{chainId}/entries/{entryId}/next": {"get": {
       "summary": "Get the entry after the supplied entry Id (the next) in the provided chain",
       "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
+      "description": "Get the entry after the supplied entry Id (the next) in the provided chain",
       "operationId": "nextEntryById",
       "responses": {
         "200": {
@@ -734,6 +780,7 @@
       "summary": "Get an existing entry in the provided chain",
       "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
+      "description": "Get an existing entry in the provided chain",
       "operationId": "entryByRequest",
       "responses": {
         "200": {
@@ -786,9 +833,10 @@
       "consumes": ["application/json"]
     }},
     "/{context}/chains/{chainId}/entries/first": {"get": {
-      "summary": "Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times",
+      "summary": "Get the first entry in the provided chain",
       "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
+      "description": "Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times",
       "operationId": "firstEntry",
       "responses": {
         "200": {
@@ -827,9 +875,10 @@
       "consumes": ["application/json"]
     }},
     "/backends/{backendId}/find": {"get": {
-      "summary": "Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others",
+      "summary": "Find backends",
       "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
+      "description": "Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others",
       "operationId": "findBackends",
       "responses": {
         "200": {
@@ -870,7 +919,7 @@
         }
       ],
       "tags": [
-        "Context",
+        "Backend",
         "All"
       ],
       "consumes": ["application/json"]
@@ -879,6 +928,7 @@
       "summary": "Get the entry after the supplied entry Id (the next) in the provided chain",
       "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
+      "description": "Get the entry after the supplied entry Id (the next) in the provided chain",
       "operationId": "nextEntryByRequest",
       "responses": {
         "200": {
@@ -931,9 +981,10 @@
       "consumes": ["application/json"]
     }},
     "/{context}/chains/{chainId}/entries/last": {"get": {
-      "summary": "Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times",
+      "summary": "Get the last entry in the provided chain.",
       "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
+      "description": "Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times",
       "operationId": "lastEntry",
       "responses": {
         "200": {
@@ -972,7 +1023,7 @@
       "consumes": ["application/json"]
     }}
   },
-  "host": "gw-dev.api.cloud.sphereon.com",
+  "host": "gw.api.cloud.sphereon.com",
   "schemes": ["https"],
   "securityDefinitions": {"oauth2schema": {
     "tokenUrl": "https://gw.api.cloud.sphereon.com/token",
@@ -1117,7 +1168,6 @@
             ]
           }
         },
-        "public": {"type": "boolean"},
         "blackList": {
           "type": "array",
           "items": {"type": "string"}
@@ -1163,6 +1213,7 @@
         },
         "password": {"type": "string"},
         "access": {"$ref": "#/definitions/Access"},
+        "ledgerName": {"type": "string"},
         "resourceFiles": {
           "additionalProperties": {"type": "string"},
           "type": "object"
@@ -1219,15 +1270,7 @@
           "format": "int32",
           "type": "integer"
         },
-        "ledgerName": {"type": "string"},
-        "implementation": {
-          "type": "string",
-          "enum": [
-            "Bitcoin",
-            "None",
-            "Ethereum"
-          ]
-        },
+        "name": {"type": "string"},
         "start": {
           "format": "date-time",
           "type": "string"
@@ -1239,9 +1282,9 @@
         "dataStructure": {
           "type": "string",
           "enum": [
-            "Factom",
-            "Multichain",
-            "Ethereum"
+            "FACTOM",
+            "MULTICHAIN",
+            "ETHEREUM"
           ]
         },
         "id": {
@@ -1278,7 +1321,7 @@
       }
     },
     "CommittedEntry": {
-      "description": "Commited Entry",
+      "description": "Committed Entry",
       "type": "object",
       "properties": {
         "entry": {"$ref": "#/definitions/Entry"},
@@ -1287,11 +1330,10 @@
           "readOnly": true,
           "type": "string"
         },
-        "rawBackendStructures": {
+        "rawBackendStructure": {
           "description": "Raw data structures of backend",
           "readOnly": true,
-          "type": "array",
-          "items": {"$ref": "#/definitions/RawBackendStructure"}
+          "type": "string"
         },
         "entryId": {
           "description": "Entry ID",
@@ -1299,8 +1341,7 @@
           "type": "string"
         }
       }
-    },
-    "RawBackendStructure": {"type": "object"}
+    }
   },
   "swagger": "2.0",
   "info": {
@@ -1313,8 +1354,8 @@
       "url": "https://sphereon.com",
       "email": "dev@sphereon.com"
     },
-    "description": "<b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom or Multichain. The latter also allows for a private blockchain. In the future other solutions will be made available<\/b>\r\n\r\nThe flow is generally as follows:\r\n1. Make sure a context is available using the / POST endpoint. Normally you only need one context. This is the place where backend providers and blockchain implementations are being specified.\r\n2. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is a relative expensive operation.\r\n3. Store entries on the chain from step 2. The entries will contain the content and metadata you want to store forever on the specified chain.\r\n4. Retrieve an existing entry from the chain to verify or retrieve data\r\n\r\n\r\n<b>Interactive testing: <\/b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store<\/a>",
-    "termsOfService": "https://sphereon.com",
+    "description": "The Easy Blockchain API is an easy to use API to store related entries within chains. Currently it stores entries using a Factom, Ethereum or Multichain blockchain. \r\nFor full API documentation please visit: https://docs.sphereon.com/api/easy-blockchain/0.10/html \r\nInteractive testing: A web based test console is available in the Sphereon API store at: https://store.sphereon.com",
+    "termsOfService": "https://docs.sphereon.com/api/easy-blockchain/0.10/html",
     "title": "Easy Blockchain API",
     "version": "0.10"
   },

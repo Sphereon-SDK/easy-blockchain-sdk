@@ -5,8 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **rpcProviders** | [**[RpcProvider]**](RpcProvider.md) |  | [optional] 
 **apiVersion** | **Number** |  | [optional] 
-**ledgerName** | **String** |  | [optional] 
-**implementation** | **String** |  | [optional] 
+**name** | **String** |  | [optional] 
 **start** | **Date** |  | [optional] 
 **end** | **Date** |  | [optional] 
 **dataStructure** | **String** |  | [optional] 
@@ -14,28 +13,15 @@ Name | Type | Description | Notes
 **externalAccess** | [**Access**](Access.md) |  | [optional] 
 
 
-<a name="ImplementationEnum"></a>
-## Enum: ImplementationEnum
-
-
-* `Bitcoin` (value: `"Bitcoin"`)
-
-* `None` (value: `"None"`)
-
-* `Ethereum` (value: `"Ethereum"`)
-
-
-
-
 <a name="DataStructureEnum"></a>
 ## Enum: DataStructureEnum
 
 
-* `Factom` (value: `"Factom"`)
+* `FACTOM` (value: `"FACTOM"`)
 
-* `Multichain` (value: `"Multichain"`)
+* `MULTICHAIN` (value: `"MULTICHAIN"`)
 
-* `Ethereum` (value: `"Ethereum"`)
+* `ETHEREUM` (value: `"ETHEREUM"`)
 
 
 

@@ -73,14 +73,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Test
             // TODO unit test for the property 'Modes'
         }
         /// <summary>
-        /// Test the property '_Public'
-        /// </summary>
-        [Test]
-        public void _PublicTest()
-        {
-            // TODO unit test for the property '_Public'
-        }
-        /// <summary>
         /// Test the property 'BlackList'
         /// </summary>
         [Test]

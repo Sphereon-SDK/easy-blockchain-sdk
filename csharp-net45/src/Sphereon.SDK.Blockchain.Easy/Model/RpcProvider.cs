@@ -1,7 +1,7 @@
 /* 
  * Easy Blockchain API
  *
- * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom or Multichain. The latter also allows for a private blockchain. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a context is available using the / POST endpoint. Normally you only need one context. This is the place where backend providers and blockchain implementations are being specified.  2. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is a relative expensive operation.  3. Store entries on the chain from step 2. The entries will contain the content and metadata you want to store forever on the specified chain.  4. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
+ * The Easy Blockchain API is an easy to use API to store related entries within chains. Currently it stores entries using a Factom, Ethereum or Multichain blockchain.   For full API documentation please visit: https://docs.sphereon.com/api/easy-blockchain/0.10/html   Interactive testing: A web based test console is available in the Sphereon API store at: https://store.sphereon.com
  *
  * OpenAPI spec version: 0.10
  * Contact: dev@sphereon.com
@@ -86,16 +86,18 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         /// <param name="OwnerType">OwnerType.</param>
         /// <param name="Password">Password.</param>
         /// <param name="Access">Access.</param>
+        /// <param name="LedgerName">LedgerName.</param>
         /// <param name="ResourceFiles">ResourceFiles.</param>
         /// <param name="Host">Host.</param>
         /// <param name="Id">Id.</param>
         /// <param name="Type">Type.</param>
         /// <param name="Username">Username.</param>
-        public RpcProvider(OwnerTypeEnum? OwnerType = default(OwnerTypeEnum?), string Password = default(string), Access Access = default(Access), Dictionary<string, string> ResourceFiles = default(Dictionary<string, string>), string Host = default(string), string Id = default(string), TypeEnum? Type = default(TypeEnum?), string Username = default(string))
+        public RpcProvider(OwnerTypeEnum? OwnerType = default(OwnerTypeEnum?), string Password = default(string), Access Access = default(Access), string LedgerName = default(string), Dictionary<string, string> ResourceFiles = default(Dictionary<string, string>), string Host = default(string), string Id = default(string), TypeEnum? Type = default(TypeEnum?), string Username = default(string))
         {
             this.OwnerType = OwnerType;
             this.Password = Password;
             this.Access = Access;
+            this.LedgerName = LedgerName;
             this.ResourceFiles = ResourceFiles;
             this.Host = Host;
             this.Id = Id;
@@ -115,6 +117,12 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         /// </summary>
         [DataMember(Name="access", EmitDefaultValue=false)]
         public Access Access { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LedgerName
+        /// </summary>
+        [DataMember(Name="ledgerName", EmitDefaultValue=false)]
+        public string LedgerName { get; set; }
 
         /// <summary>
         /// Gets or Sets ResourceFiles
@@ -152,6 +160,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             sb.Append("  OwnerType: ").Append(OwnerType).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Access: ").Append(Access).Append("\n");
+            sb.Append("  LedgerName: ").Append(LedgerName).Append("\n");
             sb.Append("  ResourceFiles: ").Append(ResourceFiles).Append("\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
@@ -209,6 +218,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                     this.Access.Equals(other.Access)
                 ) && 
                 (
+                    this.LedgerName == other.LedgerName ||
+                    this.LedgerName != null &&
+                    this.LedgerName.Equals(other.LedgerName)
+                ) && 
+                (
                     this.ResourceFiles == other.ResourceFiles ||
                     this.ResourceFiles != null &&
                     this.ResourceFiles.SequenceEqual(other.ResourceFiles)
@@ -252,6 +266,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                     hash = hash * 59 + this.Password.GetHashCode();
                 if (this.Access != null)
                     hash = hash * 59 + this.Access.GetHashCode();
+                if (this.LedgerName != null)
+                    hash = hash * 59 + this.LedgerName.GetHashCode();
                 if (this.ResourceFiles != null)
                     hash = hash * 59 + this.ResourceFiles.GetHashCode();
                 if (this.Host != null)

@@ -5,8 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RpcProviders** | [**List&lt;RpcProvider&gt;**](RpcProvider.md) |  | [optional] 
 **ApiVersion** | **int?** |  | [optional] 
-**LedgerName** | **string** |  | [optional] 
-**Implementation** | **string** |  | [optional] 
+**Name** | **string** |  | [optional] 
 **Start** | **DateTime?** |  | [optional] 
 **End** | **DateTime?** |  | [optional] 
 **DataStructure** | **string** |  | [optional] 

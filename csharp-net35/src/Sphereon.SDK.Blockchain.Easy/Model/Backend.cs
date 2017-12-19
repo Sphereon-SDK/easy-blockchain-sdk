@@ -1,7 +1,7 @@
 /* 
  * Easy Blockchain API
  *
- * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of Factom or Multichain. The latter also allows for a private blockchain. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a context is available using the / POST endpoint. Normally you only need one context. This is the place where backend providers and blockchain implementations are being specified.  2. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is a relative expensive operation.  3. Store entries on the chain from step 2. The entries will contain the content and metadata you want to store forever on the specified chain.  4. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
+ * The Easy Blockchain API is an easy to use API to store related entries within chains. Currently it stores entries using a Factom, Ethereum or Multichain blockchain.   For full API documentation please visit: https://docs.sphereon.com/api/easy-blockchain/0.10/html   Interactive testing: A web based test console is available in the Sphereon API store at: https://store.sphereon.com
  *
  * OpenAPI spec version: 0.10
  * Contact: dev@sphereon.com
@@ -31,32 +31,6 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
     public partial class Backend :  IEquatable<Backend>
     {
         /// <summary>
-        /// Gets or Sets Implementation
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum ImplementationEnum
-        {
-            
-            /// <summary>
-            /// Enum Bitcoin for "Bitcoin"
-            /// </summary>
-            [EnumMember(Value = "Bitcoin")]
-            Bitcoin,
-            
-            /// <summary>
-            /// Enum None for "None"
-            /// </summary>
-            [EnumMember(Value = "None")]
-            None,
-            
-            /// <summary>
-            /// Enum Ethereum for "Ethereum"
-            /// </summary>
-            [EnumMember(Value = "Ethereum")]
-            Ethereum
-        }
-
-        /// <summary>
         /// Gets or Sets DataStructure
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
@@ -64,29 +38,24 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         {
             
             /// <summary>
-            /// Enum Factom for "Factom"
+            /// Enum FACTOM for "FACTOM"
             /// </summary>
-            [EnumMember(Value = "Factom")]
-            Factom,
+            [EnumMember(Value = "FACTOM")]
+            FACTOM,
             
             /// <summary>
-            /// Enum Multichain for "Multichain"
+            /// Enum MULTICHAIN for "MULTICHAIN"
             /// </summary>
-            [EnumMember(Value = "Multichain")]
-            Multichain,
+            [EnumMember(Value = "MULTICHAIN")]
+            MULTICHAIN,
             
             /// <summary>
-            /// Enum Ethereum for "Ethereum"
+            /// Enum ETHEREUM for "ETHEREUM"
             /// </summary>
-            [EnumMember(Value = "Ethereum")]
-            Ethereum
+            [EnumMember(Value = "ETHEREUM")]
+            ETHEREUM
         }
 
-        /// <summary>
-        /// Gets or Sets Implementation
-        /// </summary>
-        [DataMember(Name="implementation", EmitDefaultValue=false)]
-        public ImplementationEnum? Implementation { get; set; }
         /// <summary>
         /// Gets or Sets DataStructure
         /// </summary>
@@ -97,18 +66,16 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         /// </summary>
         /// <param name="RpcProviders">RpcProviders.</param>
         /// <param name="ApiVersion">ApiVersion.</param>
-        /// <param name="LedgerName">LedgerName.</param>
-        /// <param name="Implementation">Implementation.</param>
+        /// <param name="Name">Name.</param>
         /// <param name="Start">Start.</param>
         /// <param name="End">End.</param>
         /// <param name="DataStructure">DataStructure.</param>
         /// <param name="ExternalAccess">ExternalAccess.</param>
-        public Backend(List<RpcProvider> RpcProviders = default(List<RpcProvider>), int? ApiVersion = default(int?), string LedgerName = default(string), ImplementationEnum? Implementation = default(ImplementationEnum?), DateTime? Start = default(DateTime?), DateTime? End = default(DateTime?), DataStructureEnum? DataStructure = default(DataStructureEnum?), Access ExternalAccess = default(Access))
+        public Backend(List<RpcProvider> RpcProviders = default(List<RpcProvider>), int? ApiVersion = default(int?), string Name = default(string), DateTime? Start = default(DateTime?), DateTime? End = default(DateTime?), DataStructureEnum? DataStructure = default(DataStructureEnum?), Access ExternalAccess = default(Access))
         {
             this.RpcProviders = RpcProviders;
             this.ApiVersion = ApiVersion;
-            this.LedgerName = LedgerName;
-            this.Implementation = Implementation;
+            this.Name = Name;
             this.Start = Start;
             this.End = End;
             this.DataStructure = DataStructure;
@@ -128,11 +95,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
         public int? ApiVersion { get; set; }
 
         /// <summary>
-        /// Gets or Sets LedgerName
+        /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="ledgerName", EmitDefaultValue=false)]
-        public string LedgerName { get; set; }
-
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Start
@@ -169,8 +135,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
             sb.Append("class Backend {\n");
             sb.Append("  RpcProviders: ").Append(RpcProviders).Append("\n");
             sb.Append("  ApiVersion: ").Append(ApiVersion).Append("\n");
-            sb.Append("  LedgerName: ").Append(LedgerName).Append("\n");
-            sb.Append("  Implementation: ").Append(Implementation).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Start: ").Append(Start).Append("\n");
             sb.Append("  End: ").Append(End).Append("\n");
             sb.Append("  DataStructure: ").Append(DataStructure).Append("\n");
@@ -223,14 +188,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                     this.ApiVersion.Equals(other.ApiVersion)
                 ) && 
                 (
-                    this.LedgerName == other.LedgerName ||
-                    this.LedgerName != null &&
-                    this.LedgerName.Equals(other.LedgerName)
-                ) && 
-                (
-                    this.Implementation == other.Implementation ||
-                    this.Implementation != null &&
-                    this.Implementation.Equals(other.Implementation)
+                    this.Name == other.Name ||
+                    this.Name != null &&
+                    this.Name.Equals(other.Name)
                 ) && 
                 (
                     this.Start == other.Start ||
@@ -274,10 +234,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Model
                     hash = hash * 59 + this.RpcProviders.GetHashCode();
                 if (this.ApiVersion != null)
                     hash = hash * 59 + this.ApiVersion.GetHashCode();
-                if (this.LedgerName != null)
-                    hash = hash * 59 + this.LedgerName.GetHashCode();
-                if (this.Implementation != null)
-                    hash = hash * 59 + this.Implementation.GetHashCode();
+                if (this.Name != null)
+                    hash = hash * 59 + this.Name.GetHashCode();
                 if (this.Start != null)
                     hash = hash * 59 + this.Start.GetHashCode();
                 if (this.End != null)
