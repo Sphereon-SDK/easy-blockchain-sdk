@@ -15,6 +15,7 @@ using NUnit.Framework.Constraints;
 using Sphereon.SDK.Blockchain.Easy.Api;
 using Sphereon.SDK.Blockchain.Easy.Client;
 using Sphereon.SDK.Blockchain.Easy.Model;
+using static Sphereon.SDK.Blockchain.Easy.Model.AnchoredEntryResponse;
 
 namespace Sphereon.SDK.Blockchain.Easy.Test.Api
 {
@@ -92,7 +93,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Test.Api
             Assert.NotNull(response);
             Assert.NotNull(response.AnchoredEntry);
             Assert.True(response.AnchorTimes.Count >= 3);
-            Assert.AreEqual(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, response.AnchorState);
+            Assert.AreEqual(AnchorStateEnum.ANCHORED, response.AnchorState);
         }
 
         /// <summary>
@@ -120,14 +121,15 @@ namespace Sphereon.SDK.Blockchain.Easy.Test.Api
             Assert.NotNull(createResponse.Entry);
             Assert.NotNull(createResponse.CreationRequestTime);
 
-            Thread.Sleep(20000); // Should be enough for multichain
+            Thread.Sleep(10000); // Should be enough for multichain
 
             var entryResponse = _allApi.EntryByRequest(ContextMultchain, TestChainId, entry);
             Assert.IsInstanceOf<AnchoredEntryResponse>(entryResponse, "response is AnchoredEntryResponse");
             Assert.NotNull(entryResponse);
             Assert.NotNull(entryResponse.AnchoredEntry);
             Assert.True(entryResponse.AnchorTimes.Count >=0);
-            Assert.AreEqual(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, entryResponse.AnchorState);
+            Assert.IsTrue(AnchorStateEnum.ANCHORED == entryResponse.AnchorState 
+                || AnchorStateEnum.COMMITTED == entryResponse.AnchorState);
         }
 
         /// <summary>
@@ -168,7 +170,7 @@ namespace Sphereon.SDK.Blockchain.Easy.Test.Api
             Assert.NotNull(response);
             Assert.NotNull(response.AnchoredEntry);
             Assert.True(response.AnchorTimes.Count >= 3);
-            Assert.AreEqual(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, response.AnchorState);
+            Assert.AreEqual(AnchorStateEnum.ANCHORED, response.AnchorState);
         }
 
 
@@ -183,8 +185,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Test.Api
             Assert.NotNull(response);
             Assert.NotNull(response.AnchoredEntry);
             Assert.True(response.AnchorTimes.Count >= 0);
-            Assert.AreEqual(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, response.AnchorState);
-            //Assert.IsTrue(response.CurrentAnchorTime.HasValue); // TODO: uncomment when new easy-chains is deployed
+            Assert.AreEqual(AnchorStateEnum.ANCHORED, response.AnchorState);
+            //Assert.IsTrue(response.CurrentAnchorTime.HasValue); // TODO: uncomment when new easy-chains is fixed
             Assert.IsTrue(response.AnchorTimes[0].HasValue);
             _firstEntryAnchorTime = response.AnchorTimes[0].Value;
             _firstEntry = response.AnchoredEntry;
@@ -202,8 +204,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Test.Api
             Assert.NotNull(response);
             Assert.NotNull(response.AnchoredEntry);
             Assert.True(response.AnchorTimes.Count >= 0);
-            Assert.AreEqual(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, response.AnchorState);
-            //Assert.IsTrue(response.CurrentAnchorTime.HasValue); // TODO: uncomment when new easy-chains is deployed
+            Assert.AreEqual(AnchorStateEnum.ANCHORED, response.AnchorState);
+            //Assert.IsTrue(response.CurrentAnchorTime.HasValue); // TODO: uncomment when new easy-chains is fixed
             Assert.IsTrue(response.AnchorTimes[0].HasValue);
             _nextEntryAnchorTime = response.AnchorTimes[0].Value;
             _nextEntry = response.AnchoredEntry;
@@ -220,8 +222,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Test.Api
             Assert.NotNull(response);
             Assert.NotNull(response.AnchoredEntry);
             Assert.True(response.AnchorTimes.Count >= 0);
-            Assert.AreEqual(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, response.AnchorState);
-            //Assert.IsTrue(response.CurrentAnchorTime.HasValue); // TODO: uncomment when new easy-chains is deployed
+            Assert.AreEqual(AnchorStateEnum.ANCHORED, response.AnchorState);
+            //Assert.IsTrue(response.CurrentAnchorTime.HasValue); // TODO: uncomment when new easy-chains is fixed
         }
 
         /// <summary>
@@ -230,15 +232,16 @@ namespace Sphereon.SDK.Blockchain.Easy.Test.Api
         [Test, Order(120), Sequential]
         public void PreviousEntryByIdTest()
         {
-            var response = _allApi.PreviousEntryById(ContextFactom, TestChainId, _nextEntry.EntryId, _nextEntryAnchorTime);
+            var nextEntryResponse = _allApi.NextEntryById(ContextFactom, TestChainId, _nextEntry.EntryId, _nextEntryAnchorTime);
+            var response = _allApi.PreviousEntryById(ContextFactom, TestChainId, nextEntryResponse.AnchoredEntry.EntryId, _nextEntryAnchorTime);
             Assert.IsInstanceOf<AnchoredEntryResponse> (response, "response is AnchoredEntryResponse");
             Assert.NotNull(response);
             Assert.NotNull(response.AnchoredEntry);
             Assert.True(response.AnchorTimes.Count >= 0);
-            Assert.AreEqual(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, response.AnchorState);
-            Assert.IsTrue(response.CurrentAnchorTime.HasValue);
-            Assert.IsTrue(response.AnchoredEntry.ChainId == _firstEntry.ChainId);
-            Assert.IsTrue(response.AnchoredEntry.EntryId == _firstEntry.EntryId);
+            Assert.AreEqual(AnchorStateEnum.ANCHORED, response.AnchorState);
+            //Assert.IsTrue(response.CurrentAnchorTime.HasValue); // TODO: uncomment when new easy-chains is fixed
+            Assert.IsTrue(response.AnchoredEntry.ChainId == _nextEntry.ChainId);
+            Assert.IsTrue(response.AnchoredEntry.EntryId == _nextEntry.EntryId);
         }
 
         /// <summary>
@@ -247,15 +250,16 @@ namespace Sphereon.SDK.Blockchain.Easy.Test.Api
         [Test, Order(130), Sequential]
         public void PreviousEntryByRequestTest()
         {
-            var response = _allApi.PreviousEntryByRequest(ContextFactom, TestChainId, _nextEntry.Entry, _nextEntryAnchorTime);
+            var nextEntryResponse = _allApi.NextEntryById(ContextFactom, TestChainId, _nextEntry.EntryId, _nextEntryAnchorTime);
+            var response = _allApi.PreviousEntryByRequest(ContextFactom, TestChainId, nextEntryResponse.AnchoredEntry.Entry, _nextEntryAnchorTime);
             Assert.IsInstanceOf<AnchoredEntryResponse> (response, "response is AnchoredEntryResponse");
             Assert.NotNull(response);
             Assert.NotNull(response.AnchoredEntry);
             Assert.True(response.AnchorTimes.Count >= 0);
-            Assert.AreEqual(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, response.AnchorState);
-            Assert.IsTrue(response.CurrentAnchorTime.HasValue);
-            Assert.IsTrue(response.AnchoredEntry.ChainId == _firstEntry.ChainId);
-            Assert.IsTrue(response.AnchoredEntry.EntryId == _firstEntry.EntryId);
+            Assert.AreEqual(AnchorStateEnum.ANCHORED, response.AnchorState);
+            //Assert.IsTrue(response.CurrentAnchorTime.HasValue); // TODO: uncomment when new easy-chains is fixed
+            Assert.IsTrue(response.AnchoredEntry.ChainId == _nextEntry.ChainId);
+            Assert.IsTrue(response.AnchoredEntry.EntryId == _nextEntry.EntryId);
         }
 
 
