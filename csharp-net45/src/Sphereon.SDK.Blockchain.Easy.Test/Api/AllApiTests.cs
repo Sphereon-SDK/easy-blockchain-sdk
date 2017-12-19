@@ -9,19 +9,14 @@
  */
 
 using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection;
-using RestSharp;
+using System.Threading;
 using NUnit.Framework;
-
-using Sphereon.SDK.Blockchain.Easy.Client;
+using NUnit.Framework.Constraints;
 using Sphereon.SDK.Blockchain.Easy.Api;
+using Sphereon.SDK.Blockchain.Easy.Client;
 using Sphereon.SDK.Blockchain.Easy.Model;
 
-namespace Sphereon.SDK.Blockchain.Easy.Test
+namespace Sphereon.SDK.Blockchain.Easy.Test.Api
 {
     /// <summary>
     ///  Class for testing AllApi
@@ -31,9 +26,14 @@ namespace Sphereon.SDK.Blockchain.Easy.Test
     /// Please update the test case below to test the API endpoint.
     /// </remarks>
     [TestFixture]
-    public class AllApiTests
+    public class AllApiTests : AbstractTests
     {
-        private AllApi instance;
+        private AllApi _allApi;
+        private static string _determinedEntryId;
+        private static DateTime _firstEntryAnchorTime;
+        private static CommittedEntry _firstEntry;
+        private static DateTime _nextEntryAnchorTime;
+        private static CommittedEntry _nextEntry;
 
         /// <summary>
         /// Setup before each unit test
@@ -41,7 +41,8 @@ namespace Sphereon.SDK.Blockchain.Easy.Test
         [SetUp]
         public void Init()
         {
-            instance = new AllApi();
+            _allApi = new AllApi();
+            ConfigureApi(_allApi.Configuration);
         }
 
         /// <summary>
@@ -50,33 +51,214 @@ namespace Sphereon.SDK.Blockchain.Easy.Test
         [TearDown]
         public void Cleanup()
         {
-
         }
 
         /// <summary>
-        /// Test an instance of AllApi
+        /// Test CreateChain
         /// </summary>
-        [Test]
-        public void InstanceTest()
+        [Test, Order(10), Sequential]
+        public void CreateChainTest()
         {
-            // TODO uncomment below to test 'IsInstanceOfType' AllApi
-            //Assert.IsInstanceOfType(typeof(AllApi), instance, "instance is a AllApi");
+            var chain = CreateChainRequest("Test Content", "first external id", "second external id");
+            var response = _allApi.CreateChain(ContextMultchain, chain);
+            Assert.IsInstanceOf<CommittedChainResponse>(response, "response is CommittedChainResponse");
+            Assert.NotNull(response);
+            Assert.NotNull(response);
+            Assert.NotNull(response.Chain);
+            Assert.NotNull(response.Chain.Id);
         }
 
-        
+
         /// <summary>
         /// Test ChainIdExists
         /// </summary>
-        [Test]
+        [Test, Order(20), Sequential]
         public void ChainIdExistsTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string context = null;
-            //string chainId = null;
-            //var response = instance.ChainIdExists(context, chainId);
-            //Assert.IsInstanceOf<IdResponse> (response, "response is IdResponse");
+            var response = _allApi.ChainIdExists(ContextMultchain, TestChainId);
+            Assert.IsInstanceOf<IdResponse>(response, "response is IdResponse");
         }
-        
+
+
+        /// <summary>
+        /// Test EntryIdExists
+        /// </summary>
+        [Test, Order(30), Sequential]
+        public void ExistingEntryByRequest()
+        {
+            var entry = CreateEntry(TestEntryContent, FirstEntryExternalId, SecondEntryExternalId);
+            var response = _allApi.EntryByRequest(ContextFactom, TestChainId, entry);
+            Assert.IsInstanceOf<AnchoredEntryResponse>(response, "response is AnchoredEntryResponse");
+            Assert.NotNull(response);
+            Assert.NotNull(response.AnchoredEntry);
+            Assert.True(response.AnchorTimes.Count >= 3);
+            Assert.AreEqual(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, response.AnchorState);
+        }
+
+        /// <summary>
+        /// Test EntryIdExists
+        /// </summary>
+        [Test, Order(40), Sequential]
+        public void NonExistingEntryByRequest()
+        {
+            var entry = CreateEntry(TestEntryContent, "" + DateTime.Now.Ticks);
+            TestDelegate testDelegate = () => _allApi.EntryByRequest(ContextMultchain, TestChainId, entry);
+            Assert.Throws<ApiException>(testDelegate, "blah");
+        }
+
+
+        /// <summary>
+        /// Test CreateEntry
+        /// </summary>
+        [Test, Order(50), Sequential]
+        public void CreateEntryTest()
+        {
+            var entry = CreateEntry(TestEntryContent, "" + DateTime.Now.Ticks);
+            var createResponse = _allApi.CreateEntry(ContextMultchain, TestChainId, entry);
+            Assert.IsInstanceOf<CommittedEntryResponse>(createResponse, "response is CommittedEntryResponse");
+            Assert.NotNull(createResponse);
+            Assert.NotNull(createResponse.Entry);
+            Assert.NotNull(createResponse.CreationRequestTime);
+
+            Thread.Sleep(20000); // Should be enough for multichain
+
+            var entryResponse = _allApi.EntryByRequest(ContextMultchain, TestChainId, entry);
+            Assert.IsInstanceOf<AnchoredEntryResponse>(entryResponse, "response is AnchoredEntryResponse");
+            Assert.NotNull(entryResponse);
+            Assert.NotNull(entryResponse.AnchoredEntry);
+            Assert.True(entryResponse.AnchorTimes.Count >=0);
+            Assert.AreEqual(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, entryResponse.AnchorState);
+        }
+
+        /// <summary>
+        /// Test DetermineChainId
+        /// </summary>
+        [Test, Order(60), Sequential]
+        public void DetermineChainIdTest()
+        {
+            var chain = CreateChainRequest("Test Content", "first external id", "second external id");
+            var response = _allApi.DetermineChainId(ContextFactom, chain, true);
+            Assert.IsInstanceOf<IdResponse> (response, "response is IdResponse");
+        }
+
+        /// <summary>
+        /// Test DetermineEntryId
+        /// </summary>
+        [Test, Order(70), Sequential]
+        public void DetermineEntryIdTest()
+        {
+            var entry = CreateEntry(TestEntryContent, FirstEntryExternalId, SecondEntryExternalId);
+            var response = _allApi.DetermineEntryId(ContextFactom, TestChainId, entry, true);
+            Assert.IsInstanceOf<IdResponse> (response, "response is IdResponse");
+            Assert.NotNull(response);
+            Assert.NotNull(response.Id);
+            Assert.True(response.Exists.HasValue);
+            Assert.True(response.Exists.Value == IdResponse.ExistsEnum.True);
+            _determinedEntryId = response.Id;
+        }
+
+        /// <summary>
+        /// Test EntryById
+        /// </summary>
+        [Test, Order(80), Sequential]
+        public void EntryByIdTest()
+        {
+            var response = _allApi.EntryById(ContextFactom, TestChainId, _determinedEntryId);
+            Assert.IsInstanceOf<AnchoredEntryResponse> (response, "response is AnchoredEntryResponse");
+            Assert.NotNull(response);
+            Assert.NotNull(response.AnchoredEntry);
+            Assert.True(response.AnchorTimes.Count >= 3);
+            Assert.AreEqual(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, response.AnchorState);
+        }
+
+
+        /// <summary>
+        /// Test FirstEntry
+        /// </summary>
+        [Test, Order(90), Sequential]
+        public void FirstEntryTest()
+        {
+            var response = _allApi.FirstEntry(ContextFactom, TestChainId);
+            Assert.IsInstanceOf<AnchoredEntryResponse> (response, "response is AnchoredEntryResponse");
+            Assert.NotNull(response);
+            Assert.NotNull(response.AnchoredEntry);
+            Assert.True(response.AnchorTimes.Count >= 0);
+            Assert.AreEqual(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, response.AnchorState);
+            //Assert.IsTrue(response.CurrentAnchorTime.HasValue); // TODO: uncomment when new easy-chains is deployed
+            Assert.IsTrue(response.AnchorTimes[0].HasValue);
+            _firstEntryAnchorTime = response.AnchorTimes[0].Value;
+            _firstEntry = response.AnchoredEntry;
+        }
+
+
+        /// <summary>
+        /// Test NextEntryById
+        /// </summary>
+        [Test, Order(100), Sequential]
+        public void NextEntryByIdTest()
+        {
+            var response = _allApi.NextEntryById(ContextFactom, TestChainId, _firstEntry.EntryId, _firstEntryAnchorTime);
+            Assert.IsInstanceOf<AnchoredEntryResponse> (response, "response is AnchoredEntryResponse");
+            Assert.NotNull(response);
+            Assert.NotNull(response.AnchoredEntry);
+            Assert.True(response.AnchorTimes.Count >= 0);
+            Assert.AreEqual(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, response.AnchorState);
+            //Assert.IsTrue(response.CurrentAnchorTime.HasValue); // TODO: uncomment when new easy-chains is deployed
+            Assert.IsTrue(response.AnchorTimes[0].HasValue);
+            _nextEntryAnchorTime = response.AnchorTimes[0].Value;
+            _nextEntry = response.AnchoredEntry;
+        }
+
+        /// <summary>
+        /// Test NextEntryByRequest
+        /// </summary>
+        [Test, Order(110), Sequential]
+        public void NextEntryByRequestTest()
+        {
+            var response = _allApi.NextEntryByRequest(ContextFactom, TestChainId, _firstEntry.Entry, _firstEntryAnchorTime);
+            Assert.IsInstanceOf<AnchoredEntryResponse> (response, "response is AnchoredEntryResponse");
+            Assert.NotNull(response);
+            Assert.NotNull(response.AnchoredEntry);
+            Assert.True(response.AnchorTimes.Count >= 0);
+            Assert.AreEqual(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, response.AnchorState);
+            //Assert.IsTrue(response.CurrentAnchorTime.HasValue); // TODO: uncomment when new easy-chains is deployed
+        }
+
+        /// <summary>
+        /// Test PreviousEntryById
+        /// </summary>
+        [Test, Order(120), Sequential]
+        public void PreviousEntryByIdTest()
+        {
+            var response = _allApi.PreviousEntryById(ContextFactom, TestChainId, _nextEntry.EntryId, _nextEntryAnchorTime);
+            Assert.IsInstanceOf<AnchoredEntryResponse> (response, "response is AnchoredEntryResponse");
+            Assert.NotNull(response);
+            Assert.NotNull(response.AnchoredEntry);
+            Assert.True(response.AnchorTimes.Count >= 0);
+            Assert.AreEqual(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, response.AnchorState);
+            Assert.IsTrue(response.CurrentAnchorTime.HasValue);
+            Assert.IsTrue(response.AnchoredEntry.ChainId == _firstEntry.ChainId);
+            Assert.IsTrue(response.AnchoredEntry.EntryId == _firstEntry.EntryId);
+        }
+
+        /// <summary>
+        /// Test PreviousEntryByRequest
+        /// </summary>
+        [Test, Order(130), Sequential]
+        public void PreviousEntryByRequestTest()
+        {
+            var response = _allApi.PreviousEntryByRequest(ContextFactom, TestChainId, _nextEntry.Entry, _nextEntryAnchorTime);
+            Assert.IsInstanceOf<AnchoredEntryResponse> (response, "response is AnchoredEntryResponse");
+            Assert.NotNull(response);
+            Assert.NotNull(response.AnchoredEntry);
+            Assert.True(response.AnchorTimes.Count >= 0);
+            Assert.AreEqual(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, response.AnchorState);
+            Assert.IsTrue(response.CurrentAnchorTime.HasValue);
+            Assert.IsTrue(response.AnchoredEntry.ChainId == _firstEntry.ChainId);
+            Assert.IsTrue(response.AnchoredEntry.EntryId == _firstEntry.EntryId);
+        }
+
+
         /// <summary>
         /// Test CreateBackend
         /// </summary>
@@ -85,23 +267,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //Backend backend = null;
-            //var response = instance.CreateBackend(backend);
+            //var response = _allApi.CreateBackend(backend);
             //Assert.IsInstanceOf<Backend> (response, "response is Backend");
         }
-        
-        /// <summary>
-        /// Test CreateChain
-        /// </summary>
-        [Test]
-        public void CreateChainTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string context = null;
-            //Chain chain = null;
-            //var response = instance.CreateChain(context, chain);
-            //Assert.IsInstanceOf<CommittedChainResponse> (response, "response is CommittedChainResponse");
-        }
-        
+
+
         /// <summary>
         /// Test CreateContext
         /// </summary>
@@ -110,25 +280,11 @@ namespace Sphereon.SDK.Blockchain.Easy.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //Context context = null;
-            //var response = instance.CreateContext(context);
+            //var response = _allApi.CreateContext(context);
             //Assert.IsInstanceOf<Context> (response, "response is Context");
         }
-        
-        /// <summary>
-        /// Test CreateEntry
-        /// </summary>
-        [Test]
-        public void CreateEntryTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string context = null;
-            //string chainId = null;
-            //Entry entry = null;
-            //DateTime? currentAnchorTime = null;
-            //var response = instance.CreateEntry(context, chainId, entry, currentAnchorTime);
-            //Assert.IsInstanceOf<CommittedEntryResponse> (response, "response is CommittedEntryResponse");
-        }
-        
+
+
         /// <summary>
         /// Test DeleteBackend
         /// </summary>
@@ -137,83 +293,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string backendId = null;
-            //instance.DeleteBackend(backendId);
-            
+            //_allApi.DeleteBackend(backendId);
         }
-        
-        /// <summary>
-        /// Test DetermineChainId
-        /// </summary>
-        [Test]
-        public void DetermineChainIdTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string context = null;
-            //Chain chain = null;
-            //bool? checkExistence = null;
-            //var response = instance.DetermineChainId(context, chain, checkExistence);
-            //Assert.IsInstanceOf<IdResponse> (response, "response is IdResponse");
-        }
-        
-        /// <summary>
-        /// Test DetermineEntryId
-        /// </summary>
-        [Test]
-        public void DetermineEntryIdTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string context = null;
-            //string chainId = null;
-            //Entry entry = null;
-            //bool? checkExistence = null;
-            //var response = instance.DetermineEntryId(context, chainId, entry, checkExistence);
-            //Assert.IsInstanceOf<IdResponse> (response, "response is IdResponse");
-        }
-        
-        /// <summary>
-        /// Test EntryById
-        /// </summary>
-        [Test]
-        public void EntryByIdTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string context = null;
-            //string chainId = null;
-            //string entryId = null;
-            //DateTime? currentAnchorTime = null;
-            //var response = instance.EntryById(context, chainId, entryId, currentAnchorTime);
-            //Assert.IsInstanceOf<AnchoredEntryResponse> (response, "response is AnchoredEntryResponse");
-        }
-        
-        /// <summary>
-        /// Test EntryByRequest
-        /// </summary>
-        [Test]
-        public void EntryByRequestTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string context = null;
-            //string chainId = null;
-            //Entry entry = null;
-            //DateTime? currentAnchorTime = null;
-            //var response = instance.EntryByRequest(context, chainId, entry, currentAnchorTime);
-            //Assert.IsInstanceOf<AnchoredEntryResponse> (response, "response is AnchoredEntryResponse");
-        }
-        
-        /// <summary>
-        /// Test EntryIdExists
-        /// </summary>
-        [Test]
-        public void EntryIdExistsTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string context = null;
-            //string chainId = null;
-            //string entryId = null;
-            //var response = instance.EntryIdExists(context, chainId, entryId);
-            //Assert.IsInstanceOf<IdResponse> (response, "response is IdResponse");
-        }
-        
+
+
         /// <summary>
         /// Test FindBackends
         /// </summary>
@@ -223,22 +306,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string backendId = null;
             //bool? includePublic = null;
-            //var response = instance.FindBackends(backendId, includePublic);
+            //var response = _allApi.FindBackends(backendId, includePublic);
             //Assert.IsInstanceOf<List<Backend>> (response, "response is List<Backend>");
         }
-        
-        /// <summary>
-        /// Test FirstEntry
-        /// </summary>
-        [Test]
-        public void FirstEntryTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string context = null;
-            //string chainId = null;
-            //var response = instance.FirstEntry(context, chainId);
-            //Assert.IsInstanceOf<AnchoredEntryResponse> (response, "response is AnchoredEntryResponse");
-        }
+
         
         /// <summary>
         /// Test GetBackend
@@ -249,10 +320,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string backendId = null;
             //bool? includePublic = null;
-            //var response = instance.GetBackend(backendId, includePublic);
+            //var response = _allApi.GetBackend(backendId, includePublic);
             //Assert.IsInstanceOf<Backend> (response, "response is Backend");
         }
-        
+
         /// <summary>
         /// Test GetContext
         /// </summary>
@@ -261,10 +332,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string context = null;
-            //var response = instance.GetContext(context);
+            //var response = _allApi.GetContext(context);
             //Assert.IsInstanceOf<Context> (response, "response is Context");
         }
-        
+
         /// <summary>
         /// Test LastEntry
         /// </summary>
@@ -274,10 +345,10 @@ namespace Sphereon.SDK.Blockchain.Easy.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string context = null;
             //string chainId = null;
-            //var response = instance.LastEntry(context, chainId);
+            //var response = _allApi.LastEntry(context, chainId);
             //Assert.IsInstanceOf<AnchoredEntryResponse> (response, "response is AnchoredEntryResponse");
         }
-        
+
         /// <summary>
         /// Test ListBackends
         /// </summary>
@@ -285,70 +356,9 @@ namespace Sphereon.SDK.Blockchain.Easy.Test
         public void ListBackendsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.ListBackends();
+            //var response = _allApi.ListBackends();
             //Assert.IsInstanceOf<List<Backend>> (response, "response is List<Backend>");
         }
-        
-        /// <summary>
-        /// Test NextEntryById
-        /// </summary>
-        [Test]
-        public void NextEntryByIdTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string context = null;
-            //string chainId = null;
-            //string entryId = null;
-            //DateTime? currentAnchorTime = null;
-            //var response = instance.NextEntryById(context, chainId, entryId, currentAnchorTime);
-            //Assert.IsInstanceOf<AnchoredEntryResponse> (response, "response is AnchoredEntryResponse");
-        }
-        
-        /// <summary>
-        /// Test NextEntryByRequest
-        /// </summary>
-        [Test]
-        public void NextEntryByRequestTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string context = null;
-            //string chainId = null;
-            //Entry entry = null;
-            //DateTime? currentAnchorTime = null;
-            //var response = instance.NextEntryByRequest(context, chainId, entry, currentAnchorTime);
-            //Assert.IsInstanceOf<AnchoredEntryResponse> (response, "response is AnchoredEntryResponse");
-        }
-        
-        /// <summary>
-        /// Test PreviousEntryById
-        /// </summary>
-        [Test]
-        public void PreviousEntryByIdTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string context = null;
-            //string chainId = null;
-            //string entryId = null;
-            //DateTime? currentAnchorTime = null;
-            //var response = instance.PreviousEntryById(context, chainId, entryId, currentAnchorTime);
-            //Assert.IsInstanceOf<AnchoredEntryResponse> (response, "response is AnchoredEntryResponse");
-        }
-        
-        /// <summary>
-        /// Test PreviousEntryByRequest
-        /// </summary>
-        [Test]
-        public void PreviousEntryByRequestTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string context = null;
-            //string chainId = null;
-            //Entry entry = null;
-            //DateTime? currentAnchorTime = null;
-            //var response = instance.PreviousEntryByRequest(context, chainId, entry, currentAnchorTime);
-            //Assert.IsInstanceOf<AnchoredEntryResponse> (response, "response is AnchoredEntryResponse");
-        }
-        
-    }
 
+    }
 }

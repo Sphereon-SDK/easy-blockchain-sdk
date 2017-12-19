@@ -1,31 +1,31 @@
 # AllApi
 
-All URIs are relative to *https://gw.api.cloud.sphereon.com*
+All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.10*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**chainIdExists**](AllApi.md#chainIdExists) | **GET** /blockchain/easy/0.10/{context}/chains/id/{chainId} | Determine chain id exists
-[**createBackend**](AllApi.md#createBackend) | **POST** /blockchain/easy/0.10/backends | Create a new backend
-[**createChain**](AllApi.md#createChain) | **POST** /blockchain/easy/0.10/{context}/chains | Create a new chain
-[**createContext**](AllApi.md#createContext) | **POST** /blockchain/easy/0.10/ | Create context
-[**createEntry**](AllApi.md#createEntry) | **POST** /blockchain/easy/0.10/{context}/chains/{chainId}/entries | Create a new entry in the provided chain
-[**deleteBackend**](AllApi.md#deleteBackend) | **DELETE** /blockchain/easy/0.10/backends/{backendId} | Delete a backend
-[**deleteContext**](AllApi.md#deleteContext) | **DELETE** /blockchain/easy/0.10/{context} | Delete context
-[**determineChainId**](AllApi.md#determineChainId) | **POST** /blockchain/easy/0.10/{context}/chains/id | Predetermine id of chain
-[**determineEntryId**](AllApi.md#determineEntryId) | **POST** /blockchain/easy/0.10/{context}/chains/id/{chainId}/entries | Predetermine id of an entry
-[**entryById**](AllApi.md#entryById) | **GET** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
-[**entryByRequest**](AllApi.md#entryByRequest) | **POST** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
-[**entryIdExists**](AllApi.md#entryIdExists) | **GET** /blockchain/easy/0.10/{context}/chains/id/{chainId}/entries/{entryId} | Determine entry id exists
-[**findBackends**](AllApi.md#findBackends) | **GET** /blockchain/easy/0.10/backends/{backendId}/find | Find backends
-[**firstEntry**](AllApi.md#firstEntry) | **GET** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain
-[**getBackend**](AllApi.md#getBackend) | **GET** /blockchain/easy/0.10/backends/{backendId} | Get backend
-[**getContext**](AllApi.md#getContext) | **GET** /blockchain/easy/0.10/{context} | Get context
-[**lastEntry**](AllApi.md#lastEntry) | **GET** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain.
-[**listBackends**](AllApi.md#listBackends) | **GET** /blockchain/easy/0.10/backends | List backends
-[**nextEntryById**](AllApi.md#nextEntryById) | **GET** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
-[**nextEntryByRequest**](AllApi.md#nextEntryByRequest) | **POST** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
-[**previousEntryById**](AllApi.md#previousEntryById) | **GET** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
-[**previousEntryByRequest**](AllApi.md#previousEntryByRequest) | **POST** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/entry/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
+[**chainIdExists**](AllApi.md#chainIdExists) | **GET** /{context}/chains/id/{chainId} | Determine chain id exists
+[**createBackend**](AllApi.md#createBackend) | **POST** /backends | Create a new backend
+[**createChain**](AllApi.md#createChain) | **POST** /{context}/chains | Create a new chain
+[**createContext**](AllApi.md#createContext) | **POST** / | Create context
+[**createEntry**](AllApi.md#createEntry) | **POST** /{context}/chains/{chainId}/entries | Create a new entry in the provided chain
+[**deleteBackend**](AllApi.md#deleteBackend) | **DELETE** /backends/{backendId} | Delete a backend
+[**deleteContext**](AllApi.md#deleteContext) | **DELETE** /{context} | Delete context
+[**determineChainId**](AllApi.md#determineChainId) | **POST** /{context}/chains/id | Predetermine id of chain
+[**determineEntryId**](AllApi.md#determineEntryId) | **POST** /{context}/chains/id/{chainId}/entries | Predetermine id of an entry
+[**entryById**](AllApi.md#entryById) | **GET** /{context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
+[**entryByRequest**](AllApi.md#entryByRequest) | **POST** /{context}/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
+[**entryIdExists**](AllApi.md#entryIdExists) | **GET** /{context}/chains/id/{chainId}/entries/{entryId} | Determine entry id exists
+[**findBackends**](AllApi.md#findBackends) | **GET** /backends/{backendId}/find | Find backends
+[**firstEntry**](AllApi.md#firstEntry) | **GET** /{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain
+[**getBackend**](AllApi.md#getBackend) | **GET** /backends/{backendId} | Get backend
+[**getContext**](AllApi.md#getContext) | **GET** /{context} | Get context
+[**lastEntry**](AllApi.md#lastEntry) | **GET** /{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain.
+[**listBackends**](AllApi.md#listBackends) | **GET** /backends | List backends
+[**nextEntryById**](AllApi.md#nextEntryById) | **GET** /{context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
+[**nextEntryByRequest**](AllApi.md#nextEntryByRequest) | **POST** /{context}/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
+[**previousEntryById**](AllApi.md#previousEntryById) | **GET** /{context}/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
+[**previousEntryByRequest**](AllApi.md#previousEntryByRequest) | **POST** /{context}/chains/{chainId}/entries/entry/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
 
 
 <a name="chainIdExists"></a>

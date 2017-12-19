@@ -1,18 +1,18 @@
 # Sphereon.SDK.Blockchain.Easy.Api.EntryApi
 
-All URIs are relative to *https://gw.api.cloud.sphereon.com*
+All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.10*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateEntry**](EntryApi.md#createentry) | **POST** /blockchain/easy/0.10/{context}/chains/{chainId}/entries | Create a new entry in the provided chain
-[**EntryById**](EntryApi.md#entrybyid) | **GET** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
-[**EntryByRequest**](EntryApi.md#entrybyrequest) | **POST** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
-[**FirstEntry**](EntryApi.md#firstentry) | **GET** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain
-[**LastEntry**](EntryApi.md#lastentry) | **GET** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain.
-[**NextEntryById**](EntryApi.md#nextentrybyid) | **GET** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
-[**NextEntryByRequest**](EntryApi.md#nextentrybyrequest) | **POST** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
-[**PreviousEntryById**](EntryApi.md#previousentrybyid) | **GET** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
-[**PreviousEntryByRequest**](EntryApi.md#previousentrybyrequest) | **POST** /blockchain/easy/0.10/{context}/chains/{chainId}/entries/entry/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
+[**CreateEntry**](EntryApi.md#createentry) | **POST** /{context}/chains/{chainId}/entries | Create a new entry in the provided chain
+[**EntryById**](EntryApi.md#entrybyid) | **GET** /{context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
+[**EntryByRequest**](EntryApi.md#entrybyrequest) | **POST** /{context}/chains/{chainId}/entries/entry | Get an existing entry in the provided chain
+[**FirstEntry**](EntryApi.md#firstentry) | **GET** /{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain
+[**LastEntry**](EntryApi.md#lastentry) | **GET** /{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain.
+[**NextEntryById**](EntryApi.md#nextentrybyid) | **GET** /{context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
+[**NextEntryByRequest**](EntryApi.md#nextentrybyrequest) | **POST** /{context}/chains/{chainId}/entries/entry/next | Get the entry after the supplied entry Id (the next) in the provided chain
+[**PreviousEntryById**](EntryApi.md#previousentrybyid) | **GET** /{context}/chains/{chainId}/entries/{entryId}/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
+[**PreviousEntryByRequest**](EntryApi.md#previousentrybyrequest) | **POST** /{context}/chains/{chainId}/entries/entry/previous | Get the entry before the supplied entry Id (the previous) in the provided chain
 
 
 <a name="createentry"></a>

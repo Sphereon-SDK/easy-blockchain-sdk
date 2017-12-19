@@ -1,13 +1,13 @@
 # Sphereon.SDK.Blockchain.Easy.Api.IdApi
 
-All URIs are relative to *https://gw.api.cloud.sphereon.com*
+All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.10*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ChainIdExists**](IdApi.md#chainidexists) | **GET** /blockchain/easy/0.10/{context}/chains/id/{chainId} | Determine chain id exists
-[**DetermineChainId**](IdApi.md#determinechainid) | **POST** /blockchain/easy/0.10/{context}/chains/id | Predetermine id of chain
-[**DetermineEntryId**](IdApi.md#determineentryid) | **POST** /blockchain/easy/0.10/{context}/chains/id/{chainId}/entries | Predetermine id of an entry
-[**EntryIdExists**](IdApi.md#entryidexists) | **GET** /blockchain/easy/0.10/{context}/chains/id/{chainId}/entries/{entryId} | Determine entry id exists
+[**ChainIdExists**](IdApi.md#chainidexists) | **GET** /{context}/chains/id/{chainId} | Determine chain id exists
+[**DetermineChainId**](IdApi.md#determinechainid) | **POST** /{context}/chains/id | Predetermine id of chain
+[**DetermineEntryId**](IdApi.md#determineentryid) | **POST** /{context}/chains/id/{chainId}/entries | Predetermine id of an entry
+[**EntryIdExists**](IdApi.md#entryidexists) | **GET** /{context}/chains/id/{chainId}/entries/{entryId} | Determine entry id exists
 
 
 <a name="chainidexists"></a>

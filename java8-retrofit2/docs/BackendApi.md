@@ -1,14 +1,14 @@
 # BackendApi
 
-All URIs are relative to *https://gw.api.cloud.sphereon.com*
+All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.10*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createBackend**](BackendApi.md#createBackend) | **POST** blockchain/easy/0.10/backends | Create a new backend
-[**deleteBackend**](BackendApi.md#deleteBackend) | **DELETE** blockchain/easy/0.10/backends/{backendId} | Delete a backend
-[**findBackends**](BackendApi.md#findBackends) | **GET** blockchain/easy/0.10/backends/{backendId}/find | Find backends
-[**getBackend**](BackendApi.md#getBackend) | **GET** blockchain/easy/0.10/backends/{backendId} | Get backend
-[**listBackends**](BackendApi.md#listBackends) | **GET** blockchain/easy/0.10/backends | List backends
+[**createBackend**](BackendApi.md#createBackend) | **POST** backends | Create a new backend
+[**deleteBackend**](BackendApi.md#deleteBackend) | **DELETE** backends/{backendId} | Delete a backend
+[**findBackends**](BackendApi.md#findBackends) | **GET** backends/{backendId}/find | Find backends
+[**getBackend**](BackendApi.md#getBackend) | **GET** backends/{backendId} | Get backend
+[**listBackends**](BackendApi.md#listBackends) | **GET** backends | List backends
 
 
 <a name="createBackend"></a>
