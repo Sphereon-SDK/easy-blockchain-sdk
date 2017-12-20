@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
 Easy Blockchain API
 
@@ -47,35 +47,37 @@ Contact: dev@sphereon.com
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
     <Reference Include="Newtonsoft.Json">
-      <HintPath Condition="Exists('$(SolutionDir)\packages')">$(SolutionDir)\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <HintPath Condition="Exists('..\packages')">..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <HintPath Condition="Exists('..\..\packages')">..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <HintPath Condition="Exists('..\..\vendor')">..\..\vendor\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+        <HintPath Condition="Exists('$(SolutionDir)\packages')">$(SolutionDir)\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+        <HintPath Condition="Exists('..\packages')">..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+        <HintPath Condition="Exists('..\..\packages')">..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+        <HintPath Condition="Exists('..\..\vendor')">..\..\vendor\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RestSharpSigned">
-      <HintPath Condition="Exists('$(SolutionDir)\packages')">$(SolutionDir)\packages\RestSharpSigned.105.1.0\lib\net45\RestSharp.dll</HintPath>
-      <HintPath Condition="Exists('..\packages')">..\packages\RestSharpSigned.105.1.0\lib\net45\RestSharp.dll</HintPath>
-      <HintPath Condition="Exists('..\..\packages')">..\..\packages\RestSharpSigned.105.1.0\lib\net45\RestSharp.dll</HintPath>
-      <HintPath Condition="Exists('..\..\vendor')">..\..\vendor\RestSharpSigned.105.1.0\lib\net45\RestSharp.dll</HintPath>
+        <HintPath Condition="Exists('$(SolutionDir)\packages')">$(SolutionDir)\packages\RestSharpSigned.105.1.0\lib\net45\RestSharp.dll</HintPath>
+        <HintPath Condition="Exists('..\packages')">..\packages\RestSharpSigned.105.1.0\lib\net45\RestSharp.dll</HintPath>
+        <HintPath Condition="Exists('..\..\packages')">..\..\packages\RestSharpSigned.105.1.0\lib\net45\RestSharp.dll</HintPath>
+        <HintPath Condition="Exists('..\..\vendor')">..\..\vendor\RestSharpSigned.105.1.0\lib\net45\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath Condition="Exists('$(SolutionDir)\packages')">$(SolutionDir)\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
-      <HintPath Condition="Exists('..\packages')">..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
-      <HintPath Condition="Exists('..\..\packages')">..\..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
-      <HintPath Condition="Exists('..\..\vendor')">..\..\vendor\NUnit.3.9.0\lib\nunit.framework.dll</HintPath>
+        <HintPath Condition="Exists('$(SolutionDir)\packages')">$(SolutionDir)\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
+        <HintPath Condition="Exists('..\packages')">..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
+        <HintPath Condition="Exists('..\..\packages')">..\..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
+        <HintPath Condition="Exists('..\..\vendor')">..\..\vendor\NUnit.3.9.0\lib\nunit.framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="**\*.cs" Exclude="obj\**" />
+    <Compile Include="**\*.cs"
+             Exclude="obj\**"/>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+      <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Sphereon.SDK.Blockchain.Easy\Sphereon.SDK.Blockchain.Easy.csproj">
-      <Project>{DF445E20-6B69-4BDF-BBA3-21AD4275631E}</Project>
-      <Name>Sphereon.SDK.Blockchain.Easy</Name>
-    </ProjectReference>
+      <ProjectReference Include="..\Sphereon.SDK.Blockchain.Easy\Sphereon.SDK.Blockchain.Easy.csproj">
+          <Project>{48E91394-6F6E-4E6A-98FD-6C4D62576C54}</Project>
+          <Name>Sphereon.SDK.Blockchain.Easy</Name>
+      </ProjectReference>
   </ItemGroup>
 </Project>
+

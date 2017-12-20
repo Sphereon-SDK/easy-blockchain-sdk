@@ -18,6 +18,9 @@
         <swagger-coden-maven-plugin.version>2.2.3</swagger-coden-maven-plugin.version>
         <swagger-coden-verbose>false</swagger-coden-verbose>
 		<project.encoding>UTF-8</project.encoding>
+
+        <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+        <maven-scm-provider-gitexe.version>1.9.5</maven-scm-provider-gitexe.version>
     </properties>
 
     <profiles>
@@ -319,6 +322,34 @@
                         <phase>none</phase>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${maven-release-plugin.version}</version>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <!-- Keep changes in the local repo, push will be done afterwards -->
+                    <pushChanges>false</pushChanges>
+                    <localCheckout>true</localCheckout>
+                    <!-- Use a better name for the tag -->
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-gitexe</artifactId>
+                        <version>${maven-scm-provider-gitexe.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>com.amashchenko.maven.plugin</groupId>
+                <artifactId>gitflow-maven-plugin</artifactId>
+                <version>1.5.0</version>
+                <configuration>
+                    <!-- optional configuration -->
+                </configuration>
             </plugin>
         </plugins>
     </build>
