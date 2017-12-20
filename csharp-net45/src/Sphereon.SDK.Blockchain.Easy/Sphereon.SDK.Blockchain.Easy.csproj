@@ -12,7 +12,7 @@ Contact: dev@sphereon.com
     
 		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
 		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-		<ProjectGuid>{48E91394-6F6E-4E6A-98FD-6C4D62576C54}</ProjectGuid>
+		<ProjectGuid>{1654FAE5-26D9-40BF-AACB-3E358E649DBE}</ProjectGuid>
 		<OutputType>Library</OutputType>
 		<AppDesignerFolder>Properties</AppDesignerFolder>
 		<RootNamespace>Sphereon.SDK.Blockchain.Easy</RootNamespace>
