@@ -1,15 +1,17 @@
 # ChainApi
 
-All URIs are relative to *https://gw.api.cloud.sphereon.com/*
+All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.10*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createChain**](ChainApi.md#createChain) | **POST** blockchain/easy/0.1.0/chains | Create a new chain
+[**createChain**](ChainApi.md#createChain) | **POST** {context}/chains | Create a new chain
 
 
 <a name="createChain"></a>
 # **createChain**
-> CommittedChainResponse createChain(chain)
+> CommittedChainResponse createChain(context, chain)
+
+Create a new chain
 
 Create a new chain
 
@@ -29,9 +31,10 @@ OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
 oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 ChainApi apiInstance = new ChainApi();
+String context = "context_example"; // String | context
 Chain chain = new Chain(); // Chain | Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
 try {
-    CommittedChainResponse result = apiInstance.createChain(chain);
+    CommittedChainResponse result = apiInstance.createChain(context, chain);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ChainApi#createChain");
@@ -43,6 +46,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context |
  **chain** | [**Chain**](Chain.md)| Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! |
 
 ### Return type
@@ -55,6 +59,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json;charset=UTF-8
+ - **Accept**: application/json;charset=UTF-8
 

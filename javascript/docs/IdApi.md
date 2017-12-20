@@ -1,31 +1,35 @@
 # EasyBlockchainApi.IdApi
 
-All URIs are relative to *https://gw.api.cloud.sphereon.com/*
+All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.10*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**chainIdExists**](IdApi.md#chainIdExists) | **GET** /blockchain/easy/0.1.0/chains/id/{chainId} | Determine whether the Id of a chain exists in the blockchain
-[**determineChainId**](IdApi.md#determineChainId) | **POST** /blockchain/easy/0.1.0/chains/id | Pre determine the Id of a chain request without anchoring it in the blockchain
-[**determineEntryId**](IdApi.md#determineEntryId) | **POST** /blockchain/easy/0.1.0/chains/id/{chainId}/entries | Pre determine the Id of an entry request without anchoring the entry
-[**entryIdExists**](IdApi.md#entryIdExists) | **GET** /blockchain/easy/0.1.0/chains/id/{chainId}/entries/{entryId} | Determine whether the Id of an entry exists in the blockchain
+[**chainIdExists**](IdApi.md#chainIdExists) | **GET** /{context}/chains/id/{chainId} | Determine chain id exists
+[**determineChainId**](IdApi.md#determineChainId) | **POST** /{context}/chains/id | Predetermine id of chain
+[**determineEntryId**](IdApi.md#determineEntryId) | **POST** /{context}/chains/id/{chainId}/entries | Predetermine id of an entry
+[**entryIdExists**](IdApi.md#entryIdExists) | **GET** /{context}/chains/id/{chainId}/entries/{entryId} | Determine entry id exists
 
 
 <a name="chainIdExists"></a>
 # **chainIdExists**
-> IdResponse chainIdExists(chainId)
+> IdResponse chainIdExists(context, chainId)
+
+Determine chain id exists
 
 Determine whether the Id of a chain exists in the blockchain
 
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
-var defaultClient = EasyBlockchainApi.ApiClient.default;
+var defaultClient = EasyBlockchainApi.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: oauth2schema
 var oauth2schema = defaultClient.authentications['oauth2schema'];
 oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.IdApi();
+
+var context = "context_example"; // String | context
 
 var chainId = "chainId_example"; // String | chainId
 
@@ -37,13 +41,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.chainIdExists(chainId, callback);
+apiInstance.chainIdExists(context, chainId, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context | 
  **chainId** | **String**| chainId | 
 
 ### Return type
@@ -57,18 +62,20 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="determineChainId"></a>
 # **determineChainId**
-> IdResponse determineChainId(chain, opts)
+> IdResponse determineChainId(context, chain, opts)
+
+Predetermine id of chain
 
 Pre determine the Id of a chain request without anchoring it in the blockchain
 
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
-var defaultClient = EasyBlockchainApi.ApiClient.default;
+var defaultClient = EasyBlockchainApi.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: oauth2schema
 var oauth2schema = defaultClient.authentications['oauth2schema'];
@@ -76,7 +83,9 @@ oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.IdApi();
 
-var chain = new EasyBlockchainApi.Chain(); // Chain | Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
+var context = "context_example"; // String | context
+
+var chain = new EasyBlockchainApi.Chain(); // Chain | Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
 
 var opts = { 
   'checkExistence': false // Boolean | Check whether the id exists
@@ -89,14 +98,15 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.determineChainId(chain, opts, callback);
+apiInstance.determineChainId(context, chain, opts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chain** | [**Chain**](Chain.md)| Determine a chain hash. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! | 
+ **context** | **String**| context | 
+ **chain** | [**Chain**](Chain.md)| Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network! | 
  **checkExistence** | **Boolean**| Check whether the id exists | [optional] [default to false]
 
 ### Return type
@@ -109,25 +119,29 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json;charset=UTF-8
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="determineEntryId"></a>
 # **determineEntryId**
-> IdResponse determineEntryId(chainId, entry, opts)
+> IdResponse determineEntryId(context, chainId, entry, opts)
+
+Predetermine id of an entry
 
 Pre determine the Id of an entry request without anchoring the entry
 
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
-var defaultClient = EasyBlockchainApi.ApiClient.default;
+var defaultClient = EasyBlockchainApi.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: oauth2schema
 var oauth2schema = defaultClient.authentications['oauth2schema'];
 oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.IdApi();
+
+var context = "context_example"; // String | context
 
 var chainId = "chainId_example"; // String | chainId
 
@@ -144,13 +158,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.determineEntryId(chainId, entry, opts, callback);
+apiInstance.determineEntryId(context, chainId, entry, opts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context | 
  **chainId** | **String**| chainId | 
  **entry** | [**Entry**](Entry.md)| The entry to determine the hash for on the specified chain | 
  **checkExistence** | **Boolean**| Check whether the id exists | [optional] [default to false]
@@ -165,25 +180,29 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json;charset=UTF-8
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="entryIdExists"></a>
 # **entryIdExists**
-> IdResponse entryIdExists(chainId, entryId)
+> IdResponse entryIdExists(context, chainId, entryId)
+
+Determine entry id exists
 
 Determine whether the Id of an entry exists in the blockchain
 
 ### Example
 ```javascript
 var EasyBlockchainApi = require('easy_blockchain_api');
-var defaultClient = EasyBlockchainApi.ApiClient.default;
+var defaultClient = EasyBlockchainApi.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: oauth2schema
 var oauth2schema = defaultClient.authentications['oauth2schema'];
 oauth2schema.accessToken = 'YOUR ACCESS TOKEN';
 
 var apiInstance = new EasyBlockchainApi.IdApi();
+
+var context = "context_example"; // String | context
 
 var chainId = "chainId_example"; // String | chainId
 
@@ -197,13 +216,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.entryIdExists(chainId, entryId, callback);
+apiInstance.entryIdExists(context, chainId, entryId, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **context** | **String**| context | 
  **chainId** | **String**| chainId | 
  **entryId** | **String**| entryId | 
 
@@ -218,5 +238,5 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 

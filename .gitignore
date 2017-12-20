@@ -1,5 +1,25 @@
-*.class
+#Project sources
+java8-jersey2/src/main
+java8-okhttp-gson/src/main
+java8-retrofit2/src/main
+src/Sphereon.SDK.Blockchain.Proof
+javascript/src
+html-docs/index.html
 
+# Visual Studio
+.vs/
+bin/
+obj/
+packages/
+*.ncb
+*.suo
+*ReSharper*
+Debug/
+*.user
+*.lnk
+
+# Java
+*.class
 
 # Package Files #
 *.jar
@@ -14,6 +34,7 @@ log.*
 
 #Intellij
 *.iml
+.idea/
 
 #Maven
 target/
@@ -27,3 +48,4 @@ buildNumber.properties
 .mvn/timing.properties
 
 applog*
+
