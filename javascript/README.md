@@ -122,7 +122,7 @@ api.chainIdExists(context, chainId, callback);
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.10*
+All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.10/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
