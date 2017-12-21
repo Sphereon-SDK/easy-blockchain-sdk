@@ -1,5 +1,5 @@
 {
-  "basePath": "/blockchain/easy/0.10",
+  "basePath": "/blockchain/easy/0.10/",
   "paths": {
     "/{context}/chains/id/{chainId}": {"get": {
       "summary": "Determine chain id exists",
