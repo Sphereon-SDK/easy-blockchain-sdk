@@ -4,7 +4,7 @@
     <groupId>com.sphereon.sdk</groupId>
     <artifactId>easy-blockchain-sdk-generator</artifactId>
     <packaging>jar</packaging>
-    <version>0.10.1-SNAPSHOT</version>
+    <version>0.10.2-SNAPSHOT</version>
     <name>Easy Blockchain API SDK Generator</name>
 
     <properties>
@@ -13,7 +13,7 @@
         <sdk-package>com.sphereon.sdk.blockchain.easy</sdk-package>
         <sdk-package-javascript>SphereonSDKBlockchainEasy</sdk-package-javascript>
         <sdk-package-csharp>Sphereon.SDK.Blockchain.Easy</sdk-package-csharp>
-		<sdk-package-version>0.10.1</sdk-package-version>
+		<sdk-package-version>0.10.2</sdk-package-version>
 
         <swagger-coden-maven-plugin.version>2.2.3</swagger-coden-maven-plugin.version>
         <swagger-coden-verbose>false</swagger-coden-verbose>

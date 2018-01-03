@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**rpcProviders** | [**[RpcProvider]**](RpcProvider.md) |  | [optional] 
+**rpcProviders** | [**[RpcProvider]**](RpcProvider.md) | One or more nodes that comprise the blockchain backend | 
 **apiVersion** | **Number** |  | [optional] 
-**name** | **String** |  | [optional] 
+**name** | **String** | The name of the backend. | 
 **start** | **Date** |  | [optional] 
 **end** | **Date** |  | [optional] 
 **dataStructure** | **String** |  | [optional] 

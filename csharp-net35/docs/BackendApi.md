@@ -1,13 +1,13 @@
 # Sphereon.SDK.Blockchain.Easy.Api.BackendApi
 
-All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.10/*
+All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.10*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateBackend**](BackendApi.md#createbackend) | **POST** /backends | Create a new backend
 [**DeleteBackend**](BackendApi.md#deletebackend) | **DELETE** /backends/{backendId} | Delete a backend
 [**FindBackends**](BackendApi.md#findbackends) | **GET** /backends/{backendId}/find | Find backends
-[**GetBackend**](BackendApi.md#getbackend) | **GET** /backends/{backendId} | Get backend
+[**GetBackend**](BackendApi.md#getbackend) | **GET** /backends/{backendId} | Get backend by id
 [**ListBackends**](BackendApi.md#listbackends) | **GET** /backends | List backends
 
 
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Create a new backend
 
-Create a new backend
+Create a new backend. A Backend is the link to one blockchain implementation and it' s nodes. Unless you create your own private blockchain network, you should not have to create a new backend. Just use one of the public backends available.
 
 ### Example
 ```csharp
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 Delete a backend
 
-Delete backend by id (not by ledgername)
+Delete backend by id (not by name)
 
 ### Example
 ```csharp
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 
 Find backends
 
-Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
+Find existing backend(s) by id (single result) and/or name (multiple results). Optionally including public backends of others. Please note that we never return sensitive information like password or rpc hosts. Even not for backend owners themselves
 
 ### Example
 ```csharp
@@ -209,9 +209,9 @@ Name | Type | Description  | Notes
 # **GetBackend**
 > Backend GetBackend (string backendId, bool? includePublic = null)
 
-Get backend
+Get backend by id
 
-Get existing backend by id (not by ledgername). Optionally including public backend of others
+Get existing backend by id (not by name). Optionally including public backend of others. Please note that we never return sensitive information like password or rpc hosts. Even not for backend owners themselves
 
 ### Example
 ```csharp
@@ -236,7 +236,7 @@ namespace Example
 
             try
             {
-                // Get backend
+                // Get backend by id
                 Backend result = apiInstance.GetBackend(backendId, includePublic);
                 Debug.WriteLine(result);
             }
@@ -273,11 +273,11 @@ Name | Type | Description  | Notes
 
 <a name="listbackends"></a>
 # **ListBackends**
-> List<Backend> ListBackends ()
+> List<Backend> ListBackends (bool? includePublic = null)
 
 List backends
 
-List existing backends.
+List existing backends. Optionally including public backends of others.  Please note that we never return sensitive information like password or rpc hosts. Even not for backend owners themselves
 
 ### Example
 ```csharp
@@ -297,11 +297,12 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new BackendApi();
+            var includePublic = true;  // bool? | includePublic (optional)  (default to false)
 
             try
             {
                 // List backends
-                List&lt;Backend&gt; result = apiInstance.ListBackends();
+                List&lt;Backend&gt; result = apiInstance.ListBackends(includePublic);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -314,7 +315,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **includePublic** | **bool?**| includePublic | [optional] [default to false]
 
 ### Return type
 

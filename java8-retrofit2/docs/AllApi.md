@@ -1,16 +1,16 @@
 # AllApi
 
-All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.10/*
+All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.10*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**chainIdExists**](AllApi.md#chainIdExists) | **GET** {context}/chains/id/{chainId} | Determine chain id exists
 [**createBackend**](AllApi.md#createBackend) | **POST** backends | Create a new backend
 [**createChain**](AllApi.md#createChain) | **POST** {context}/chains | Create a new chain
-[**createContext**](AllApi.md#createContext) | **POST**  | Create context
+[**createContext**](AllApi.md#createContext) | **POST** contexts | Create context
 [**createEntry**](AllApi.md#createEntry) | **POST** {context}/chains/{chainId}/entries | Create a new entry in the provided chain
 [**deleteBackend**](AllApi.md#deleteBackend) | **DELETE** backends/{backendId} | Delete a backend
-[**deleteContext**](AllApi.md#deleteContext) | **DELETE** {context} | Delete context
+[**deleteContext**](AllApi.md#deleteContext) | **DELETE** contexts/{context} | Delete context
 [**determineChainId**](AllApi.md#determineChainId) | **POST** {context}/chains/id | Predetermine id of chain
 [**determineEntryId**](AllApi.md#determineEntryId) | **POST** {context}/chains/id/{chainId}/entries | Predetermine id of an entry
 [**entryById**](AllApi.md#entryById) | **GET** {context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
@@ -18,8 +18,8 @@ Method | HTTP request | Description
 [**entryIdExists**](AllApi.md#entryIdExists) | **GET** {context}/chains/id/{chainId}/entries/{entryId} | Determine entry id exists
 [**findBackends**](AllApi.md#findBackends) | **GET** backends/{backendId}/find | Find backends
 [**firstEntry**](AllApi.md#firstEntry) | **GET** {context}/chains/{chainId}/entries/first | Get the first entry in the provided chain
-[**getBackend**](AllApi.md#getBackend) | **GET** backends/{backendId} | Get backend
-[**getContext**](AllApi.md#getContext) | **GET** {context} | Get context
+[**getBackend**](AllApi.md#getBackend) | **GET** backends/{backendId} | Get backend by id
+[**getContext**](AllApi.md#getContext) | **GET** contexts/{context} | Get context
 [**lastEntry**](AllApi.md#lastEntry) | **GET** {context}/chains/{chainId}/entries/last | Get the last entry in the provided chain.
 [**listBackends**](AllApi.md#listBackends) | **GET** backends | List backends
 [**nextEntryById**](AllApi.md#nextEntryById) | **GET** {context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 Create a new backend
 
-Create a new backend
+Create a new backend. A Backend is the link to one blockchain implementation and it&#39; s nodes. Unless you create your own private blockchain network, you should not have to create a new backend. Just use one of the public backends available.
 
 ### Example
 ```java
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 Create a new chain
 
-Create a new chain
+Create a new chain. Create a new chain. You can regard a chain as a blockchain within a blockchain, All entries in a chain are linked and relies on data from previous entries in the chain.
 
 ### Example
 ```java
@@ -250,7 +250,7 @@ Name | Type | Description  | Notes
 
 Create a new entry in the provided chain
 
-Create a new entry in the provided chain
+Create a new entry in the provided chain. The entry will be linked to the previous entry. If the entry already exists, the API will add an anchor time, since the entry Id would be the same as the previously registered entry
 
 ### Example
 ```java
@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
 
 Delete a backend
 
-Delete backend by id (not by ledgername)
+Delete backend by id (not by name)
 
 ### Example
 ```java
@@ -415,7 +415,7 @@ Name | Type | Description  | Notes
 
 Predetermine id of chain
 
-Pre determine the Id of a chain request without anchoring it in the blockchain
+Pre determine the Id of a chain without anchoring it in the blockchain. You determine the Id that the chain would receive once it would have been anchored
 
 ### Example
 ```java
@@ -706,7 +706,7 @@ Name | Type | Description  | Notes
 
 Find backends
 
-Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
+Find existing backend(s) by id (single result) and/or name (multiple results). Optionally including public backends of others. Please note that we never return sensitive information like password or rpc hosts. Even not for backend owners themselves
 
 ### Example
 ```java
@@ -814,9 +814,9 @@ Name | Type | Description  | Notes
 # **getBackend**
 > Backend getBackend(backendId, includePublic)
 
-Get backend
+Get backend by id
 
-Get existing backend by id (not by ledgername). Optionally including public backend of others
+Get existing backend by id (not by name). Optionally including public backend of others. Please note that we never return sensitive information like password or rpc hosts. Even not for backend owners themselves
 
 ### Example
 ```java
@@ -975,11 +975,11 @@ Name | Type | Description  | Notes
 
 <a name="listBackends"></a>
 # **listBackends**
-> List&lt;Backend&gt; listBackends()
+> List&lt;Backend&gt; listBackends(includePublic)
 
 List backends
 
-List existing backends.
+List existing backends. Optionally including public backends of others.  Please note that we never return sensitive information like password or rpc hosts. Even not for backend owners themselves
 
 ### Example
 ```java
@@ -997,8 +997,9 @@ OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
 oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 AllApi apiInstance = new AllApi();
+Boolean includePublic = false; // Boolean | includePublic
 try {
-    List<Backend> result = apiInstance.listBackends();
+    List<Backend> result = apiInstance.listBackends(includePublic);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AllApi#listBackends");
@@ -1007,7 +1008,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **includePublic** | **Boolean**| includePublic | [optional] [default to false]
 
 ### Return type
 
