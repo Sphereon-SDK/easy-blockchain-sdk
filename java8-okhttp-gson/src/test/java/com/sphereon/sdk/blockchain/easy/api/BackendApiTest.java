@@ -1,6 +1,6 @@
 /*
  * Easy Blockchain API
- * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of FACTOM or Multichain. The latter also allows for a private blockchain. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a context is available using the / POST endpoint. Normally you only need one context. This is the place where backend providers and blockchain implementations are being specified.  2. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is a relative expensive operation.  3. Store entries on the chain from step 2. The entries will contain the content and metadata you want to store forever on the specified chain.  4. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
+ * The Easy Blockchain API is an easy to use API to store related entries within chains. Currently it stores entries using a Factom, Ethereum or Multichain blockchain.   For full API documentation please visit: https://docs.sphereon.com/api/easy-blockchain/0.10/html   Interactive testing: A web based test console is available in the Sphereon API store at: https://store.sphereon.com
  *
  * OpenAPI spec version: 0.10
  * Contact: dev@sphereon.com
@@ -36,7 +36,7 @@ public class BackendApiTest {
     /**
      * Create a new backend
      *
-     * Create a new backend
+     * Create a new backend. A Backend is the link to one blockchain implementation and it&#39; s nodes. Unless you create your own private blockchain network, you should not have to create a new backend. Just use one of the public backends available.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -52,7 +52,7 @@ public class BackendApiTest {
     /**
      * Delete a backend
      *
-     * Delete backend by id (not by ledgername)
+     * Delete backend by id (not by name)
      *
      * @throws ApiException
      *          if the Api call fails
@@ -68,7 +68,7 @@ public class BackendApiTest {
     /**
      * Find backends
      *
-     * Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
+     * Find existing backend(s) by id (single result) and/or name (multiple results). Optionally including public backends of others. Please note that we never return sensitive information like password or rpc hosts. Even not for backend owners themselves
      *
      * @throws ApiException
      *          if the Api call fails
@@ -83,9 +83,9 @@ public class BackendApiTest {
     }
     
     /**
-     * Get backend
+     * Get backend by id
      *
-     * Get existing backend by id (not by ledgername). Optionally including public backend of others
+     * Get existing backend by id (not by name). Optionally including public backend of others. Please note that we never return sensitive information like password or rpc hosts. Even not for backend owners themselves
      *
      * @throws ApiException
      *          if the Api call fails
@@ -102,14 +102,15 @@ public class BackendApiTest {
     /**
      * List backends
      *
-     * List existing backends.
+     * List existing backends. Optionally including public backends of others.  Please note that we never return sensitive information like password or rpc hosts. Even not for backend owners themselves
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void listBackendsTest() throws ApiException {
-        List<Backend> response = api.listBackends();
+        Boolean includePublic = null;
+        List<Backend> response = api.listBackends(includePublic);
 
         // TODO: test validations
     }

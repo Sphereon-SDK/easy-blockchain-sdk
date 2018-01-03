@@ -54,7 +54,10 @@ namespace {{packageName}}.Client
         public ApiClient()
         {
             Configuration = Configuration.Default;
-            RestClient = new RestClient("{{{basePath}}}");
+			var basePath = "{{{basePath}}}";
+            if (!basePath.EndsWith("/"))
+                basePath += '/';			
+            RestClient = new RestClient(basePath);
             {{#netStandard}}
             RestClient.IgnoreResponseStatusCode = true;
             {{/netStandard}}
@@ -72,7 +75,10 @@ namespace {{packageName}}.Client
             else
                 Configuration = config;
 
-            RestClient = new RestClient("{{{basePath}}}");
+			var basePath = "{{{basePath}}}";
+            if (!basePath.EndsWith("/"))
+                basePath += '/';			
+            RestClient = new RestClient(basePath);
             {{#netStandard}}
             RestClient.IgnoreResponseStatusCode = true;
             {{/netStandard}}
@@ -88,6 +94,8 @@ namespace {{packageName}}.Client
            if (String.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");
 
+            if (!basePath.EndsWith("/"))
+                basePath += '/';			
             RestClient = new RestClient(basePath);
             {{#netStandard}}
             RestClient.IgnoreResponseStatusCode = true;

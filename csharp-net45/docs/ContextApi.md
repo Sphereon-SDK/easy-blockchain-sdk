@@ -1,12 +1,12 @@
 # Sphereon.SDK.Blockchain.Easy.Api.ContextApi
 
-All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.10/*
+All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.10*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateContext**](ContextApi.md#createcontext) | **POST** / | Create context
-[**DeleteContext**](ContextApi.md#deletecontext) | **DELETE** /{context} | Delete context
-[**GetContext**](ContextApi.md#getcontext) | **GET** /{context} | Get context
+[**CreateContext**](ContextApi.md#createcontext) | **POST** /contexts | Create context
+[**DeleteContext**](ContextApi.md#deletecontext) | **DELETE** /contexts/{context} | Delete context
+[**GetContext**](ContextApi.md#getcontext) | **GET** /contexts/{context} | Get context
 
 
 <a name="createcontext"></a>

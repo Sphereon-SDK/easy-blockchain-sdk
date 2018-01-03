@@ -1,6 +1,6 @@
 # EasyBlockchainApi.EntryApi
 
-All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.10/*
+All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.10*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 Create a new entry in the provided chain
 
-Create a new entry in the provided chain
+Create a new entry in the provided chain. The entry will be linked to the previous entry. If the entry already exists, the API will add an anchor time, since the entry Id would be the same as the previously registered entry
 
 ### Example
 ```javascript
