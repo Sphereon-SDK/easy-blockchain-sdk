@@ -1,6 +1,6 @@
 /*
  * Easy Blockchain API
- * <b>The Easy Blockchain API is an easy to use API to store entries within chains. Currently it stores entries using the bitcoin blockchain by means of FACTOM or Multichain. The latter also allows for a private blockchain. In the future other solutions will be made available</b>    The flow is generally as follows:  1. Make sure a context is available using the / POST endpoint. Normally you only need one context. This is the place where backend providers and blockchain implementations are being specified.  2. Make sure a chain has been created using the /chain POST endpoint. Normally you only need one or a handful of chains. This is a relative expensive operation.  3. Store entries on the chain from step 2. The entries will contain the content and metadata you want to store forever on the specified chain.  4. Retrieve an existing entry from the chain to verify or retrieve data      <b>Interactive testing: </b>A web based test console is available in the <a href=\"https://store.sphereon.com\">Sphereon API Store</a>
+ * The Easy Blockchain API is an easy to use API to store related entries within chains. Currently it stores entries using a Factom, Ethereum or Multichain blockchain.   For full API documentation please visit: https://docs.sphereon.com/api/easy-blockchain/0.10/html   Interactive testing: A web based test console is available in the Sphereon API store at: https://store.sphereon.com
  *
  * OpenAPI spec version: 0.10
  * Contact: dev@sphereon.com
@@ -14,416 +14,223 @@
 package com.sphereon.sdk.blockchain.easy.api;
 
 import com.sphereon.sdk.blockchain.easy.handler.ApiException;
-import com.sphereon.sdk.blockchain.easy.model.AnchoredEntryResponse;
-import com.sphereon.sdk.blockchain.easy.model.Backend;
-import com.sphereon.sdk.blockchain.easy.model.Chain;
-import com.sphereon.sdk.blockchain.easy.model.CommittedChainResponse;
-import com.sphereon.sdk.blockchain.easy.model.CommittedEntryResponse;
-import com.sphereon.sdk.blockchain.easy.model.Context;
-import com.sphereon.sdk.blockchain.easy.model.Entry;
-import com.sphereon.sdk.blockchain.easy.model.ErrorResponse;
-import com.sphereon.sdk.blockchain.easy.model.IdResponse;
-import java.time.OffsetDateTime;
-import org.junit.Test;
-import org.junit.Ignore;
+import com.sphereon.sdk.blockchain.easy.model.*;
+import org.junit.*;
+import org.junit.runners.MethodSorters;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.OffsetDateTime;
 
 /**
  * API tests for AllApi
  */
-@Ignore
-public class AllApiTest {
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class AllApiTest extends AbstractApiTest {
+
 
     private final AllApi api = new AllApi();
+    private static String determinedEntryId;
+    private static OffsetDateTime firstEntryAnchorTime;
+    private static CommittedEntry firstEntry;
+    private static OffsetDateTime nextEntryAnchorTime;
+    private static CommittedEntry nextEntry;
 
-    
-    /**
-     * Determine chain id exists
-     *
-     * Determine whether the Id of a chain exists in the blockchain
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void chainIdExistsTest() throws ApiException {
-        String context = null;
-        String chainId = null;
-        IdResponse response = api.chainIdExists(context, chainId);
 
-        // TODO: test validations
+    @Before
+    public void init() {
+        configureApi(api.getApiClient());
     }
-    
-    /**
-     * Create a new backend
-     *
-     * Create a new backend
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void createBackendTest() throws ApiException {
-        Backend backend = null;
-        Backend response = api.createBackend(backend);
 
-        // TODO: test validations
-    }
-    
-    /**
-     * Create a new chain
-     *
-     * Create a new chain
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void createChainTest() throws ApiException {
-        String context = null;
-        Chain chain = null;
-        CommittedChainResponse response = api.createChain(context, chain);
 
-        // TODO: test validations
-    }
-    
-    /**
-     * Create context
-     *
-     * Create a new context
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
     @Test
-    public void createContextTest() throws ApiException {
-        Context context = null;
-        Context response = api.createContext(context);
-
-        // TODO: test validations
+    public void _010_createChainTest() throws ApiException {
+        Chain chain = createChainRequest("Test Content", "first external id", "second external id");
+        CommittedChainResponse response = api.createChain(CONTEXT_MULTCHAIN, chain);
+        Assert.assertNotNull(response);
+        Assert.assertNotNull(response);
+        Assert.assertNotNull(response.getChain());
+        Assert.assertNotNull(response.getChain().getId());
     }
-    
-    /**
-     * Create a new entry in the provided chain
-     *
-     * Create a new entry in the provided chain
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
+
+
+    /// <summary>
+    /// Test ChainIdExists
+    /// </summary>
     @Test
-    public void createEntryTest() throws ApiException {
-        String context = null;
-        String chainId = null;
-        Entry entry = null;
-        OffsetDateTime currentAnchorTime = null;
-        CommittedEntryResponse response = api.createEntry(context, chainId, entry, currentAnchorTime);
-
-        // TODO: test validations
+    public void _020_chainIdExistsTest() throws ApiException {
+        IdResponse response = api.chainIdExists(CONTEXT_MULTCHAIN, TEST_CHAIN_ID);
+        Assert.assertEquals(response.getExists(), IdResponse.ExistsEnum.TRUE);
     }
-    
-    /**
-     * Delete a backend
-     *
-     * Delete backend by id (not by ledgername)
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
+
+
+    /// <summary>
+    /// Test EntryIdExists
+    /// </summary>
     @Test
-    public void deleteBackendTest() throws ApiException {
-        String backendId = null;
-        Backend response = api.deleteBackend(backendId);
-
-        // TODO: test validations
+    public void _030_existingEntryByRequest() throws ApiException {
+        Entry entry = createEntry(TEST_ENTRY_CONTENT, FIRST_ENTRY_EXTERNAL_ID, SECOND_ENTRY_EXTERNAL_ID);
+        AnchoredEntryResponse response = api.entryByRequest(CONTEXT_FACTOM, TEST_CHAIN_ID, entry, null);
+        Assert.assertNotNull(response);
+        Assert.assertNotNull(response.getAnchoredEntry());
+        Assert.assertTrue(response.getAnchorTimes().size() >= 3);
+        Assert.assertEquals(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, response.getAnchorState());
     }
-    
-    /**
-     * Delete context
-     *
-     * Delete an existing context
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
+
+
+    /// <summary>
+    /// Test EntryIdExists
+    /// </summary>
+    @Test(expected = ApiException.class)
+    public void _040_nonExistingEntryByRequest() throws ApiException {
+        Entry entry = createEntry(TEST_ENTRY_CONTENT, "" + System.currentTimeMillis());
+        api.entryByRequest(CONTEXT_MULTCHAIN, TEST_CHAIN_ID, entry, null);
+    }
+
+
+    /// <summary>
+    /// Test CreateEntry
+    /// </summary>
     @Test
-    public void deleteContextTest() throws ApiException {
-        String context = null;
-        Context response = api.deleteContext(context);
+    public void _050_createEntryTest() throws ApiException, InterruptedException {
+        Entry entry = createEntry(TEST_ENTRY_CONTENT, "" + System.currentTimeMillis());
+        CommittedEntryResponse createResponse = api.createEntry(CONTEXT_MULTCHAIN, TEST_CHAIN_ID, entry, null);
+        Assert.assertNotNull(createResponse);
+        Assert.assertNotNull(createResponse.getEntry());
+        Assert.assertNotNull(createResponse.getCreationRequestTime());
 
-        // TODO: test validations
+        Thread.sleep(10000); // Should be enough for multichain
+
+        AnchoredEntryResponse entryResponse = api.entryByRequest(CONTEXT_MULTCHAIN, TEST_CHAIN_ID, entry, null);
+        Assert.assertNotNull(entryResponse);
+        Assert.assertNotNull(entryResponse.getAnchoredEntry());
+        Assert.assertTrue(entryResponse.getAnchorTimes().size() >= 0);
+        Assert.assertTrue(AnchoredEntryResponse.AnchorStateEnum.ANCHORED == entryResponse.getAnchorState()
+                              || AnchoredEntryResponse.AnchorStateEnum.COMMITTED == entryResponse.getAnchorState());
     }
-    
-    /**
-     * Predetermine id of chain
-     *
-     * Pre determine the Id of a chain request without anchoring it in the blockchain
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
+
+
+    /// <summary>
+    /// Test DetermineChainId
+    /// </summary>
     @Test
-    public void determineChainIdTest() throws ApiException {
-        String context = null;
-        Chain chain = null;
-        Boolean checkExistence = null;
-        IdResponse response = api.determineChainId(context, chain, checkExistence);
-
-        // TODO: test validations
+    public void _060_determineChainIdTest() throws ApiException {
+        Chain chain = createChainRequest("Test Content", "first external id", "second external id");
+        IdResponse response = api.determineChainId(CONTEXT_FACTOM, chain, true);
     }
-    
-    /**
-     * Predetermine id of an entry
-     *
-     * Pre determine the Id of an entry request without anchoring the entry
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
+
+
+    /// <summary>
+    /// Test DetermineEntryId
+    /// </summary>
     @Test
-    public void determineEntryIdTest() throws ApiException {
-        String context = null;
-        String chainId = null;
-        Entry entry = null;
-        Boolean checkExistence = null;
-        IdResponse response = api.determineEntryId(context, chainId, entry, checkExistence);
-
-        // TODO: test validations
+    public void _070_determineEntryIdTest() throws ApiException {
+        Entry entry = createEntry(TEST_ENTRY_CONTENT, FIRST_ENTRY_EXTERNAL_ID, SECOND_ENTRY_EXTERNAL_ID);
+        IdResponse response = api.determineEntryId(CONTEXT_FACTOM, TEST_CHAIN_ID, entry, true);
+        Assert.assertNotNull(response);
+        Assert.assertNotNull(response.getId());
+        Assert.assertNotNull(response.getExists());
+        Assert.assertEquals(response.getExists(), IdResponse.ExistsEnum.TRUE);
+        determinedEntryId = response.getId();
     }
-    
-    /**
-     * Get an existing entry in the provided chain
-     *
-     * Get an existing entry in the provided chain
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
+
+
+    /// <summary>
+    /// Test EntryById
+    /// </summary>
     @Test
-    public void entryByIdTest() throws ApiException {
-        String context = null;
-        String chainId = null;
-        String entryId = null;
-        OffsetDateTime currentAnchorTime = null;
-        AnchoredEntryResponse response = api.entryById(context, chainId, entryId, currentAnchorTime);
-
-        // TODO: test validations
+    public void _080_entryByIdTest() throws ApiException {
+        AnchoredEntryResponse response = api.entryById(CONTEXT_FACTOM, TEST_CHAIN_ID, determinedEntryId, null);
+        Assert.assertNotNull(response);
+        Assert.assertNotNull(response.getAnchoredEntry());
+        Assert.assertTrue(response.getAnchorTimes().size() >= 3);
+        Assert.assertEquals(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, response.getAnchorState());
     }
-    
-    /**
-     * Get an existing entry in the provided chain
-     *
-     * Get an existing entry in the provided chain
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
+
+
+    /// <summary>
+    /// Test FirstEntry
+    /// </summary>
     @Test
-    public void entryByRequestTest() throws ApiException {
-        String context = null;
-        String chainId = null;
-        Entry entry = null;
-        OffsetDateTime currentAnchorTime = null;
-        AnchoredEntryResponse response = api.entryByRequest(context, chainId, entry, currentAnchorTime);
-
-        // TODO: test validations
+    public void _090_firstEntryTest() throws ApiException {
+        AnchoredEntryResponse response = api.firstEntry(CONTEXT_FACTOM, TEST_CHAIN_ID);
+        Assert.assertNotNull(response);
+        Assert.assertNotNull(response.getAnchoredEntry());
+        Assert.assertTrue(response.getAnchorTimes().size() >= 0);
+        Assert.assertEquals(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, response.getAnchorState());
+        //Assert.assertTrue(response.getCurrentAnchorTime.HasValue); // TODO: uncomment when new easy-chains is fixed
+        Assert.assertTrue(response.getAnchorTimes().size() > 0);
+        firstEntryAnchorTime = response.getAnchorTimes().get(0);
+        Assert.assertNotNull(firstEntryAnchorTime);
+        firstEntry = response.getAnchoredEntry();
+        Assert.assertNotNull(firstEntry);
     }
-    
-    /**
-     * Determine entry id exists
-     *
-     * Determine whether the Id of an entry exists in the blockchain
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
+
+
+    /// <summary>
+    /// Test NextEntryById
+    /// </summary>
     @Test
-    public void entryIdExistsTest() throws ApiException {
-        String context = null;
-        String chainId = null;
-        String entryId = null;
-        IdResponse response = api.entryIdExists(context, chainId, entryId);
-
-        // TODO: test validations
+    public void _100_nextEntryByIdTest() throws ApiException {
+        AnchoredEntryResponse response = api.nextEntryById(CONTEXT_FACTOM, TEST_CHAIN_ID, firstEntry.getEntryId(), firstEntryAnchorTime);
+        Assert.assertNotNull(response);
+        Assert.assertNotNull(response.getAnchoredEntry());
+        Assert.assertTrue(response.getAnchorTimes().size() >= 0);
+        Assert.assertEquals(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, response.getAnchorState());
+        //Assert.assertTrue(response.getCurrentAnchorTime.HasValue); // TODO: uncomment when new easy-chains is fixed
+        Assert.assertTrue(response.getAnchorTimes().size() > 0);
+        nextEntryAnchorTime = response.getAnchorTimes().get(0);
+        Assert.assertNotNull(firstEntryAnchorTime);
+        nextEntry = response.getAnchoredEntry();
+        Assert.assertNotNull(firstEntry);
     }
-    
-    /**
-     * Find backends
-     *
-     * Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
+
+
+    /// <summary>
+    /// Test NextEntryByRequest
+    /// </summary>
     @Test
-    public void findBackendsTest() throws ApiException {
-        String backendId = null;
-        Boolean includePublic = null;
-        List<Backend> response = api.findBackends(backendId, includePublic);
-
-        // TODO: test validations
+    public void _110_NextEntryByRequestTest() throws ApiException {
+        AnchoredEntryResponse response = api.nextEntryByRequest(CONTEXT_FACTOM, TEST_CHAIN_ID, firstEntry.getEntry(), firstEntryAnchorTime);
+        Assert.assertNotNull(response);
+        Assert.assertNotNull(response.getAnchoredEntry());
+        Assert.assertTrue(response.getAnchorTimes().size() >= 0);
+        Assert.assertEquals(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, response.getAnchorState());
+        //Assert.assertTrue(response.getCurrentAnchorTime.HasValue); // TODO: uncomment when new easy-chains is fixed
     }
-    
-    /**
-     * Get the first entry in the provided chain
-     *
-     * Get the first entry in the provided chain. This is the oldest entry also called the chain tail.  Please note that the achorTimes will only contain the first anchor time. Call getEntry to retrieve all times
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
+
+
+    /// <summary>
+    /// Test PreviousEntryById
+    /// </summary>
     @Test
-    public void firstEntryTest() throws ApiException {
-        String context = null;
-        String chainId = null;
-        AnchoredEntryResponse response = api.firstEntry(context, chainId);
-
-        // TODO: test validations
+    public void _120_previousEntryByIdTest() throws ApiException {
+        AnchoredEntryResponse nextEntryResponse = api.nextEntryById(CONTEXT_FACTOM, TEST_CHAIN_ID, nextEntry.getEntryId(), nextEntryAnchorTime);
+        AnchoredEntryResponse response = api.previousEntryById(CONTEXT_FACTOM, TEST_CHAIN_ID, nextEntryResponse.getAnchoredEntry().getEntryId(),
+            nextEntryAnchorTime);
+        Assert.assertNotNull(response);
+        Assert.assertNotNull(response.getAnchoredEntry());
+        Assert.assertTrue(response.getAnchorTimes().size() >= 0);
+        Assert.assertEquals(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, response.getAnchorState());
+        //Assert.assertTrue(response.getCurrentAnchorTime.HasValue); // TODO: uncomment when new easy-chains is fixed
+        Assert.assertEquals(response.getAnchoredEntry().getChainId(), nextEntry.getChainId());
+        Assert.assertEquals(response.getAnchoredEntry().getEntryId(), nextEntry.getEntryId());
     }
-    
-    /**
-     * Get backend
-     *
-     * Get existing backend by id (not by ledgername). Optionally including public backend of others
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
+
+
+    /// <summary>
+    /// Test PreviousEntryByRequest
+    /// </summary>
     @Test
-    public void getBackendTest() throws ApiException {
-        String backendId = null;
-        Boolean includePublic = null;
-        Backend response = api.getBackend(backendId, includePublic);
-
-        // TODO: test validations
+    public void _130_previousEntryByRequestTest() throws ApiException {
+        AnchoredEntryResponse nextEntryResponse = api.nextEntryById(CONTEXT_FACTOM, TEST_CHAIN_ID, nextEntry.getEntryId(), nextEntryAnchorTime);
+        AnchoredEntryResponse response = api.previousEntryByRequest(CONTEXT_FACTOM, TEST_CHAIN_ID, nextEntryResponse.getAnchoredEntry().getEntry(),
+            nextEntryAnchorTime);
+        Assert.assertNotNull(response);
+        Assert.assertNotNull(response.getAnchoredEntry());
+        Assert.assertTrue(response.getAnchorTimes().size() >= 0);
+        Assert.assertEquals(AnchoredEntryResponse.AnchorStateEnum.ANCHORED, response.getAnchorState());
+        //Assert.assertTrue(response.getCurrentAnchorTime.HasValue); // TODO: uncomment when new easy-chains is fixed
+        Assert.assertEquals(response.getAnchoredEntry().getChainId(), nextEntry.getChainId());
+        Assert.assertEquals(response.getAnchoredEntry().getEntryId(), nextEntry.getEntryId());
     }
-    
-    /**
-     * Get context
-     *
-     * Get an existing context
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getContextTest() throws ApiException {
-        String context = null;
-        Context response = api.getContext(context);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Get the last entry in the provided chain.
-     *
-     * Get the last entry in the provided chain. This is the most recent entry also called the chain head. Please note that the achorTimes will only contain the latest anchor time. Call getEntry to retrieve all times
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void lastEntryTest() throws ApiException {
-        String context = null;
-        String chainId = null;
-        AnchoredEntryResponse response = api.lastEntry(context, chainId);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * List backends
-     *
-     * List existing backends.
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void listBackendsTest() throws ApiException {
-        List<Backend> response = api.listBackends();
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Get the entry after the supplied entry Id (the next) in the provided chain
-     *
-     * Get the entry after the supplied entry Id (the next) in the provided chain
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void nextEntryByIdTest() throws ApiException {
-        String context = null;
-        String chainId = null;
-        String entryId = null;
-        OffsetDateTime currentAnchorTime = null;
-        AnchoredEntryResponse response = api.nextEntryById(context, chainId, entryId, currentAnchorTime);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Get the entry after the supplied entry Id (the next) in the provided chain
-     *
-     * Get the entry after the supplied entry Id (the next) in the provided chain
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void nextEntryByRequestTest() throws ApiException {
-        String context = null;
-        String chainId = null;
-        Entry entry = null;
-        OffsetDateTime currentAnchorTime = null;
-        AnchoredEntryResponse response = api.nextEntryByRequest(context, chainId, entry, currentAnchorTime);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Get the entry before the supplied entry Id (the previous) in the provided chain
-     *
-     * Get the entry before the supplied entry Id (the previous) in the provided chain
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void previousEntryByIdTest() throws ApiException {
-        String context = null;
-        String chainId = null;
-        String entryId = null;
-        OffsetDateTime currentAnchorTime = null;
-        AnchoredEntryResponse response = api.previousEntryById(context, chainId, entryId, currentAnchorTime);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Get the entry before the supplied entry Id (the previous) in the provided chain
-     *
-     * Get the entry before the supplied entry Id (the previous) in the provided chain
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void previousEntryByRequestTest() throws ApiException {
-        String context = null;
-        String chainId = null;
-        Entry entry = null;
-        OffsetDateTime currentAnchorTime = null;
-        AnchoredEntryResponse response = api.previousEntryByRequest(context, chainId, entry, currentAnchorTime);
-
-        // TODO: test validations
-    }
-    
 }

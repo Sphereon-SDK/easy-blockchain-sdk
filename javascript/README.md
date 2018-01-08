@@ -129,10 +129,10 @@ Class | Method | HTTP request | Description
 *EasyBlockchainApi.AllApi* | [**chainIdExists**](docs/AllApi.md#chainIdExists) | **GET** /{context}/chains/id/{chainId} | Determine chain id exists
 *EasyBlockchainApi.AllApi* | [**createBackend**](docs/AllApi.md#createBackend) | **POST** /backends | Create a new backend
 *EasyBlockchainApi.AllApi* | [**createChain**](docs/AllApi.md#createChain) | **POST** /{context}/chains | Create a new chain
-*EasyBlockchainApi.AllApi* | [**createContext**](docs/AllApi.md#createContext) | **POST** / | Create context
+*EasyBlockchainApi.AllApi* | [**createContext**](docs/AllApi.md#createContext) | **POST** /contexts | Create context
 *EasyBlockchainApi.AllApi* | [**createEntry**](docs/AllApi.md#createEntry) | **POST** /{context}/chains/{chainId}/entries | Create a new entry in the provided chain
 *EasyBlockchainApi.AllApi* | [**deleteBackend**](docs/AllApi.md#deleteBackend) | **DELETE** /backends/{backendId} | Delete a backend
-*EasyBlockchainApi.AllApi* | [**deleteContext**](docs/AllApi.md#deleteContext) | **DELETE** /{context} | Delete context
+*EasyBlockchainApi.AllApi* | [**deleteContext**](docs/AllApi.md#deleteContext) | **DELETE** /contexts/{context} | Delete context
 *EasyBlockchainApi.AllApi* | [**determineChainId**](docs/AllApi.md#determineChainId) | **POST** /{context}/chains/id | Predetermine id of chain
 *EasyBlockchainApi.AllApi* | [**determineEntryId**](docs/AllApi.md#determineEntryId) | **POST** /{context}/chains/id/{chainId}/entries | Predetermine id of an entry
 *EasyBlockchainApi.AllApi* | [**entryById**](docs/AllApi.md#entryById) | **GET** /{context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
@@ -140,8 +140,8 @@ Class | Method | HTTP request | Description
 *EasyBlockchainApi.AllApi* | [**entryIdExists**](docs/AllApi.md#entryIdExists) | **GET** /{context}/chains/id/{chainId}/entries/{entryId} | Determine entry id exists
 *EasyBlockchainApi.AllApi* | [**findBackends**](docs/AllApi.md#findBackends) | **GET** /backends/{backendId}/find | Find backends
 *EasyBlockchainApi.AllApi* | [**firstEntry**](docs/AllApi.md#firstEntry) | **GET** /{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain
-*EasyBlockchainApi.AllApi* | [**getBackend**](docs/AllApi.md#getBackend) | **GET** /backends/{backendId} | Get backend
-*EasyBlockchainApi.AllApi* | [**getContext**](docs/AllApi.md#getContext) | **GET** /{context} | Get context
+*EasyBlockchainApi.AllApi* | [**getBackend**](docs/AllApi.md#getBackend) | **GET** /backends/{backendId} | Get backend by id
+*EasyBlockchainApi.AllApi* | [**getContext**](docs/AllApi.md#getContext) | **GET** /contexts/{context} | Get context
 *EasyBlockchainApi.AllApi* | [**lastEntry**](docs/AllApi.md#lastEntry) | **GET** /{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain.
 *EasyBlockchainApi.AllApi* | [**listBackends**](docs/AllApi.md#listBackends) | **GET** /backends | List backends
 *EasyBlockchainApi.AllApi* | [**nextEntryById**](docs/AllApi.md#nextEntryById) | **GET** /{context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
@@ -151,12 +151,12 @@ Class | Method | HTTP request | Description
 *EasyBlockchainApi.BackendApi* | [**createBackend**](docs/BackendApi.md#createBackend) | **POST** /backends | Create a new backend
 *EasyBlockchainApi.BackendApi* | [**deleteBackend**](docs/BackendApi.md#deleteBackend) | **DELETE** /backends/{backendId} | Delete a backend
 *EasyBlockchainApi.BackendApi* | [**findBackends**](docs/BackendApi.md#findBackends) | **GET** /backends/{backendId}/find | Find backends
-*EasyBlockchainApi.BackendApi* | [**getBackend**](docs/BackendApi.md#getBackend) | **GET** /backends/{backendId} | Get backend
+*EasyBlockchainApi.BackendApi* | [**getBackend**](docs/BackendApi.md#getBackend) | **GET** /backends/{backendId} | Get backend by id
 *EasyBlockchainApi.BackendApi* | [**listBackends**](docs/BackendApi.md#listBackends) | **GET** /backends | List backends
 *EasyBlockchainApi.ChainApi* | [**createChain**](docs/ChainApi.md#createChain) | **POST** /{context}/chains | Create a new chain
-*EasyBlockchainApi.ContextApi* | [**createContext**](docs/ContextApi.md#createContext) | **POST** / | Create context
-*EasyBlockchainApi.ContextApi* | [**deleteContext**](docs/ContextApi.md#deleteContext) | **DELETE** /{context} | Delete context
-*EasyBlockchainApi.ContextApi* | [**getContext**](docs/ContextApi.md#getContext) | **GET** /{context} | Get context
+*EasyBlockchainApi.ContextApi* | [**createContext**](docs/ContextApi.md#createContext) | **POST** /contexts | Create context
+*EasyBlockchainApi.ContextApi* | [**deleteContext**](docs/ContextApi.md#deleteContext) | **DELETE** /contexts/{context} | Delete context
+*EasyBlockchainApi.ContextApi* | [**getContext**](docs/ContextApi.md#getContext) | **GET** /contexts/{context} | Get context
 *EasyBlockchainApi.EntryApi* | [**createEntry**](docs/EntryApi.md#createEntry) | **POST** /{context}/chains/{chainId}/entries | Create a new entry in the provided chain
 *EasyBlockchainApi.EntryApi* | [**entryById**](docs/EntryApi.md#entryById) | **GET** /{context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
 *EasyBlockchainApi.EntryApi* | [**entryByRequest**](docs/EntryApi.md#entryByRequest) | **POST** /{context}/chains/{chainId}/entries/entry | Get an existing entry in the provided chain

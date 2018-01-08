@@ -43,7 +43,7 @@
       "summary": "Create a new chain",
       "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
-      "description": "Create a new chain",
+      "description": "Create a new chain. Create a new chain. You can regard a chain as a blockchain within a blockchain, All entries in a chain are linked and relies on data from previous entries in the chain.",
       "operationId": "createChain",
       "responses": {
         "200": {
@@ -193,6 +193,74 @@
       ],
       "consumes": ["application/json"]
     }},
+    "/contexts/{context}": {
+      "get": {
+        "summary": "Get context",
+        "security": [{"oauth2schema": ["global"]}],
+        "produces": ["application/json;charset=UTF-8"],
+        "description": "Get an existing context",
+        "operationId": "getContext",
+        "responses": {
+          "200": {
+            "schema": {"$ref": "#/definitions/Context"},
+            "description": "Context"
+          },
+          "400": {
+            "schema": {"$ref": "#/definitions/ErrorResponse"},
+            "description": "Invalid context request"
+          },
+          "404": {
+            "schema": {"$ref": "#/definitions/ErrorResponse"},
+            "description": "Context not found"
+          }
+        },
+        "parameters": [{
+          "in": "path",
+          "name": "context",
+          "description": "context",
+          "type": "string",
+          "required": true
+        }],
+        "tags": [
+          "Context",
+          "All"
+        ],
+        "consumes": ["application/json"]
+      },
+      "delete": {
+        "summary": "Delete context",
+        "security": [{"oauth2schema": ["global"]}],
+        "produces": ["application/json;charset=UTF-8"],
+        "description": "Delete an existing context",
+        "operationId": "deleteContext",
+        "responses": {
+          "200": {
+            "schema": {"$ref": "#/definitions/Context"},
+            "description": "The deleted context"
+          },
+          "400": {
+            "schema": {"$ref": "#/definitions/ErrorResponse"},
+            "description": "Invalid context request"
+          },
+          "404": {
+            "schema": {"$ref": "#/definitions/ErrorResponse"},
+            "description": "Context not found"
+          }
+        },
+        "parameters": [{
+          "in": "path",
+          "name": "context",
+          "description": "context",
+          "type": "string",
+          "required": true
+        }],
+        "tags": [
+          "Context",
+          "All"
+        ],
+        "consumes": ["application/json"]
+      }
+    },
     "/{context}/chains/{chainId}/entries/{entryId}": {"get": {
       "summary": "Get an existing entry in the provided chain",
       "security": [{"oauth2schema": ["global"]}],
@@ -249,11 +317,48 @@
       ],
       "consumes": ["application/json"]
     }},
+    "/contexts": {"post": {
+      "summary": "Create context",
+      "security": [{"oauth2schema": ["global"]}],
+      "produces": ["application/json;charset=UTF-8"],
+      "description": "Create a new context",
+      "operationId": "createContext",
+      "responses": {
+        "200": {
+          "schema": {"$ref": "#/definitions/Context"},
+          "description": "Context already exists"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid context request"
+        },
+        "202": {
+          "schema": {"$ref": "#/definitions/Context"},
+          "description": "Context creation request received"
+        },
+        "401": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Backend request not allowed"
+        }
+      },
+      "parameters": [{
+        "schema": {"$ref": "#/definitions/Context"},
+        "in": "body",
+        "name": "context",
+        "description": "context",
+        "required": true
+      }],
+      "tags": [
+        "Context",
+        "All"
+      ],
+      "consumes": ["application/json;charset=UTF-8"]
+    }},
     "/{context}/chains/{chainId}/entries": {"post": {
       "summary": "Create a new entry in the provided chain",
       "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
-      "description": "Create a new entry in the provided chain",
+      "description": "Create a new entry in the provided chain. The entry will be linked to the previous entry. If the entry already exists, the API will add an anchor time, since the entry Id would be the same as the previously registered entry",
       "operationId": "createEntry",
       "responses": {
         "200": {
@@ -314,7 +419,7 @@
         "summary": "Create a new backend",
         "security": [{"oauth2schema": ["global"]}],
         "produces": ["application/json;charset=UTF-8"],
-        "description": "Create a new backend",
+        "description": "Create a new backend. A Backend is the link to one blockchain implementation and it' s nodes. Unless you create your own private blockchain network, you should not have to create a new backend. Just use one of the public backends available.",
         "operationId": "createBackend",
         "responses": {
           "400": {
@@ -347,7 +452,7 @@
         "summary": "List backends",
         "security": [{"oauth2schema": ["global"]}],
         "produces": ["application/json;charset=UTF-8"],
-        "description": "List existing backends.",
+        "description": "List existing backends. Optionally including public backends of others.  Please note that we never return sensitive information like password or rpc hosts. Even not for backend owners themselves",
         "operationId": "listBackends",
         "responses": {
           "200": {
@@ -370,6 +475,14 @@
             "description": "Backend not found"
           }
         },
+        "parameters": [{
+          "default": false,
+          "in": "query",
+          "name": "includePublic",
+          "description": "includePublic",
+          "type": "boolean",
+          "required": false
+        }],
         "tags": [
           "Backend",
           "All"
@@ -379,10 +492,10 @@
     },
     "/backends/{backendId}": {
       "get": {
-        "summary": "Get backend",
+        "summary": "Get backend by id",
         "security": [{"oauth2schema": ["global"]}],
         "produces": ["application/json;charset=UTF-8"],
-        "description": "Get existing backend by id (not by ledgername). Optionally including public backend of others",
+        "description": "Get existing backend by id (not by name). Optionally including public backend of others. Please note that we never return sensitive information like password or rpc hosts. Even not for backend owners themselves",
         "operationId": "getBackend",
         "responses": {
           "200": {
@@ -429,7 +542,7 @@
         "summary": "Delete a backend",
         "security": [{"oauth2schema": ["global"]}],
         "produces": ["*/*"],
-        "description": "Delete backend by id (not by ledgername)",
+        "description": "Delete backend by id (not by name)",
         "operationId": "deleteBackend",
         "responses": {
           "200": {
@@ -467,7 +580,7 @@
       "summary": "Predetermine id of chain",
       "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
-      "description": "Pre determine the Id of a chain request without anchoring it in the blockchain",
+      "description": "Pre determine the Id of a chain without anchoring it in the blockchain. You determine the Id that the chain would receive once it would have been anchored",
       "operationId": "determineChainId",
       "responses": {
         "200": {
@@ -505,43 +618,6 @@
       ],
       "tags": [
         "Id",
-        "All"
-      ],
-      "consumes": ["application/json;charset=UTF-8"]
-    }},
-    "/": {"post": {
-      "summary": "Create context",
-      "security": [{"oauth2schema": ["global"]}],
-      "produces": ["application/json;charset=UTF-8"],
-      "description": "Create a new context",
-      "operationId": "createContext",
-      "responses": {
-        "200": {
-          "schema": {"$ref": "#/definitions/Context"},
-          "description": "Context already exists"
-        },
-        "400": {
-          "schema": {"$ref": "#/definitions/ErrorResponse"},
-          "description": "Invalid context request"
-        },
-        "202": {
-          "schema": {"$ref": "#/definitions/Context"},
-          "description": "Context creation request received"
-        },
-        "401": {
-          "schema": {"$ref": "#/definitions/ErrorResponse"},
-          "description": "Backend request not allowed"
-        }
-      },
-      "parameters": [{
-        "schema": {"$ref": "#/definitions/Context"},
-        "in": "body",
-        "name": "context",
-        "description": "context",
-        "required": true
-      }],
-      "tags": [
-        "Context",
         "All"
       ],
       "consumes": ["application/json;charset=UTF-8"]
@@ -652,74 +728,6 @@
       ],
       "consumes": ["application/json"]
     }},
-    "/{context}": {
-      "get": {
-        "summary": "Get context",
-        "security": [{"oauth2schema": ["global"]}],
-        "produces": ["application/json;charset=UTF-8"],
-        "description": "Get an existing context",
-        "operationId": "getContext",
-        "responses": {
-          "200": {
-            "schema": {"$ref": "#/definitions/Context"},
-            "description": "Context"
-          },
-          "400": {
-            "schema": {"$ref": "#/definitions/ErrorResponse"},
-            "description": "Invalid context request"
-          },
-          "404": {
-            "schema": {"$ref": "#/definitions/ErrorResponse"},
-            "description": "Context not found"
-          }
-        },
-        "parameters": [{
-          "in": "path",
-          "name": "context",
-          "description": "context",
-          "type": "string",
-          "required": true
-        }],
-        "tags": [
-          "Context",
-          "All"
-        ],
-        "consumes": ["application/json"]
-      },
-      "delete": {
-        "summary": "Delete context",
-        "security": [{"oauth2schema": ["global"]}],
-        "produces": ["application/json;charset=UTF-8"],
-        "description": "Delete an existing context",
-        "operationId": "deleteContext",
-        "responses": {
-          "200": {
-            "schema": {"$ref": "#/definitions/Context"},
-            "description": "The deleted context"
-          },
-          "400": {
-            "schema": {"$ref": "#/definitions/ErrorResponse"},
-            "description": "Invalid context request"
-          },
-          "404": {
-            "schema": {"$ref": "#/definitions/ErrorResponse"},
-            "description": "Context not found"
-          }
-        },
-        "parameters": [{
-          "in": "path",
-          "name": "context",
-          "description": "context",
-          "type": "string",
-          "required": true
-        }],
-        "tags": [
-          "Context",
-          "All"
-        ],
-        "consumes": ["application/json"]
-      }
-    },
     "/{context}/chains/{chainId}/entries/{entryId}/next": {"get": {
       "summary": "Get the entry after the supplied entry Id (the next) in the provided chain",
       "security": [{"oauth2schema": ["global"]}],
@@ -878,7 +886,7 @@
       "summary": "Find backends",
       "security": [{"oauth2schema": ["global"]}],
       "produces": ["application/json;charset=UTF-8"],
-      "description": "Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others",
+      "description": "Find existing backend(s) by id (single result) and/or name (multiple results). Optionally including public backends of others. Please note that we never return sensitive information like password or rpc hosts. Even not for backend owners themselves",
       "operationId": "findBackends",
       "responses": {
         "200": {
@@ -1034,13 +1042,25 @@
   "definitions": {
     "Context": {
       "type": "object",
+      "required": [
+        "backendIds",
+        "name"
+      ],
       "properties": {
         "access": {"$ref": "#/definitions/Access"},
         "backendIds": {
+          "description": "The backend Ids used in this context. Currently only one backend is supported. The first backend Id supplied will be used. In the future it will be possible to connect multiple backends to one context. Only use the backend Ids, not the names here!",
           "type": "array",
           "items": {"type": "string"}
         },
-        "name": {"type": "string"}
+        "name": {
+          "description": "The name of the context as it is being used in the url. Please regard case! Because of the nature of the context within the API, the context name has to be globally unique amongst tenants!",
+          "type": "string"
+        },
+        "id": {
+          "readOnly": true,
+          "type": "string"
+        }
       }
     },
     "CommittedChain": {
@@ -1049,17 +1069,20 @@
       "properties": {
         "chain": {"$ref": "#/definitions/Chain"},
         "id": {
-          "description": "Chain ID",
+          "description": "Chain Id",
           "readOnly": true,
           "type": "string"
         }
       }
     },
     "Chain": {
-      "description": "Chain",
+      "description": "This is the Chain object itself. A chain is created with a first Entry. The chain Id is calculated from the firt Entry where the content part of the entry is omited during Chain ID calculation. After the chain is stored you can traverse the cahin using the API (not this object)",
       "type": "object",
       "required": ["firstEntry"],
-      "properties": {"firstEntry": {"$ref": "#/definitions/Entry"}}
+      "properties": {"firstEntry": {
+        "description": "The First Entry with which this Chain was created. Traverse the chain using the API (not this object)",
+        "$ref": "#/definitions/Entry"
+      }}
     },
     "IdResponse": {
       "description": "Id response",
@@ -1128,15 +1151,14 @@
         }
       }
     },
-    "EntryData": {
-      "description": "Entry Data",
+    "Entry Data": {
+      "description": "Entry Data contains the actual content and a list of External IDs (metadata)",
       "type": "object",
-      "required": ["content"],
       "properties": {
         "externalIds": {
-          "description": "External IDs",
+          "description": "External Ids",
           "type": "array",
-          "items": {"$ref": "#/definitions/ExternalId"}
+          "items": {"$ref": "#/definitions/External Id"}
         },
         "content": {
           "format": "byte",
@@ -1144,15 +1166,6 @@
           "type": "string"
         }
       }
-    },
-    "ExternalId": {
-      "description": "External ID - metadata field",
-      "type": "object",
-      "properties": {"value": {
-        "format": "byte",
-        "description": "Metadata value",
-        "type": "string"
-      }}
     },
     "Access": {
       "type": "object",
@@ -1164,7 +1177,8 @@
             "enum": [
               "NONE",
               "READ",
-              "WRITE"
+              "WRITE",
+              "PUBLIC"
             ]
           }
         },
@@ -1259,10 +1273,15 @@
       }
     },
     "Backend": {
-      "description": "Backend",
+      "description": "A backend is a blockchain implementation along with it's nodes (rpdProviders). You only need a backend when you wish to connect one of the supported blockchain implementations in a private blockchain. Otherwise use one of the public backends for your context",
       "type": "object",
+      "required": [
+        "name",
+        "rpcProviders"
+      ],
       "properties": {
         "rpcProviders": {
+          "description": "One or more nodes that comprise the blockchain backend",
           "type": "array",
           "items": {"$ref": "#/definitions/RpcProvider"}
         },
@@ -1270,7 +1289,10 @@
           "format": "int32",
           "type": "integer"
         },
-        "name": {"type": "string"},
+        "name": {
+          "description": "The name of the backend.",
+          "type": "string"
+        },
         "start": {
           "format": "date-time",
           "type": "string"
@@ -1298,7 +1320,10 @@
       "description": "Entry",
       "type": "object",
       "required": ["entryData"],
-      "properties": {"entryData": {"$ref": "#/definitions/EntryData"}}
+      "properties": {"entryData": {
+        "description": "The Entry Data",
+        "$ref": "#/definitions/Entry Data"
+      }}
     },
     "CommittedEntryResponse": {
       "description": "Committed EntryData response",
@@ -1341,6 +1366,15 @@
           "type": "string"
         }
       }
+    },
+    "External Id": {
+      "description": "External Id: Allows you to store metadata. External Id bytes are included during Chain Id and Entry Id calculation",
+      "type": "object",
+      "properties": {"value": {
+        "format": "byte",
+        "description": "Metadata value",
+        "type": "string"
+      }}
     }
   },
   "swagger": "2.0",
