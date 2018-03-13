@@ -221,6 +221,6 @@
     <maven-plugin-version>1.0.0</maven-plugin-version>
     <junit-version>4.12</junit-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <authentication-lib.version>0.1.1-SNAPSHOT</authentication-lib.version>
+    <authentication-lib.version>0.1.2</authentication-lib.version>
   </properties>
 </project>
