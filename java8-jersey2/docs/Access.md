@@ -16,6 +16,7 @@ Name | Value
 NONE | &quot;NONE&quot;
 READ | &quot;READ&quot;
 WRITE | &quot;WRITE&quot;
+PUBLIC | &quot;PUBLIC&quot;
 
 
 

@@ -5,34 +5,35 @@
   <artifactId>easy-blockchain-sdk-java8-okhttp-gson</artifactId>
   <packaging>jar</packaging>
   <name>easy-blockchain-sdk-java8-okhttp-gson</name>
-  <version>0.10.0</version>
-  <url>https://github.com/swagger-api/swagger-codegen</url>
-  <description>Swagger Java</description>
-  <scm>
-    <connection>scm:git:git@github.com:swagger-api/swagger-codegen.git</connection>
-    <developerConnection>scm:git:git@github.com:swagger-api/swagger-codegen.git</developerConnection>
-    <url>https://github.com/swagger-api/swagger-codegen</url>
-  </scm>
+  <version>0.10.2</version>
+
   <prerequisites>
     <maven>2.2.0</maven>
   </prerequisites>
 
   <licenses>
     <license>
-      <name>Unlicense</name>
+      <name>Apache2</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
+  <distributionManagement>
+    <repository>
+      <id>sphereon-sdk-releases</id>
+      <url>http://nexus.qa.sphereon.com/nexus/content/repositories/sphereon-sdk-releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>sphereon-sdk-snapshots</id>
+      <url>http://nexus.qa.sphereon.com/nexus/content/repositories/sphereon-sdk-snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
 
-  <developers>
-    <developer>
-      <name>Swagger</name>
-      <email>apiteam@swagger.io</email>
-      <organization>Swagger</organization>
-      <organizationUrl>http://swagger.io</organizationUrl>
-    </developer>
-  </developers>
+  <scm>
+    <connection>scm:git:git@github.com:Sphereon-SDK/easy-blockchain-sdk.git</connection>
+    <developerConnection>scm:git:git@github.com:Sphereon-SDK/easy-blockchain-sdk.git</developerConnection>
+    <url>https://github.com/Sphereon-SDK/easy-blockchain-sdk</url>
+  </scm>
 
   <build>
     <plugins>
@@ -179,6 +180,12 @@
       <artifactId>okhttp</artifactId>
       <version>${okhttp-version}</version>
     </dependency>
+	<!-- allow for compatibility with okhttp3 by using the newer okio version below -->
+	<dependency>
+		<groupId>com.squareup.okio</groupId>
+		<artifactId>okio</artifactId>
+		<version>${okio.version}</version>
+	</dependency>
     <dependency>
       <groupId>com.squareup.okhttp</groupId>
       <artifactId>logging-interceptor</artifactId>
@@ -196,6 +203,12 @@
       <version>${junit-version}</version>
       <scope>test</scope>
     </dependency>
+	<dependency>
+		<groupId>com.sphereon.public</groupId>
+		<artifactId>authentication-lib-main</artifactId>
+		<version>${authentication-lib.version}</version>
+		<scope>test</scope>
+	</dependency>
   </dependencies>
   <properties>
     <java.version>1.8</java.version>
@@ -203,10 +216,12 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <swagger-core-version>1.5.15</swagger-core-version>
     <okhttp-version>2.7.5</okhttp-version>
+	<okio.version>1.13.0</okio.version>
     <gson-version>2.8.1</gson-version>
     <jodatime-version>2.9.9</jodatime-version>
     <maven-plugin-version>1.0.0</maven-plugin-version>
     <junit-version>4.12</junit-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <authentication-lib.version>0.1.2</authentication-lib.version>
   </properties>
 </project>

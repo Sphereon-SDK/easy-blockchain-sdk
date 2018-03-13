@@ -4,7 +4,7 @@
     <groupId>com.sphereon.sdk</groupId>
     <artifactId>easy-blockchain-sdk-generator</artifactId>
     <packaging>jar</packaging>
-    <version>0.10.0</version>
+    <version>0.10.2</version>
     <name>Easy Blockchain API SDK Generator</name>
 
     <properties>
@@ -13,7 +13,7 @@
         <sdk-package>com.sphereon.sdk.blockchain.easy</sdk-package>
         <sdk-package-javascript>SphereonSDKBlockchainEasy</sdk-package-javascript>
         <sdk-package-csharp>Sphereon.SDK.Blockchain.Easy</sdk-package-csharp>
-		<sdk-package-version>0.10.0</sdk-package-version>
+		<sdk-package-version>0.10.2</sdk-package-version>
 
         <swagger-coden-maven-plugin.version>2.2.3</swagger-coden-maven-plugin.version>
         <swagger-coden-verbose>false</swagger-coden-verbose>
@@ -22,6 +22,30 @@
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
         <maven-scm-provider-gitexe.version>1.9.5</maven-scm-provider-gitexe.version>
     </properties>
+
+    <licenses>
+        <license>
+            <name>Apache2</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <distributionManagement>
+        <repository>
+            <id>sphereon-sdk-releases</id>
+            <url>http://nexus.qa.sphereon.com/nexus/content/repositories/sphereon-sdk-releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>sphereon-sdk-snapshots</id>
+            <url>http://nexus.qa.sphereon.com/nexus/content/repositories/sphereon-sdk-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <scm>
+        <connection>scm:git:git@github.com:Sphereon-SDK/easy-blockchain-sdk.git</connection>
+        <developerConnection>scm:git:git@github.com:Sphereon-SDK/easy-blockchain-sdk.git</developerConnection>
+        <url>https://github.com/Sphereon-SDK/easy-blockchain-sdk</url>
+    </scm>
 
     <profiles>
         <profile>

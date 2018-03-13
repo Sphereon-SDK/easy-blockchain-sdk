@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 
 * `WRITE` (value: `"WRITE"`)
 
+* `PUBLIC` (value: `"PUBLIC"`)
+
 
 
 

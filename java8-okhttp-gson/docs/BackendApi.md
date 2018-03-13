@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**createBackend**](BackendApi.md#createBackend) | **POST** /backends | Create a new backend
 [**deleteBackend**](BackendApi.md#deleteBackend) | **DELETE** /backends/{backendId} | Delete a backend
 [**findBackends**](BackendApi.md#findBackends) | **GET** /backends/{backendId}/find | Find backends
-[**getBackend**](BackendApi.md#getBackend) | **GET** /backends/{backendId} | Get backend
+[**getBackend**](BackendApi.md#getBackend) | **GET** /backends/{backendId} | Get backend by id
 [**listBackends**](BackendApi.md#listBackends) | **GET** /backends | List backends
 
 
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Create a new backend
 
-Create a new backend
+Create a new backend. A Backend is the link to one blockchain implementation and it&#39; s nodes. Unless you create your own private blockchain network, you should not have to create a new backend. Just use one of the public backends available.
 
 ### Example
 ```java
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 Delete a backend
 
-Delete backend by id (not by ledgername)
+Delete backend by id (not by name)
 
 ### Example
 ```java
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 
 Find backends
 
-Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
+Find existing backend(s) by id (single result) and/or name (multiple results). Optionally including public backends of others. Please note that we never return sensitive information like password or rpc hosts. Even not for backend owners themselves
 
 ### Example
 ```java
@@ -176,9 +176,9 @@ Name | Type | Description  | Notes
 # **getBackend**
 > Backend getBackend(backendId, includePublic)
 
-Get backend
+Get backend by id
 
-Get existing backend by id (not by ledgername). Optionally including public backend of others
+Get existing backend by id (not by name). Optionally including public backend of others. Please note that we never return sensitive information like password or rpc hosts. Even not for backend owners themselves
 
 ### Example
 ```java
@@ -229,11 +229,11 @@ Name | Type | Description  | Notes
 
 <a name="listBackends"></a>
 # **listBackends**
-> List&lt;Backend&gt; listBackends()
+> List&lt;Backend&gt; listBackends(includePublic)
 
 List backends
 
-List existing backends.
+List existing backends. Optionally including public backends of others.  Please note that we never return sensitive information like password or rpc hosts. Even not for backend owners themselves
 
 ### Example
 ```java
@@ -251,8 +251,9 @@ OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
 oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
 
 BackendApi apiInstance = new BackendApi();
+Boolean includePublic = false; // Boolean | includePublic
 try {
-    List<Backend> result = apiInstance.listBackends();
+    List<Backend> result = apiInstance.listBackends(includePublic);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BackendApi#listBackends");
@@ -261,7 +262,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **includePublic** | **Boolean**| includePublic | [optional] [default to false]
 
 ### Return type
 

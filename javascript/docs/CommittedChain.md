@@ -4,6 +4,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **chain** | [**Chain**](Chain.md) |  | [optional] 
-**id** | **String** | Chain ID | [optional] 
+**id** | **String** | Chain Id | [optional] 
 
 

@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**externalIds** | [**[ExternalId]**](ExternalId.md) | External IDs | [optional] 
-**content** | **Blob** | Content | 
+**externalIds** | [**[ExternalId]**](ExternalId.md) | External Ids | [optional] 
+**content** | **Blob** | Content | [optional] 
 
 

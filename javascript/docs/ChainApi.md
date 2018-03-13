@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 Create a new chain
 
-Create a new chain
+Create a new chain. Create a new chain. You can regard a chain as a blockchain within a blockchain, All entries in a chain are linked and relies on data from previous entries in the chain.
 
 ### Example
 ```javascript

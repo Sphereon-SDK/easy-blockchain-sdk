@@ -7,10 +7,10 @@ Method | HTTP request | Description
 [**ChainIdExists**](AllApi.md#chainidexists) | **GET** /{context}/chains/id/{chainId} | Determine chain id exists
 [**CreateBackend**](AllApi.md#createbackend) | **POST** /backends | Create a new backend
 [**CreateChain**](AllApi.md#createchain) | **POST** /{context}/chains | Create a new chain
-[**CreateContext**](AllApi.md#createcontext) | **POST** / | Create context
+[**CreateContext**](AllApi.md#createcontext) | **POST** /contexts | Create context
 [**CreateEntry**](AllApi.md#createentry) | **POST** /{context}/chains/{chainId}/entries | Create a new entry in the provided chain
 [**DeleteBackend**](AllApi.md#deletebackend) | **DELETE** /backends/{backendId} | Delete a backend
-[**DeleteContext**](AllApi.md#deletecontext) | **DELETE** /{context} | Delete context
+[**DeleteContext**](AllApi.md#deletecontext) | **DELETE** /contexts/{context} | Delete context
 [**DetermineChainId**](AllApi.md#determinechainid) | **POST** /{context}/chains/id | Predetermine id of chain
 [**DetermineEntryId**](AllApi.md#determineentryid) | **POST** /{context}/chains/id/{chainId}/entries | Predetermine id of an entry
 [**EntryById**](AllApi.md#entrybyid) | **GET** /{context}/chains/{chainId}/entries/{entryId} | Get an existing entry in the provided chain
@@ -18,8 +18,8 @@ Method | HTTP request | Description
 [**EntryIdExists**](AllApi.md#entryidexists) | **GET** /{context}/chains/id/{chainId}/entries/{entryId} | Determine entry id exists
 [**FindBackends**](AllApi.md#findbackends) | **GET** /backends/{backendId}/find | Find backends
 [**FirstEntry**](AllApi.md#firstentry) | **GET** /{context}/chains/{chainId}/entries/first | Get the first entry in the provided chain
-[**GetBackend**](AllApi.md#getbackend) | **GET** /backends/{backendId} | Get backend
-[**GetContext**](AllApi.md#getcontext) | **GET** /{context} | Get context
+[**GetBackend**](AllApi.md#getbackend) | **GET** /backends/{backendId} | Get backend by id
+[**GetContext**](AllApi.md#getcontext) | **GET** /contexts/{context} | Get context
 [**LastEntry**](AllApi.md#lastentry) | **GET** /{context}/chains/{chainId}/entries/last | Get the last entry in the provided chain.
 [**ListBackends**](AllApi.md#listbackends) | **GET** /backends | List backends
 [**NextEntryById**](AllApi.md#nextentrybyid) | **GET** /{context}/chains/{chainId}/entries/{entryId}/next | Get the entry after the supplied entry Id (the next) in the provided chain
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 Create a new backend
 
-Create a new backend
+Create a new backend. A Backend is the link to one blockchain implementation and it' s nodes. Unless you create your own private blockchain network, you should not have to create a new backend. Just use one of the public backends available.
 
 ### Example
 ```csharp
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 Create a new chain
 
-Create a new chain
+Create a new chain. Create a new chain. You can regard a chain as a blockchain within a blockchain, All entries in a chain are linked and relies on data from previous entries in the chain.
 
 ### Example
 ```csharp
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 
 Create a new entry in the provided chain
 
-Create a new entry in the provided chain
+Create a new entry in the provided chain. The entry will be linked to the previous entry. If the entry already exists, the API will add an anchor time, since the entry Id would be the same as the previously registered entry
 
 ### Example
 ```csharp
@@ -364,7 +364,7 @@ Name | Type | Description  | Notes
 
 Delete a backend
 
-Delete backend by id (not by ledgername)
+Delete backend by id (not by name)
 
 ### Example
 ```csharp
@@ -492,7 +492,7 @@ Name | Type | Description  | Notes
 
 Predetermine id of chain
 
-Pre determine the Id of a chain request without anchoring it in the blockchain
+Pre determine the Id of a chain without anchoring it in the blockchain. You determine the Id that the chain would receive once it would have been anchored
 
 ### Example
 ```csharp
@@ -838,7 +838,7 @@ Name | Type | Description  | Notes
 
 Find backends
 
-Find existing backend(s) by id (single result) and/or ledgername (multiple results). Optionally including public backends of others
+Find existing backend(s) by id (single result) and/or name (multiple results). Optionally including public backends of others. Please note that we never return sensitive information like password or rpc hosts. Even not for backend owners themselves
 
 ### Example
 ```csharp
@@ -968,9 +968,9 @@ Name | Type | Description  | Notes
 # **GetBackend**
 > Backend GetBackend (string backendId, bool? includePublic = null)
 
-Get backend
+Get backend by id
 
-Get existing backend by id (not by ledgername). Optionally including public backend of others
+Get existing backend by id (not by name). Optionally including public backend of others. Please note that we never return sensitive information like password or rpc hosts. Even not for backend owners themselves
 
 ### Example
 ```csharp
@@ -995,7 +995,7 @@ namespace Example
 
             try
             {
-                // Get backend
+                // Get backend by id
                 Backend result = apiInstance.GetBackend(backendId, includePublic);
                 Debug.WriteLine(result);
             }
@@ -1162,11 +1162,11 @@ Name | Type | Description  | Notes
 
 <a name="listbackends"></a>
 # **ListBackends**
-> List<Backend> ListBackends ()
+> List<Backend> ListBackends (bool? includePublic = null)
 
 List backends
 
-List existing backends.
+List existing backends. Optionally including public backends of others.  Please note that we never return sensitive information like password or rpc hosts. Even not for backend owners themselves
 
 ### Example
 ```csharp
@@ -1186,11 +1186,12 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new AllApi();
+            var includePublic = true;  // bool? | includePublic (optional)  (default to false)
 
             try
             {
                 // List backends
-                List&lt;Backend&gt; result = apiInstance.ListBackends();
+                List&lt;Backend&gt; result = apiInstance.ListBackends(includePublic);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1203,7 +1204,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **includePublic** | **bool?**| includePublic | [optional] [default to false]
 
 ### Return type
 

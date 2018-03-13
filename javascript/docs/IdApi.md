@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 Predetermine id of chain
 
-Pre determine the Id of a chain request without anchoring it in the blockchain
+Pre determine the Id of a chain without anchoring it in the blockchain. You determine the Id that the chain would receive once it would have been anchored
 
 ### Example
 ```javascript
