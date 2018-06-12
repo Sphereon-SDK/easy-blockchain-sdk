@@ -368,6 +368,36 @@
                 </plugins>
             </build>
         </profile>
+		<profile>
+            <id>php</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.swagger</groupId>
+                        <artifactId>swagger-codegen-maven-plugin</artifactId>
+                        <version>${swagger-coden-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>generate</goal>
+                                </goals>
+                                <configuration>
+                                    <inputSpec>swagger.sdk.json</inputSpec>
+                                    <language>php</language>
+									<verbose>${swagger-coden-verbose}</verbose>
+                                    <output>${project.basedir}/php</output>
+                                    <groupId>com.sphereon.sdk</groupId>
+                                    <artifactVersion>${project.version}</artifactVersion>>
+                                    <configOptions>
+										<packagePath>EasyBlockchain</packagePath>
+                                    </configOptions>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
     <build>
         <plugins>

@@ -17,6 +17,7 @@ start mvn -Pjava8-retrofit2 clean install
 start mvn -Pcsharp-net45 clean install
 start mvn -Pcsharp-net35 clean install
 start mvn -Pjavascript clean install
+start mvn -Pphp clean install
 start mvn -Phtml-docs clean install
 start mvn -Pswift4 clean install
 
