@@ -5,35 +5,34 @@
   <artifactId>easy-blockchain-sdk-java8-okhttp-gson</artifactId>
   <packaging>jar</packaging>
   <name>easy-blockchain-sdk-java8-okhttp-gson</name>
-  <version>0.10.2</version>
-
+  <version>0.10.3-SNAPSHOT</version>
+  <url>https://github.com/swagger-api/swagger-codegen</url>
+  <description>Swagger Java</description>
+  <scm>
+    <connection>scm:git:git@github.com:swagger-api/swagger-codegen.git</connection>
+    <developerConnection>scm:git:git@github.com:swagger-api/swagger-codegen.git</developerConnection>
+    <url>https://github.com/swagger-api/swagger-codegen</url>
+  </scm>
   <prerequisites>
     <maven>2.2.0</maven>
   </prerequisites>
 
   <licenses>
     <license>
-      <name>Apache2</name>
+      <name>Unlicense</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
-  <distributionManagement>
-    <repository>
-      <id>sphereon-sdk-releases</id>
-      <url>http://nexus.qa.sphereon.com/nexus/content/repositories/sphereon-sdk-releases</url>
-    </repository>
-    <snapshotRepository>
-      <id>sphereon-sdk-snapshots</id>
-      <url>http://nexus.qa.sphereon.com/nexus/content/repositories/sphereon-sdk-snapshots</url>
-    </snapshotRepository>
-  </distributionManagement>
 
-  <scm>
-    <connection>scm:git:git@github.com:Sphereon-SDK/easy-blockchain-sdk.git</connection>
-    <developerConnection>scm:git:git@github.com:Sphereon-SDK/easy-blockchain-sdk.git</developerConnection>
-    <url>https://github.com/Sphereon-SDK/easy-blockchain-sdk</url>
-  </scm>
+  <developers>
+    <developer>
+      <name>Swagger</name>
+      <email>apiteam@swagger.io</email>
+      <organization>Swagger</organization>
+      <organizationUrl>http://swagger.io</organizationUrl>
+    </developer>
+  </developers>
 
   <build>
     <plugins>
@@ -222,6 +221,6 @@
     <maven-plugin-version>1.0.0</maven-plugin-version>
     <junit-version>4.12</junit-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <authentication-lib.version>0.1.2</authentication-lib.version>
+    <authentication-lib.version>0.1.1-SNAPSHOT</authentication-lib.version>
   </properties>
 </project>

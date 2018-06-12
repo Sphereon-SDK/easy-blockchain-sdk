@@ -4,10 +4,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ownerType** | **String** |  | [optional] 
+**metaData** | **{String: String}** |  | [optional] 
 **password** | **String** |  | [optional] 
 **access** | [**Access**](Access.md) |  | [optional] 
 **ledgerName** | **String** |  | [optional] 
 **resourceFiles** | **{String: String}** |  | [optional] 
+**walletInfo** | **String** |  | [optional] 
 **host** | **String** |  | [optional] 
 **id** | **String** |  | [optional] 
 **type** | **String** |  | [optional] 

@@ -236,6 +236,50 @@
         </profile>
 
         <profile>
+            <id>swift4</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.swagger</groupId>
+                        <artifactId>swagger-codegen-maven-plugin</artifactId>
+                        <version>${swagger-coden-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>generate</goal>
+                                </goals>
+                                <configuration>
+                                    <inputSpec>swagger.sdk.json</inputSpec>
+                                    <language>swift4</language>
+                                    <configOptions>
+
+                                        <podHomepage>https://sphereon.com</podHomepage>
+                                        <podSource>"{ :git => 'https://github.com/Sphereon-SDK/easy-blockchain-sdk.git', :tag => '0.10.3' }"</podSource>
+                                        <podVersion>0.10.3</podVersion>
+                                        <podAuthors>Sphereon BV</podAuthors>
+                                        <podLicense>Apache2</podLicense>
+                                        <podDescription>Easy Blockchain Swift4 SDK</podDescription>
+                                        <projectName>EasyBlockchain</projectName>
+                                        <dateLibrary>java8</dateLibrary>
+                                    </configOptions>
+                                    <verbose>${swagger-coden-verbose}</verbose>
+                                    <output>${project.basedir}/swift4</output>
+                                    <groupId>com.sphereon.sdk</groupId>
+                                    <artifactId>${project-base-name}-swift4</artifactId>
+                                    <artifactVersion>${project.version}</artifactVersion>
+                                    <addCompileSourceRoot>true</addCompileSourceRoot>
+                                 <!--   <apiPackage>api</apiPackage>
+                                    <modelPackage>model</modelPackage>
+                                    <invokerPackage>${sdk-package-javascript}</invokerPackage>-->
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
             <id>csharp-net45</id>
             <build>
                 <plugins>

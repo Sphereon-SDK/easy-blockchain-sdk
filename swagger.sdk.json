@@ -50,13 +50,13 @@
           "schema": {"$ref": "#/definitions/CommittedChainResponse"},
           "description": "Chain already exists"
         },
-        "400": {
-          "schema": {"$ref": "#/definitions/ErrorResponse"},
-          "description": "Invalid blockchain request"
-        },
         "202": {
           "schema": {"$ref": "#/definitions/CommittedChainResponse"},
           "description": "Chain creation request received"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid blockchain request"
         }
       },
       "parameters": [
@@ -328,13 +328,13 @@
           "schema": {"$ref": "#/definitions/Context"},
           "description": "Context already exists"
         },
-        "400": {
-          "schema": {"$ref": "#/definitions/ErrorResponse"},
-          "description": "Invalid context request"
-        },
         "202": {
           "schema": {"$ref": "#/definitions/Context"},
           "description": "Context creation request received"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid context request"
         },
         "401": {
           "schema": {"$ref": "#/definitions/ErrorResponse"},
@@ -365,13 +365,13 @@
           "schema": {"$ref": "#/definitions/CommittedEntryResponse"},
           "description": "Entry already exists"
         },
-        "400": {
-          "schema": {"$ref": "#/definitions/ErrorResponse"},
-          "description": "Invalid entry request"
-        },
         "202": {
           "schema": {"$ref": "#/definitions/CommittedEntryResponse"},
           "description": "Entry creation request received"
+        },
+        "400": {
+          "schema": {"$ref": "#/definitions/ErrorResponse"},
+          "description": "Invalid entry request"
         },
         "404": {
           "schema": {"$ref": "#/definitions/ErrorResponse"},
@@ -422,13 +422,13 @@
         "description": "Create a new backend. A Backend is the link to one blockchain implementation and it' s nodes. Unless you create your own private blockchain network, you should not have to create a new backend. Just use one of the public backends available.",
         "operationId": "createBackend",
         "responses": {
-          "400": {
-            "schema": {"$ref": "#/definitions/ErrorResponse"},
-            "description": "Invalid backend request"
-          },
           "202": {
             "schema": {"$ref": "#/definitions/Backend"},
             "description": "Backend creation request received"
+          },
+          "400": {
+            "schema": {"$ref": "#/definitions/ErrorResponse"},
+            "description": "Invalid backend request"
           },
           "401": {
             "schema": {"$ref": "#/definitions/ErrorResponse"},
@@ -1063,6 +1063,15 @@
         }
       }
     },
+    "Chain": {
+      "description": "This is the Chain object itself. A chain is created with a first Entry. The chain Id is calculated from the firt Entry where the content part of the entry is omited during Chain ID calculation. After the chain is stored you can traverse the cahin using the API (not this object)",
+      "type": "object",
+      "required": ["firstEntry"],
+      "properties": {"firstEntry": {
+        "description": "The First Entry with which this Chain was created. Traverse the chain using the API (not this object)",
+        "$ref": "#/definitions/Entry"
+      }}
+    },
     "CommittedChain": {
       "description": "Commited Chain",
       "type": "object",
@@ -1074,15 +1083,6 @@
           "type": "string"
         }
       }
-    },
-    "Chain": {
-      "description": "This is the Chain object itself. A chain is created with a first Entry. The chain Id is calculated from the firt Entry where the content part of the entry is omited during Chain ID calculation. After the chain is stored you can traverse the cahin using the API (not this object)",
-      "type": "object",
-      "required": ["firstEntry"],
-      "properties": {"firstEntry": {
-        "description": "The First Entry with which this Chain was created. Traverse the chain using the API (not this object)",
-        "$ref": "#/definitions/Entry"
-      }}
     },
     "IdResponse": {
       "description": "Id response",
@@ -1225,6 +1225,10 @@
             "CUSTOMER"
           ]
         },
+        "metaData": {
+          "additionalProperties": {"type": "string"},
+          "type": "object"
+        },
         "password": {"type": "string"},
         "access": {"$ref": "#/definitions/Access"},
         "ledgerName": {"type": "string"},
@@ -1232,6 +1236,7 @@
           "additionalProperties": {"type": "string"},
           "type": "object"
         },
+        "walletInfo": {"type": "string"},
         "host": {"type": "string"},
         "id": {"type": "string"},
         "type": {
@@ -1316,15 +1321,6 @@
         "externalAccess": {"$ref": "#/definitions/Access"}
       }
     },
-    "Entry": {
-      "description": "Entry",
-      "type": "object",
-      "required": ["entryData"],
-      "properties": {"entryData": {
-        "description": "The Entry Data",
-        "$ref": "#/definitions/Entry Data"
-      }}
-    },
     "CommittedEntryResponse": {
       "description": "Committed EntryData response",
       "type": "object",
@@ -1344,6 +1340,15 @@
           "type": "string"
         }
       }
+    },
+    "Entry": {
+      "description": "Entry",
+      "type": "object",
+      "required": ["entryData"],
+      "properties": {"entryData": {
+        "description": "The Entry Data",
+        "$ref": "#/definitions/Entry Data"
+      }}
     },
     "CommittedEntry": {
       "description": "Committed Entry",

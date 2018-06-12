@@ -4,10 +4,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **OwnerType** | **string** |  | [optional] 
+**MetaData** | **Dictionary&lt;string, string&gt;** |  | [optional] 
 **Password** | **string** |  | [optional] 
 **Access** | [**Access**](Access.md) |  | [optional] 
 **LedgerName** | **string** |  | [optional] 
 **ResourceFiles** | **Dictionary&lt;string, string&gt;** |  | [optional] 
+**WalletInfo** | **string** |  | [optional] 
 **Host** | **string** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **Type** | **string** |  | [optional] 
