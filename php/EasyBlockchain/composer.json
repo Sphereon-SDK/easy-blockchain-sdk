@@ -1,6 +1,6 @@
 {
     "name": "GIT_USER_ID/GIT_REPO_ID",
-    "version": "0.10.3-SNAPSHOT",
+    "version": "0.10.3",
     "description": "",
     "keywords": [
         "swagger",
@@ -26,7 +26,7 @@
         "phpunit/phpunit": "~4.8",
         "satooshi/php-coveralls": "~1.0",
         "squizlabs/php_codesniffer": "~2.6",
-        "friendsofphp/php-cs-fixer": "~1.12"
+        "friendsofphp/php-cs-fixer": "~2.12"
     },
     "autoload": {
         "psr-4": { "Sphereon\\SDK\\Blockchain\\Easy\\" : "lib/" }

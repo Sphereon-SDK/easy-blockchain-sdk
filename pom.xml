@@ -14,7 +14,7 @@
         <sdk-package-javascript>SphereonSDKBlockchainEasy</sdk-package-javascript>
         <sdk-package-csharp>Sphereon.SDK.Blockchain.Easy</sdk-package-csharp>
         <sdk-package-php>Sphereon\SDK\Blockchain\Easy</sdk-package-php>
-		<sdk-package-version>0.10.2</sdk-package-version>
+		<sdk-package-version>0.10.3</sdk-package-version>
 
         <swagger-coden-maven-plugin.version>2.2.3</swagger-coden-maven-plugin.version>
         <swagger-coden-verbose>false</swagger-coden-verbose>
@@ -388,7 +388,7 @@
 									<verbose>${swagger-coden-verbose}</verbose>
                                     <output>${project.basedir}/php</output>
                                     <groupId>com.sphereon.sdk</groupId>
-                                    <artifactVersion>${project.version}</artifactVersion>>
+									<artifactVersion>${sdk-package-version}</artifactVersion>
                                     <configOptions>
 										<packagePath>EasyBlockchain</packagePath>
                                         <invokerPackage>${sdk-package-php}</invokerPackage>
