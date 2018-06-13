@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  Sphereon\SDK\Blockchain\Easy
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,7 +27,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace Swagger\Client;
+namespace Sphereon\SDK\Blockchain\Easy;
 
 /**
  * EntryTest Class Doc Comment
@@ -35,7 +35,7 @@ namespace Swagger\Client;
  * @category    Class */
 // * @description Entry
 /**
- * @package     Swagger\Client
+ * @package     Sphereon\SDK\Blockchain\Easy
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */

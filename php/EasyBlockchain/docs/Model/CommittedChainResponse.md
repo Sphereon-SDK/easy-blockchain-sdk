@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**chain** | [**\Swagger\Client\Model\CommittedChain**](CommittedChain.md) |  | 
+**chain** | [**\Sphereon\SDK\Blockchain\Easy\Model\CommittedChain**](CommittedChain.md) |  | 
 **commit_time** | [**\DateTime**](\DateTime.md) | The time at which the chain was first committed in ISO 8601 format | [optional] 
 **creation_request_time** | [**\DateTime**](\DateTime.md) | The time at which the chain creation was first requested in ISO 8601 format | [optional] 
 

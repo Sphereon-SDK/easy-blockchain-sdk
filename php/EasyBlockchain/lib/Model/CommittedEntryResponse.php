@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  Sphereon\SDK\Blockchain\Easy
  * @author   Swaagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Model;
+namespace Sphereon\SDK\Blockchain\Easy\Model;
 
 use \ArrayAccess;
 
@@ -36,7 +36,7 @@ use \ArrayAccess;
  *
  * @category    Class
  * @description Committed EntryData response
- * @package     Swagger\Client
+ * @package     Sphereon\SDK\Blockchain\Easy
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
@@ -55,7 +55,7 @@ class CommittedEntryResponse implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'entry' => '\Swagger\Client\Model\CommittedEntry',
+        'entry' => '\Sphereon\SDK\Blockchain\Easy\Model\CommittedEntry',
         'commit_time' => '\DateTime',
         'creation_request_time' => '\DateTime'
     ];
@@ -181,7 +181,7 @@ class CommittedEntryResponse implements ArrayAccess
 
     /**
      * Gets entry
-     * @return \Swagger\Client\Model\CommittedEntry
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\CommittedEntry
      */
     public function getEntry()
     {
@@ -190,7 +190,7 @@ class CommittedEntryResponse implements ArrayAccess
 
     /**
      * Sets entry
-     * @param \Swagger\Client\Model\CommittedEntry $entry
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\CommittedEntry $entry
      * @return $this
      */
     public function setEntry($entry)
@@ -293,10 +293,10 @@ class CommittedEntryResponse implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+            return json_encode(\Sphereon\SDK\Blockchain\Easy\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         }
 
-        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
+        return json_encode(\Sphereon\SDK\Blockchain\Easy\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

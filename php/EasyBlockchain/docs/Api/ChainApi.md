@@ -1,4 +1,4 @@
-# Swagger\Client\ChainApi
+# Sphereon\SDK\Blockchain\Easy\ChainApi
 
 All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.10*
 
@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **createChain**
-> \Swagger\Client\Model\CommittedChainResponse createChain($context, $chain)
+> \Sphereon\SDK\Blockchain\Easy\Model\CommittedChainResponse createChain($context, $chain)
 
 Create a new chain
 
@@ -20,11 +20,11 @@ Create a new chain. Create a new chain. You can regard a chain as a blockchain w
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\ChainApi();
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\ChainApi();
 $context = "context_example"; // string | context
-$chain = new \Swagger\Client\Model\Chain(); // \Swagger\Client\Model\Chain | Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
+$chain = new \Sphereon\SDK\Blockchain\Easy\Model\Chain(); // \Sphereon\SDK\Blockchain\Easy\Model\Chain | Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network!
 
 try {
     $result = $api_instance->createChain($context, $chain);
@@ -40,11 +40,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **context** | **string**| context |
- **chain** | [**\Swagger\Client\Model\Chain**](../Model/Chain.md)| Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! |
+ **chain** | [**\Sphereon\SDK\Blockchain\Easy\Model\Chain**](../Model/Chain.md)| Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! |
 
 ### Return type
 
-[**\Swagger\Client\Model\CommittedChainResponse**](../Model/CommittedChainResponse.md)
+[**\Sphereon\SDK\Blockchain\Easy\Model\CommittedChainResponse**](../Model/CommittedChainResponse.md)
 
 ### Authorization
 

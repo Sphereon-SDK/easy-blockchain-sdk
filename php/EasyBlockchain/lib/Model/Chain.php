@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  Sphereon\SDK\Blockchain\Easy
  * @author   Swaagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Model;
+namespace Sphereon\SDK\Blockchain\Easy\Model;
 
 use \ArrayAccess;
 
@@ -36,7 +36,7 @@ use \ArrayAccess;
  *
  * @category    Class
  * @description This is the Chain object itself. A chain is created with a first Entry. The chain Id is calculated from the firt Entry where the content part of the entry is omited during Chain ID calculation. After the chain is stored you can traverse the cahin using the API (not this object)
- * @package     Swagger\Client
+ * @package     Sphereon\SDK\Blockchain\Easy
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
@@ -55,7 +55,7 @@ class Chain implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'first_entry' => '\Swagger\Client\Model\Entry'
+        'first_entry' => '\Sphereon\SDK\Blockchain\Easy\Model\Entry'
     ];
 
     /**
@@ -169,7 +169,7 @@ class Chain implements ArrayAccess
 
     /**
      * Gets first_entry
-     * @return \Swagger\Client\Model\Entry
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\Entry
      */
     public function getFirstEntry()
     {
@@ -178,7 +178,7 @@ class Chain implements ArrayAccess
 
     /**
      * Sets first_entry
-     * @param \Swagger\Client\Model\Entry $first_entry The First Entry with which this Chain was created. Traverse the chain using the API (not this object)
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Entry $first_entry The First Entry with which this Chain was created. Traverse the chain using the API (not this object)
      * @return $this
      */
     public function setFirstEntry($first_entry)
@@ -239,10 +239,10 @@ class Chain implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+            return json_encode(\Sphereon\SDK\Blockchain\Easy\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         }
 
-        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
+        return json_encode(\Sphereon\SDK\Blockchain\Easy\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

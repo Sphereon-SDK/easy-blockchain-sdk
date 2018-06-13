@@ -1,4 +1,4 @@
-# Swagger\Client\EntryApi
+# Sphereon\SDK\Blockchain\Easy\EntryApi
 
 All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.10*
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **createEntry**
-> \Swagger\Client\Model\CommittedEntryResponse createEntry($context, $chain_id, $entry, $current_anchor_time)
+> \Sphereon\SDK\Blockchain\Easy\Model\CommittedEntryResponse createEntry($context, $chain_id, $entry, $current_anchor_time)
 
 Create a new entry in the provided chain
 
@@ -28,12 +28,12 @@ Create a new entry in the provided chain. The entry will be linked to the previo
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\EntryApi();
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\EntryApi();
 $context = "context_example"; // string | context
 $chain_id = "chain_id_example"; // string | chainId
-$entry = new \Swagger\Client\Model\Entry(); // \Swagger\Client\Model\Entry | Create a new entry for the specified chain
+$entry = new \Sphereon\SDK\Blockchain\Easy\Model\Entry(); // \Sphereon\SDK\Blockchain\Easy\Model\Entry | Create a new entry for the specified chain
 $current_anchor_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
 
 try {
@@ -51,12 +51,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **context** | **string**| context |
  **chain_id** | **string**| chainId |
- **entry** | [**\Swagger\Client\Model\Entry**](../Model/Entry.md)| Create a new entry for the specified chain |
+ **entry** | [**\Sphereon\SDK\Blockchain\Easy\Model\Entry**](../Model/Entry.md)| Create a new entry for the specified chain |
  **current_anchor_time** | **\DateTime**|  | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\CommittedEntryResponse**](../Model/CommittedEntryResponse.md)
+[**\Sphereon\SDK\Blockchain\Easy\Model\CommittedEntryResponse**](../Model/CommittedEntryResponse.md)
 
 ### Authorization
 
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **entryById**
-> \Swagger\Client\Model\AnchoredEntryResponse entryById($context, $chain_id, $entry_id, $current_anchor_time)
+> \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse entryById($context, $chain_id, $entry_id, $current_anchor_time)
 
 Get an existing entry in the provided chain
 
@@ -82,9 +82,9 @@ Get an existing entry in the provided chain
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\EntryApi();
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\EntryApi();
 $context = "context_example"; // string | context
 $chain_id = "chain_id_example"; // string | chainId
 $entry_id = "entry_id_example"; // string | entryId
@@ -110,7 +110,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\AnchoredEntryResponse**](../Model/AnchoredEntryResponse.md)
+[**\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse**](../Model/AnchoredEntryResponse.md)
 
 ### Authorization
 
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **entryByRequest**
-> \Swagger\Client\Model\AnchoredEntryResponse entryByRequest($context, $chain_id, $entry, $current_anchor_time)
+> \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse entryByRequest($context, $chain_id, $entry, $current_anchor_time)
 
 Get an existing entry in the provided chain
 
@@ -136,12 +136,12 @@ Get an existing entry in the provided chain
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\EntryApi();
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\EntryApi();
 $context = "context_example"; // string | context
 $chain_id = "chain_id_example"; // string | chainId
-$entry = new \Swagger\Client\Model\Entry(); // \Swagger\Client\Model\Entry | Retrieve the entry
+$entry = new \Sphereon\SDK\Blockchain\Easy\Model\Entry(); // \Sphereon\SDK\Blockchain\Easy\Model\Entry | Retrieve the entry
 $current_anchor_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
 
 try {
@@ -159,12 +159,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **context** | **string**| context |
  **chain_id** | **string**| chainId |
- **entry** | [**\Swagger\Client\Model\Entry**](../Model/Entry.md)| Retrieve the entry |
+ **entry** | [**\Sphereon\SDK\Blockchain\Easy\Model\Entry**](../Model/Entry.md)| Retrieve the entry |
  **current_anchor_time** | **\DateTime**|  | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\AnchoredEntryResponse**](../Model/AnchoredEntryResponse.md)
+[**\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse**](../Model/AnchoredEntryResponse.md)
 
 ### Authorization
 
@@ -178,7 +178,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **firstEntry**
-> \Swagger\Client\Model\AnchoredEntryResponse firstEntry($context, $chain_id)
+> \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse firstEntry($context, $chain_id)
 
 Get the first entry in the provided chain
 
@@ -190,9 +190,9 @@ Get the first entry in the provided chain. This is the oldest entry also called 
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\EntryApi();
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\EntryApi();
 $context = "context_example"; // string | context
 $chain_id = "chain_id_example"; // string | chainId
 
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\AnchoredEntryResponse**](../Model/AnchoredEntryResponse.md)
+[**\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse**](../Model/AnchoredEntryResponse.md)
 
 ### Authorization
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **lastEntry**
-> \Swagger\Client\Model\AnchoredEntryResponse lastEntry($context, $chain_id)
+> \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse lastEntry($context, $chain_id)
 
 Get the last entry in the provided chain.
 
@@ -240,9 +240,9 @@ Get the last entry in the provided chain. This is the most recent entry also cal
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\EntryApi();
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\EntryApi();
 $context = "context_example"; // string | context
 $chain_id = "chain_id_example"; // string | chainId
 
@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\AnchoredEntryResponse**](../Model/AnchoredEntryResponse.md)
+[**\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse**](../Model/AnchoredEntryResponse.md)
 
 ### Authorization
 
@@ -278,7 +278,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **nextEntryById**
-> \Swagger\Client\Model\AnchoredEntryResponse nextEntryById($context, $chain_id, $entry_id, $current_anchor_time)
+> \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse nextEntryById($context, $chain_id, $entry_id, $current_anchor_time)
 
 Get the entry after the supplied entry Id (the next) in the provided chain
 
@@ -290,9 +290,9 @@ Get the entry after the supplied entry Id (the next) in the provided chain
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\EntryApi();
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\EntryApi();
 $context = "context_example"; // string | context
 $chain_id = "chain_id_example"; // string | chainId
 $entry_id = "entry_id_example"; // string | entryId
@@ -318,7 +318,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\AnchoredEntryResponse**](../Model/AnchoredEntryResponse.md)
+[**\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse**](../Model/AnchoredEntryResponse.md)
 
 ### Authorization
 
@@ -332,7 +332,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **nextEntryByRequest**
-> \Swagger\Client\Model\AnchoredEntryResponse nextEntryByRequest($context, $chain_id, $entry, $current_anchor_time)
+> \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse nextEntryByRequest($context, $chain_id, $entry, $current_anchor_time)
 
 Get the entry after the supplied entry Id (the next) in the provided chain
 
@@ -344,12 +344,12 @@ Get the entry after the supplied entry Id (the next) in the provided chain
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\EntryApi();
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\EntryApi();
 $context = "context_example"; // string | context
 $chain_id = "chain_id_example"; // string | chainId
-$entry = new \Swagger\Client\Model\Entry(); // \Swagger\Client\Model\Entry | Retrieve the entry
+$entry = new \Sphereon\SDK\Blockchain\Easy\Model\Entry(); // \Sphereon\SDK\Blockchain\Easy\Model\Entry | Retrieve the entry
 $current_anchor_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
 
 try {
@@ -367,12 +367,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **context** | **string**| context |
  **chain_id** | **string**| chainId |
- **entry** | [**\Swagger\Client\Model\Entry**](../Model/Entry.md)| Retrieve the entry |
+ **entry** | [**\Sphereon\SDK\Blockchain\Easy\Model\Entry**](../Model/Entry.md)| Retrieve the entry |
  **current_anchor_time** | **\DateTime**|  | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\AnchoredEntryResponse**](../Model/AnchoredEntryResponse.md)
+[**\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse**](../Model/AnchoredEntryResponse.md)
 
 ### Authorization
 
@@ -386,7 +386,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **previousEntryById**
-> \Swagger\Client\Model\AnchoredEntryResponse previousEntryById($context, $chain_id, $entry_id, $current_anchor_time)
+> \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse previousEntryById($context, $chain_id, $entry_id, $current_anchor_time)
 
 Get the entry before the supplied entry Id (the previous) in the provided chain
 
@@ -398,9 +398,9 @@ Get the entry before the supplied entry Id (the previous) in the provided chain
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\EntryApi();
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\EntryApi();
 $context = "context_example"; // string | context
 $chain_id = "chain_id_example"; // string | chainId
 $entry_id = "entry_id_example"; // string | entryId
@@ -426,7 +426,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\AnchoredEntryResponse**](../Model/AnchoredEntryResponse.md)
+[**\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse**](../Model/AnchoredEntryResponse.md)
 
 ### Authorization
 
@@ -440,7 +440,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **previousEntryByRequest**
-> \Swagger\Client\Model\AnchoredEntryResponse previousEntryByRequest($context, $chain_id, $entry, $current_anchor_time)
+> \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse previousEntryByRequest($context, $chain_id, $entry, $current_anchor_time)
 
 Get the entry before the supplied entry Id (the previous) in the provided chain
 
@@ -452,12 +452,12 @@ Get the entry before the supplied entry Id (the previous) in the provided chain
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\EntryApi();
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\EntryApi();
 $context = "context_example"; // string | context
 $chain_id = "chain_id_example"; // string | chainId
-$entry = new \Swagger\Client\Model\Entry(); // \Swagger\Client\Model\Entry | Retrieve the entry
+$entry = new \Sphereon\SDK\Blockchain\Easy\Model\Entry(); // \Sphereon\SDK\Blockchain\Easy\Model\Entry | Retrieve the entry
 $current_anchor_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
 
 try {
@@ -475,12 +475,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **context** | **string**| context |
  **chain_id** | **string**| chainId |
- **entry** | [**\Swagger\Client\Model\Entry**](../Model/Entry.md)| Retrieve the entry |
+ **entry** | [**\Sphereon\SDK\Blockchain\Easy\Model\Entry**](../Model/Entry.md)| Retrieve the entry |
  **current_anchor_time** | **\DateTime**|  | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\AnchoredEntryResponse**](../Model/AnchoredEntryResponse.md)
+[**\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse**](../Model/AnchoredEntryResponse.md)
 
 ### Authorization
 

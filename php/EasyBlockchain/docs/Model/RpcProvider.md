@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **owner_type** | **string** |  | [optional] 
 **meta_data** | **map[string,string]** |  | [optional] 
 **password** | **string** |  | [optional] 
-**access** | [**\Swagger\Client\Model\Access**](Access.md) |  | [optional] 
+**access** | [**\Sphereon\SDK\Blockchain\Easy\Model\Access**](Access.md) |  | [optional] 
 **ledger_name** | **string** |  | [optional] 
 **resource_files** | **map[string,string]** |  | [optional] 
 **wallet_info** | **string** |  | [optional] 

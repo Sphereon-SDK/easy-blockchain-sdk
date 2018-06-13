@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  Sphereon\SDK\Blockchain\Easy
  * @author   Swaagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Model;
+namespace Sphereon\SDK\Blockchain\Easy\Model;
 
 use \ArrayAccess;
 
@@ -36,7 +36,7 @@ use \ArrayAccess;
  *
  * @category    Class
  * @description Entry Data contains the actual content and a list of External IDs (metadata)
- * @package     Swagger\Client
+ * @package     Sphereon\SDK\Blockchain\Easy
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
@@ -55,7 +55,7 @@ class EntryData implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'external_ids' => '\Swagger\Client\Model\ExternalId[]',
+        'external_ids' => '\Sphereon\SDK\Blockchain\Easy\Model\ExternalId[]',
         'content' => 'string'
     ];
 
@@ -176,7 +176,7 @@ class EntryData implements ArrayAccess
 
     /**
      * Gets external_ids
-     * @return \Swagger\Client\Model\ExternalId[]
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\ExternalId[]
      */
     public function getExternalIds()
     {
@@ -185,7 +185,7 @@ class EntryData implements ArrayAccess
 
     /**
      * Sets external_ids
-     * @param \Swagger\Client\Model\ExternalId[] $external_ids External Ids
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\ExternalId[] $external_ids External Ids
      * @return $this
      */
     public function setExternalIds($external_ids)
@@ -272,10 +272,10 @@ class EntryData implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+            return json_encode(\Sphereon\SDK\Blockchain\Easy\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         }
 
-        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
+        return json_encode(\Sphereon\SDK\Blockchain\Easy\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

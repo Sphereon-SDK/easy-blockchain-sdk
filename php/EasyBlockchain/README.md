@@ -59,9 +59,9 @@ Please follow the [installation procedure](#installation--usage) and then run th
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\AllApi();
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\AllApi();
 $context = "context_example"; // string | context
 $chain_id = "chain_id_example"; // string | chainId
 

@@ -1,4 +1,4 @@
-# Swagger\Client\IdApi
+# Sphereon\SDK\Blockchain\Easy\IdApi
 
 All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.10*
 
@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **chainIdExists**
-> \Swagger\Client\Model\IdResponse chainIdExists($context, $chain_id)
+> \Sphereon\SDK\Blockchain\Easy\Model\IdResponse chainIdExists($context, $chain_id)
 
 Determine chain id exists
 
@@ -23,9 +23,9 @@ Determine whether the Id of a chain exists in the blockchain
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\IdApi();
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\IdApi();
 $context = "context_example"; // string | context
 $chain_id = "chain_id_example"; // string | chainId
 
@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\IdResponse**](../Model/IdResponse.md)
+[**\Sphereon\SDK\Blockchain\Easy\Model\IdResponse**](../Model/IdResponse.md)
 
 ### Authorization
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **determineChainId**
-> \Swagger\Client\Model\IdResponse determineChainId($context, $chain, $check_existence)
+> \Sphereon\SDK\Blockchain\Easy\Model\IdResponse determineChainId($context, $chain, $check_existence)
 
 Predetermine id of chain
 
@@ -73,11 +73,11 @@ Pre determine the Id of a chain without anchoring it in the blockchain. You dete
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\IdApi();
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\IdApi();
 $context = "context_example"; // string | context
-$chain = new \Swagger\Client\Model\Chain(); // \Swagger\Client\Model\Chain | Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
+$chain = new \Sphereon\SDK\Blockchain\Easy\Model\Chain(); // \Sphereon\SDK\Blockchain\Easy\Model\Chain | Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network!
 $check_existence = false; // bool | Check whether the id exists
 
 try {
@@ -94,12 +94,12 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **context** | **string**| context |
- **chain** | [**\Swagger\Client\Model\Chain**](../Model/Chain.md)| Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network! |
+ **chain** | [**\Sphereon\SDK\Blockchain\Easy\Model\Chain**](../Model/Chain.md)| Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network! |
  **check_existence** | **bool**| Check whether the id exists | [optional] [default to false]
 
 ### Return type
 
-[**\Swagger\Client\Model\IdResponse**](../Model/IdResponse.md)
+[**\Sphereon\SDK\Blockchain\Easy\Model\IdResponse**](../Model/IdResponse.md)
 
 ### Authorization
 
@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **determineEntryId**
-> \Swagger\Client\Model\IdResponse determineEntryId($context, $chain_id, $entry, $check_existence)
+> \Sphereon\SDK\Blockchain\Easy\Model\IdResponse determineEntryId($context, $chain_id, $entry, $check_existence)
 
 Predetermine id of an entry
 
@@ -125,12 +125,12 @@ Pre determine the Id of an entry request without anchoring the entry
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\IdApi();
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\IdApi();
 $context = "context_example"; // string | context
 $chain_id = "chain_id_example"; // string | chainId
-$entry = new \Swagger\Client\Model\Entry(); // \Swagger\Client\Model\Entry | The entry to determine the hash for on the specified chain
+$entry = new \Sphereon\SDK\Blockchain\Easy\Model\Entry(); // \Sphereon\SDK\Blockchain\Easy\Model\Entry | The entry to determine the hash for on the specified chain
 $check_existence = false; // bool | Check whether the id exists
 
 try {
@@ -148,12 +148,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **context** | **string**| context |
  **chain_id** | **string**| chainId |
- **entry** | [**\Swagger\Client\Model\Entry**](../Model/Entry.md)| The entry to determine the hash for on the specified chain |
+ **entry** | [**\Sphereon\SDK\Blockchain\Easy\Model\Entry**](../Model/Entry.md)| The entry to determine the hash for on the specified chain |
  **check_existence** | **bool**| Check whether the id exists | [optional] [default to false]
 
 ### Return type
 
-[**\Swagger\Client\Model\IdResponse**](../Model/IdResponse.md)
+[**\Sphereon\SDK\Blockchain\Easy\Model\IdResponse**](../Model/IdResponse.md)
 
 ### Authorization
 
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **entryIdExists**
-> \Swagger\Client\Model\IdResponse entryIdExists($context, $chain_id, $entry_id)
+> \Sphereon\SDK\Blockchain\Easy\Model\IdResponse entryIdExists($context, $chain_id, $entry_id)
 
 Determine entry id exists
 
@@ -179,9 +179,9 @@ Determine whether the Id of an entry exists in the blockchain
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\IdApi();
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\IdApi();
 $context = "context_example"; // string | context
 $chain_id = "chain_id_example"; // string | chainId
 $entry_id = "entry_id_example"; // string | entryId
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\IdResponse**](../Model/IdResponse.md)
+[**\Sphereon\SDK\Blockchain\Easy\Model\IdResponse**](../Model/IdResponse.md)
 
 ### Authorization
 

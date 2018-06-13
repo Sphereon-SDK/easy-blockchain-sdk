@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  Sphereon\SDK\Blockchain\Easy
  * @author   Swaagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Model;
+namespace Sphereon\SDK\Blockchain\Easy\Model;
 
 use \ArrayAccess;
 
@@ -36,7 +36,7 @@ use \ArrayAccess;
  *
  * @category    Class
  * @description An error
- * @package     Swagger\Client
+ * @package     Sphereon\SDK\Blockchain\Easy
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
@@ -57,7 +57,7 @@ class Error implements ArrayAccess
     protected static $swaggerTypes = [
         'code' => 'string',
         'level' => 'string',
-        'cause' => '\Swagger\Client\Model\Error',
+        'cause' => '\Sphereon\SDK\Blockchain\Easy\Model\Error',
         'message' => 'string'
     ];
 
@@ -278,7 +278,7 @@ class Error implements ArrayAccess
 
     /**
      * Gets cause
-     * @return \Swagger\Client\Model\Error
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\Error
      */
     public function getCause()
     {
@@ -287,7 +287,7 @@ class Error implements ArrayAccess
 
     /**
      * Sets cause
-     * @param \Swagger\Client\Model\Error $cause
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Error $cause
      * @return $this
      */
     public function setCause($cause)
@@ -369,10 +369,10 @@ class Error implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+            return json_encode(\Sphereon\SDK\Blockchain\Easy\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         }
 
-        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
+        return json_encode(\Sphereon\SDK\Blockchain\Easy\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

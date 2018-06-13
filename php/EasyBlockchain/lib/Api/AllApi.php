@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  Sphereon\SDK\Blockchain\Easy
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -26,18 +26,18 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Api;
+namespace Sphereon\SDK\Blockchain\Easy\Api;
 
-use \Swagger\Client\ApiClient;
-use \Swagger\Client\ApiException;
-use \Swagger\Client\Configuration;
-use \Swagger\Client\ObjectSerializer;
+use \Sphereon\SDK\Blockchain\Easy\ApiClient;
+use \Sphereon\SDK\Blockchain\Easy\ApiException;
+use \Sphereon\SDK\Blockchain\Easy\Configuration;
+use \Sphereon\SDK\Blockchain\Easy\ObjectSerializer;
 
 /**
  * AllApi Class Doc Comment
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  Sphereon\SDK\Blockchain\Easy
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -46,16 +46,16 @@ class AllApi
     /**
      * API Client
      *
-     * @var \Swagger\Client\ApiClient instance of the ApiClient
+     * @var \Sphereon\SDK\Blockchain\Easy\ApiClient instance of the ApiClient
      */
     protected $apiClient;
 
     /**
      * Constructor
      *
-     * @param \Swagger\Client\ApiClient|null $apiClient The api client to use
+     * @param \Sphereon\SDK\Blockchain\Easy\ApiClient|null $apiClient The api client to use
      */
-    public function __construct(\Swagger\Client\ApiClient $apiClient = null)
+    public function __construct(\Sphereon\SDK\Blockchain\Easy\ApiClient $apiClient = null)
     {
         if ($apiClient === null) {
             $apiClient = new ApiClient();
@@ -67,7 +67,7 @@ class AllApi
     /**
      * Get API client
      *
-     * @return \Swagger\Client\ApiClient get the API client
+     * @return \Sphereon\SDK\Blockchain\Easy\ApiClient get the API client
      */
     public function getApiClient()
     {
@@ -77,11 +77,11 @@ class AllApi
     /**
      * Set the API client
      *
-     * @param \Swagger\Client\ApiClient $apiClient set the API client
+     * @param \Sphereon\SDK\Blockchain\Easy\ApiClient $apiClient set the API client
      *
      * @return AllApi
      */
-    public function setApiClient(\Swagger\Client\ApiClient $apiClient)
+    public function setApiClient(\Sphereon\SDK\Blockchain\Easy\ApiClient $apiClient)
     {
         $this->apiClient = $apiClient;
         return $this;
@@ -94,8 +94,8 @@ class AllApi
      *
      * @param string $context context (required)
      * @param string $chain_id chainId (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\IdResponse
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\IdResponse
      */
     public function chainIdExists($context, $chain_id)
     {
@@ -110,8 +110,8 @@ class AllApi
      *
      * @param string $context context (required)
      * @param string $chain_id chainId (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\IdResponse, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return array of \Sphereon\SDK\Blockchain\Easy\Model\IdResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function chainIdExistsWithHttpInfo($context, $chain_id)
     {
@@ -170,19 +170,19 @@ class AllApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\IdResponse',
+                '\Sphereon\SDK\Blockchain\Easy\Model\IdResponse',
                 '/{context}/chains/id/{chainId}'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\IdResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Sphereon\SDK\Blockchain\Easy\Model\IdResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\IdResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\IdResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -196,9 +196,9 @@ class AllApi
      *
      * Create a new backend
      *
-     * @param \Swagger\Client\Model\Backend $backend backend (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\Backend
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Backend $backend backend (required)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\Backend
      */
     public function createBackend($backend)
     {
@@ -211,9 +211,9 @@ class AllApi
      *
      * Create a new backend
      *
-     * @param \Swagger\Client\Model\Backend $backend backend (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\Backend, HTTP status code, HTTP response headers (array of strings)
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Backend $backend backend (required)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return array of \Sphereon\SDK\Blockchain\Easy\Model\Backend, HTTP status code, HTTP response headers (array of strings)
      */
     public function createBackendWithHttpInfo($backend)
     {
@@ -257,23 +257,23 @@ class AllApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Backend',
+                '\Sphereon\SDK\Blockchain\Easy\Model\Backend',
                 '/backends'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Backend', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Sphereon\SDK\Blockchain\Easy\Model\Backend', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 202:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Backend', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\Backend', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 401:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -288,9 +288,9 @@ class AllApi
      * Create a new chain
      *
      * @param string $context context (required)
-     * @param \Swagger\Client\Model\Chain $chain Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\CommittedChainResponse
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Chain $chain Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! (required)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\CommittedChainResponse
      */
     public function createChain($context, $chain)
     {
@@ -304,9 +304,9 @@ class AllApi
      * Create a new chain
      *
      * @param string $context context (required)
-     * @param \Swagger\Client\Model\Chain $chain Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\CommittedChainResponse, HTTP status code, HTTP response headers (array of strings)
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Chain $chain Create a chain using the first entry supplied. The entry needs at least a (combination of) globaly unique external Id in the complete Blockchain network! (required)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return array of \Sphereon\SDK\Blockchain\Easy\Model\CommittedChainResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createChainWithHttpInfo($context, $chain)
     {
@@ -362,23 +362,23 @@ class AllApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\CommittedChainResponse',
+                '\Sphereon\SDK\Blockchain\Easy\Model\CommittedChainResponse',
                 '/{context}/chains'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\CommittedChainResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Sphereon\SDK\Blockchain\Easy\Model\CommittedChainResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\CommittedChainResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\CommittedChainResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 202:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\CommittedChainResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\CommittedChainResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -392,9 +392,9 @@ class AllApi
      *
      * Create context
      *
-     * @param \Swagger\Client\Model\Context $context context (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\Context
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Context $context context (required)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\Context
      */
     public function createContext($context)
     {
@@ -407,9 +407,9 @@ class AllApi
      *
      * Create context
      *
-     * @param \Swagger\Client\Model\Context $context context (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\Context, HTTP status code, HTTP response headers (array of strings)
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Context $context context (required)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return array of \Sphereon\SDK\Blockchain\Easy\Model\Context, HTTP status code, HTTP response headers (array of strings)
      */
     public function createContextWithHttpInfo($context)
     {
@@ -453,27 +453,27 @@ class AllApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Context',
+                '\Sphereon\SDK\Blockchain\Easy\Model\Context',
                 '/contexts'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Context', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Sphereon\SDK\Blockchain\Easy\Model\Context', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Context', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\Context', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 202:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Context', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\Context', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 401:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -489,10 +489,10 @@ class AllApi
      *
      * @param string $context context (required)
      * @param string $chain_id chainId (required)
-     * @param \Swagger\Client\Model\Entry $entry Create a new entry for the specified chain (required)
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Entry $entry Create a new entry for the specified chain (required)
      * @param \DateTime $current_anchor_time  (optional)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\CommittedEntryResponse
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\CommittedEntryResponse
      */
     public function createEntry($context, $chain_id, $entry, $current_anchor_time = null)
     {
@@ -507,10 +507,10 @@ class AllApi
      *
      * @param string $context context (required)
      * @param string $chain_id chainId (required)
-     * @param \Swagger\Client\Model\Entry $entry Create a new entry for the specified chain (required)
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Entry $entry Create a new entry for the specified chain (required)
      * @param \DateTime $current_anchor_time  (optional)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\CommittedEntryResponse, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return array of \Sphereon\SDK\Blockchain\Easy\Model\CommittedEntryResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createEntryWithHttpInfo($context, $chain_id, $entry, $current_anchor_time = null)
     {
@@ -582,27 +582,27 @@ class AllApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\CommittedEntryResponse',
+                '\Sphereon\SDK\Blockchain\Easy\Model\CommittedEntryResponse',
                 '/{context}/chains/{chainId}/entries'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\CommittedEntryResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Sphereon\SDK\Blockchain\Easy\Model\CommittedEntryResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\CommittedEntryResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\CommittedEntryResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 202:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\CommittedEntryResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\CommittedEntryResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -617,8 +617,8 @@ class AllApi
      * Delete a backend
      *
      * @param string $backend_id backendId (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\Backend
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\Backend
      */
     public function deleteBackend($backend_id)
     {
@@ -632,8 +632,8 @@ class AllApi
      * Delete a backend
      *
      * @param string $backend_id backendId (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\Backend, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return array of \Sphereon\SDK\Blockchain\Easy\Model\Backend, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteBackendWithHttpInfo($backend_id)
     {
@@ -680,27 +680,27 @@ class AllApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Backend',
+                '\Sphereon\SDK\Blockchain\Easy\Model\Backend',
                 '/backends/{backendId}'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Backend', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Sphereon\SDK\Blockchain\Easy\Model\Backend', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Backend', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\Backend', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 401:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -715,8 +715,8 @@ class AllApi
      * Delete context
      *
      * @param string $context context (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\Context
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\Context
      */
     public function deleteContext($context)
     {
@@ -730,8 +730,8 @@ class AllApi
      * Delete context
      *
      * @param string $context context (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\Context, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return array of \Sphereon\SDK\Blockchain\Easy\Model\Context, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteContextWithHttpInfo($context)
     {
@@ -778,23 +778,23 @@ class AllApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Context',
+                '\Sphereon\SDK\Blockchain\Easy\Model\Context',
                 '/contexts/{context}'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Context', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Sphereon\SDK\Blockchain\Easy\Model\Context', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Context', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\Context', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -809,10 +809,10 @@ class AllApi
      * Predetermine id of chain
      *
      * @param string $context context (required)
-     * @param \Swagger\Client\Model\Chain $chain Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network! (required)
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Chain $chain Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network! (required)
      * @param bool $check_existence Check whether the id exists (optional, default to false)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\IdResponse
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\IdResponse
      */
     public function determineChainId($context, $chain, $check_existence = 'false')
     {
@@ -826,10 +826,10 @@ class AllApi
      * Predetermine id of chain
      *
      * @param string $context context (required)
-     * @param \Swagger\Client\Model\Chain $chain Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network! (required)
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Chain $chain Determine a chain hash. The entry needs at least a (combination of) globally unique external Id in the complete Blockchain network! (required)
      * @param bool $check_existence Check whether the id exists (optional, default to false)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\IdResponse, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return array of \Sphereon\SDK\Blockchain\Easy\Model\IdResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function determineChainIdWithHttpInfo($context, $chain, $check_existence = 'false')
     {
@@ -889,19 +889,19 @@ class AllApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\IdResponse',
+                '\Sphereon\SDK\Blockchain\Easy\Model\IdResponse',
                 '/{context}/chains/id'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\IdResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Sphereon\SDK\Blockchain\Easy\Model\IdResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\IdResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\IdResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -917,10 +917,10 @@ class AllApi
      *
      * @param string $context context (required)
      * @param string $chain_id chainId (required)
-     * @param \Swagger\Client\Model\Entry $entry The entry to determine the hash for on the specified chain (required)
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Entry $entry The entry to determine the hash for on the specified chain (required)
      * @param bool $check_existence Check whether the id exists (optional, default to false)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\IdResponse
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\IdResponse
      */
     public function determineEntryId($context, $chain_id, $entry, $check_existence = 'false')
     {
@@ -935,10 +935,10 @@ class AllApi
      *
      * @param string $context context (required)
      * @param string $chain_id chainId (required)
-     * @param \Swagger\Client\Model\Entry $entry The entry to determine the hash for on the specified chain (required)
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Entry $entry The entry to determine the hash for on the specified chain (required)
      * @param bool $check_existence Check whether the id exists (optional, default to false)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\IdResponse, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return array of \Sphereon\SDK\Blockchain\Easy\Model\IdResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function determineEntryIdWithHttpInfo($context, $chain_id, $entry, $check_existence = 'false')
     {
@@ -1010,23 +1010,23 @@ class AllApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\IdResponse',
+                '\Sphereon\SDK\Blockchain\Easy\Model\IdResponse',
                 '/{context}/chains/id/{chainId}/entries'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\IdResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Sphereon\SDK\Blockchain\Easy\Model\IdResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\IdResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\IdResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1044,8 +1044,8 @@ class AllApi
      * @param string $chain_id chainId (required)
      * @param string $entry_id entryId (required)
      * @param \DateTime $current_anchor_time  (optional)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\AnchoredEntryResponse
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse
      */
     public function entryById($context, $chain_id, $entry_id, $current_anchor_time = null)
     {
@@ -1062,8 +1062,8 @@ class AllApi
      * @param string $chain_id chainId (required)
      * @param string $entry_id entryId (required)
      * @param \DateTime $current_anchor_time  (optional)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\AnchoredEntryResponse, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return array of \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function entryByIdWithHttpInfo($context, $chain_id, $entry_id, $current_anchor_time = null)
     {
@@ -1138,23 +1138,23 @@ class AllApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\AnchoredEntryResponse',
+                '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse',
                 '/{context}/chains/{chainId}/entries/{entryId}'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\AnchoredEntryResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\AnchoredEntryResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1170,10 +1170,10 @@ class AllApi
      *
      * @param string $context context (required)
      * @param string $chain_id chainId (required)
-     * @param \Swagger\Client\Model\Entry $entry Retrieve the entry (required)
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Entry $entry Retrieve the entry (required)
      * @param \DateTime $current_anchor_time  (optional)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\AnchoredEntryResponse
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse
      */
     public function entryByRequest($context, $chain_id, $entry, $current_anchor_time = null)
     {
@@ -1188,10 +1188,10 @@ class AllApi
      *
      * @param string $context context (required)
      * @param string $chain_id chainId (required)
-     * @param \Swagger\Client\Model\Entry $entry Retrieve the entry (required)
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Entry $entry Retrieve the entry (required)
      * @param \DateTime $current_anchor_time  (optional)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\AnchoredEntryResponse, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return array of \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function entryByRequestWithHttpInfo($context, $chain_id, $entry, $current_anchor_time = null)
     {
@@ -1263,23 +1263,23 @@ class AllApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\AnchoredEntryResponse',
+                '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse',
                 '/{context}/chains/{chainId}/entries/entry'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\AnchoredEntryResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\AnchoredEntryResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\AnchoredEntryResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1296,8 +1296,8 @@ class AllApi
      * @param string $context context (required)
      * @param string $chain_id chainId (required)
      * @param string $entry_id entryId (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\IdResponse
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\IdResponse
      */
     public function entryIdExists($context, $chain_id, $entry_id)
     {
@@ -1313,8 +1313,8 @@ class AllApi
      * @param string $context context (required)
      * @param string $chain_id chainId (required)
      * @param string $entry_id entryId (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\IdResponse, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return array of \Sphereon\SDK\Blockchain\Easy\Model\IdResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function entryIdExistsWithHttpInfo($context, $chain_id, $entry_id)
     {
@@ -1385,23 +1385,23 @@ class AllApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\IdResponse',
+                '\Sphereon\SDK\Blockchain\Easy\Model\IdResponse',
                 '/{context}/chains/id/{chainId}/entries/{entryId}'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\IdResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Sphereon\SDK\Blockchain\Easy\Model\IdResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\IdResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\IdResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1417,8 +1417,8 @@ class AllApi
      *
      * @param string $backend_id backendId (required)
      * @param bool $include_public includePublic (optional, default to false)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\Backend[]
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\Backend[]
      */
     public function findBackends($backend_id, $include_public = 'false')
     {
@@ -1433,8 +1433,8 @@ class AllApi
      *
      * @param string $backend_id backendId (required)
      * @param bool $include_public includePublic (optional, default to false)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\Backend[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return array of \Sphereon\SDK\Blockchain\Easy\Model\Backend[], HTTP status code, HTTP response headers (array of strings)
      */
     public function findBackendsWithHttpInfo($backend_id, $include_public = 'false')
     {
@@ -1485,27 +1485,27 @@ class AllApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Backend[]',
+                '\Sphereon\SDK\Blockchain\Easy\Model\Backend[]',
                 '/backends/{backendId}/find'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Backend[]', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Sphereon\SDK\Blockchain\Easy\Model\Backend[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Backend[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\Backend[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 401:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1521,8 +1521,8 @@ class AllApi
      *
      * @param string $context context (required)
      * @param string $chain_id chainId (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\AnchoredEntryResponse
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse
      */
     public function firstEntry($context, $chain_id)
     {
@@ -1537,8 +1537,8 @@ class AllApi
      *
      * @param string $context context (required)
      * @param string $chain_id chainId (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\AnchoredEntryResponse, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return array of \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function firstEntryWithHttpInfo($context, $chain_id)
     {
@@ -1597,23 +1597,23 @@ class AllApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\AnchoredEntryResponse',
+                '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse',
                 '/{context}/chains/{chainId}/entries/first'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\AnchoredEntryResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\AnchoredEntryResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1629,8 +1629,8 @@ class AllApi
      *
      * @param string $backend_id backendId (required)
      * @param bool $include_public includePublic (optional, default to false)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\Backend
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\Backend
      */
     public function getBackend($backend_id, $include_public = 'false')
     {
@@ -1645,8 +1645,8 @@ class AllApi
      *
      * @param string $backend_id backendId (required)
      * @param bool $include_public includePublic (optional, default to false)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\Backend, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return array of \Sphereon\SDK\Blockchain\Easy\Model\Backend, HTTP status code, HTTP response headers (array of strings)
      */
     public function getBackendWithHttpInfo($backend_id, $include_public = 'false')
     {
@@ -1697,27 +1697,27 @@ class AllApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Backend',
+                '\Sphereon\SDK\Blockchain\Easy\Model\Backend',
                 '/backends/{backendId}'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Backend', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Sphereon\SDK\Blockchain\Easy\Model\Backend', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Backend', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\Backend', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 401:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1732,8 +1732,8 @@ class AllApi
      * Get context
      *
      * @param string $context context (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\Context
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\Context
      */
     public function getContext($context)
     {
@@ -1747,8 +1747,8 @@ class AllApi
      * Get context
      *
      * @param string $context context (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\Context, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return array of \Sphereon\SDK\Blockchain\Easy\Model\Context, HTTP status code, HTTP response headers (array of strings)
      */
     public function getContextWithHttpInfo($context)
     {
@@ -1795,23 +1795,23 @@ class AllApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Context',
+                '\Sphereon\SDK\Blockchain\Easy\Model\Context',
                 '/contexts/{context}'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Context', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Sphereon\SDK\Blockchain\Easy\Model\Context', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Context', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\Context', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1827,8 +1827,8 @@ class AllApi
      *
      * @param string $context context (required)
      * @param string $chain_id chainId (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\AnchoredEntryResponse
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse
      */
     public function lastEntry($context, $chain_id)
     {
@@ -1843,8 +1843,8 @@ class AllApi
      *
      * @param string $context context (required)
      * @param string $chain_id chainId (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\AnchoredEntryResponse, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return array of \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function lastEntryWithHttpInfo($context, $chain_id)
     {
@@ -1903,23 +1903,23 @@ class AllApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\AnchoredEntryResponse',
+                '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse',
                 '/{context}/chains/{chainId}/entries/last'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\AnchoredEntryResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\AnchoredEntryResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1934,8 +1934,8 @@ class AllApi
      * List backends
      *
      * @param bool $include_public includePublic (optional, default to false)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\Backend[]
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\Backend[]
      */
     public function listBackends($include_public = 'false')
     {
@@ -1949,8 +1949,8 @@ class AllApi
      * List backends
      *
      * @param bool $include_public includePublic (optional, default to false)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\Backend[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return array of \Sphereon\SDK\Blockchain\Easy\Model\Backend[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listBackendsWithHttpInfo($include_public = 'false')
     {
@@ -1989,27 +1989,27 @@ class AllApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Backend[]',
+                '\Sphereon\SDK\Blockchain\Easy\Model\Backend[]',
                 '/backends'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Backend[]', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Sphereon\SDK\Blockchain\Easy\Model\Backend[]', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Backend[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\Backend[]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 401:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -2027,8 +2027,8 @@ class AllApi
      * @param string $chain_id chainId (required)
      * @param string $entry_id entryId (required)
      * @param \DateTime $current_anchor_time  (optional)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\AnchoredEntryResponse
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse
      */
     public function nextEntryById($context, $chain_id, $entry_id, $current_anchor_time = null)
     {
@@ -2045,8 +2045,8 @@ class AllApi
      * @param string $chain_id chainId (required)
      * @param string $entry_id entryId (required)
      * @param \DateTime $current_anchor_time  (optional)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\AnchoredEntryResponse, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return array of \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function nextEntryByIdWithHttpInfo($context, $chain_id, $entry_id, $current_anchor_time = null)
     {
@@ -2121,23 +2121,23 @@ class AllApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\AnchoredEntryResponse',
+                '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse',
                 '/{context}/chains/{chainId}/entries/{entryId}/next'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\AnchoredEntryResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\AnchoredEntryResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -2153,10 +2153,10 @@ class AllApi
      *
      * @param string $context context (required)
      * @param string $chain_id chainId (required)
-     * @param \Swagger\Client\Model\Entry $entry Retrieve the entry (required)
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Entry $entry Retrieve the entry (required)
      * @param \DateTime $current_anchor_time  (optional)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\AnchoredEntryResponse
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse
      */
     public function nextEntryByRequest($context, $chain_id, $entry, $current_anchor_time = null)
     {
@@ -2171,10 +2171,10 @@ class AllApi
      *
      * @param string $context context (required)
      * @param string $chain_id chainId (required)
-     * @param \Swagger\Client\Model\Entry $entry Retrieve the entry (required)
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Entry $entry Retrieve the entry (required)
      * @param \DateTime $current_anchor_time  (optional)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\AnchoredEntryResponse, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return array of \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function nextEntryByRequestWithHttpInfo($context, $chain_id, $entry, $current_anchor_time = null)
     {
@@ -2246,23 +2246,23 @@ class AllApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\AnchoredEntryResponse',
+                '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse',
                 '/{context}/chains/{chainId}/entries/entry/next'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\AnchoredEntryResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\AnchoredEntryResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\AnchoredEntryResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -2280,8 +2280,8 @@ class AllApi
      * @param string $chain_id chainId (required)
      * @param string $entry_id entryId (required)
      * @param \DateTime $current_anchor_time  (optional)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\AnchoredEntryResponse
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse
      */
     public function previousEntryById($context, $chain_id, $entry_id, $current_anchor_time = null)
     {
@@ -2298,8 +2298,8 @@ class AllApi
      * @param string $chain_id chainId (required)
      * @param string $entry_id entryId (required)
      * @param \DateTime $current_anchor_time  (optional)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\AnchoredEntryResponse, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return array of \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function previousEntryByIdWithHttpInfo($context, $chain_id, $entry_id, $current_anchor_time = null)
     {
@@ -2374,23 +2374,23 @@ class AllApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\AnchoredEntryResponse',
+                '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse',
                 '/{context}/chains/{chainId}/entries/{entryId}/previous'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\AnchoredEntryResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\AnchoredEntryResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -2406,10 +2406,10 @@ class AllApi
      *
      * @param string $context context (required)
      * @param string $chain_id chainId (required)
-     * @param \Swagger\Client\Model\Entry $entry Retrieve the entry (required)
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Entry $entry Retrieve the entry (required)
      * @param \DateTime $current_anchor_time  (optional)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\AnchoredEntryResponse
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse
      */
     public function previousEntryByRequest($context, $chain_id, $entry, $current_anchor_time = null)
     {
@@ -2424,10 +2424,10 @@ class AllApi
      *
      * @param string $context context (required)
      * @param string $chain_id chainId (required)
-     * @param \Swagger\Client\Model\Entry $entry Retrieve the entry (required)
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Entry $entry Retrieve the entry (required)
      * @param \DateTime $current_anchor_time  (optional)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\AnchoredEntryResponse, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Sphereon\SDK\Blockchain\Easy\ApiException on non-2xx response
+     * @return array of \Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function previousEntryByRequestWithHttpInfo($context, $chain_id, $entry, $current_anchor_time = null)
     {
@@ -2499,23 +2499,23 @@ class AllApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\AnchoredEntryResponse',
+                '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse',
                 '/{context}/chains/{chainId}/entries/entry/previous'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\AnchoredEntryResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\AnchoredEntryResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\ErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\AnchoredEntryResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Sphereon\SDK\Blockchain\Easy\Model\AnchoredEntryResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }

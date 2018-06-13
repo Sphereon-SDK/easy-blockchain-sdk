@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  Sphereon\SDK\Blockchain\Easy
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -26,18 +26,18 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace Swagger\Client;
+namespace Sphereon\SDK\Blockchain\Easy;
 
-use \Swagger\Client\Configuration;
-use \Swagger\Client\ApiClient;
-use \Swagger\Client\ApiException;
-use \Swagger\Client\ObjectSerializer;
+use \Sphereon\SDK\Blockchain\Easy\Configuration;
+use \Sphereon\SDK\Blockchain\Easy\ApiClient;
+use \Sphereon\SDK\Blockchain\Easy\ApiException;
+use \Sphereon\SDK\Blockchain\Easy\ObjectSerializer;
 
 /**
  * ContextApiTest Class Doc Comment
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  Sphereon\SDK\Blockchain\Easy
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */

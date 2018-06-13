@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  Sphereon\SDK\Blockchain\Easy
  * @author   Swaagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Model;
+namespace Sphereon\SDK\Blockchain\Easy\Model;
 
 use \ArrayAccess;
 
@@ -36,7 +36,7 @@ use \ArrayAccess;
  *
  * @category    Class
  * @description RpcProvider
- * @package     Swagger\Client
+ * @package     Sphereon\SDK\Blockchain\Easy
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
@@ -58,7 +58,7 @@ class RpcProvider implements ArrayAccess
         'owner_type' => 'string',
         'meta_data' => 'map[string,string]',
         'password' => 'string',
-        'access' => '\Swagger\Client\Model\Access',
+        'access' => '\Sphereon\SDK\Blockchain\Easy\Model\Access',
         'ledger_name' => 'string',
         'resource_files' => 'map[string,string]',
         'wallet_info' => 'string',
@@ -347,7 +347,7 @@ class RpcProvider implements ArrayAccess
 
     /**
      * Gets access
-     * @return \Swagger\Client\Model\Access
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\Access
      */
     public function getAccess()
     {
@@ -356,7 +356,7 @@ class RpcProvider implements ArrayAccess
 
     /**
      * Sets access
-     * @param \Swagger\Client\Model\Access $access
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Access $access
      * @return $this
      */
     public function setAccess($access)
@@ -573,10 +573,10 @@ class RpcProvider implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+            return json_encode(\Sphereon\SDK\Blockchain\Easy\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         }
 
-        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
+        return json_encode(\Sphereon\SDK\Blockchain\Easy\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

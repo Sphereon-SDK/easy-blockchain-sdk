@@ -1,4 +1,4 @@
-# Swagger\Client\ContextApi
+# Sphereon\SDK\Blockchain\Easy\ContextApi
 
 All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.10*
 
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **createContext**
-> \Swagger\Client\Model\Context createContext($context)
+> \Sphereon\SDK\Blockchain\Easy\Model\Context createContext($context)
 
 Create context
 
@@ -22,10 +22,10 @@ Create a new context
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\ContextApi();
-$context = new \Swagger\Client\Model\Context(); // \Swagger\Client\Model\Context | context
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\ContextApi();
+$context = new \Sphereon\SDK\Blockchain\Easy\Model\Context(); // \Sphereon\SDK\Blockchain\Easy\Model\Context | context
 
 try {
     $result = $api_instance->createContext($context);
@@ -40,11 +40,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **context** | [**\Swagger\Client\Model\Context**](../Model/Context.md)| context |
+ **context** | [**\Sphereon\SDK\Blockchain\Easy\Model\Context**](../Model/Context.md)| context |
 
 ### Return type
 
-[**\Swagger\Client\Model\Context**](../Model/Context.md)
+[**\Sphereon\SDK\Blockchain\Easy\Model\Context**](../Model/Context.md)
 
 ### Authorization
 
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **deleteContext**
-> \Swagger\Client\Model\Context deleteContext($context)
+> \Sphereon\SDK\Blockchain\Easy\Model\Context deleteContext($context)
 
 Delete context
 
@@ -70,9 +70,9 @@ Delete an existing context
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\ContextApi();
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\ContextApi();
 $context = "context_example"; // string | context
 
 try {
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Context**](../Model/Context.md)
+[**\Sphereon\SDK\Blockchain\Easy\Model\Context**](../Model/Context.md)
 
 ### Authorization
 
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getContext**
-> \Swagger\Client\Model\Context getContext($context)
+> \Sphereon\SDK\Blockchain\Easy\Model\Context getContext($context)
 
 Get context
 
@@ -118,9 +118,9 @@ Get an existing context
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\ContextApi();
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\ContextApi();
 $context = "context_example"; // string | context
 
 try {
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Context**](../Model/Context.md)
+[**\Sphereon\SDK\Blockchain\Easy\Model\Context**](../Model/Context.md)
 
 ### Authorization
 

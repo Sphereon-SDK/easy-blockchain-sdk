@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  Sphereon\SDK\Blockchain\Easy
  * @author   Swaagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Model;
+namespace Sphereon\SDK\Blockchain\Easy\Model;
 
 use \ArrayAccess;
 
@@ -36,7 +36,7 @@ use \ArrayAccess;
  *
  * @category    Class
  * @description A backend is a blockchain implementation along with it&#39;s nodes (rpdProviders). You only need a backend when you wish to connect one of the supported blockchain implementations in a private blockchain. Otherwise use one of the public backends for your context
- * @package     Swagger\Client
+ * @package     Sphereon\SDK\Blockchain\Easy
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
@@ -55,14 +55,14 @@ class Backend implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'rpc_providers' => '\Swagger\Client\Model\RpcProvider[]',
+        'rpc_providers' => '\Sphereon\SDK\Blockchain\Easy\Model\RpcProvider[]',
         'api_version' => 'int',
         'name' => 'string',
         'start' => '\DateTime',
         'end' => '\DateTime',
         'data_structure' => 'string',
         'id' => 'string',
-        'external_access' => '\Swagger\Client\Model\Access'
+        'external_access' => '\Sphereon\SDK\Blockchain\Easy\Model\Access'
     ];
 
     /**
@@ -245,7 +245,7 @@ class Backend implements ArrayAccess
 
     /**
      * Gets rpc_providers
-     * @return \Swagger\Client\Model\RpcProvider[]
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\RpcProvider[]
      */
     public function getRpcProviders()
     {
@@ -254,7 +254,7 @@ class Backend implements ArrayAccess
 
     /**
      * Sets rpc_providers
-     * @param \Swagger\Client\Model\RpcProvider[] $rpc_providers One or more nodes that comprise the blockchain backend
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\RpcProvider[] $rpc_providers One or more nodes that comprise the blockchain backend
      * @return $this
      */
     public function setRpcProviders($rpc_providers)
@@ -401,7 +401,7 @@ class Backend implements ArrayAccess
 
     /**
      * Gets external_access
-     * @return \Swagger\Client\Model\Access
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\Access
      */
     public function getExternalAccess()
     {
@@ -410,7 +410,7 @@ class Backend implements ArrayAccess
 
     /**
      * Sets external_access
-     * @param \Swagger\Client\Model\Access $external_access
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Access $external_access
      * @return $this
      */
     public function setExternalAccess($external_access)
@@ -471,10 +471,10 @@ class Backend implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+            return json_encode(\Sphereon\SDK\Blockchain\Easy\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         }
 
-        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
+        return json_encode(\Sphereon\SDK\Blockchain\Easy\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

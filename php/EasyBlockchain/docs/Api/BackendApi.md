@@ -1,4 +1,4 @@
-# Swagger\Client\BackendApi
+# Sphereon\SDK\Blockchain\Easy\BackendApi
 
 All URIs are relative to *https://gw.api.cloud.sphereon.com/blockchain/easy/0.10*
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **createBackend**
-> \Swagger\Client\Model\Backend createBackend($backend)
+> \Sphereon\SDK\Blockchain\Easy\Model\Backend createBackend($backend)
 
 Create a new backend
 
@@ -24,10 +24,10 @@ Create a new backend. A Backend is the link to one blockchain implementation and
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\BackendApi();
-$backend = new \Swagger\Client\Model\Backend(); // \Swagger\Client\Model\Backend | backend
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\BackendApi();
+$backend = new \Sphereon\SDK\Blockchain\Easy\Model\Backend(); // \Sphereon\SDK\Blockchain\Easy\Model\Backend | backend
 
 try {
     $result = $api_instance->createBackend($backend);
@@ -42,11 +42,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **backend** | [**\Swagger\Client\Model\Backend**](../Model/Backend.md)| backend |
+ **backend** | [**\Sphereon\SDK\Blockchain\Easy\Model\Backend**](../Model/Backend.md)| backend |
 
 ### Return type
 
-[**\Swagger\Client\Model\Backend**](../Model/Backend.md)
+[**\Sphereon\SDK\Blockchain\Easy\Model\Backend**](../Model/Backend.md)
 
 ### Authorization
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **deleteBackend**
-> \Swagger\Client\Model\Backend deleteBackend($backend_id)
+> \Sphereon\SDK\Blockchain\Easy\Model\Backend deleteBackend($backend_id)
 
 Delete a backend
 
@@ -72,9 +72,9 @@ Delete backend by id (not by name)
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\BackendApi();
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\BackendApi();
 $backend_id = "backend_id_example"; // string | backendId
 
 try {
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Backend**](../Model/Backend.md)
+[**\Sphereon\SDK\Blockchain\Easy\Model\Backend**](../Model/Backend.md)
 
 ### Authorization
 
@@ -108,7 +108,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **findBackends**
-> \Swagger\Client\Model\Backend[] findBackends($backend_id, $include_public)
+> \Sphereon\SDK\Blockchain\Easy\Model\Backend[] findBackends($backend_id, $include_public)
 
 Find backends
 
@@ -120,9 +120,9 @@ Find existing backend(s) by id (single result) and/or name (multiple results). O
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\BackendApi();
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\BackendApi();
 $backend_id = "backend_id_example"; // string | backendId
 $include_public = false; // bool | includePublic
 
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Backend[]**](../Model/Backend.md)
+[**\Sphereon\SDK\Blockchain\Easy\Model\Backend[]**](../Model/Backend.md)
 
 ### Authorization
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getBackend**
-> \Swagger\Client\Model\Backend getBackend($backend_id, $include_public)
+> \Sphereon\SDK\Blockchain\Easy\Model\Backend getBackend($backend_id, $include_public)
 
 Get backend by id
 
@@ -170,9 +170,9 @@ Get existing backend by id (not by name). Optionally including public backend of
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\BackendApi();
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\BackendApi();
 $backend_id = "backend_id_example"; // string | backendId
 $include_public = false; // bool | includePublic
 
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Backend**](../Model/Backend.md)
+[**\Sphereon\SDK\Blockchain\Easy\Model\Backend**](../Model/Backend.md)
 
 ### Authorization
 
@@ -208,7 +208,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listBackends**
-> \Swagger\Client\Model\Backend[] listBackends($include_public)
+> \Sphereon\SDK\Blockchain\Easy\Model\Backend[] listBackends($include_public)
 
 List backends
 
@@ -220,9 +220,9 @@ List existing backends. Optionally including public backends of others.  Please 
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: oauth2schema
-Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+Sphereon\SDK\Blockchain\Easy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
-$api_instance = new Swagger\Client\Api\BackendApi();
+$api_instance = new Sphereon\SDK\Blockchain\Easy\Api\BackendApi();
 $include_public = false; // bool | includePublic
 
 try {
@@ -242,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Backend[]**](../Model/Backend.md)
+[**\Sphereon\SDK\Blockchain\Easy\Model\Backend[]**](../Model/Backend.md)
 
 ### Authorization
 

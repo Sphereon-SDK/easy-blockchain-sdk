@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**entry** | [**\Swagger\Client\Model\CommittedEntry**](CommittedEntry.md) |  | 
+**entry** | [**\Sphereon\SDK\Blockchain\Easy\Model\CommittedEntry**](CommittedEntry.md) |  | 
 **commit_time** | [**\DateTime**](\DateTime.md) | The time at which the entry creation was first requested in ISO 8601 format | [optional] 
 **creation_request_time** | [**\DateTime**](\DateTime.md) | The time at which the entry creation was first requested in ISO 8601 format | [optional] 
 

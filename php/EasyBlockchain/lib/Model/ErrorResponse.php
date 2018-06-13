@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  Sphereon\SDK\Blockchain\Easy
  * @author   Swaagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Model;
+namespace Sphereon\SDK\Blockchain\Easy\Model;
 
 use \ArrayAccess;
 
@@ -36,7 +36,7 @@ use \ArrayAccess;
  *
  * @category    Class
  * @description The error response
- * @package     Swagger\Client
+ * @package     Sphereon\SDK\Blockchain\Easy
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
@@ -55,7 +55,7 @@ class ErrorResponse implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'errors' => '\Swagger\Client\Model\Error[]'
+        'errors' => '\Sphereon\SDK\Blockchain\Easy\Model\Error[]'
     ];
 
     /**
@@ -163,7 +163,7 @@ class ErrorResponse implements ArrayAccess
 
     /**
      * Gets errors
-     * @return \Swagger\Client\Model\Error[]
+     * @return \Sphereon\SDK\Blockchain\Easy\Model\Error[]
      */
     public function getErrors()
     {
@@ -172,7 +172,7 @@ class ErrorResponse implements ArrayAccess
 
     /**
      * Sets errors
-     * @param \Swagger\Client\Model\Error[] $errors
+     * @param \Sphereon\SDK\Blockchain\Easy\Model\Error[] $errors
      * @return $this
      */
     public function setErrors($errors)
@@ -233,10 +233,10 @@ class ErrorResponse implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+            return json_encode(\Sphereon\SDK\Blockchain\Easy\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         }
 
-        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
+        return json_encode(\Sphereon\SDK\Blockchain\Easy\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 
