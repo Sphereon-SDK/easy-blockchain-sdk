@@ -52,9 +52,7 @@ class EasyBlockchainApiTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-		Configuration::getDefaultConfiguration()->setAccessToken('344d7ac8-d82f-3be0-b81b-488723a7c306');
-		Configuration::getDefaultConfiguration()->setDebug(true);
-		Configuration::getDefaultConfiguration()->setDebugFile('debug.log');
+		Configuration::getDefaultConfiguration()->setAccessToken('YOUR_API_TOKEN');
 		$this->api_instance = new AllApi();
     }
 

@@ -1,7 +1,9 @@
 {
-    "name": "GIT_USER_ID/GIT_REPO_ID",
-    "version": "0.10.3",
-    "description": "",
+    "name": "{{#composerVendorName}}{{.}}{{/composerVendorName}}{{^composerVendorName}}{{gitUserId}}{{/composerVendorName}}/{{#composerProjectName}}{{.}}{{/composerProjectName}}{{^composerProjectName}}{{gitRepoId}}{{/composerProjectName}}",
+    {{#artifactVersion}}
+    "version": "{{artifactVersion}}",
+    {{/artifactVersion}}
+    "description": "{{description}}",
     "keywords": [
         "swagger",
         "php",
@@ -29,9 +31,9 @@
         "friendsofphp/php-cs-fixer": "~2.1"
     },
     "autoload": {
-        "psr-4": { "Sphereon\\SDK\\Blockchain\\Easy\\" : "lib/" }
+        "psr-4": { "{{escapedInvokerPackage}}\\" : "{{srcBasePath}}/" }
     },
     "autoload-dev": {
-        "psr-4": { "Sphereon\\SDK\\Blockchain\\Easy\\" : "test/" }
+        "psr-4": { "{{escapedInvokerPackage}}\\" : "{{testBasePath}}/" }
     }
 }

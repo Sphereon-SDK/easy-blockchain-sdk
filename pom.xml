@@ -393,6 +393,9 @@
 										<packagePath>EasyBlockchain</packagePath>
                                         <invokerPackage>${sdk-package-php}</invokerPackage>
                                     </configOptions>
+                                    <templateDirectory>
+                                        ${basedir}/src/main/mustacheTemplates/php
+                                    </templateDirectory>
                                 </configuration>
                             </execution>
                         </executions>
