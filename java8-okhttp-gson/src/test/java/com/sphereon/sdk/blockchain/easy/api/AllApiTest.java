@@ -45,7 +45,7 @@ public class AllApiTest extends AbstractApiTest {
     @Test
     public void _010_createChainTest() throws ApiException {
         Chain chain = createChainRequest("Test Content", "first external id", "second external id");
-        CommittedChainResponse response = api.createChain(CONTEXT_MULTCHAIN, chain);
+        CommittedChainResponse response = api.createChain(CONTEXT_MULTICHAIN, chain);
         Assert.assertNotNull(response);
         Assert.assertNotNull(response);
         Assert.assertNotNull(response.getChain());
@@ -58,7 +58,7 @@ public class AllApiTest extends AbstractApiTest {
     /// </summary>
     @Test
     public void _020_chainIdExistsTest() throws ApiException {
-        IdResponse response = api.chainIdExists(CONTEXT_MULTCHAIN, TEST_CHAIN_ID);
+        IdResponse response = api.chainIdExists(CONTEXT_MULTICHAIN, TEST_CHAIN_ID);
         Assert.assertEquals(response.getExists(), IdResponse.ExistsEnum.TRUE);
     }
 
@@ -83,7 +83,7 @@ public class AllApiTest extends AbstractApiTest {
     @Test(expected = ApiException.class)
     public void _040_nonExistingEntryByRequest() throws ApiException {
         Entry entry = createEntry(TEST_ENTRY_CONTENT, "" + System.currentTimeMillis());
-        api.entryByRequest(CONTEXT_MULTCHAIN, TEST_CHAIN_ID, entry, null);
+        api.entryByRequest(CONTEXT_MULTICHAIN, TEST_CHAIN_ID, entry, null);
     }
 
 
@@ -93,14 +93,14 @@ public class AllApiTest extends AbstractApiTest {
     @Test
     public void _050_createEntryTest() throws ApiException, InterruptedException {
         Entry entry = createEntry(TEST_ENTRY_CONTENT, "" + System.currentTimeMillis());
-        CommittedEntryResponse createResponse = api.createEntry(CONTEXT_MULTCHAIN, TEST_CHAIN_ID, entry, null);
+        CommittedEntryResponse createResponse = api.createEntry(CONTEXT_MULTICHAIN, TEST_CHAIN_ID, entry, null);
         Assert.assertNotNull(createResponse);
         Assert.assertNotNull(createResponse.getEntry());
         Assert.assertNotNull(createResponse.getCreationRequestTime());
 
         Thread.sleep(10000); // Should be enough for multichain
 
-        AnchoredEntryResponse entryResponse = api.entryByRequest(CONTEXT_MULTCHAIN, TEST_CHAIN_ID, entry, null);
+        AnchoredEntryResponse entryResponse = api.entryByRequest(CONTEXT_MULTICHAIN, TEST_CHAIN_ID, entry, null);
         Assert.assertNotNull(entryResponse);
         Assert.assertNotNull(entryResponse.getAnchoredEntry());
         Assert.assertTrue(entryResponse.getAnchorTimes().size() >= 0);
