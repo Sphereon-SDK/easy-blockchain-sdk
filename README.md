@@ -7,7 +7,7 @@ Several use cases exist for this blockchain SDK. The simplest being a Proof of E
 
 For documentation please see: https://docs.sphereon.com/api/easy-blockchain/0.10/html
 
-See also our website for more information: https://sphereon.com/products/blockchain-api
+See also our website for more information: https://sphereon.com/developers/blockchain-api/
 
 
 ## Available SDKs
@@ -17,14 +17,7 @@ The SDK currently supports the folowing languages:
  * [Java - Okhttp - gson](java8-okhttp-gson)
  * [C# .NET](csharp-net45)
  * [Javascript](javascript)
- 
-SDKs for the following languages will follow soon:
- * PHP
- * Swift3
- * Python
- * Perl
- * Android
- 
+  
 Do you have the need for another language? Please contact us. In many cases we can easily accomidate you.
 
 ## Author
