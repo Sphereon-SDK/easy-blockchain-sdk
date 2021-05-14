@@ -26,23 +26,34 @@
     <easy-blockchain-lib.version>0.1.4</easy-blockchain-lib.version>
   </properties>
 
-  <scm>
-    <connection>scm:git:git@github.com:swagger-api/swagger-codegen.git</connection>
-    <developerConnection>scm:git:git@github.com:swagger-api/swagger-codegen.git</developerConnection>
-    <url>https://github.com/swagger-api/swagger-codegen</url>
-  </scm>
+
   <prerequisites>
     <maven>2.2.0</maven>
   </prerequisites>
 
   <licenses>
     <license>
-      <name>Unlicense</name>
+      <name>Apache2</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
+  <distributionManagement>
+    <repository>
+      <id>sphereon-sdk-releases</id>
+      <url>https://nexus.qa.sphereon.com/nexus/content/repositories/sphereon-sdk-releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>sphereon-sdk-snapshots</id>
+      <url>https://nexus.qa.sphereon.com/nexus/content/repositories/sphereon-sdk-snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
 
+  <scm>
+    <connection>scm:git:git@github.com:Sphereon-SDK/easy-blockchain-sdk.git</connection>
+    <developerConnection>scm:git:git@github.com:Sphereon-SDK/easy-blockchain-sdk.git</developerConnection>
+    <url>https://github.com/Sphereon-SDK/easy-blockchain-sdk</url>
+  </scm>
   <developers>
     <developer>
       <name>Sphereon</name>
