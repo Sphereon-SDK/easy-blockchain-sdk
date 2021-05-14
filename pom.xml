@@ -13,7 +13,9 @@
     <sdk-package>com.sphereon.sdk.blockchain.easy</sdk-package>
     <sdk-package-javascript>SphereonSDKBlockchainEasy</sdk-package-javascript>
     <sdk-package-csharp>Sphereon.SDK.Blockchain.Easy</sdk-package-csharp>
+    <sdk-package-php>Sphereon\SDK\Blockchain\Easy</sdk-package-php>
     <sdk-package-version>0.10.3</sdk-package-version>
+
 
     <swagger-codegen-maven-plugin.version>2.2.3</swagger-codegen-maven-plugin.version>
     <swagger-codegen-verbose>false</swagger-codegen-verbose>
@@ -279,9 +281,84 @@
       </build>
     </profile>
 
-    <profile>
-      <id>csharp-net45</id>
-      <build>
+        <profile>
+            <id>csharp-net35</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.swagger</groupId>
+                        <artifactId>swagger-codegen-maven-plugin</artifactId>
+                        <version>${swagger-coden-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>generate</goal>
+                                </goals>
+                                <configuration>
+                                    <inputSpec>swagger.sdk.json</inputSpec>
+                                    <language>csharp</language>
+                                    <configOptions>
+                                        <packageCompany>${company-name}</packageCompany>
+                                        <apiPackage>${sdk-package-csharp}.Api</apiPackage>
+                                        <modelPackage>${sdk-package-csharp}.Model</modelPackage>
+                                        <invokerPackage>${sdk-package-csharp}.Handler</invokerPackage>
+                                        <packageName>${sdk-package-csharp}</packageName>
+										<packageVersion>${sdk-package-version}</packageVersion>
+                                        <targetFramework>v3.5</targetFramework>
+                                    </configOptions>
+                                    <configurationFile>src/main/resources/config/csharp-net35.json</configurationFile>
+                                    <verbose>${swagger-coden-verbose}</verbose>
+                                    <output>${project.basedir}/csharp-net35</output>
+                                    <groupId>com.sphereon.sdk</groupId>
+                                    <artifactId>${project-base-name}-csharp-net35</artifactId>
+                                    <artifactVersion>${project.version}</artifactVersion>
+                                    <addCompileSourceRoot>true</addCompileSourceRoot>
+                                    <apiPackage>Api</apiPackage>
+                                    <modelPackage>Model</modelPackage>
+                                    <invokerPackage>Handler</invokerPackage>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+		<profile>
+            <id>php</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.swagger</groupId>
+                        <artifactId>swagger-codegen-maven-plugin</artifactId>
+                        <version>${swagger-coden-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>generate</goal>
+                                </goals>
+                                <configuration>
+                                    <inputSpec>swagger.sdk.json</inputSpec>
+                                    <language>php</language>
+									<verbose>${swagger-coden-verbose}</verbose>
+                                    <output>${project.basedir}/php</output>
+                                    <groupId>com.sphereon.sdk</groupId>
+									<artifactVersion>${sdk-package-version}</artifactVersion>
+                                    <configOptions>
+										<packagePath>EasyBlockchain</packagePath>
+                                        <invokerPackage>${sdk-package-php}</invokerPackage>
+                                    </configOptions>
+                                    <templateDirectory>
+                                        ${basedir}/src/main/mustacheTemplates/php
+                                    </templateDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    <build>
         <plugins>
           <plugin>
             <groupId>io.swagger</groupId>
