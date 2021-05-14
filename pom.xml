@@ -14,7 +14,7 @@
     <sdk-package-javascript>SphereonSDKBlockchainEasy</sdk-package-javascript>
     <sdk-package-csharp>Sphereon.SDK.Blockchain.Easy</sdk-package-csharp>
     <sdk-package-php>Sphereon\SDK\Blockchain\Easy</sdk-package-php>
-    <sdk-package-version>0.10.3</sdk-package-version>
+    <sdk-package-version>0.10.4-SNAPSHOT</sdk-package-version>
 
 
     <swagger-codegen-maven-plugin.version>2.2.3</swagger-codegen-maven-plugin.version>
@@ -257,8 +257,8 @@
                   <configOptions>
 
                     <podHomepage>https://sphereon.com</podHomepage>
-                    <podSource>"{ :git => 'https://github.com/Sphereon-SDK/easy-blockchain-sdk.git', :tag => '0.10.3' }"</podSource>
-                    <podVersion>0.10.3</podVersion>
+                    <podSource>"{ :git => 'https://github.com/Sphereon-SDK/easy-blockchain-sdk.git', :tag => '0.10.4-SNAPSHOT' }"</podSource>
+                    <podVersion>0.10.4-SNAPSHOT</podVersion>
                     <podAuthors>Sphereon BV</podAuthors>
                     <podLicense>Apache2</podLicense>
                     <podDescription>Easy Blockchain Swift4 SDK</podDescription>

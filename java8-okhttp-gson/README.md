@@ -46,6 +46,16 @@ Add this dependency to your project's POM.xml:
         <version>0.10.3</version>
         <scope>compile</scope>
     </dependency>
+    
+    <!-- Below deps are optional -->
+
+    <!-- Blockchain Proof for easy chain creation based on content/files -->
+    <dependency>
+      <groupId>com.sphereon.sdk</groupId>
+      <artifactId>blockchain-proof-sdk-java8-okhttp-gson</artifactId>
+      <version>0.10.5</version>
+      <scope>compile</scope>
+    </dependency>
 
     <!-- For easy authentication and token handling is this library -->
     <dependency>
