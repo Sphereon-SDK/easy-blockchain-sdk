@@ -5,7 +5,7 @@
   <artifactId>easy-blockchain-sdk-java8-jersey2</artifactId>
   <packaging>jar</packaging>
   <name>easy-blockchain-sdk-java8-jersey2</name>
-  <version>0.10.3-SNAPSHOT</version>
+  <version>0.10.3</version>
   <url>https://github.com/swagger-api/swagger-codegen</url>
   <description>Swagger Java</description>
 
