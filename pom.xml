@@ -23,6 +23,7 @@
 
     <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
     <maven-scm-provider-gitexe.version>1.9.5</maven-scm-provider-gitexe.version>
+    <gitflow-maven-plugin.version>1.16.0</gitflow-maven-plugin.version>
   </properties>
 
   <licenses>
@@ -281,84 +282,51 @@
       </build>
     </profile>
 
-        <profile>
-            <id>csharp-net35</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>io.swagger</groupId>
-                        <artifactId>swagger-codegen-maven-plugin</artifactId>
-                        <version>${swagger-coden-maven-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>generate</goal>
-                                </goals>
-                                <configuration>
-                                    <inputSpec>swagger.sdk.json</inputSpec>
-                                    <language>csharp</language>
-                                    <configOptions>
-                                        <packageCompany>${company-name}</packageCompany>
-                                        <apiPackage>${sdk-package-csharp}.Api</apiPackage>
-                                        <modelPackage>${sdk-package-csharp}.Model</modelPackage>
-                                        <invokerPackage>${sdk-package-csharp}.Handler</invokerPackage>
-                                        <packageName>${sdk-package-csharp}</packageName>
-										<packageVersion>${sdk-package-version}</packageVersion>
-                                        <targetFramework>v3.5</targetFramework>
-                                    </configOptions>
-                                    <configurationFile>src/main/resources/config/csharp-net35.json</configurationFile>
-                                    <verbose>${swagger-coden-verbose}</verbose>
-                                    <output>${project.basedir}/csharp-net35</output>
-                                    <groupId>com.sphereon.sdk</groupId>
-                                    <artifactId>${project-base-name}-csharp-net35</artifactId>
-                                    <artifactVersion>${project.version}</artifactVersion>
-                                    <addCompileSourceRoot>true</addCompileSourceRoot>
-                                    <apiPackage>Api</apiPackage>
-                                    <modelPackage>Model</modelPackage>
-                                    <invokerPackage>Handler</invokerPackage>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-		<profile>
-            <id>php</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>io.swagger</groupId>
-                        <artifactId>swagger-codegen-maven-plugin</artifactId>
-                        <version>${swagger-coden-maven-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>generate</goal>
-                                </goals>
-                                <configuration>
-                                    <inputSpec>swagger.sdk.json</inputSpec>
-                                    <language>php</language>
-									<verbose>${swagger-coden-verbose}</verbose>
-                                    <output>${project.basedir}/php</output>
-                                    <groupId>com.sphereon.sdk</groupId>
-									<artifactVersion>${sdk-package-version}</artifactVersion>
-                                    <configOptions>
-										<packagePath>EasyBlockchain</packagePath>
-                                        <invokerPackage>${sdk-package-php}</invokerPackage>
-                                    </configOptions>
-                                    <templateDirectory>
-                                        ${basedir}/src/main/mustacheTemplates/php
-                                    </templateDirectory>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-    <build>
+    <profile>
+      <id>csharp-net35</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-codegen-maven-plugin</artifactId>
+            <version>${swagger-codegen-maven-plugin.version}</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>generate</goal>
+                </goals>
+                <configuration>
+                  <inputSpec>swagger.sdk.json</inputSpec>
+                  <language>csharp</language>
+                  <configOptions>
+                    <packageCompany>${company-name}</packageCompany>
+                    <apiPackage>${sdk-package-csharp}.Api</apiPackage>
+                    <modelPackage>${sdk-package-csharp}.Model</modelPackage>
+                    <invokerPackage>${sdk-package-csharp}.Handler</invokerPackage>
+                    <packageName>${sdk-package-csharp}</packageName>
+                    <packageVersion>${sdk-package-version}</packageVersion>
+                    <targetFramework>v3.5</targetFramework>
+                  </configOptions>
+                  <configurationFile>src/main/resources/config/csharp-net35.json</configurationFile>
+                  <verbose>${swagger-codegen-verbose}</verbose>
+                  <output>${project.basedir}/csharp-net35</output>
+                  <groupId>com.sphereon.sdk</groupId>
+                  <artifactId>${project-base-name}-csharp-net35</artifactId>
+                  <artifactVersion>${project.version}</artifactVersion>
+                  <addCompileSourceRoot>true</addCompileSourceRoot>
+                  <apiPackage>Api</apiPackage>
+                  <modelPackage>Model</modelPackage>
+                  <invokerPackage>Handler</invokerPackage>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>csharp-net45</id>
+      <build>
         <plugins>
           <plugin>
             <groupId>io.swagger</groupId>
@@ -402,9 +370,8 @@
         </plugins>
       </build>
     </profile>
-
     <profile>
-      <id>csharp-net35</id>
+      <id>php</id>
       <build>
         <plugins>
           <plugin>
@@ -418,26 +385,18 @@
                 </goals>
                 <configuration>
                   <inputSpec>swagger.sdk.json</inputSpec>
-                  <language>csharp</language>
-                  <configOptions>
-                    <packageCompany>${company-name}</packageCompany>
-                    <apiPackage>${sdk-package-csharp}.Api</apiPackage>
-                    <modelPackage>${sdk-package-csharp}.Model</modelPackage>
-                    <invokerPackage>${sdk-package-csharp}.Handler</invokerPackage>
-                    <packageName>${sdk-package-csharp}</packageName>
-                    <packageVersion>${sdk-package-version}</packageVersion>
-                    <targetFramework>v3.5</targetFramework>
-                  </configOptions>
-                  <configurationFile>src/main/resources/config/csharp-net35.json</configurationFile>
+                  <language>php</language>
                   <verbose>${swagger-codegen-verbose}</verbose>
-                  <output>${project.basedir}/csharp-net35</output>
+                  <output>${project.basedir}/php</output>
                   <groupId>com.sphereon.sdk</groupId>
-                  <artifactId>${project-base-name}-csharp-net35</artifactId>
-                  <artifactVersion>${project.version}</artifactVersion>
-                  <addCompileSourceRoot>true</addCompileSourceRoot>
-                  <apiPackage>Api</apiPackage>
-                  <modelPackage>Model</modelPackage>
-                  <invokerPackage>Handler</invokerPackage>
+                  <artifactVersion>${sdk-package-version}</artifactVersion>
+                  <configOptions>
+                    <packagePath>EasyBlockchain</packagePath>
+                    <invokerPackage>${sdk-package-php}</invokerPackage>
+                  </configOptions>
+                  <templateDirectory>
+                    ${basedir}/src/main/mustacheTemplates/php
+                  </templateDirectory>
                 </configuration>
               </execution>
             </executions>
@@ -491,7 +450,7 @@
       <plugin>
         <groupId>com.amashchenko.maven.plugin</groupId>
         <artifactId>gitflow-maven-plugin</artifactId>
-        <version>1.5.0</version>
+        <version>${gitflow-maven-plugin.version}</version>
         <configuration>
           <!-- optional configuration -->
         </configuration>
