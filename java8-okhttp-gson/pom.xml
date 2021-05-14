@@ -8,6 +8,24 @@
   <version>0.10.3-SNAPSHOT</version>
   <url>https://github.com/swagger-api/swagger-codegen</url>
   <description>Swagger Java</description>
+
+  <properties>
+    <java.version>1.8</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <swagger-core-version>1.5.15</swagger-core-version>
+    <okhttp-version>2.7.5</okhttp-version>
+    <okio.version>1.13.0</okio.version>
+    <gson-version>2.8.1</gson-version>
+    <jodatime-version>2.9.9</jodatime-version>
+    <maven-plugin-version>1.0.0</maven-plugin-version>
+    <junit-version>4.12</junit-version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <authentication-lib.version>0.1.7</authentication-lib.version>
+    <blockchain-proof-sdk.version>0.10.5</blockchain-proof-sdk.version>
+    <easy-blockchain-lib.version>0.1.4</easy-blockchain-lib.version>
+  </properties>
+
   <scm>
     <connection>scm:git:git@github.com:swagger-api/swagger-codegen.git</connection>
     <developerConnection>scm:git:git@github.com:swagger-api/swagger-codegen.git</developerConnection>
@@ -27,12 +45,26 @@
 
   <developers>
     <developer>
-      <name>Swagger</name>
-      <email>apiteam@swagger.io</email>
-      <organization>Swagger</organization>
-      <organizationUrl>http://swagger.io</organizationUrl>
+      <name>Sphereon</name>
+      <email>dev@Sphereon.com</email>
+      <organization>Sphereon</organization>
+      <organizationUrl>https://sphereon.com</organizationUrl>
     </developer>
   </developers>
+
+  <repositories>
+    <repository>
+      <id>sphereon-opensource-releases</id>
+      <name>Sphereon OpenSource Releases</name>
+      <url>https://nexus.qa.sphereon.com/repository/sphereon-opensource-releases/</url>
+    </repository>
+
+    <repository>
+      <id>sphereon-public</id>
+      <name>Sphereon Public</name>
+      <url>https://nexus.qa.sphereon.com/repository/sphereon-public/</url>
+    </repository>
+  </repositories>
 
   <build>
     <plugins>
@@ -179,12 +211,12 @@
       <artifactId>okhttp</artifactId>
       <version>${okhttp-version}</version>
     </dependency>
-	<!-- allow for compatibility with okhttp3 by using the newer okio version below -->
-	<dependency>
-		<groupId>com.squareup.okio</groupId>
-		<artifactId>okio</artifactId>
-		<version>${okio.version}</version>
-	</dependency>
+    <!-- allow for compatibility with okhttp3 by using the newer okio version below -->
+    <dependency>
+      <groupId>com.squareup.okio</groupId>
+      <artifactId>okio</artifactId>
+      <version>${okio.version}</version>
+    </dependency>
     <dependency>
       <groupId>com.squareup.okhttp</groupId>
       <artifactId>logging-interceptor</artifactId>
@@ -202,25 +234,23 @@
       <version>${junit-version}</version>
       <scope>test</scope>
     </dependency>
-	<dependency>
-		<groupId>com.sphereon.public</groupId>
-		<artifactId>authentication-lib-main</artifactId>
-		<version>${authentication-lib.version}</version>
-		<scope>test</scope>
-	</dependency>
+    <dependency>
+      <groupId>com.sphereon.public</groupId>
+      <artifactId>authentication-lib-main</artifactId>
+      <version>${authentication-lib.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.sphereon.public</groupId>
+      <artifactId>easy-blockchain-lib-main</artifactId>
+      <version>${easy-blockchain-lib.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.sphereon.sdk</groupId>
+      <artifactId>blockchain-proof-sdk-java8-okhttp-gson</artifactId>
+      <version>${blockchain-proof-sdk.version}</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
-  <properties>
-    <java.version>1.8</java.version>
-    <maven.compiler.source>${java.version}</maven.compiler.source>
-    <maven.compiler.target>${java.version}</maven.compiler.target>
-    <swagger-core-version>1.5.15</swagger-core-version>
-    <okhttp-version>2.7.5</okhttp-version>
-	<okio.version>1.13.0</okio.version>
-    <gson-version>2.8.1</gson-version>
-    <jodatime-version>2.9.9</jodatime-version>
-    <maven-plugin-version>1.0.0</maven-plugin-version>
-    <junit-version>4.12</junit-version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <authentication-lib.version>0.1.1-SNAPSHOT</authentication-lib.version>
-  </properties>
 </project>
