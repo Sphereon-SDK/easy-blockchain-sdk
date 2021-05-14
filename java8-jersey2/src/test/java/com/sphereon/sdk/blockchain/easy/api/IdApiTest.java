@@ -26,16 +26,9 @@
 package com.sphereon.sdk.blockchain.easy.api;
 
 import com.sphereon.sdk.blockchain.easy.handler.ApiException;
-import com.sphereon.sdk.blockchain.easy.model.IdResponse;
-import com.sphereon.sdk.blockchain.easy.model.VndErrors;
 import com.sphereon.sdk.blockchain.easy.model.Chain;
 import com.sphereon.sdk.blockchain.easy.model.Entry;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * API tests for IdApi

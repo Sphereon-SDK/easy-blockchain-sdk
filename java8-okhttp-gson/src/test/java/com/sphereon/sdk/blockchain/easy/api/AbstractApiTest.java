@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 public class AbstractApiTest {
 
     public static final String APPLICATION_NAME = "tests.blockchain-proof";
-    public static final String CONTEXT_MULTCHAIN = "multichain";
+    public static final String CONTEXT_MULTICHAIN = "multichain";
     public static final String CONTEXT_FACTOM = "factom";
     public static final String TEST_ENTRY_CONTENT = "Test Entry Content";
     public static final String FIRST_ENTRY_EXTERNAL_ID = "first entry external id";

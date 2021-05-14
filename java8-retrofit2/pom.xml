@@ -5,7 +5,7 @@
   <artifactId>easy-blockchain-sdk-java8-retrofit2</artifactId>
   <packaging>jar</packaging>
   <name>easy-blockchain-sdk-java8-retrofit2</name>
-  <version>0.10.2</version>
+  <version>0.10.3</version>
   <url>https://github.com/swagger-api/swagger-codegen</url>
   <description>Swagger Java</description>
   <scm>
@@ -211,8 +211,8 @@
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <swagger-core-version>1.5.15</swagger-core-version>
-    <retrofit-version>2.3.0</retrofit-version>
+    <retrofit-version>2.5.0</retrofit-version>
     <oltu-version>1.0.1</oltu-version>
-    <junit-version>4.12</junit-version>
+    <junit-version>4.13.1</junit-version>
   </properties>
 </project>

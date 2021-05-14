@@ -1,4 +1,11 @@
-# easy-blockchain-sdk-java8-okhttp-gson
+<h1 align="center">
+  <br>
+  <a href="https://www.sphereon.com"><img src="https://sphereon.com/content/themes/sphereon/assets/img/logo.svg" alt="Sphereon" width="400"></a>
+  <br> Easy Blockchain SDK
+  <br> Java 8 and up
+  <br> using OkHttp and GSON
+  <br>
+</h1>
 
 ## Requirements
 
@@ -6,31 +13,56 @@ Building the API client library requires [Maven](https://maven.apache.org/) to b
 
 ## Installation
 
-To install the API client library to your local Maven repository, simply execute:
-
-```shell
-mvn install
-```
-
-To deploy it to a remote Maven repository instead, configure the settings of the repository and execute:
-
-```shell
-mvn deploy
-```
-
-Refer to the [official documentation](https://maven.apache.org/plugins/maven-deploy-plugin/usage.html) for more information.
+To install the API client library, simply follow the below steps
 
 ### Maven users
 
-Add this dependency to your project's POM:
+Refer to the [official documentation](https://maven.apache.org/plugins/maven-deploy-plugin/usage.html) for more information.
+
+Add this dependency to your project's POM.xml:
 
 ```xml
-<dependency>
-    <groupId>com.sphereon.sdk</groupId>
-    <artifactId>easy-blockchain-sdk-java8-okhttp-gson</artifactId>
-    <version>0.9</version>
-    <scope>compile</scope>
-</dependency>
+<repositories>
+  <!-- The Easy Blockchain SDK is found in this repository -->
+  <repository>
+    <id>sphereon-sdk-releases</id>
+    <name>Sphereon SDK Releases</name>
+    <url>https://nexus.qa.sphereon.com/repository/sphereon-sdk-releases/</url>
+  </repository>
+
+  <!-- Include if you need to use our authentication library of the easyblockchain helper library -->
+  <repository>
+    <id>sphereon-opensource-releases</id>
+    <name>Sphereon Opensource Releases</name>
+    <url>https://nexus.qa.sphereon.com/repository/sphereon-opensource-releases/</url>
+  </repository>
+</repositories>
+
+<dependencies>
+    <!-- The SDK itself -->
+    <dependency>
+        <groupId>com.sphereon.sdk</groupId>
+        <artifactId>easy-blockchain-sdk-java8-okhttp-gson</artifactId>
+        <version>0.10.3</version>
+        <scope>compile</scope>
+    </dependency>
+
+    <!-- For easy authentication and token handling is this library -->
+    <dependency>
+      <groupId>com.sphereon.public</groupId>
+      <artifactId>easy-blockchain-lib-main</artifactId>
+      <version>0.1.4</version>
+      <scope>compile</scope>
+    </dependency>
+    
+    <!-- For easy authentication and token handling is this library -->
+    <dependency>
+      <groupId>com.sphereon.public</groupId>
+      <artifactId>authentication-lib-main</artifactId>
+      <version>0.1.7</version>
+      <scope>compile</scope>
+    </dependency>
+</dependencies>
 ```
 
 ### Gradle users
@@ -41,54 +73,15 @@ Add this dependency to your project's build file:
 compile "com.sphereon.sdk:easy-blockchain-sdk-java8-okhttp-gson:0.9"
 ```
 
-### Others
-
-At first generate the JAR by executing:
-
-    mvn package
-
-Then manually install the following JARs:
-
-* target/easy-blockchain-sdk-java8-okhttp-gson-0.9.jar
-* target/lib/*.jar
-
 ## Getting Started
 
 Please follow the [installation](#installation) instruction and execute the following Java code:
 
-```java
+Examples:
 
-import com.sphereon.sdk.blockchain.easy.handler.*;
-import com.sphereon.sdk.blockchain.easy.handler.auth.*;
-import com.sphereon.sdk.blockchain.easy.model.*;
-import com.sphereon.sdk.blockchain.easy.api.AllApi;
+ * [Easy Blockchain Test example](https://github.com/Sphereon-SDK/easy-blockchain-sdk/blob/develop/java8-okhttp-gson/src/test/java/com/sphereon/sdk/blockchain/easy/api/AllApiTest.java)
+ * [Easy Blockchain with Blockchain Proof and authentication example](https://github.com/Sphereon-SDK/easy-blockchain-sdk/blob/develop/java8-okhttp-gson/src/test/java/com/sphereon/sdk/blockchain/easy/api/EasyBlockchainAndProofExample.java)
 
-import java.io.File;
-import java.util.*;
-
-public class AllApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        
-        // Configure OAuth2 access token for authorization: oauth2schema
-        OAuth oauth2schema = (OAuth) defaultClient.getAuthentication("oauth2schema");
-        oauth2schema.setAccessToken("YOUR ACCESS TOKEN");
-
-        AllApi apiInstance = new AllApi();
-        String context = "context_example"; // String | context
-        String chainId = "chainId_example"; // String | chainId
-        try {
-            IdResponse result = apiInstance.chainIdExists(context, chainId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AllApi#chainIdExists");
-            e.printStackTrace();
-        }
-    }
-}
-
-```
 
 ## Documentation for API Endpoints
 

@@ -10,6 +10,8 @@ del java8-retrofit2\build.gradle
 rmdir java8-retrofit2\src\main  /s /q
 rmdir csharp-net35\src\Sphereon.SDK.Blockchain.Proof  /s /q
 rmdir csharp-net45\src\Sphereon.SDK.Blockchain.Proof  /s /q
+rmdir php\EasyBlockchain\docs /s /q
+rmdir php\EasyBlockchain\lib /s /q
 
 call mvn -Pjava8-jersey2 clean install
 start mvn -Pjava8-okhttp-gson clean install
@@ -17,4 +19,7 @@ start mvn -Pjava8-retrofit2 clean install
 start mvn -Pcsharp-net45 clean install
 start mvn -Pcsharp-net35 clean install
 start mvn -Pjavascript clean install
+start mvn -Pphp clean install
 start mvn -Phtml-docs clean install
+start mvn -Pswift4 clean install
+

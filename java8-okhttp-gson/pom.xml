@@ -5,7 +5,27 @@
   <artifactId>easy-blockchain-sdk-java8-okhttp-gson</artifactId>
   <packaging>jar</packaging>
   <name>easy-blockchain-sdk-java8-okhttp-gson</name>
-  <version>0.10.2</version>
+  <version>0.10.3</version>
+  <url>https://github.com/swagger-api/swagger-codegen</url>
+  <description>Swagger Java</description>
+
+  <properties>
+    <java.version>1.8</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <swagger-core-version>1.5.15</swagger-core-version>
+    <okhttp-version>2.7.5</okhttp-version>
+    <okio.version>1.13.0</okio.version>
+    <gson-version>2.8.1</gson-version>
+    <jodatime-version>2.9.9</jodatime-version>
+    <maven-plugin-version>1.0.0</maven-plugin-version>
+    <junit-version>4.13.1</junit-version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <authentication-lib.version>0.1.7</authentication-lib.version>
+    <blockchain-proof-sdk.version>0.10.5</blockchain-proof-sdk.version>
+    <easy-blockchain-lib.version>0.1.4</easy-blockchain-lib.version>
+  </properties>
+
 
   <prerequisites>
     <maven>2.2.0</maven>
@@ -21,11 +41,11 @@
   <distributionManagement>
     <repository>
       <id>sphereon-sdk-releases</id>
-      <url>http://nexus.qa.sphereon.com/nexus/content/repositories/sphereon-sdk-releases</url>
+      <url>https://nexus.qa.sphereon.com/nexus/content/repositories/sphereon-sdk-releases</url>
     </repository>
     <snapshotRepository>
       <id>sphereon-sdk-snapshots</id>
-      <url>http://nexus.qa.sphereon.com/nexus/content/repositories/sphereon-sdk-snapshots</url>
+      <url>https://nexus.qa.sphereon.com/nexus/content/repositories/sphereon-sdk-snapshots</url>
     </snapshotRepository>
   </distributionManagement>
 
@@ -34,6 +54,28 @@
     <developerConnection>scm:git:git@github.com:Sphereon-SDK/easy-blockchain-sdk.git</developerConnection>
     <url>https://github.com/Sphereon-SDK/easy-blockchain-sdk</url>
   </scm>
+  <developers>
+    <developer>
+      <name>Sphereon</name>
+      <email>dev@Sphereon.com</email>
+      <organization>Sphereon</organization>
+      <organizationUrl>https://sphereon.com</organizationUrl>
+    </developer>
+  </developers>
+
+  <repositories>
+    <repository>
+      <id>sphereon-opensource-releases</id>
+      <name>Sphereon OpenSource Releases</name>
+      <url>https://nexus.qa.sphereon.com/repository/sphereon-opensource-releases/</url>
+    </repository>
+
+    <repository>
+      <id>sphereon-public</id>
+      <name>Sphereon Public</name>
+      <url>https://nexus.qa.sphereon.com/repository/sphereon-public/</url>
+    </repository>
+  </repositories>
 
   <build>
     <plugins>
@@ -180,12 +222,12 @@
       <artifactId>okhttp</artifactId>
       <version>${okhttp-version}</version>
     </dependency>
-	<!-- allow for compatibility with okhttp3 by using the newer okio version below -->
-	<dependency>
-		<groupId>com.squareup.okio</groupId>
-		<artifactId>okio</artifactId>
-		<version>${okio.version}</version>
-	</dependency>
+    <!-- allow for compatibility with okhttp3 by using the newer okio version below -->
+    <dependency>
+      <groupId>com.squareup.okio</groupId>
+      <artifactId>okio</artifactId>
+      <version>${okio.version}</version>
+    </dependency>
     <dependency>
       <groupId>com.squareup.okhttp</groupId>
       <artifactId>logging-interceptor</artifactId>
@@ -203,25 +245,23 @@
       <version>${junit-version}</version>
       <scope>test</scope>
     </dependency>
-	<dependency>
-		<groupId>com.sphereon.public</groupId>
-		<artifactId>authentication-lib-main</artifactId>
-		<version>${authentication-lib.version}</version>
-		<scope>test</scope>
-	</dependency>
+    <dependency>
+      <groupId>com.sphereon.public</groupId>
+      <artifactId>authentication-lib-main</artifactId>
+      <version>${authentication-lib.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.sphereon.public</groupId>
+      <artifactId>easy-blockchain-lib-main</artifactId>
+      <version>${easy-blockchain-lib.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.sphereon.sdk</groupId>
+      <artifactId>blockchain-proof-sdk-java8-okhttp-gson</artifactId>
+      <version>${blockchain-proof-sdk.version}</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
-  <properties>
-    <java.version>1.8</java.version>
-    <maven.compiler.source>${java.version}</maven.compiler.source>
-    <maven.compiler.target>${java.version}</maven.compiler.target>
-    <swagger-core-version>1.5.15</swagger-core-version>
-    <okhttp-version>2.7.5</okhttp-version>
-	<okio.version>1.13.0</okio.version>
-    <gson-version>2.8.1</gson-version>
-    <jodatime-version>2.9.9</jodatime-version>
-    <maven-plugin-version>1.0.0</maven-plugin-version>
-    <junit-version>4.12</junit-version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <authentication-lib.version>0.1.2</authentication-lib.version>
-  </properties>
 </project>
