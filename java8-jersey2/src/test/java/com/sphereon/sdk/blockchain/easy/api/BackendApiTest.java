@@ -15,14 +15,9 @@ package com.sphereon.sdk.blockchain.easy.api;
 
 import com.sphereon.sdk.blockchain.easy.handler.ApiException;
 import com.sphereon.sdk.blockchain.easy.model.Backend;
-import com.sphereon.sdk.blockchain.easy.model.ErrorResponse;
-import org.junit.Test;
-import org.junit.Ignore;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * API tests for BackendApi
@@ -109,7 +104,7 @@ public class BackendApiTest {
      */
     @Test
     public void listBackendsTest() throws ApiException {
-        List<Backend> response = api.listBackends();
+        List<Backend> response = api.listBackends(false);
 
         // TODO: test validations
     }
